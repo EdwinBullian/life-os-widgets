@@ -14,7 +14,7 @@
     }
 
     body {
-      padding: 0.6rem 0.75rem 0.5rem;
+      padding: 0.5rem 0.6rem 0.4rem;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     }
 
@@ -24,17 +24,13 @@
       width: 100%;
     }
 
-    /* Month labels row */
+    /* Month label row */
     .top-row {
       display: flex;
       gap: 4px;
       margin-bottom: 3px;
-      align-items: flex-end;
     }
-    .day-label-spacer {
-      width: 28px;
-      flex-shrink: 0;
-    }
+    .day-label-spacer { width: 26px; flex-shrink: 0; }
     .month-row {
       display: flex;
       gap: 2px;
@@ -43,13 +39,13 @@
     .month-slot {
       flex: 1;
       font-size: 10px;
-      color: #666;
+      color: #5a5a5a;
       white-space: nowrap;
       overflow: visible;
       user-select: none;
     }
 
-    /* Main grid row */
+    /* Grid row */
     .grid-row {
       display: flex;
       gap: 4px;
@@ -60,21 +56,21 @@
     .day-labels {
       display: flex;
       flex-direction: column;
-      gap: 2px;
-      width: 28px;
+      gap: 3px;
+      width: 26px;
       flex-shrink: 0;
     }
     .day-label {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      padding-right: 5px;
+      padding-right: 4px;
       font-size: 10px;
-      color: #666;
+      color: #5a5a5a;
       user-select: none;
     }
 
-    /* Heatmap grid — fills full width */
+    /* Grid — fills full available width */
     .heatmap-grid {
       display: flex;
       gap: 2px;
@@ -83,23 +79,23 @@
     .week-col {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
       flex: 1;
     }
+    /* Cells: wider than tall (1.3:1 ratio) */
     .day-cell {
       width: 100%;
-      aspect-ratio: 1;
+      aspect-ratio: 1.3 / 1;
       border-radius: 2px;
       cursor: pointer;
-      transition: outline 0.08s;
     }
     .day-cell:hover {
       outline: 1px solid rgba(255,255,255,0.35);
       outline-offset: 1px;
     }
 
-    /* Color scale */
-    .c0 { background: #2d2d2d; border: 1px solid #3a3a3a; }
+    /* Color scale — same green as before */
+    .c0 { background: #2a2a2a; border: 1px solid #363636; }
     .c1 { background: #0e4429; }
     .c2 { background: #006d32; }
     .c3 { background: #26a641; }
@@ -120,7 +116,7 @@
       display: none;
       white-space: nowrap;
       box-shadow: 0 4px 14px rgba(0,0,0,0.6);
-      line-height: 1.5;
+      line-height: 1.55;
     }
     .tooltip strong { color: #3fb950; }
   </style>
@@ -150,60 +146,76 @@
 
 <script>
 // ── HABIT DATA (from Notion, updated 2026-04-15) ──────────────────────────
-// [10k Steps, Calories, Clean, Lift, Limit Screen Time, Meditate, Supplements]
-const rawData = {
-  "2026-01-05": [1,1,1,1,1,1,1],
-  "2026-01-07": [1,1,1,1,1,1,0],
-  "2026-01-09": [1,0,1,1,1,1,0],
-  "2026-01-10": [1,1,1,0,1,1,0],
-  "2026-01-11": [1,1,1,1,1,0,1],
-  "2026-01-12": [0,0,1,1,1,1,1],
-  "2026-01-15": [1,1,1,1,1,0,1],
-  "2026-01-16": [0,1,1,0,1,1,1],
-  "2026-01-18": [1,0,0,0,0,1,1],
-  "2026-01-19": [1,1,1,0,1,1,1],
-  "2026-01-20": [0,1,1,1,1,1,1],
-  "2026-01-21": [1,1,1,1,0,0,1],
-  "2026-01-22": [1,1,1,1,0,1,0],
-  "2026-01-23": [1,1,1,1,1,1,0],
-  "2026-01-24": [1,1,0,0,0,1,1],
-  "2026-01-25": [1,1,1,1,0,0,0],
-  "2026-01-26": [1,1,0,1,1,1,1],
-  "2026-01-27": [1,1,0,1,1,1,1],
-  "2026-01-28": [1,1,0,1,1,0,1],
-  "2026-01-29": [1,1,1,0,1,1,1],
-  "2026-01-30": [0,1,1,1,1,1,1],
-  "2026-01-31": [1,1,1,1,0,0,1],
-  "2026-02-15": [1,0,1,1,1,0,0],
-  "2026-02-16": [0,1,1,0,1,1,1],
-  "2026-02-17": [1,0,1,1,1,1,1],
+// Value = completion % (out of 8 habits: Steps, Calories, Clean, Lift,
+//         Screen Time, Meditate, Supplements, Stretch)
+// 0 stored as -1 for "logged but 0 habits done"
+const pctData = {
+  // Dec 2025
+  "2025-12-25": -1,
+  "2025-12-26": -1,
+
+  // Jan 2026
+  "2026-01-01": 88,
+  "2026-01-02": 63,
+  "2026-01-03": 100,
+  "2026-01-04": 88,
+  "2026-01-05": 88,
+  "2026-01-06": 63,
+  "2026-01-07": 88,
+  "2026-01-08": 88,
+  "2026-01-09": 75,
+  "2026-01-10": 75,
+  "2026-01-11": 75,
+  "2026-01-12": 75,
+  "2026-01-15": 75,
+  "2026-01-16": 63,
+  "2026-01-18": 38,
+  "2026-01-19": 75,
+  "2026-01-20": 75,
+  "2026-01-21": 63,
+  "2026-01-22": 63,
+  "2026-01-23": 75,
+  "2026-01-24": 50,
+  "2026-01-25": 50,
+  "2026-01-26": 75,
+  "2026-01-27": 75,
+  "2026-01-28": 63,
+  "2026-01-29": 75,
+  "2026-01-30": 75,
+  "2026-01-31": 63,
+
+  // Feb 2026
+  "2026-02-15": 50,
+  "2026-02-16": 63,
+  "2026-02-17": 75,
 };
 
-const HABITS = ["10k Steps","Calories","Clean","Lift","Limit Screen Time","Meditate","Supplements"];
-
-function habitCount(arr) { return arr ? arr.reduce((a,b) => a+b, 0) : 0; }
-function scoreLevel(n) {
-  if (n === 0) return 0;
-  if (n <= 2) return 1;
-  if (n <= 4) return 2;
-  if (n <= 6) return 3;
-  return 4;
+function scoreLevel(pct) {
+  if (pct <= 0)  return 1;   // logged but 0 habits → very dark
+  if (pct <= 30) return 1;   // 1-2 habits
+  if (pct <= 57) return 2;   // 3-4 habits
+  if (pct <= 80) return 3;   // 5-6 habits
+  return 4;                   // 7-8 habits
 }
 
-const countMap = {};
-for (const [d, arr] of Object.entries(rawData)) countMap[d] = habitCount(arr);
+function pctLabel(pct) {
+  if (pct < 0)   return "Logged — 0 / 8 habits";
+  if (pct === 0) return "Logged — 0 / 8 habits";
+  const habits = Math.round(pct / 100 * 8);
+  return `${habits} / 8 habits (${pct}%)`;
+}
 
 // ── DATE RANGE: last 26 weeks (≈6 months) ────────────────────────────────
 const NUM_WEEKS = 26;
 const today = new Date("2026-04-15");
 const startDate = new Date(today);
 startDate.setDate(startDate.getDate() - NUM_WEEKS * 7);
-startDate.setDate(startDate.getDate() - startDate.getDay()); // align to Sunday
+startDate.setDate(startDate.getDate() - startDate.getDay()); // align Sunday
 
-const gridEl = document.getElementById("heatmapGrid");
-const monthRowEl = document.getElementById("monthRow");
-const tooltip = document.getElementById("tooltip");
-const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const gridEl   = document.getElementById("heatmapGrid");
+const monthEl  = document.getElementById("monthRow");
+const tooltip  = document.getElementById("tooltip");
+const MONTHS   = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 let cur = new Date(startDate);
 let weekIdx = 0;
@@ -214,12 +226,11 @@ while (cur <= today) {
   const weekCol = document.createElement("div");
   weekCol.className = "week-col";
 
-  // Determine if a new month starts this week
+  // Month label for this column
   let slotLabel = null;
   const ws = new Date(cur);
   for (let d = 0; d < 7; d++) {
-    const cd = new Date(ws);
-    cd.setDate(cd.getDate() + d);
+    const cd = new Date(ws); cd.setDate(cd.getDate() + d);
     if (cd.getDate() === 1 || weekIdx === 0) {
       const mn = MONTHS[cd.getMonth()];
       if (mn !== lastMonth) { slotLabel = mn; lastMonth = mn; }
@@ -229,26 +240,20 @@ while (cur <= today) {
 
   for (let dow = 0; dow < 7; dow++) {
     const cell = document.createElement("div");
-    const key = cur.toISOString().slice(0, 10);
-    const future = cur > today;
-    const has = rawData.hasOwnProperty(key);
-    const cnt = countMap[key] || 0;
+    const key  = cur.toISOString().slice(0, 10);
+    const future  = cur > today;
+    const hasData = pctData.hasOwnProperty(key);
+    const pct     = pctData[key];
 
-    cell.className = future ? "day-cell no-entry"
-                   : !has   ? "day-cell c0"
-                   :          `day-cell c${scoreLevel(cnt)}`;
+    cell.className = future   ? "day-cell no-entry"
+                   : !hasData ? "day-cell c0"
+                   :            `day-cell c${scoreLevel(pct)}`;
 
     if (!future) {
-      const _k=key, _c=cnt, _h=has, _a=rawData[key];
+      const _k = key, _h = hasData, _p = pct;
       cell.addEventListener("mouseenter", () => {
-        let html = `<strong>${_k}</strong><br>`;
-        if (!_h)      html += "No entry logged";
-        else if (_c===0) html += "0 / 7 habits";
-        else {
-          html += `${_c} / 7 habits`;
-          if (_a) HABITS.forEach((h,i) => { if (_a[i]) html += `<br>✓ ${h}`; });
-        }
-        tooltip.innerHTML = html;
+        const label = _h ? pctLabel(_p) : "No entry";
+        tooltip.innerHTML = `<strong>${_k}</strong><br>${label}`;
         tooltip.style.display = "block";
       });
       cell.addEventListener("mousemove", e => {
@@ -266,25 +271,23 @@ while (cur <= today) {
   weekIdx++;
 }
 
-// Build month row with one flex slot per week column
+// Month labels row
 monthSlots.forEach(label => {
   const s = document.createElement("div");
   s.className = "month-slot";
   s.textContent = label || "";
-  monthRowEl.appendChild(s);
+  monthEl.appendChild(s);
 });
 
-// Sync day-label heights to match rendered cell height
-requestAnimationFrame(() => {
-  requestAnimationFrame(() => {
-    const cell = document.querySelector(".day-cell");
-    if (!cell) return;
-    const h = cell.getBoundingClientRect().height;
-    document.querySelectorAll(".day-label").forEach(el => {
-      el.style.height = h + "px";
-    });
+// Sync day label heights to rendered cell height
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  const cell = document.querySelector(".day-cell");
+  if (!cell) return;
+  const h = cell.getBoundingClientRect().height;
+  document.querySelectorAll(".day-label").forEach(el => {
+    el.style.height = h + "px";
   });
-});
+}));
 </script>
 </body>
 </html>
