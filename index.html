@@ -3,90 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eddie — Habit Heatmap</title>
+  <title>Habit Heatmap</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html, body {
+      background: #191919;
+      overflow: hidden;
+    }
+
     body {
-      background: #0d1117;
-      color: #e6edf3;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 1.25rem 1.5rem;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      min-height: 100vh;
-      padding: 2rem;
-    }
-
-    .page {
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
-    /* Header */
-    .header {
-      margin-bottom: 2.5rem;
-    }
-    .header-top {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 0.4rem;
-    }
-    h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .subtitle {
-      font-size: 0.875rem;
-      color: #7d8590;
-    }
-
-    /* Stats row */
-    .stats {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    .stat-card {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      padding: 0.875rem 1.25rem;
-      min-width: 130px;
-    }
-    .stat-label {
-      font-size: 0.7rem;
-      color: #7d8590;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.3rem;
-    }
-    .stat-value {
-      font-size: 1.6rem;
-      font-weight: 700;
-      line-height: 1;
-    }
-    .stat-value.green { color: #3fb950; }
-    .stat-value.yellow { color: #d29922; }
-    .stat-value.blue { color: #58a6ff; }
-    .stat-value.purple { color: #bc8cff; }
-
-    /* Heatmap container */
-    .heatmap-card {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      overflow-x: auto;
-    }
-    .heatmap-title {
-      font-size: 0.8rem;
-      color: #7d8590;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1rem;
     }
 
     .heatmap-wrapper {
@@ -144,21 +75,18 @@
       border-radius: 2px;
       cursor: pointer;
       transition: opacity 0.1s, outline 0.1s;
-      position: relative;
     }
     .day-cell:hover {
       outline: 1px solid rgba(255,255,255,0.4);
       outline-offset: 1px;
     }
 
-    /* Color scale — GitHub green */
-    .c0 { background: #161b22; border: 1px solid #21262d; }
+    /* Color scale */
+    .c0 { background: #2d2d2d; border: 1px solid #3a3a3a; }
     .c1 { background: #0e4429; }
     .c2 { background: #006d32; }
     .c3 { background: #26a641; }
     .c4 { background: #39d353; }
-
-    /* no-entry (future/gap) */
     .no-entry { background: transparent; cursor: default; }
 
     /* Legend */
@@ -166,10 +94,10 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-top: 1rem;
+      margin-top: 10px;
       justify-content: flex-end;
     }
-    .legend-label { font-size: 11px; color: #7d8590; }
+    .legend-label { font-size: 10px; color: #555; }
     .legend-cell {
       width: 13px;
       height: 13px;
@@ -192,160 +120,35 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
     .tooltip strong { color: #3fb950; }
-
-    /* Habit breakdown */
-    .breakdown-card {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .breakdown-title {
-      font-size: 0.8rem;
-      color: #7d8590;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.25rem;
-    }
-    .habit-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .habit-name {
-      font-size: 13px;
-      color: #e6edf3;
-      width: 140px;
-      flex-shrink: 0;
-    }
-    .habit-bar-track {
-      flex: 1;
-      height: 8px;
-      background: #21262d;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .habit-bar-fill {
-      height: 100%;
-      background: #3fb950;
-      border-radius: 4px;
-      transition: width 0.6s ease;
-    }
-    .habit-pct {
-      font-size: 12px;
-      color: #7d8590;
-      width: 40px;
-      text-align: right;
-    }
-
-    /* Recent days strip */
-    .recent-card {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      padding: 1.5rem;
-    }
-    .recent-title {
-      font-size: 0.8rem;
-      color: #7d8590;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1rem;
-    }
-    .recent-grid {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .recent-day {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-    .recent-day-label {
-      font-size: 10px;
-      color: #7d8590;
-    }
-    .recent-day-sq {
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 700;
-    }
-    .recent-day-count {
-      font-size: 9px;
-      color: #7d8590;
-    }
-
-    .footer {
-      margin-top: 2rem;
-      font-size: 11px;
-      color: #484f58;
-      text-align: center;
-    }
   </style>
 </head>
 <body>
-<div class="page">
 
-  <div class="header">
-    <div class="header-top">
-      <h1>⚔️ Habit Heatmap</h1>
-      <span class="subtitle">Eddie · Life OS · 7 Habits Tracked</span>
+<div>
+  <div class="heatmap-wrapper">
+    <div class="day-labels">
+      <div class="day-label"></div>
+      <div class="day-label">Mon</div>
+      <div class="day-label"></div>
+      <div class="day-label">Wed</div>
+      <div class="day-label"></div>
+      <div class="day-label">Fri</div>
+      <div class="day-label"></div>
     </div>
-    <div class="subtitle">Updated April 15, 2026 — Habits: 5k Steps · Calories · Clean · Exercise · Limit Screen Time · Meditate · Supplements</div>
-  </div>
-
-  <div class="stats" id="statsRow"></div>
-
-  <div class="heatmap-card">
-    <div class="heatmap-title">📅 Contribution Activity — Last 52 Weeks</div>
-    <div class="heatmap-wrapper">
-      <div class="day-labels">
-        <div class="day-label"></div>
-        <div class="day-label">Mon</div>
-        <div class="day-label"></div>
-        <div class="day-label">Wed</div>
-        <div class="day-label"></div>
-        <div class="day-label">Fri</div>
-        <div class="day-label"></div>
-      </div>
-      <div class="heatmap-grid-area">
-        <div class="month-labels" id="monthLabels"></div>
-        <div class="heatmap-grid" id="heatmapGrid"></div>
-      </div>
-    </div>
-    <div class="legend">
-      <span class="legend-label">Less</span>
-      <div class="legend-cell c0" style="border:1px solid #21262d;"></div>
-      <div class="legend-cell c1"></div>
-      <div class="legend-cell c2"></div>
-      <div class="legend-cell c3"></div>
-      <div class="legend-cell c4"></div>
-      <span class="legend-label">More</span>
+    <div class="heatmap-grid-area">
+      <div class="month-labels" id="monthLabels"></div>
+      <div class="heatmap-grid" id="heatmapGrid"></div>
     </div>
   </div>
-
-  <div class="breakdown-card">
-    <div class="breakdown-title">💪 Habit Completion Rate — All Time</div>
-    <div id="habitBreakdown"></div>
+  <div class="legend">
+    <span class="legend-label">Less</span>
+    <div class="legend-cell c0"></div>
+    <div class="legend-cell c1"></div>
+    <div class="legend-cell c2"></div>
+    <div class="legend-cell c3"></div>
+    <div class="legend-cell c4"></div>
+    <span class="legend-label">More</span>
   </div>
-
-  <div class="recent-card">
-    <div class="recent-title">🔥 Last 14 Days</div>
-    <div class="recent-grid" id="recentDays"></div>
-  </div>
-
-  <div class="footer">Regenerate this file during a check-in with Claude to get fresh data from your Notion Habit Tracker.</div>
 </div>
 
 <div class="tooltip" id="tooltip"></div>
@@ -388,13 +191,9 @@ const HABITS = [
   "Supplements"
 ];
 
-// ============================================================
-// COMPUTED
-// ============================================================
 function habitCount(arr) {
   return arr ? arr.reduce((a, b) => a + b, 0) : 0;
 }
-
 function scoreLevel(count) {
   if (count === 0) return 0;
   if (count <= 2) return 1;
@@ -403,83 +202,30 @@ function scoreLevel(count) {
   return 4;
 }
 
-// Build date → count map
 const countMap = {};
 for (const [date, arr] of Object.entries(rawData)) {
   countMap[date] = habitCount(arr);
 }
 
-// Date range: 52 weeks back from today
 const today = new Date("2026-04-15");
 const startDate = new Date(today);
 startDate.setDate(startDate.getDate() - (52 * 7));
-// Align to Sunday
-startDate.setDate(startDate.getDate() - startDate.getDay());
+startDate.setDate(startDate.getDate() - startDate.getDay()); // align to Sunday
 
-// ============================================================
-// STATS
-// ============================================================
-const trackedDays = Object.keys(rawData).length;
-const totalHabits = Object.values(rawData).reduce((a, arr) => a + habitCount(arr), 0);
-const perfectDays = Object.values(rawData).filter(arr => habitCount(arr) === 7).length;
-
-// Current streak
-function getStreak() {
-  let streak = 0;
-  const d = new Date(today);
-  while (true) {
-    const key = d.toISOString().slice(0, 10);
-    if (!rawData[key] || habitCount(rawData[key]) === 0) {
-      if (streak === 0 && key === today.toISOString().slice(0, 10)) {
-        d.setDate(d.getDate() - 1);
-        continue;
-      }
-      break;
-    }
-    streak++;
-    d.setDate(d.getDate() - 1);
-  }
-  return streak;
-}
-
-const streak = getStreak();
-const avgPerDay = trackedDays > 0 ? (totalHabits / trackedDays).toFixed(1) : 0;
-
-// Render stats
-const statsEl = document.getElementById("statsRow");
-const statsArr = [
-  { label: "Current Streak", value: streak + " days", cls: "green" },
-  { label: "Perfect Days", value: perfectDays, cls: "yellow" },
-  { label: "Days Tracked", value: trackedDays, cls: "blue" },
-  { label: "Avg Habits / Day", value: avgPerDay + " / 7", cls: "purple" },
-  { label: "Total Habits Done", value: totalHabits, cls: "green" },
-];
-statsEl.innerHTML = statsArr.map(s => `
-  <div class="stat-card">
-    <div class="stat-label">${s.label}</div>
-    <div class="stat-value ${s.cls}">${s.value}</div>
-  </div>
-`).join("");
-
-// ============================================================
-// HEATMAP GRID
-// ============================================================
 const gridEl = document.getElementById("heatmapGrid");
 const monthLabelsEl = document.getElementById("monthLabels");
 const tooltip = document.getElementById("tooltip");
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-const DAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
 let currentDate = new Date(startDate);
 let weekIndex = 0;
-let monthLabelPositions = {}; // weekIndex → month name
+let monthLabelPositions = {};
 
 while (currentDate <= today) {
   const weekCol = document.createElement("div");
   weekCol.className = "week-col";
 
-  // Check if new month started this week
   const weekStart = new Date(currentDate);
   for (let d = 0; d < 7; d++) {
     const checkDate = new Date(weekStart);
@@ -507,13 +253,12 @@ while (currentDate <= today) {
       cell.className = `day-cell c${level}`;
     }
 
-    // Tooltip
     if (!isFuture) {
       const capturedDate = dateKey;
       const capturedCount = count;
       const capturedHasEntry = hasEntry;
       const capturedArr = rawData[capturedDate];
-      cell.addEventListener("mouseenter", (e) => {
+      cell.addEventListener("mouseenter", () => {
         let html = `<strong>${capturedDate}</strong><br>`;
         if (!capturedHasEntry) {
           html += `No entry logged`;
@@ -549,7 +294,6 @@ while (currentDate <= today) {
 
 // Month labels
 const totalWeeks = weekIndex;
-// Build sparse label list
 let lastMonth = null;
 for (let w = 0; w < totalWeeks; w++) {
   const span = document.createElement("div");
@@ -564,59 +308,6 @@ for (let w = 0; w < totalWeeks; w++) {
   }
   monthLabelsEl.appendChild(span);
 }
-
-// ============================================================
-// HABIT BREAKDOWN
-// ============================================================
-const breakdownEl = document.getElementById("habitBreakdown");
-const habitTotals = HABITS.map((h, i) => ({
-  name: h,
-  count: Object.values(rawData).reduce((a, arr) => a + (arr[i] || 0), 0)
-}));
-const maxCount = Math.max(...habitTotals.map(h => h.count), 1);
-
-breakdownEl.innerHTML = habitTotals.map(h => {
-  const pct = trackedDays > 0 ? Math.round((h.count / trackedDays) * 100) : 0;
-  const barPct = (h.count / maxCount) * 100;
-  return `
-    <div class="habit-row">
-      <div class="habit-name">${h.name}</div>
-      <div class="habit-bar-track">
-        <div class="habit-bar-fill" style="width: ${barPct}%"></div>
-      </div>
-      <div class="habit-pct">${pct}%</div>
-    </div>
-  `;
-}).join("");
-
-// ============================================================
-// RECENT 14 DAYS
-// ============================================================
-const recentEl = document.getElementById("recentDays");
-const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-let recentHTML = "";
-for (let i = 13; i >= 0; i--) {
-  const d = new Date(today);
-  d.setDate(d.getDate() - i);
-  const key = d.toISOString().slice(0, 10);
-  const count = countMap[key] !== undefined ? countMap[key] : null;
-  const hasEntry = rawData.hasOwnProperty(key);
-  const level = hasEntry ? scoreLevel(count) : 0;
-  const colors = ["#21262d","#0e4429","#006d32","#26a641","#39d353"];
-  const bg = colors[level];
-  const dayName = dayNames[d.getDay()];
-  const dateStr = (d.getMonth()+1) + "/" + d.getDate();
-  const displayCount = hasEntry ? count : "—";
-
-  recentHTML += `
-    <div class="recent-day">
-      <div class="recent-day-label">${dayName}</div>
-      <div class="recent-day-sq" style="background:${bg}; border: 1px solid #30363d;">${displayCount}</div>
-      <div class="recent-day-count">${dateStr}</div>
-    </div>
-  `;
-}
-recentEl.innerHTML = recentHTML;
 </script>
 </body>
 </html>
