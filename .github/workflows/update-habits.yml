@@ -143,8 +143,11 @@ jobs:
               d -= timedelta(days=1)
             return streak
 
-          streak = compute_streak(habits_data)
-          print(f"\nStreak: {streak} days")
+          # Only compute streak from Notion-verified data (last 14 days queried this run)
+          # This prevents seeded/historical data from inflating the streak count
+          recent_data = {k: v for k, v in habits_data.items() if k >= two_weeks_ago}
+          streak = compute_streak(recent_data)
+          print(f"\nStreak: {streak} days (computed from last 14 days only)")
 
           output = {
             "habits":      habits_data,
