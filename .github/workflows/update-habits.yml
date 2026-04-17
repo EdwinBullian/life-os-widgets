@@ -25,7 +25,7 @@ jobs:
           from datetime import datetime, timezone, timedelta, date
 
           TOKEN   = os.environ["NOTION_TOKEN"]
-          DB_ID   = "4bf5254b-d564-4b71-a3e0-0d27d50308ad"
+          DB_ID   = "f3e8241f-a337-4b54-815e-5b97fa676ffd"
           API_URL = f"https://api.notion.com/v1/databases/{DB_ID}/query"
 
           PDT = timezone(timedelta(hours=-7))   # PDT (UTC-7); update to -8 Nov–Mar
