@@ -70,7 +70,7 @@
       user-select: none;
     }
 
-    /* Grid — fills full available width */
+    /* Grid */
     .heatmap-grid {
       display: flex;
       gap: 2px;
@@ -82,7 +82,6 @@
       gap: 3px;
       flex: 1;
     }
-    /* Cells: wider than tall (1.3:1 ratio) */
     .day-cell {
       width: 100%;
       aspect-ratio: 1.3 / 1;
@@ -94,7 +93,6 @@
       outline-offset: 1px;
     }
 
-    /* Color scale — same green as before */
     .c0 { background: #2a2a2a; border: 1px solid #363636; }
     .c1 { background: #0e4429; }
     .c2 { background: #006d32; }
@@ -145,223 +143,128 @@
 <div class="tooltip" id="tooltip"></div>
 
 <script>
-// ── HABIT DATA (from Notion, updated 2026-04-15) ──────────────────────────
-// Value = completion % (out of 8 habits: Steps, Calories, Clean, Lift,
-//         Screen Time, Meditate, Supplements, Stretch)
-// 0 stored as -1 for "logged but 0 habits done"
-const pctData = {
-  // Jan 2026
-  "2026-01-01": 88,
-  "2026-01-02": 62,
-  "2026-01-03": 100,
-  "2026-01-04": 88,
-  "2026-01-05": 88,
-  "2026-01-06": 62,
-  "2026-01-07": 88,
-  "2026-01-08": 88,
-  "2026-01-09": 75,
-  "2026-01-10": 75,
-  "2026-01-11": 75,
-  "2026-01-12": 75,
-  "2026-01-13": 62,
-  "2026-01-14": 75,
-  "2026-01-15": 88,
-  "2026-01-16": 62,
-  "2026-01-17": 75,
-  "2026-01-18": 62,
-  "2026-01-19": 88,
-  "2026-01-20": 75,
-  "2026-01-21": 75,
-  "2026-01-22": 75,
-  "2026-01-23": 75,
-  "2026-01-24": 62,
-  "2026-01-25": 62,
-  "2026-01-26": 88,
-  "2026-01-27": 88,
-  "2026-01-28": 62,
-  "2026-01-29": 75,
-  "2026-01-30": 88,
-  "2026-01-31": 75,
-
-  // Feb 2026
-  "2026-02-01": 75,
-  "2026-02-02": 75,
-  "2026-02-03": 75,
-  "2026-02-04": 62,
-  "2026-02-05": 88,
-  "2026-02-06": 75,
-  "2026-02-07": 75,
-  "2026-02-08": 88,
-  "2026-02-09": 75,
-  "2026-02-10": 75,
-  "2026-02-11": 75,
-  "2026-02-12": 75,
-  "2026-02-13": 75,
-  "2026-02-14": 62,
-  "2026-02-15": 50,
-  "2026-02-16": 75,
-  "2026-02-17": 75,
-  "2026-02-18": 75,
-  "2026-02-19": 88,
-  "2026-02-20": 88,
-  "2026-02-21": 75,
-  "2026-02-22": 88,
-  "2026-02-23": 75,
-  "2026-02-24": 88,
-  "2026-02-25": 75,
-  "2026-02-26": 75,
-  "2026-02-27": 62,
-  "2026-02-28": 88,
-
-  // Mar 2026
-  "2026-03-01": 75,
-  "2026-03-02": 62,
-  "2026-03-03": 88,
-  "2026-03-04": 88,
-  "2026-03-05": 88,
-  "2026-03-06": 75,
-  "2026-03-07": 62,
-  "2026-03-08": 75,
-  "2026-03-09": 88,
-  "2026-03-10": 62,
-  "2026-03-11": 88,
-  "2026-03-12": 100,
-  "2026-03-13": 88,
-  "2026-03-14": 100,
-  "2026-03-15": 75,
-  "2026-03-16": 100,
-  "2026-03-17": 88,
-  "2026-03-18": 75,
-  "2026-03-19": 62,
-  "2026-03-20": 75,
-  "2026-03-21": 88,
-  "2026-03-22": 75,
-  "2026-03-23": 100,
-  "2026-03-24": 88,
-  "2026-03-25": 75,
-  "2026-03-26": 88,
-  "2026-03-27": 75,
-  "2026-03-28": 62,
-  "2026-03-29": 50,
-  "2026-03-30": 62,
-  "2026-03-31": 62,
-
-  // Apr 2026
-  "2026-04-01": 75,
-  "2026-04-02": 88,
-  "2026-04-03": 75,
-  "2026-04-04": 75,
-  "2026-04-05": 75,
-  "2026-04-06": 50,
-  "2026-04-07": 50,
-  "2026-04-08": 62,
-  "2026-04-09": 75,
-  "2026-04-10": 62,
-  "2026-04-11": 62,
-  "2026-04-12": 88,
-  "2026-04-13": 75,
-  "2026-04-14": 62,
-  "2026-04-15": 75,
-};
+let pctData      = {};
+let totalHabits  = 8;
 
 function scoreLevel(pct) {
-  if (pct <= 0)  return 1;   // logged but 0 habits → very dark
-  if (pct <= 30) return 1;   // 1-2 habits
-  if (pct <= 57) return 2;   // 3-4 habits
-  if (pct <= 80) return 3;   // 5-6 habits
-  return 4;                   // 7-8 habits
+  if (pct <= 0)  return 1;
+  if (pct <= 30) return 1;
+  if (pct <= 57) return 2;
+  if (pct <= 80) return 3;
+  return 4;
 }
 
 function pctLabel(pct) {
-  if (pct < 0)   return "Logged — 0 / 8 habits";
-  if (pct === 0) return "Logged — 0 / 8 habits";
-  const habits = Math.round(pct / 100 * 8);
-  return `${habits} / 8 habits (${pct}%)`;
+  if (pct <= 0) return `0 / ${totalHabits} habits (0%)`;
+  const done = Math.round(pct / 100 * totalHabits);
+  return `${done} / ${totalHabits} habits &nbsp;·&nbsp; ${pct}%`;
 }
 
-// ── DATE RANGE: last 26 weeks (≈6 months) ────────────────────────────────
-const NUM_WEEKS = 26;
-const today = new Date("2026-04-15");
-const startDate = new Date(today);
-startDate.setDate(startDate.getDate() - NUM_WEEKS * 7);
-startDate.setDate(startDate.getDate() - startDate.getDay()); // align Sunday
-
-const gridEl   = document.getElementById("heatmapGrid");
-const monthEl  = document.getElementById("monthRow");
-const tooltip  = document.getElementById("tooltip");
-const MONTHS   = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
-let cur = new Date(startDate);
-let weekIdx = 0;
-const monthSlots = [];
-let lastMonth = null;
-
-while (cur <= today) {
-  const weekCol = document.createElement("div");
-  weekCol.className = "week-col";
-
-  // Month label for this column
-  let slotLabel = null;
-  const ws = new Date(cur);
-  for (let d = 0; d < 7; d++) {
-    const cd = new Date(ws); cd.setDate(cd.getDate() + d);
-    if (cd.getDate() === 1 || weekIdx === 0) {
-      const mn = MONTHS[cd.getMonth()];
-      if (mn !== lastMonth) { slotLabel = mn; lastMonth = mn; }
-    }
-  }
-  monthSlots.push(slotLabel);
-
-  for (let dow = 0; dow < 7; dow++) {
-    const cell = document.createElement("div");
-    const key  = cur.toISOString().slice(0, 10);
-    const future  = cur > today;
-    const hasData = pctData.hasOwnProperty(key);
-    const pct     = pctData[key];
-
-    cell.className = future   ? "day-cell no-entry"
-                   : !hasData ? "day-cell c0"
-                   :            `day-cell c${scoreLevel(pct)}`;
-
-    if (!future) {
-      const _k = key, _h = hasData, _p = pct;
-      cell.addEventListener("mouseenter", () => {
-        const label = _h ? pctLabel(_p) : "No entry";
-        tooltip.innerHTML = `<strong>${_k}</strong><br>${label}`;
-        tooltip.style.display = "block";
-      });
-      cell.addEventListener("mousemove", e => {
-        tooltip.style.left = (e.clientX + 14) + "px";
-        tooltip.style.top  = (e.clientY - 10) + "px";
-      });
-      cell.addEventListener("mouseleave", () => tooltip.style.display = "none");
-    }
-
-    weekCol.appendChild(cell);
-    cur.setDate(cur.getDate() + 1);
-  }
-
-  gridEl.appendChild(weekCol);
-  weekIdx++;
+function fmtDate(dateStr) {
+  // "2026-04-15" → "Wed, Apr 15, 2026"
+  const d = new Date(dateStr + "T12:00:00");
+  return d.toLocaleDateString("en-US", { weekday:"short", month:"short", day:"numeric", year:"numeric" });
 }
 
-// Month labels row
-monthSlots.forEach(label => {
-  const s = document.createElement("div");
-  s.className = "month-slot";
-  s.textContent = label || "";
-  monthEl.appendChild(s);
-});
+function buildGrid() {
+  const NUM_WEEKS = 26;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-// Sync day label heights to rendered cell height
-requestAnimationFrame(() => requestAnimationFrame(() => {
-  const cell = document.querySelector(".day-cell");
-  if (!cell) return;
-  const h = cell.getBoundingClientRect().height;
-  document.querySelectorAll(".day-label").forEach(el => {
-    el.style.height = h + "px";
+  const startDate = new Date(today);
+  startDate.setDate(startDate.getDate() - NUM_WEEKS * 7);
+  startDate.setDate(startDate.getDate() - startDate.getDay()); // align Sunday
+
+  const gridEl  = document.getElementById("heatmapGrid");
+  const monthEl = document.getElementById("monthRow");
+  const tip     = document.getElementById("tooltip");
+  const MONTHS  = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  gridEl.innerHTML  = "";
+  monthEl.innerHTML = "";
+
+  let cur = new Date(startDate);
+  let weekIdx = 0;
+  const monthSlots = [];
+  let lastMonth = null;
+
+  while (cur <= today) {
+    const weekCol = document.createElement("div");
+    weekCol.className = "week-col";
+
+    let slotLabel = null;
+    const ws = new Date(cur);
+    for (let d = 0; d < 7; d++) {
+      const cd = new Date(ws); cd.setDate(cd.getDate() + d);
+      if (cd.getDate() === 1 || weekIdx === 0) {
+        const mn = MONTHS[cd.getMonth()];
+        if (mn !== lastMonth) { slotLabel = mn; lastMonth = mn; }
+      }
+    }
+    monthSlots.push(slotLabel);
+
+    for (let dow = 0; dow < 7; dow++) {
+      const cell    = document.createElement("div");
+      const key     = cur.toISOString().slice(0, 10);
+      const future  = cur > today;
+      const hasData = Object.prototype.hasOwnProperty.call(pctData, key);
+      const pct     = pctData[key];
+
+      cell.className = future   ? "day-cell no-entry"
+                     : !hasData ? "day-cell c0"
+                     :            `day-cell c${scoreLevel(pct)}`;
+
+      if (!future) {
+        const _k = key, _h = hasData, _p = pct;
+        cell.addEventListener("mouseenter", () => {
+          const label = _h ? pctLabel(_p) : "No entry";
+          tip.innerHTML = `<strong>${fmtDate(_k)}</strong><br>${label}`;
+          tip.style.display = "block";
+        });
+        cell.addEventListener("mousemove", e => {
+          tip.style.left = (e.clientX + 14) + "px";
+          tip.style.top  = (e.clientY - 10) + "px";
+        });
+        cell.addEventListener("mouseleave", () => tip.style.display = "none");
+      }
+
+      weekCol.appendChild(cell);
+      cur.setDate(cur.getDate() + 1);
+    }
+
+    gridEl.appendChild(weekCol);
+    weekIdx++;
+  }
+
+  monthSlots.forEach(label => {
+    const s = document.createElement("div");
+    s.className = "month-slot";
+    s.textContent = label || "";
+    monthEl.appendChild(s);
   });
-}));
+
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    const cell = document.querySelector(".day-cell");
+    if (!cell) return;
+    const h = cell.getBoundingClientRect().height;
+    document.querySelectorAll(".day-label").forEach(el => el.style.height = h + "px");
+  }));
+}
+
+async function load() {
+  try {
+    const r = await fetch("./habits.json?t=" + Date.now());
+    if (!r.ok) throw new Error("no json");
+    const j = await r.json();
+    pctData     = j.habits      || {};
+    totalHabits = j.totalHabits || 8;
+  } catch {
+    console.warn("habits.json unavailable — rendering empty grid");
+  }
+  buildGrid();
+}
+
+load();
 </script>
 </body>
 </html>

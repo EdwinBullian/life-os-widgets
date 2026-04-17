@@ -1,0 +1,168 @@
+name: Update Habit Heatmap
+
+on:
+  schedule:
+    - cron: "0 9 * * *"    # 9 AM UTC = 2 AM PDT — runs after midnight so today's data is fresh
+  workflow_dispatch:        # manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch today's habits from Notion and update habits.json
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: |
+          python3 - <<'PYEOF'
+          import json, os, time, urllib.request, urllib.error
+          from datetime import datetime, timezone, timedelta, date
+
+          TOKEN   = os.environ["NOTION_TOKEN"]
+          DB_ID   = "4bf5254b-d564-4b71-a3e0-0d27d50308ad"
+          API_URL = f"https://api.notion.com/v1/databases/{DB_ID}/query"
+
+          PDT = timezone(timedelta(hours=-7))   # PDT (UTC-7); update to -8 Nov–Mar
+          today_str = datetime.now(PDT).strftime("%Y-%m-%d")
+          # Query last 14 days to catch any edits/backfills
+          two_weeks_ago = (datetime.now(PDT) - timedelta(days=14)).strftime("%Y-%m-%d")
+
+          print(f"Querying habits for {two_weeks_ago} → {today_str}")
+
+          payload = json.dumps({
+            "filter": {
+              "and": [
+                {"property": "Date", "date": {"on_or_after":  two_weeks_ago}},
+                {"property": "Date", "date": {"on_or_before": today_str}},
+              ]
+            },
+            "sorts": [{"property": "Date", "direction": "ascending"}],
+            "page_size": 100,
+          }).encode()
+
+          req = urllib.request.Request(
+            API_URL, data=payload, method="POST",
+            headers={
+              "Authorization":  f"Bearer {TOKEN}",
+              "Notion-Version": "2022-06-28",
+              "Content-Type":   "application/json",
+            }
+          )
+
+          try:
+            with urllib.request.urlopen(req, timeout=20) as resp:
+              pages = json.loads(resp.read()).get("results", [])
+          except urllib.error.HTTPError as e:
+            print(f"Notion API error {e.code}: {e.read().decode()}")
+            raise
+
+          # Load existing habits.json
+          try:
+            with open("habits.json") as f:
+              existing = json.load(f)
+          except Exception:
+            existing = {"habits": {}, "totalHabits": 8, "streak": 0, "updated": 0}
+
+          habits_data  = existing.get("habits", {})
+          total_habits = existing.get("totalHabits", 8)
+
+          # Parse each day's page
+          # Schema: one page per day, Date property = the day,
+          # checkbox properties count toward completion
+          for page in pages:
+            props = page.get("properties", {})
+
+            # Find Date property
+            day_str = None
+            for prop_name, prop_val in props.items():
+              if prop_val.get("type") == "date":
+                d = prop_val.get("date") or {}
+                start = d.get("start", "")
+                if start:
+                  day_str = start[:10]
+                  break
+
+            if not day_str:
+              # Fallback: try "Name" as title with date
+              title_prop = props.get("Name", {}).get("title", [])
+              raw = "".join(t.get("plain_text","") for t in title_prop).strip()
+              if raw[:10].replace("-","").isdigit():
+                day_str = raw[:10]
+
+            if not day_str:
+              print(f"  Skipping page — no date found. Props: {list(props.keys())}")
+              continue
+
+            # Count checked checkboxes (excluding non-habit props like Date, Name, etc.)
+            SKIP_TYPES = {"title", "date", "formula", "rollup", "relation", "created_time",
+                          "last_edited_time", "created_by", "last_edited_by", "files", "url",
+                          "email", "phone_number", "people", "select", "multi_select",
+                          "number", "rich_text"}
+            checked  = sum(1 for v in props.values()
+                           if v.get("type") == "checkbox" and v.get("checkbox") is True)
+            possible = sum(1 for v in props.values()
+                           if v.get("type") == "checkbox")
+
+            if possible == 0:
+              print(f"  {day_str}: no checkbox properties found — skipping")
+              continue
+
+            # Use the global totalHabits if consistent, otherwise use what we found
+            if possible > total_habits:
+              total_habits = possible
+
+            pct = round(checked / total_habits * 100) if total_habits > 0 else 0
+            habits_data[day_str] = pct if pct > 0 else -1
+            print(f"  {day_str}: {checked}/{total_habits} habits = {pct}%")
+
+          # Compute streak: consecutive days (incl. today if logged, else from yesterday)
+          def compute_streak(data):
+            today_d = date.today() - timedelta(hours=7)  # approximate PDT
+            # Use actual PDT date
+            today_d = datetime.now(PDT).date()
+            streak = 0
+            d = today_d
+            # If today not logged yet, start from yesterday
+            if today_d.isoformat() not in data:
+              d = today_d - timedelta(days=1)
+            while True:
+              key = d.isoformat()
+              val = data.get(key)
+              if val is None or val == 0:
+                break
+              # -1 means logged but 0 habits — break streak
+              if val == -1:
+                break
+              streak += 1
+              d -= timedelta(days=1)
+            return streak
+
+          streak = compute_streak(habits_data)
+          print(f"\nStreak: {streak} days")
+
+          output = {
+            "habits":      habits_data,
+            "totalHabits": total_habits,
+            "streak":      streak,
+            "updated":     int(time.time()),
+          }
+
+          with open("habits.json", "w") as f:
+            json.dump(output, f, indent=2, ensure_ascii=False, sort_keys=True)
+
+          print(f"habits.json updated — {len(habits_data)} days logged, streak={streak}")
+          PYEOF
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add habits.json
+          git diff --staged --quiet && echo "No changes." || \
+            git commit -m "chore: update habit data [skip ci]" && git push
