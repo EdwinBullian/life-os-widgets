@@ -1,0 +1,193 @@
+name: Update Habit Heatmap
+
+on:
+  schedule:
+    - cron: "0 9 * * *"  # 9 AM UTC = 2 AM PDT — runs after midnight so today's data is fresh
+  workflow_dispatch:       # manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch today's habits from Notion and update habits.json
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: |
+          python3 - <<'PYEOF'
+          import json, os, time, urllib.request, urllib.error
+          from datetime import datetime, timezone, timedelta, date
+
+          TOKEN = os.environ["NOTION_TOKEN"]
+          DB_ID = "f3e8241f-a337-4b54-815e-5b97fa676ffd"
+          API_URL = f"https://api.notion.com/v1/databases/{DB_ID}/query"
+
+          PDT = timezone(timedelta(hours=-7))  # PDT (UTC-7); update to -8 Nov–Mar
+          today_str = datetime.now(PDT).strftime("%Y-%m-%d")
+          two_weeks_ago = (datetime.now(PDT) - timedelta(days=14)).strftime("%Y-%m-%d")
+
+          print(f"Querying habits for {two_weeks_ago} → {today_str}")
+
+          payload = json.dumps({
+              "filter": {
+                  "and": [
+                      {"property": "Date", "date": {"on_or_after": two_weeks_ago}},
+                      {"property": "Date", "date": {"on_or_before": today_str}},
+                  ]
+              },
+              "sorts": [{"property": "Date", "direction": "ascending"}],
+              "page_size": 100,
+          }).encode()
+
+          req = urllib.request.Request(
+              API_URL, data=payload, method="POST",
+              headers={
+                  "Authorization": f"Bearer {TOKEN}",
+                  "Notion-Version": "2022-06-28",
+                  "Content-Type": "application/json",
+              }
+          )
+
+          try:
+              with urllib.request.urlopen(req, timeout=20) as resp:
+                  pages = json.loads(resp.read()).get("results", [])
+          except urllib.error.HTTPError as e:
+              print(f"Notion API error {e.code}: {e.read().decode()}")
+              raise
+
+          # Load existing habits.json
+          try:
+              with open("habits.json") as f:
+                  existing = json.load(f)
+          except Exception:
+              existing = {"habits": {}, "streaks": {}, "totalHabits": 8, "streak": 0, "updated": 0}
+
+          habits_data  = existing.get("habits", {})
+          total_habits = existing.get("totalHabits", 8)
+
+          # Habit name mapping: Notion property → widget display name
+          HABIT_MAP = {
+              "5k Steps":          "10k Steps",
+              "Exercise":          "Lift",
+              "Limit Screen Time": "Screen Time",
+              "Calories":          "Calories",
+              "Clean":             "Clean",
+              "Meditate":          "Meditate",
+              "Stretch":           "Stretch",
+              "Supplements":       "Supplements",
+          }
+          # per-habit per-day: {display_name: {date_str: True/False}}
+          per_habit = {v: {} for v in HABIT_MAP.values()}
+
+          SKIP_TYPES = {"title", "date", "formula", "rollup", "relation", "created_time",
+                        "last_edited_time", "created_by", "last_edited_by", "files", "url",
+                        "email", "phone_number", "people", "select", "multi_select",
+                        "number", "rich_text"}
+
+          for page in pages:
+              props = page.get("properties", {})
+
+              # Find Date property
+              day_str = None
+              for prop_name, prop_val in props.items():
+                  if prop_val.get("type") == "date":
+                      d = prop_val.get("date") or {}
+                      start = d.get("start", "")
+                      if start:
+                          day_str = start[:10]
+                          break
+
+              if not day_str:
+                  title_prop = props.get("Name", {}).get("title", [])
+                  raw = "".join(t.get("plain_text","") for t in title_prop).strip()
+                  if raw[:10].replace("-","").isdigit():
+                      day_str = raw[:10]
+
+              if not day_str:
+                  print(f"  Skipping page — no date found. Props: {list(props.keys())}")
+                  continue
+
+              # Count aggregate checkboxes
+              checked  = sum(1 for v in props.values() if v.get("type") == "checkbox" and v.get("checkbox") is True)
+              possible = sum(1 for v in props.values() if v.get("type") == "checkbox")
+
+              if possible == 0:
+                  print(f"  {day_str}: no checkbox properties — skipping")
+                  continue
+
+              if possible > total_habits:
+                  total_habits = possible
+
+              pct = round(checked / total_habits * 100) if total_habits > 0 else 0
+              habits_data[day_str] = pct if pct > 0 else -1
+              print(f"  {day_str}: {checked}/{total_habits} habits = {pct}%")
+
+              # Record per-habit data for this day
+              for notion_name, display_name in HABIT_MAP.items():
+                  if notion_name in props:
+                      per_habit[display_name][day_str] = props[notion_name].get("checkbox", False)
+
+          # Compute global streak (last 14 days only)
+          def compute_streak(data):
+              today_d = datetime.now(PDT).date()
+              streak = 0
+              d = today_d if today_d.isoformat() in data else today_d - timedelta(days=1)
+              while True:
+                  key = d.isoformat()
+                  val = data.get(key)
+                  if val is None or val <= 0:
+                      break
+                  streak += 1
+                  d -= timedelta(days=1)
+              return streak
+
+          recent_data = {k: v for k, v in habits_data.items() if k >= two_weeks_ago}
+          streak = compute_streak(recent_data)
+          print(f"\nGlobal streak: {streak} days")
+
+          # Compute per-habit streaks
+          def compute_habit_streak(habit_day_data):
+              today_d = datetime.now(PDT).date()
+              d = today_d if today_d.isoformat() in habit_day_data else today_d - timedelta(days=1)
+              s = 0
+              while True:
+                  key = d.isoformat()
+                  if not habit_day_data.get(key, False):
+                      break
+                  s += 1
+                  d -= timedelta(days=1)
+              return s
+
+          habit_streaks = {}
+          for display_name in HABIT_MAP.values():
+              s = compute_habit_streak(per_habit[display_name])
+              habit_streaks[display_name] = s
+              print(f"  {display_name}: {s}d streak")
+
+          output = {
+              "habits":      habits_data,
+              "streaks":     habit_streaks,
+              "totalHabits": total_habits,
+              "streak":      streak,
+              "updated":     int(time.time()),
+          }
+
+          with open("habits.json", "w") as f:
+              json.dump(output, f, indent=2, ensure_ascii=False, sort_keys=True)
+
+          print(f"\nhabits.json updated — {len(habits_data)} days, streak={streak}")
+          PYEOF
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add habits.json
+          git diff --staged --quiet && echo "No changes." || \
+            git commit -m "chore: update habit data [skip ci]" && git push
