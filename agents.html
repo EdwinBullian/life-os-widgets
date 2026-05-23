@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentOS — Agents</title>
+<style>
+  :root {
+    --bg: #e4d9c4;
+    --card: #dbd0ba;
+    --card2: #d0c5ae;
+    --accent: #1b3a5c;
+    --accent2: #2a5280;
+    --text: #2c2c2c;
+    --muted: #6b6057;
+    --border: #c4b89e;
+    --success: #2d6a4f;
+    --warn: #b5582c;
+    --tag-assistant: #2a5280;
+    --tag-finance: #2d6a4f;
+    --tag-health: #7b2d2d;
+    --tag-research: #4a2d7b;
+    --tag-programming: #7b4a2d;
+    --tag-career: #6b2d5e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', serif;
+    min-height: 100vh;
+    padding: 28px 24px;
+  }
+  .header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.3px;
+  }
+  .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .kpi-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .kpi {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    min-width: 110px;
+  }
+  .kpi-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .kpi-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow 0.15s;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(27,58,92,0.12); }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .agent-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .agent-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+  .agent-type {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: white;
+    margin-top: 3px;
+  }
+  .type-assistant { background: var(--tag-assistant); }
+  .type-finance { background: var(--tag-finance); }
+  .type-health { background: var(--tag-health); }
+  .type-research { background: var(--tag-research); }
+  .type-programming { background: var(--tag-programming); }
+  .type-career { background: var(--tag-career); }
+  .status-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #2d6a4f;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .status-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .description {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text);
+    border-left: 2px solid var(--border);
+    padding-left: 10px;
+  }
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .schedule-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .commands-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .cmd-chip {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 10px;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 7px;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .runs-count { font-weight: 700; color: var(--accent); }
+  .divider { height: 1px; background: var(--border); }
+  .footer-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 20px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>⚔️ AgentOS — Agents</h1>
+</div>
+<div class="subtitle">Eddie's autonomous agent network · Last updated 2026-05-22</div>
+
+<div class="kpi-bar">
+  <div class="kpi">
+    <div class="kpi-label">Active Agents</div>
+    <div class="kpi-value">6</div>
+    <div class="kpi-sub">All systems go</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Autonomous Tasks</div>
+    <div class="kpi-value">9</div>
+    <div class="kpi-sub">Scheduled weekly</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Runs Logged</div>
+    <div class="kpi-value">0</div>
+    <div class="kpi-sub">Wired as of W21</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">On-Demand</div>
+    <div class="kpi-value">2</div>
+    <div class="kpi-sub">Programming · Career</div>
+  </div>
+</div>
+
+<div class="grid">
+
+  <!-- Assistant -->
+  <div class="card">
+    <div class="card-header">
+      <div class="agent-icon">🧠</div>
+      <div>
+        <div class="agent-name">Assistant Agent</div>
+        <span class="agent-type type-assistant">Assistant</span>
+      </div>
+    </div>
+    <div class="description">Your daily operator. Scheduling, task oversight, check-ins, focus sessions, and memory. The connective tissue between all other agents.</div>
+    <div>
+      <div class="section-label">Autonomous Schedule</div>
+      <div class="schedule-text">Daily briefing 7 AM · Weekly review Sun 4:10 AM · Weekly schedule Sun 5:02 AM · Midweek check Thu 8:39 AM</div>
+    </div>
+    <div>
+      <div class="section-label">Commands</div>
+      <div class="commands-grid">
+        <span class="cmd-chip">/check-in</span>
+        <span class="cmd-chip">/calendar</span>
+        <span class="cmd-chip">/recap</span>
+        <span class="cmd-chip">/focus</span>
+        <span class="cmd-chip">/log</span>
+        <span class="cmd-chip">/brainstorm</span>
+        <span class="cmd-chip">/search</span>
+        <span class="cmd-chip">mc-connect-sync</span>
+        <span class="cmd-chip">cowork-sync</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
+      <span><span class="runs-count">—</span> runs logged</span>
+    </div>
+  </div>
+
+  <!-- Finance -->
+  <div class="card">
+    <div class="card-header">
+      <div class="agent-icon">💰</div>
+      <div>
+        <div class="agent-name">Finance Agent</div>
+        <span class="agent-type type-finance">Finance</span>
+      </div>
+    </div>
+    <div class="description">Investment research and financial modeling. Weekly thesis (Mon) + market scan (Wed). On demand: memos, DCF, LBO, comps, company screens.</div>
+    <div>
+      <div class="section-label">Autonomous Schedule</div>
+      <div class="schedule-text">Weekly thesis Mon 11:07 AM · Market scan Wed 11:07 AM</div>
+    </div>
+    <div>
+      <div class="section-label">Commands</div>
+      <div class="commands-grid">
+        <span class="cmd-chip">/screen</span>
+        <span class="cmd-chip">/memo</span>
+        <span class="cmd-chip">/sector</span>
+        <span class="cmd-chip">/teardown</span>
+        <span class="cmd-chip">/dcf</span>
+        <span class="cmd-chip">/lbo</span>
+        <span class="cmd-chip">/comps</span>
+        <span class="cmd-chip">/overview</span>
+        <span class="cmd-chip">/technical</span>
+        <span class="cmd-chip">/fundamental</span>
+        <span class="cmd-chip">/sentiment</span>
+        <span class="cmd-chip">/deep-dive</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
+      <span><span class="runs-count">—</span> runs logged</span>
+    </div>
+  </div>
+
+  <!-- Health -->
+  <div class="card">
+    <div class="card-header">
+      <div class="agent-icon">💪</div>
+      <div>
+        <div class="agent-name">Health Agent</div>
+        <span class="agent-type type-health">Health</span>
+      </div>
+    </div>
+    <div class="description">Fitness, nutrition, and recovery. Pulls real data from Zepp + Cronometer. Three autonomous weekly tasks — Saturday review feeds Sunday's plan.</div>
+    <div>
+      <div class="section-label">Autonomous Schedule</div>
+      <div class="schedule-text">Weekly review Sat 9:06 PM · Midweek sync Thu 11:10 AM · Sunday plan Sun 5:38 AM</div>
+    </div>
+    <div>
+      <div class="section-label">Commands</div>
+      <div class="commands-grid">
+        <span class="cmd-chip">/workout</span>
+        <span class="cmd-chip">/body</span>
+        <span class="cmd-chip">/meal-prep</span>
+        <span class="cmd-chip">/diet</span>
+        <span class="cmd-chip">/supplements</span>
+        <span class="cmd-chip">/muscle</span>
+        <span class="cmd-chip">/stretch</span>
+        <span class="cmd-chip">/game</span>
+        <span class="cmd-chip">/deload</span>
+        <span class="cmd-chip">/recovery</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
+      <span><span class="runs-count">—</span> runs logged</span>
+    </div>
+  </div>
+
+  <!-- Research -->
+  <div class="card">
+    <div class="card-header">
+      <div class="agent-icon">🔬</div>
+      <div>
+        <div class="agent-name">Research Agent</div>
+        <span class="agent-type type-research">Research</span>
+      </div>
+    </div>
+    <div class="description">Deep research on any topic. Autonomous weekly project from your Research Queue. On demand: light, medium, or heavy passes through NotebookLM.</div>
+    <div>
+      <div class="section-label">Autonomous Schedule</div>
+      <div class="schedule-text">Weekly project Tue 11:12 AM · Queue topics in Research/RESEARCH_QUEUE.md</div>
+    </div>
+    <div>
+      <div class="section-label">Commands</div>
+      <div class="commands-grid">
+        <span class="cmd-chip">/light</span>
+        <span class="cmd-chip">/medium</span>
+        <span class="cmd-chip">/heavy</span>
+        <span class="cmd-chip">/analyze</span>
+        <span class="cmd-chip">/compare</span>
+        <span class="cmd-chip">/find</span>
+        <span class="cmd-chip">/monitor</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
+      <span><span class="runs-count">—</span> runs logged</span>
+    </div>
+  </div>
+
+  <!-- Programming -->
+  <div class="card">
+    <div class="card-header">
+      <div class="agent-icon">💻</div>
+      <div>
+        <div class="agent-name">Programming Agent</div>
+        <span class="agent-type type-programming">Programming</span>
+      </div>
+    </div>
+    <div class="description">Code, scripts, and automation. On demand only — no autonomous schedule. Python, JS, PowerShell, APIs. Maintains your phone bridge, trading bot, and all plugins.</div>
+    <div>
+      <div class="section-label">Autonomous Schedule</div>
+      <div class="schedule-text">On demand only — open the Coding project and describe what you need</div>
+    </div>
+    <div>
+      <div class="section-label">Stack</div>
+      <div class="commands-grid">
+        <span class="cmd-chip">Python</span>
+        <span class="cmd-chip">JavaScript</span>
+        <span class="cmd-chip">PowerShell</span>
+        <span class="cmd-chip">APIs</span>
+        <span class="cmd-chip">Claude Plugins</span>
+        <span class="cmd-chip">Automation</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
+      <span><span class="runs-count">—</span> runs logged</span>
+    </div>
+  </div>
+
+  <!-- Career -->
+  <div class="card">
+    <div class="card-header">
+      <div class="agent-icon">🎓</div>
+      <div>
+        <div class="agent-name">Career Agent</div>
+        <span class="agent-type type-career">Career</span>
+      </div>
+    </div>
+    <div class="description">Professional writing in your voice. Cover letters, cold outreach, LinkedIn posts, personal statements. Built for IB/VC/PE recruiting and Mendoza.</div>
+    <div>
+      <div class="section-label">Autonomous Schedule</div>
+      <div class="schedule-text">On demand only — use from any Cowork project</div>
+    </div>
+    <div>
+      <div class="section-label">Commands</div>
+      <div class="commands-grid">
+        <span class="cmd-chip">/cover-letter</span>
+        <span class="cmd-chip">/cold-outreach</span>
+        <span class="cmd-chip">/business</span>
+        <span class="cmd-chip">/linkedin</span>
+        <span class="cmd-chip">/personal-statement</span>
+        <span class="cmd-chip">/voice</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
+      <span><span class="runs-count">—</span> runs logged</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-note">AgentOS v2 · Run log active from W21 2026 · Embed updates each time a scheduled agent regenerates this file</div>
+
+</body>
+</html>
