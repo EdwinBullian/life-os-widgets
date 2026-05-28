@@ -145,19 +145,20 @@
     "2026-05-23": 75,
     "2026-05-24": 88,
     "2026-05-25": 100,
-    "2026-05-26": 100
+    "2026-05-26": 100,
+    "2026-05-27": -1
   },
-  "streak": 14,
+  "streak": 0,
   "streaks": {
-    "10k Steps": 11,
-    "Calories": 14,
-    "Clean": 13,
-    "Lift": 2,
-    "Meditate": 14,
-    "Screen Time": 3,
-    "Stretch": 11,
-    "Supplements": 14
+    "10k Steps": 0,
+    "Calories": 0,
+    "Clean": 0,
+    "Lift": 0,
+    "Meditate": 0,
+    "Screen Time": 0,
+    "Stretch": 0,
+    "Supplements": 0
   },
   "totalHabits": 8,
-  "updated": 1779897640
+  "updated": 1779971283
 }
