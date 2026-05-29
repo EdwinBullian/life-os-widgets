@@ -6,22 +6,23 @@
 <title>AgentOS — Agents</title>
 <style>
   :root {
-    --bg: #e4d9c4;
-    --card: #dbd0ba;
-    --card2: #d0c5ae;
-    --accent: #1b3a5c;
-    --accent2: #2a5280;
-    --text: #2c2c2c;
-    --muted: #6b6057;
-    --border: #c4b89e;
-    --success: #2d6a4f;
-    --warn: #b5582c;
-    --tag-assistant: #2a5280;
-    --tag-finance: #2d6a4f;
-    --tag-health: #7b2d2d;
-    --tag-research: #4a2d7b;
-    --tag-programming: #7b4a2d;
-    --tag-career: #6b2d5e;
+    /* Notion dark-mode palette */
+    --bg: #191919;
+    --card: #2f2f2f;
+    --card2: #373737;
+    --accent: #e6e6e6;
+    --accent2: #d0d0d0;
+    --text: #e6e6e6;
+    --muted: #9b9b9b;
+    --border: #373737;
+    --success: #4caf6d;
+    --warn: #e89a5c;
+    --tag-assistant: #7a9fd1;
+    --tag-finance: #4caf6d;
+    --tag-health: #e57373;
+    --tag-research: #9575cd;
+    --tag-programming: #d4905c;
+    --tag-career: #ba68c8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -98,7 +99,7 @@
     gap: 12px;
     transition: box-shadow 0.15s;
   }
-  .card:hover { box-shadow: 0 4px 16px rgba(27,58,92,0.12); }
+  .card:hover { box-shadow: 0 4px 16px rgba(255,255,255,0.06); }
   .card-header {
     display: flex;
     align-items: center;
@@ -145,7 +146,7 @@
     display: inline-block;
     width: 7px; height: 7px;
     border-radius: 50%;
-    background: #2d6a4f;
+    background: #4caf6d;
     margin-right: 5px;
     vertical-align: middle;
   }
