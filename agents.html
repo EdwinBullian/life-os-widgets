@@ -69,9 +69,14 @@
   @media(max-width:560px){.grid{grid-template-columns:repeat(2,1fr)}}
   .activity-card{flex:1;min-width:190px;display:flex;flex-direction:column;justify-content:center}
   .activity-card .spark{margin:4px 0 2px}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:9px;cursor:pointer;transition:border-color .15s,transform .12s}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:border-color .15s,transform .12s}
   .card:hover{border-color:var(--border2);transform:translateY(-2px)}
-  .card.display-only{opacity:.8}
+  .card.display-only{opacity:.82}
+  .card-img-wrap{position:relative;width:100%;aspect-ratio:1/1;background:var(--card2);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
+  .emoji-fallback{font-size:44px}
+  .card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
+  .card-body{padding:11px 13px;display:flex;flex-direction:column;gap:7px}
+  .card-desc{font-size:11px;line-height:1.45;color:var(--muted)}
   .card-header{display:flex;align-items:center;gap:10px}
   .agent-icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--card2);border:1px solid var(--border);flex-shrink:0;overflow:hidden}
   .agent-img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated;border-radius:9px;display:block}
@@ -191,7 +196,7 @@ var STATE={settings:{paused:false},queue:[]};
 
 var AGENTS=[
  {key:"finance",name:"Finance Agent",type:"Finance",icon:"💰",
-  desc:"Investment research & modeling.",
+  desc:"Investment research and financial modeling. Runs a weekly thesis and market scan, and on demand builds memos, DCFs, comps, and screens.",
   skills:["/screen","/memo","/sector","/teardown","/dcf","/lbo","/comps","/overview","/fundamental","/sentiment","/deep-dive"],
   routines:[{t:"Financial Thesis",tt:"Financial Thesis"},{t:"Market Scan",tt:"Market Scan"},{t:"Company Screen",tt:"Company Screen"},{t:"Custom",tt:"Custom",custom:true}],
   presets:[
@@ -199,7 +204,7 @@ var AGENTS=[
    {label:"AI & semis scan",taskType:"Market Scan",details:"Scope: AI & semiconductor sector this week"}
   ]},
  {key:"health",name:"Health Agent",type:"Health",icon:"💪",
-  desc:"Fitness, nutrition & recovery.",
+  desc:"Fitness, nutrition, and recovery, pulling real data from Zepp and Cronometer. Plans training and meals, tracks food, and runs weekly check-ins.",
   skills:["/workout","/body","/meal-prep","/diet","/supplements","/muscle","/stretch","/game","/deload","/recovery"],
   routines:[{t:"Schedule Workouts",tt:"Schedule Workouts"},{t:"Make Workout",tt:"Make Workout"},{t:"Find Recipe",tt:"Find Recipe"},{t:"Track Food",tt:"Track Food"},{t:"Custom",tt:"Custom",custom:true}],
   presets:[
@@ -207,7 +212,7 @@ var AGENTS=[
    {label:"Post-workout recipe",taskType:"Find Recipe",details:"Dish: high-protein post-workout meal, ~50g protein"}
   ]},
  {key:"research",name:"Research Agent",type:"Research",icon:"🔬",
-  desc:"Deep research via NotebookLM.",
+  desc:"Deep research on any topic through NotebookLM. Delivers reports, podcasts, and briefings at light, medium, or heavy depth, plus a weekly project.",
   skills:["/light","/medium","/heavy","/analyze","/compare","/find","/monitor"],
   routines:[{t:"Light",tt:"Light Research"},{t:"Medium",tt:"Medium Research"},{t:"Heavy",tt:"Heavy Research"},{t:"Custom",tt:"Custom",custom:true}],
   presets:[
@@ -215,15 +220,15 @@ var AGENTS=[
    {label:"VC & startup pulse",taskType:"Medium Research",details:"Topic: this week in venture & startups"}
   ]},
  {key:"assistant",name:"Assistant Agent",type:"Assistant",icon:"🧠",
-  desc:"Scheduling, tasks, calendar, memory.",
+  desc:"Your daily operator for scheduling, tasks, and calendar. Runs your briefings, recaps, and check-ins, and is the memory layer the other agents read from.",
   skills:["/check-in","/calendar","/recap","/focus","/log","/brainstorm","/search","mc-connect-sync","cowork-sync"],
   routines:[{t:"Calendar Edit",tt:"Calendar Edit"},{t:"Quick Task",tt:"Quick Task"},{t:"Custom",tt:"Custom",custom:true}],
   presets:[
    {label:"What should I focus on today?",taskType:"Quick Task",details:"Look at my calendar + tasks and tell me the 3 things to focus on today"}
   ]},
- {key:"programming",name:"Programming Agent",type:"Programming",icon:"💻",desc:"Code, scripts & automation.",
+ {key:"programming",name:"Programming Agent",type:"Programming",icon:"💻",desc:"Code, scripts, and automation in Python, JS, and PowerShell. On demand only; it maintains your phone bridge, trading bot, and plugins.",
   skills:["Python","JavaScript","PowerShell","APIs","Plugins","Automation"],routines:[],presets:[],displayOnly:true},
- {key:"career",name:"Career Agent",type:"Career",icon:"🎓",desc:"Professional writing in your voice.",
+ {key:"career",name:"Career Agent",type:"Career",icon:"🎓",desc:"Professional writing in your voice: cover letters, cold outreach, LinkedIn, personal statements. Built for IB/VC recruiting and Mendoza.",
   skills:["/cover-letter","/cold-outreach","/business","/linkedin","/personal-statement","/voice"],routines:[],presets:[],displayOnly:true}
 ];
 function agentByType(t){for(var i=0;i<AGENTS.length;i++){if(AGENTS[i].type===t)return AGENTS[i];}return null;}
@@ -254,11 +259,14 @@ function stClass(s){return "st-"+(s||"").toLowerCase();}
 function renderAgents(){
   document.getElementById("agentGrid").innerHTML=AGENTS.map(function(a){
     var dot=a.displayOnly?"":'<span class="live-dot" id="live-'+a.key+'"><span class="dot idle"></span>idle</span>';
-    return '<div class="card'+(a.displayOnly?' display-only':'')+'" onclick="openAgent(\''+a.key+'\')">'
-      +'<div class="card-header"><div class="agent-icon">'+iconHtml(a)+'</div>'
-      +'<div><div class="agent-name">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div>'+dot+'</div>'
-      +'<div class="last-activity" id="act-'+a.key+'">—</div>'
-      +'<div class="open-hint">'+(a.displayOnly?"on demand":"tap to open →")+'</div></div>';
+    return '<div class="card'+(a.displayOnly?' display-only':'')+'" style="border-top:3px solid var(--tag-'+a.key+')" onclick="openAgent(\''+a.key+'\')">'
+      +'<div class="card-img-wrap"><span class="emoji-fallback">'+a.icon+'</span><img class="card-img" src="agents/'+a.key+'.png" alt="" onerror="this.style.display=\'none\'"></div>'
+      +'<div class="card-body">'
+      +'<div class="card-header"><div><div class="agent-name">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div>'+dot+'</div>'
+      +'<div class="card-desc">'+esc(a.desc)+'</div>'
+      +(a.displayOnly?'':'<div class="last-activity" id="act-'+a.key+'">—</div>')
+      +'<div class="open-hint">'+(a.displayOnly?"on demand":"tap to open →")+'</div>'
+      +'</div></div>';
   }).join("");
 }
 
