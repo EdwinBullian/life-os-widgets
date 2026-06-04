@@ -3,451 +3,494 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentOS — Agents</title>
+<title>AgentOS — Command Center</title>
 <style>
   :root {
-    /* Notion dark-mode palette */
     --bg: #191919;
-    --card: #2f2f2f;
-    --card2: #373737;
-    --accent: #e6e6e6;
-    --accent2: #d0d0d0;
+    --card: #232323;
+    --card2: #2f2f2f;
+    --card3: #383838;
+    --accent: #ececec;
     --text: #e6e6e6;
     --muted: #9b9b9b;
-    --border: #373737;
-    --success: #4caf6d;
-    --warn: #e89a5c;
+    --faint: #6f6f6f;
+    --border: #383838;
+    --border2: #474747;
+    --success: #5bbd7e;
+    --running: #6aa3e0;
+    --warn: #e3a05c;
+    --fail: #e07a7a;
+    --queued: #d8c06a;
     --tag-assistant: #7a9fd1;
-    --tag-finance: #4caf6d;
-    --tag-health: #e57373;
-    --tag-research: #9575cd;
+    --tag-finance: #5fb98a;
+    --tag-health: #e08585;
+    --tag-research: #9d83d6;
     --tag-programming: #d4905c;
-    --tag-career: #ba68c8;
+    --tag-career: #c478c4;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Georgia', serif;
-    min-height: 100vh;
-    padding: 28px 24px;
-  }
-  .header {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    margin-bottom: 6px;
-  }
-  h1 {
     font-family: 'Inter', 'Helvetica Neue', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: -0.3px;
+    min-height: 100vh;
+    padding: 22px 20px 40px;
+    -webkit-font-smoothing: antialiased;
   }
-  .subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 20px;
+  .header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .header-left { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  h1 { font-size: 20px; font-weight: 800; color: var(--accent); letter-spacing: -0.3px; }
+  .subtitle { font-size: 11.5px; color: var(--muted); }
+  .header-actions { display: flex; gap: 8px; align-items: center; }
+  .icon-btn {
+    background: var(--card2); border: 1px solid var(--border2); color: var(--muted);
+    border-radius: 7px; padding: 6px 10px; font-size: 12px; cursor: pointer; transition: all .15s;
+    font-family: inherit; display: inline-flex; align-items: center; gap: 5px;
   }
-  .kpi-bar {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
+  .icon-btn:hover { background: var(--card3); color: var(--accent); }
+
+  /* status strip */
+  .kpi-bar { display: flex; gap: 10px; margin: 18px 0 8px; flex-wrap: wrap; }
+  .kpi { background: var(--card); border: 1px solid var(--border); border-radius: 9px; padding: 9px 15px; min-width: 92px; }
+  .kpi-label { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--faint); margin-bottom: 3px; }
+  .kpi-value { font-size: 21px; font-weight: 800; color: var(--accent); line-height: 1; }
+  .kpi-sub { font-size: 9.5px; color: var(--muted); margin-top: 3px; }
+
+  .notice {
+    font-size: 11.5px; color: var(--muted); background: var(--card);
+    border: 1px dashed var(--border2); border-radius: 8px; padding: 9px 13px; margin: 8px 0 4px;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   }
-  .kpi {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 16px;
-    min-width: 110px;
+  .notice b { color: var(--text); font-weight: 600; }
+  .notice .link { color: var(--tag-assistant); cursor: pointer; text-decoration: underline; }
+
+  /* queue panel */
+  .panel { background: var(--card); border: 1px solid var(--border); border-radius: 11px; padding: 14px 16px; margin: 16px 0; }
+  .panel-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted); margin-bottom: 10px; display:flex; align-items:center; gap:8px; }
+  .queue-list { display: flex; flex-direction: column; gap: 6px; }
+  .queue-row { display: flex; align-items: center; gap: 9px; font-size: 12.5px; padding: 6px 8px; border-radius: 7px; background: var(--card2); }
+  .queue-row .q-job { flex: 1; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .queue-row .q-time { color: var(--faint); font-size: 10.5px; }
+  .empty-state { font-size: 12px; color: var(--faint); padding: 6px 2px; }
+  .st { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+  .st-queued { background: rgba(216,192,106,.16); color: var(--queued); }
+  .st-running { background: rgba(106,163,224,.16); color: var(--running); }
+  .st-done { background: rgba(91,189,126,.16); color: var(--success); }
+  .st-failed { background: rgba(224,122,122,.16); color: var(--fail); }
+
+  /* agent grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; margin-top: 4px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 11px; transition: border-color .15s; }
+  .card:hover { border-color: var(--border2); }
+  .card-header { display: flex; align-items: center; gap: 11px; }
+  .agent-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; background: var(--card2); border: 1px solid var(--border); flex-shrink: 0; }
+  .agent-name { font-size: 14.5px; font-weight: 700; color: var(--accent); line-height: 1.15; }
+  .agent-type { display: inline-block; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 7px; border-radius: 4px; color: #15110c; margin-top: 3px; }
+  .type-assistant { background: var(--tag-assistant); } .type-finance { background: var(--tag-finance); }
+  .type-health { background: var(--tag-health); } .type-research { background: var(--tag-research); }
+  .type-programming { background: var(--tag-programming); } .type-career { background: var(--tag-career); }
+  .live-dot { margin-left: auto; display:flex; align-items:center; gap:5px; font-size: 10.5px; color: var(--faint); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--faint); }
+  .dot.idle { background: var(--success); }
+  .dot.running { background: var(--running); animation: pulse 1.3s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+  .description { font-size: 12px; line-height: 1.5; color: var(--muted); }
+  .last-activity { font-size: 11px; color: var(--faint); border-left: 2px solid var(--border2); padding-left: 9px; line-height: 1.4; min-height: 14px; }
+  .last-activity b { color: var(--muted); font-weight: 600; }
+  .actions-label { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--faint); }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .dispatch-btn {
+    font-size: 11.5px; font-weight: 600; font-family: inherit;
+    background: var(--card2); border: 1px solid var(--border2); border-radius: 7px;
+    padding: 6px 11px; color: var(--text); cursor: pointer; transition: all .14s;
   }
-  .kpi-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--muted);
-    margin-bottom: 4px;
+  .dispatch-btn:hover { background: var(--card3); border-color: var(--faint); transform: translateY(-1px); }
+  .dispatch-btn.custom { color: var(--muted); border-style: dashed; }
+  .card.display-only { opacity: .82; }
+  .od-note { font-size: 10.5px; color: var(--faint); font-style: italic; }
+
+  .footer-note { font-size: 10px; color: var(--faint); margin-top: 22px; text-align: center; line-height: 1.5; }
+
+  /* modal */
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.62); display: none; align-items: flex-start; justify-content: center; padding: 30px 16px; z-index: 50; overflow-y: auto; }
+  .overlay.open { display: flex; }
+  .modal { background: #1f1f1f; border: 1px solid var(--border2); border-radius: 14px; width: 100%; max-width: 440px; padding: 20px; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+  .modal-head { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  .modal-icon { width: 34px; height: 34px; border-radius: 9px; display:flex; align-items:center; justify-content:center; font-size:17px; background: var(--card2); border: 1px solid var(--border); }
+  .modal-title { font-size: 15px; font-weight: 700; color: var(--accent); }
+  .modal-sub { font-size: 11px; color: var(--muted); margin-bottom: 15px; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+  .field .req { color: var(--fail); }
+  .field .hint { color: var(--faint); font-weight: 400; }
+  .field input, .field textarea, .field select {
+    width: 100%; background: var(--card2); border: 1px solid var(--border2); border-radius: 8px;
+    padding: 9px 11px; color: var(--text); font-family: inherit; font-size: 12.5px; resize: vertical;
   }
-  .kpi-value {
-    font-family: 'Inter', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-  .kpi-sub {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: box-shadow 0.15s;
-  }
-  .card:hover { box-shadow: 0 4px 16px rgba(255,255,255,0.06); }
-  .card-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .agent-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    background: var(--card2);
-    border: 1px solid var(--border);
-    flex-shrink: 0;
-  }
-  .agent-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1.2;
-  }
-  .agent-type {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 2px 8px;
-    border-radius: 4px;
-    color: white;
-    margin-top: 3px;
-  }
-  .type-assistant { background: var(--tag-assistant); }
-  .type-finance { background: var(--tag-finance); }
-  .type-health { background: var(--tag-health); }
-  .type-research { background: var(--tag-research); }
-  .type-programming { background: var(--tag-programming); }
-  .type-career { background: var(--tag-career); }
-  .status-dot {
-    display: inline-block;
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: #4caf6d;
-    margin-right: 5px;
-    vertical-align: middle;
-  }
-  .status-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    color: var(--muted);
-  }
-  .description {
-    font-size: 13px;
-    line-height: 1.55;
-    color: var(--text);
-    border-left: 2px solid var(--border);
-    padding-left: 10px;
-  }
-  .section-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-  .schedule-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    color: var(--text);
-    line-height: 1.5;
-  }
-  .commands-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-  .cmd-chip {
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 10px;
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2px 7px;
-    color: var(--accent);
-    white-space: nowrap;
-  }
-  .card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 8px;
-    border-top: 1px solid var(--border);
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    color: var(--muted);
-  }
-  .runs-count { font-weight: 700; color: var(--accent); }
-  .divider { height: 1px; background: var(--border); }
-  .footer-note {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 20px;
-    text-align: center;
-  }
+  .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--tag-assistant); }
+  .field textarea { min-height: 64px; }
+  .modal-actions { display: flex; gap: 9px; justify-content: flex-end; margin-top: 16px; }
+  .btn { font-family: inherit; font-size: 12.5px; font-weight: 600; padding: 9px 16px; border-radius: 8px; cursor: pointer; border: 1px solid var(--border2); }
+  .btn-ghost { background: transparent; color: var(--muted); }
+  .btn-ghost:hover { color: var(--text); }
+  .btn-primary { background: var(--tag-assistant); color: #11161d; border-color: var(--tag-assistant); }
+  .btn-primary:hover { filter: brightness(1.08); }
+  .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+  .fallback-box { background: var(--card2); border: 1px solid var(--border2); border-radius: 8px; padding: 10px; font-size: 11.5px; color: var(--muted); line-height: 1.5; margin-top: 6px; white-space: pre-wrap; word-break: break-word; }
+
+  /* toast */
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px); background: #2a2a2a; border: 1px solid var(--border2); color: var(--text); padding: 11px 18px; border-radius: 10px; font-size: 12.5px; opacity: 0; transition: all .25s; z-index: 60; box-shadow: 0 8px 24px rgba(0,0,0,.4); pointer-events: none; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.ok { border-left: 3px solid var(--success); }
+  .toast.err { border-left: 3px solid var(--fail); }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>⚔️ AgentOS — Agents</h1>
-</div>
-<div class="subtitle">Eddie's autonomous agent network · Last updated 2026-05-22</div>
-
-<div class="kpi-bar">
-  <div class="kpi">
-    <div class="kpi-label">Active Agents</div>
-    <div class="kpi-value">6</div>
-    <div class="kpi-sub">All systems go</div>
+  <div class="header-left">
+    <h1>⚔️ AgentOS — Command Center</h1>
+    <span class="subtitle">Dispatch a one-shot job · agents run it · results land here</span>
   </div>
-  <div class="kpi">
-    <div class="kpi-label">Autonomous Tasks</div>
-    <div class="kpi-value">9</div>
-    <div class="kpi-sub">Scheduled weekly</div>
-  </div>
-  <div class="kpi">
-    <div class="kpi-label">Runs Logged</div>
-    <div class="kpi-value">0</div>
-    <div class="kpi-sub">Wired as of W21</div>
-  </div>
-  <div class="kpi">
-    <div class="kpi-label">On-Demand</div>
-    <div class="kpi-value">2</div>
-    <div class="kpi-sub">Programming · Career</div>
+  <div class="header-actions">
+    <button class="icon-btn" id="refreshBtn" title="Refresh status">↻ Refresh</button>
+    <button class="icon-btn" id="settingsBtn" title="Settings">⚙</button>
   </div>
 </div>
 
-<div class="grid">
-
-  <!-- Assistant -->
-  <div class="card">
-    <div class="card-header">
-      <div class="agent-icon">🧠</div>
-      <div>
-        <div class="agent-name">Assistant Agent</div>
-        <span class="agent-type type-assistant">Assistant</span>
-      </div>
-    </div>
-    <div class="description">Your daily operator. Scheduling, task oversight, check-ins, focus sessions, and memory. The connective tissue between all other agents.</div>
-    <div>
-      <div class="section-label">Autonomous Schedule</div>
-      <div class="schedule-text">Daily briefing 7 AM · Weekly review Sun 4:10 AM · Weekly schedule Sun 5:02 AM · Midweek check Thu 8:39 AM</div>
-    </div>
-    <div>
-      <div class="section-label">Commands</div>
-      <div class="commands-grid">
-        <span class="cmd-chip">/check-in</span>
-        <span class="cmd-chip">/calendar</span>
-        <span class="cmd-chip">/recap</span>
-        <span class="cmd-chip">/focus</span>
-        <span class="cmd-chip">/log</span>
-        <span class="cmd-chip">/brainstorm</span>
-        <span class="cmd-chip">/search</span>
-        <span class="cmd-chip">mc-connect-sync</span>
-        <span class="cmd-chip">cowork-sync</span>
-      </div>
-    </div>
-    <div class="card-footer">
-      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
-      <span><span class="runs-count">—</span> runs logged</span>
-    </div>
-  </div>
-
-  <!-- Finance -->
-  <div class="card">
-    <div class="card-header">
-      <div class="agent-icon">💰</div>
-      <div>
-        <div class="agent-name">Finance Agent</div>
-        <span class="agent-type type-finance">Finance</span>
-      </div>
-    </div>
-    <div class="description">Investment research and financial modeling. Weekly thesis (Mon) + market scan (Wed). On demand: memos, DCF, LBO, comps, company screens.</div>
-    <div>
-      <div class="section-label">Autonomous Schedule</div>
-      <div class="schedule-text">Weekly thesis Mon 11:07 AM · Market scan Wed 11:07 AM</div>
-    </div>
-    <div>
-      <div class="section-label">Commands</div>
-      <div class="commands-grid">
-        <span class="cmd-chip">/screen</span>
-        <span class="cmd-chip">/memo</span>
-        <span class="cmd-chip">/sector</span>
-        <span class="cmd-chip">/teardown</span>
-        <span class="cmd-chip">/dcf</span>
-        <span class="cmd-chip">/lbo</span>
-        <span class="cmd-chip">/comps</span>
-        <span class="cmd-chip">/overview</span>
-        <span class="cmd-chip">/technical</span>
-        <span class="cmd-chip">/fundamental</span>
-        <span class="cmd-chip">/sentiment</span>
-        <span class="cmd-chip">/deep-dive</span>
-      </div>
-    </div>
-    <div class="card-footer">
-      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
-      <span><span class="runs-count">—</span> runs logged</span>
-    </div>
-  </div>
-
-  <!-- Health -->
-  <div class="card">
-    <div class="card-header">
-      <div class="agent-icon">💪</div>
-      <div>
-        <div class="agent-name">Health Agent</div>
-        <span class="agent-type type-health">Health</span>
-      </div>
-    </div>
-    <div class="description">Fitness, nutrition, and recovery. Pulls real data from Zepp + Cronometer. Three autonomous weekly tasks — Saturday review feeds Sunday's plan.</div>
-    <div>
-      <div class="section-label">Autonomous Schedule</div>
-      <div class="schedule-text">Weekly review Sat 9:06 PM · Midweek sync Thu 11:10 AM · Sunday plan Sun 5:38 AM</div>
-    </div>
-    <div>
-      <div class="section-label">Commands</div>
-      <div class="commands-grid">
-        <span class="cmd-chip">/workout</span>
-        <span class="cmd-chip">/body</span>
-        <span class="cmd-chip">/meal-prep</span>
-        <span class="cmd-chip">/diet</span>
-        <span class="cmd-chip">/supplements</span>
-        <span class="cmd-chip">/muscle</span>
-        <span class="cmd-chip">/stretch</span>
-        <span class="cmd-chip">/game</span>
-        <span class="cmd-chip">/deload</span>
-        <span class="cmd-chip">/recovery</span>
-      </div>
-    </div>
-    <div class="card-footer">
-      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
-      <span><span class="runs-count">—</span> runs logged</span>
-    </div>
-  </div>
-
-  <!-- Research -->
-  <div class="card">
-    <div class="card-header">
-      <div class="agent-icon">🔬</div>
-      <div>
-        <div class="agent-name">Research Agent</div>
-        <span class="agent-type type-research">Research</span>
-      </div>
-    </div>
-    <div class="description">Deep research on any topic. Autonomous weekly project from your Research Queue. On demand: light, medium, or heavy passes through NotebookLM.</div>
-    <div>
-      <div class="section-label">Autonomous Schedule</div>
-      <div class="schedule-text">Weekly project Tue 11:12 AM · Queue topics in Research/RESEARCH_QUEUE.md</div>
-    </div>
-    <div>
-      <div class="section-label">Commands</div>
-      <div class="commands-grid">
-        <span class="cmd-chip">/light</span>
-        <span class="cmd-chip">/medium</span>
-        <span class="cmd-chip">/heavy</span>
-        <span class="cmd-chip">/analyze</span>
-        <span class="cmd-chip">/compare</span>
-        <span class="cmd-chip">/find</span>
-        <span class="cmd-chip">/monitor</span>
-      </div>
-    </div>
-    <div class="card-footer">
-      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
-      <span><span class="runs-count">—</span> runs logged</span>
-    </div>
-  </div>
-
-  <!-- Programming -->
-  <div class="card">
-    <div class="card-header">
-      <div class="agent-icon">💻</div>
-      <div>
-        <div class="agent-name">Programming Agent</div>
-        <span class="agent-type type-programming">Programming</span>
-      </div>
-    </div>
-    <div class="description">Code, scripts, and automation. On demand only — no autonomous schedule. Python, JS, PowerShell, APIs. Maintains your phone bridge, trading bot, and all plugins.</div>
-    <div>
-      <div class="section-label">Autonomous Schedule</div>
-      <div class="schedule-text">On demand only — open the Coding project and describe what you need</div>
-    </div>
-    <div>
-      <div class="section-label">Stack</div>
-      <div class="commands-grid">
-        <span class="cmd-chip">Python</span>
-        <span class="cmd-chip">JavaScript</span>
-        <span class="cmd-chip">PowerShell</span>
-        <span class="cmd-chip">APIs</span>
-        <span class="cmd-chip">Claude Plugins</span>
-        <span class="cmd-chip">Automation</span>
-      </div>
-    </div>
-    <div class="card-footer">
-      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
-      <span><span class="runs-count">—</span> runs logged</span>
-    </div>
-  </div>
-
-  <!-- Career -->
-  <div class="card">
-    <div class="card-header">
-      <div class="agent-icon">🎓</div>
-      <div>
-        <div class="agent-name">Career Agent</div>
-        <span class="agent-type type-career">Career</span>
-      </div>
-    </div>
-    <div class="description">Professional writing in your voice. Cover letters, cold outreach, LinkedIn posts, personal statements. Built for IB/VC/PE recruiting and Mendoza.</div>
-    <div>
-      <div class="section-label">Autonomous Schedule</div>
-      <div class="schedule-text">On demand only — use from any Cowork project</div>
-    </div>
-    <div>
-      <div class="section-label">Commands</div>
-      <div class="commands-grid">
-        <span class="cmd-chip">/cover-letter</span>
-        <span class="cmd-chip">/cold-outreach</span>
-        <span class="cmd-chip">/business</span>
-        <span class="cmd-chip">/linkedin</span>
-        <span class="cmd-chip">/personal-statement</span>
-        <span class="cmd-chip">/voice</span>
-      </div>
-    </div>
-    <div class="card-footer">
-      <span><span class="status-dot"></span><span class="status-label">Active</span></span>
-      <span><span class="runs-count">—</span> runs logged</span>
-    </div>
-  </div>
-
+<div class="kpi-bar" id="kpiBar">
+  <div class="kpi"><div class="kpi-label">Queued</div><div class="kpi-value" id="kpiQueued">–</div><div class="kpi-sub">waiting</div></div>
+  <div class="kpi"><div class="kpi-label">Running</div><div class="kpi-value" id="kpiRunning">–</div><div class="kpi-sub">in progress</div></div>
+  <div class="kpi"><div class="kpi-label">Done Today</div><div class="kpi-value" id="kpiDone">–</div><div class="kpi-sub">delivered</div></div>
+  <div class="kpi"><div class="kpi-label">Agents</div><div class="kpi-value">6</div><div class="kpi-sub">3 autonomous</div></div>
 </div>
 
-<div class="footer-note">AgentOS v2 · Run log active from W21 2026 · Embed updates each time a scheduled agent regenerates this file</div>
+<div class="notice" id="connectNotice" style="display:none;">
+  <span>🔌 <b>Live status & one-tap dispatch are off.</b> Deploy the dispatch proxy (~5 min), then paste its URL in <span class="link" onclick="openSettings()">settings ⚙</span>. Until then, buttons hand you a ready-to-paste request for the Notion queue.</span>
+</div>
 
+<div class="panel">
+  <div class="panel-title">🛰 Dispatch Queue <span id="queueLiveTag" style="color:var(--faint);font-weight:400;text-transform:none;letter-spacing:0;"></span></div>
+  <div class="queue-list" id="queueList"><div class="empty-state">Connect the proxy to see live queue & history.</div></div>
+</div>
+
+<div class="grid" id="agentGrid"></div>
+
+<div class="footer-note">
+  AgentOS Command Center · jobs flow to the <b>Agent Dispatch</b> Notion queue → the dispatch worker runs them every 15 min → results post back here.<br>
+  Full-auto delivery. Financial models always get a "review the numbers" flag.
+</div>
+
+<!-- dispatch modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<!-- toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ---------- config ----------
+var NOTION_DISPATCH_DB = "https://www.notion.so/b0b3d7efa0c64b358aa0d7d9b667633c";
+var LS_KEY = "agentos_proxy_url";
+function getProxy(){ try { return (localStorage.getItem(LS_KEY)||"").trim(); } catch(e){ return ""; } }
+function setProxy(u){ try { localStorage.setItem(LS_KEY, (u||"").trim()); } catch(e){} }
+
+// ---------- agents ----------
+var AGENTS = [
+  { key:"finance", name:"Finance Agent", type:"Finance", icon:"💰",
+    desc:"Investment research & modeling. Autonomous thesis (Mon) + market scan (Wed).",
+    actions:[
+      {t:"Financial Thesis", tt:"Financial Thesis"},
+      {t:"Market Scan", tt:"Market Scan"},
+      {t:"Company Screen", tt:"Company Screen"},
+      {t:"Custom", tt:"Custom", custom:true}
+    ]},
+  { key:"health", name:"Health Agent", type:"Health", icon:"💪",
+    desc:"Fitness, nutrition & recovery. Pulls Zepp + Cronometer. 3 autonomous weekly tasks.",
+    actions:[
+      {t:"Schedule Workouts", tt:"Schedule Workouts"},
+      {t:"Make Workout", tt:"Make Workout"},
+      {t:"Find Recipe", tt:"Find Recipe"},
+      {t:"Track Food", tt:"Track Food"},
+      {t:"Custom", tt:"Custom", custom:true}
+    ]},
+  { key:"research", name:"Research Agent", type:"Research", icon:"🔬",
+    desc:"Deep research on anything via NotebookLM. Autonomous weekly project (Tue).",
+    actions:[
+      {t:"Light", tt:"Light Research"},
+      {t:"Medium", tt:"Medium Research"},
+      {t:"Heavy", tt:"Heavy Research"},
+      {t:"Custom", tt:"Custom", custom:true}
+    ]},
+  { key:"assistant", name:"Assistant Agent", type:"Assistant", icon:"🧠",
+    desc:"Your daily operator — scheduling, tasks, calendar, memory.",
+    actions:[
+      {t:"Calendar Edit", tt:"Calendar Edit"},
+      {t:"Quick Task", tt:"Quick Task"},
+      {t:"Custom", tt:"Custom", custom:true}
+    ]},
+  { key:"programming", name:"Programming Agent", type:"Programming", icon:"💻",
+    desc:"Code, scripts & automation. On demand — open the Coding project to dive in.",
+    displayOnly:true },
+  { key:"career", name:"Career Agent", type:"Career", icon:"🎓",
+    desc:"Professional writing in your voice — cover letters, outreach, LinkedIn.",
+    displayOnly:true }
+];
+
+// ---------- task form templates ----------
+var FORMS = {
+  "Financial Thesis": { agent:"Finance", icon:"💰", sub:"Produces a full thesis + DCF + comps. Numbers get a review flag.",
+    titleTpl:function(v){return "Thesis — "+(v.company||"company");},
+    fields:[
+      {k:"company", label:"Company or ticker", req:true, ph:"e.g. Palantir / PLTR"},
+      {k:"angle", label:"Angle or focus", hint:"optional", ph:"e.g. AI defense moat, or leave blank for full coverage"},
+      {k:"notes", label:"Anything else", hint:"optional", type:"textarea", ph:"specific questions, time horizon, comps to include…"}
+    ]},
+  "Market Scan": { agent:"Finance", icon:"📈", sub:"Top moves, earnings, deals for a sector or theme.",
+    titleTpl:function(v){return "Market Scan — "+(v.scope||"");},
+    fields:[
+      {k:"scope", label:"Scope", req:true, ph:"e.g. AI infrastructure, or 'this week in tech'"},
+      {k:"focus", label:"Focus", hint:"optional", ph:"e.g. only large caps, M&A activity…"},
+      {k:"notes", label:"Notes", hint:"optional", type:"textarea", ph:""}
+    ]},
+  "Company Screen": { agent:"Finance", icon:"🔎", sub:"Fast first-pass — is it worth a full memo?",
+    titleTpl:function(v){return "Screen — "+(v.company||"company");},
+    fields:[
+      {k:"company", label:"Company or ticker", req:true, ph:"e.g. Cloudflare / NET"},
+      {k:"focus", label:"What you want to know", hint:"optional", ph:"e.g. is the valuation sane right now?"},
+      {k:"notes", label:"Notes", hint:"optional", type:"textarea", ph:""}
+    ]},
+  "Light Research": { agent:"Research", icon:"🔬", sub:"Quick grounding on a topic → written report.",
+    titleTpl:function(v){return "Light Research — "+(v.topic||"");},
+    fields:[
+      {k:"topic", label:"Topic", req:true, ph:"e.g. the GLP-1 drug market"},
+      {k:"questions", label:"Key questions / angle", hint:"optional", type:"textarea", ph:"what specifically do you want answered?"},
+      {k:"length", label:"Length / depth", hint:"optional", ph:"e.g. 1-page overview"},
+      {k:"notes", label:"Notes", hint:"optional", ph:""}
+    ]},
+  "Medium Research": { agent:"Research", icon:"🔬", sub:"Serious study → report + podcast.",
+    titleTpl:function(v){return "Medium Research — "+(v.topic||"");},
+    fields:[
+      {k:"topic", label:"Topic", req:true, ph:"e.g. how stablecoins actually work"},
+      {k:"questions", label:"Key questions / angle", hint:"optional", type:"textarea", ph:""},
+      {k:"output", label:"Output", type:"select", opts:["Report + Podcast","Report only","Report + Slides"]},
+      {k:"length", label:"Length / depth", hint:"optional", ph:""},
+      {k:"notes", label:"Notes", hint:"optional", ph:""}
+    ]},
+  "Heavy Research": { agent:"Research", icon:"🧪", sub:"Full deep dive — may run in chunks.",
+    titleTpl:function(v){return "Heavy Research — "+(v.topic||"");},
+    fields:[
+      {k:"topic", label:"Topic", req:true, ph:"e.g. the entire quantum computing landscape"},
+      {k:"questions", label:"Scope / angle", hint:"optional", type:"textarea", ph:"breadth (market) vs depth (scientific) vs everything"},
+      {k:"output", label:"Output", type:"select", opts:["Report + Podcast","Report only","Report + Slides","Everything"]},
+      {k:"notes", label:"Notes", hint:"optional", ph:""}
+    ]},
+  "Schedule Workouts": { agent:"Health", icon:"📅", sub:"Blocks your training on Google Calendar (PST).",
+    titleTpl:function(v){return "Schedule Workouts — "+(v.week||"this week");},
+    fields:[
+      {k:"week", label:"Which days / week", req:true, ph:"e.g. this week, Mon/Wed/Fri evenings"},
+      {k:"constraints", label:"Constraints", hint:"optional", ph:"e.g. 60 min max, home gym only"},
+      {k:"notes", label:"Notes", hint:"optional", type:"textarea", ph:""}
+    ]},
+  "Make Workout": { agent:"Health", icon:"🏋️", sub:"Generates one tailored workout.",
+    titleTpl:function(v){return "Workout — "+(v.target||"");},
+    fields:[
+      {k:"target", label:"Target", req:true, ph:"e.g. push day / chest focus"},
+      {k:"duration", label:"Duration", hint:"optional", ph:"e.g. 45 min"},
+      {k:"equipment", label:"Equipment", hint:"optional", ph:"e.g. dumbbells + cable"},
+      {k:"notes", label:"Notes", hint:"optional", ph:""}
+    ]},
+  "Find Recipe": { agent:"Health", icon:"🍳", sub:"Finds a recipe & saves it to your Notion Recipes.",
+    titleTpl:function(v){return "Recipe — "+(v.dish||"");},
+    fields:[
+      {k:"dish", label:"Dish or craving", req:true, ph:"e.g. high-protein chicken bowl"},
+      {k:"constraints", label:"Constraints", hint:"optional", ph:"e.g. ~50g protein, under 700 cal, no dairy"},
+      {k:"notes", label:"Notes", hint:"optional", ph:""}
+    ]},
+  "Track Food": { agent:"Health", icon:"🥗", sub:"Logs foods to Cronometer.",
+    titleTpl:function(v){return "Track Food";},
+    fields:[
+      {k:"foods", label:"Foods + amounts", req:true, type:"textarea", ph:"one per line, e.g.\n2 eggs\n200g greek yogurt\n1 banana"},
+      {k:"meal", label:"Meal", type:"select", opts:["Auto","Breakfast","Lunch","Dinner","Snack"]},
+      {k:"notes", label:"Notes", hint:"optional", ph:""}
+    ]},
+  "Calendar Edit": { agent:"Assistant", icon:"📆", sub:"Adds / moves / removes events (PST).",
+    titleTpl:function(v){return "Calendar — "+firstWords(v.changes,4);},
+    fields:[
+      {k:"changes", label:"What to change", req:true, type:"textarea", ph:"e.g. add gym 6-7pm Tue & Thu, move dentist to Fri 3pm, delete the 9am standup"},
+      {k:"dates", label:"Date(s)", hint:"optional", ph:"e.g. this week"},
+      {k:"notes", label:"Notes", hint:"optional", ph:""}
+    ]},
+  "Quick Task": { agent:"Assistant", icon:"✅", sub:"Does the small thing, or files it as a task.",
+    titleTpl:function(v){return firstWords(v.task,6);},
+    fields:[
+      {k:"task", label:"Task", req:true, type:"textarea", ph:"e.g. reorganize my Downloads folder by file type"},
+      {k:"notes", label:"Notes", hint:"optional", ph:""}
+    ]},
+  "Custom": { agent:"", icon:"✨", sub:"Free-form one-shot prompt — pick the agent, describe the job.",
+    titleTpl:function(v){return firstWords(v.prompt,6);},
+    fields:[
+      {k:"agent", label:"Agent", type:"select", opts:["Finance","Health","Research","Assistant"]},
+      {k:"prompt", label:"Prompt", req:true, type:"textarea", ph:"Describe exactly what you want done. One input → one deliverable, no back-and-forth."}
+    ]}
+};
+
+function firstWords(s, n){ if(!s) return "Job"; var w=s.replace(/\s+/g," ").trim().split(" ").slice(0,n).join(" "); return w.length>48?w.slice(0,48)+"…":w; }
+function esc(s){ return (s==null?"":String(s)).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+
+// ---------- render agents ----------
+function renderAgents(){
+  var grid = document.getElementById("agentGrid");
+  grid.innerHTML = AGENTS.map(function(a){
+    var dot = a.displayOnly ? '' : '<span class="live-dot" id="live-'+a.key+'"><span class="dot idle"></span> idle</span>';
+    var body;
+    if(a.displayOnly){
+      body = '<div class="od-note">On demand only — open the project to work with this agent.</div>';
+    } else {
+      var btns = a.actions.map(function(ac){
+        return '<button class="dispatch-btn'+(ac.custom?' custom':'')+'" onclick="openForm(\''+ac.tt+'\',\''+a.type+'\')">'+esc(ac.t)+'</button>';
+      }).join("");
+      body = '<div class="actions-label">Dispatch</div><div class="btn-row">'+btns+'</div>';
+    }
+    return '<div class="card'+(a.displayOnly?' display-only':'')+'">'
+      + '<div class="card-header"><div class="agent-icon">'+a.icon+'</div>'
+      + '<div><div class="agent-name">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div>'
+      + dot + '</div>'
+      + '<div class="description">'+esc(a.desc)+'</div>'
+      + (a.displayOnly?'':'<div class="last-activity" id="act-'+a.key+'">—</div>')
+      + body + '</div>';
+  }).join("");
+}
+
+// ---------- modal / form ----------
+var activeForm = null;
+function openForm(taskType, agentType){
+  var f = FORMS[taskType]; if(!f) return;
+  activeForm = { taskType: taskType, agent: f.agent || agentType, def: f };
+  var fieldsHtml = f.fields.map(function(fl){
+    var lab = '<label>'+esc(fl.label)+(fl.req?' <span class="req">*</span>':'')+(fl.hint?' <span class="hint">('+esc(fl.hint)+')</span>':'')+'</label>';
+    var ctrl;
+    if(fl.type==="textarea"){ ctrl = '<textarea id="fld-'+fl.k+'" placeholder="'+esc(fl.ph||"")+'"></textarea>'; }
+    else if(fl.type==="select"){ ctrl = '<select id="fld-'+fl.k+'">'+fl.opts.map(function(o){return '<option>'+esc(o)+'</option>';}).join("")+'</select>'; }
+    else { ctrl = '<input id="fld-'+fl.k+'" type="text" placeholder="'+esc(fl.ph||"")+'">'; }
+    return '<div class="field">'+lab+ctrl+'</div>';
+  }).join("");
+  document.getElementById("modal").innerHTML =
+    '<div class="modal-head"><div class="modal-icon">'+f.icon+'</div><div><div class="modal-title">'+esc(taskType)+'</div></div></div>'
+    + '<div class="modal-sub">'+esc(f.sub)+'</div>'
+    + '<form id="dispatchForm" onsubmit="return submitForm(event)">'+fieldsHtml
+    + '<div id="fallbackArea"></div>'
+    + '<div class="modal-actions"><button type="button" class="btn btn-ghost" onclick="closeModal()">Cancel</button>'
+    + '<button type="submit" class="btn btn-primary" id="dispatchSubmit">Dispatch →</button></div></form>';
+  document.getElementById("overlay").classList.add("open");
+}
+function closeModal(){ document.getElementById("overlay").classList.remove("open"); activeForm=null; }
+function collect(){
+  var v={}, def=activeForm.def, miss=false;
+  def.fields.forEach(function(fl){ var el=document.getElementById("fld-"+fl.k); var val=el?el.value.trim():""; v[fl.k]=val; if(fl.req && !val){ miss=true; if(el) el.style.borderColor="var(--fail)"; } });
+  return miss?null:v;
+}
+function assembleDetails(v){
+  var def=activeForm.def, lines=[];
+  def.fields.forEach(function(fl){ var val=v[fl.k]; if(val && fl.k!=="agent"){ lines.push(fl.label+": "+val); } });
+  return lines.join("\n");
+}
+function submitForm(e){
+  if(e) e.preventDefault();
+  var v=collect(); if(!v){ toast("Fill in the required field","err"); return false; }
+  var agent = activeForm.agent || v.agent || "Assistant";
+  if(activeForm.taskType==="Custom" && v.agent) agent=v.agent;
+  var payload = { job: activeForm.def.titleTpl(v), agent: agent, taskType: activeForm.taskType, details: assembleDetails(v), source:"Widget", priority:"Normal" };
+  var proxy=getProxy();
+  if(!proxy){ showFallback(payload); return false; }
+  var btn=document.getElementById("dispatchSubmit"); btn.disabled=true; btn.textContent="Dispatching…";
+  fetch(proxy, { method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify(payload) })
+    .then(function(){ closeModal(); toast("Dispatched: "+payload.job+" →","ok"); setTimeout(loadStatus,2500); })
+    .catch(function(){ btn.disabled=false; btn.textContent="Dispatch →"; toast("Couldn't reach the proxy — check settings","err"); });
+  return false;
+}
+function showFallback(payload){
+  var txt = "Agent: "+payload.agent+"\nTask Type: "+payload.taskType+"\nJob: "+payload.job+"\n\n"+payload.details;
+  document.getElementById("fallbackArea").innerHTML =
+    '<div class="fallback-box">Proxy not connected. Copy this into a new row in the Agent Dispatch DB (Status = Queued):\n\n'+esc(txt)+'</div>'
+    + '<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">'
+    + '<button type="button" class="btn btn-ghost" onclick="copyText(\''+encodeURIComponent(txt)+'\')">Copy</button>'
+    + '<a class="btn btn-primary" href="'+NOTION_DISPATCH_DB+'" target="_blank" rel="noopener">Open Dispatch DB ↗</a></div>';
+}
+function copyText(enc){ var t=decodeURIComponent(enc); try{ navigator.clipboard.writeText(t); toast("Copied","ok"); }catch(e){ toast("Select & copy manually","err"); } }
+
+// ---------- live status (JSONP) ----------
+var jsonpN=0;
+function loadStatus(){
+  var proxy=getProxy();
+  document.getElementById("connectNotice").style.display = proxy?"none":"flex";
+  if(!proxy){ document.getElementById("queueLiveTag").textContent="(offline)"; return; }
+  document.getElementById("queueLiveTag").textContent="· updating…";
+  var cb="agos_cb_"+(++jsonpN);
+  window[cb]=function(data){ try{ applyStatus(data);}catch(e){} cleanup(); };
+  function cleanup(){ try{ delete window[cb]; }catch(e){ window[cb]=undefined; } if(s&&s.parentNode) s.parentNode.removeChild(s); clearTimeout(to); }
+  var s=document.createElement("script");
+  s.onerror=function(){ document.getElementById("queueLiveTag").textContent="(can't reach proxy)"; cleanup(); };
+  s.src=proxy+(proxy.indexOf("?")>-1?"&":"?")+"action=status&callback="+cb+"&_="+Date.now();
+  document.body.appendChild(s);
+  var to=setTimeout(function(){ document.getElementById("queueLiveTag").textContent="(timeout)"; cleanup(); },12000);
+}
+function applyStatus(data){
+  document.getElementById("queueLiveTag").textContent = "· "+nowTime();
+  var counts=data.counts||{};
+  document.getElementById("kpiQueued").textContent = counts.queued!=null?counts.queued:"0";
+  document.getElementById("kpiRunning").textContent = counts.running!=null?counts.running:"0";
+  document.getElementById("kpiDone").textContent = counts.doneToday!=null?counts.doneToday:"0";
+  // queue panel
+  var q=(data.queue||[]);
+  var ql=document.getElementById("queueList");
+  if(!q.length){ ql.innerHTML='<div class="empty-state">Queue clear — nothing pending.</div>'; }
+  else {
+    ql.innerHTML=q.slice(0,8).map(function(r){
+      var sc=({Queued:"st-queued",Running:"st-running",Done:"st-done",Failed:"st-failed",Cancelled:"st-failed"})[r.status]||"st-queued";
+      return '<div class="queue-row"><span class="st '+sc+'">'+esc(r.status)+'</span><span class="q-job">'+esc(r.job||"")+'</span><span class="q-time">'+esc(r.when||"")+'</span></div>';
+    }).join("");
+  }
+  // per-agent running dot + last activity
+  var running={}; q.forEach(function(r){ if(r.status==="Running"&&r.agent) running[r.agent.toLowerCase()]=true; });
+  var lastByAgent=data.lastByAgent||{};
+  AGENTS.forEach(function(a){
+    if(a.displayOnly) return;
+    var live=document.getElementById("live-"+a.key);
+    if(live){ var run=running[a.key]; live.innerHTML='<span class="dot '+(run?"running":"idle")+'"></span> '+(run?"running":"idle"); }
+    var act=document.getElementById("act-"+a.key);
+    if(act){ var la=lastByAgent[a.type]||lastByAgent[a.key]; act.innerHTML = la?('<b>Last:</b> '+esc(la.notes||la.run||"")+(la.when?' · '+esc(la.when):'')):'—'; }
+  });
+}
+function nowTime(){ var d=new Date(); return d.getHours().toString().padStart(2,"0")+":"+d.getMinutes().toString().padStart(2,"0"); }
+
+// ---------- settings ----------
+function openSettings(){
+  activeForm=null;
+  var cur=getProxy();
+  document.getElementById("modal").innerHTML =
+    '<div class="modal-head"><div class="modal-icon">⚙</div><div><div class="modal-title">Settings</div></div></div>'
+    + '<div class="modal-sub">Paste the URL of your deployed dispatch proxy (Google Apps Script web-app URL). Saved on this device only.</div>'
+    + '<div class="field"><label>Proxy URL</label><input id="fld-proxy" type="text" placeholder="https://script.google.com/macros/s/…/exec" value="'+esc(cur)+'"></div>'
+    + '<div class="fallback-box">No proxy yet? See <b>AGENT_DISPATCH_SETUP.md</b> in your Misc folder — ~5 min, no coding. Until it\'s connected, dispatch buttons hand you a ready-to-paste request for the Notion queue.</div>'
+    + '<div class="modal-actions"><button type="button" class="btn btn-ghost" onclick="closeModal()">Cancel</button>'
+    + '<button type="button" class="btn btn-primary" onclick="saveSettings()">Save</button></div>';
+  document.getElementById("overlay").classList.add("open");
+}
+function saveSettings(){ var u=document.getElementById("fld-proxy").value.trim(); setProxy(u); closeModal(); toast(u?"Proxy connected":"Proxy cleared","ok"); loadStatus(); }
+
+// ---------- toast ----------
+var toastTo;
+function toast(msg,kind){ var t=document.getElementById("toast"); t.textContent=msg; t.className="toast show "+(kind||"ok"); clearTimeout(toastTo); toastTo=setTimeout(function(){ t.className="toast "+(kind||"ok"); },3200); }
+
+// ---------- init ----------
+document.getElementById("refreshBtn").onclick=loadStatus;
+document.getElementById("settingsBtn").onclick=openSettings;
+document.getElementById("overlay").onclick=function(e){ if(e.target.id==="overlay") closeModal(); };
+renderAgents();
+loadStatus();
+setInterval(loadStatus, 60000);
+</script>
 </body>
 </html>
