@@ -320,7 +320,7 @@ function openAgent(key){
   var pa=(STATE.perAgent&&STATE.perAgent[a.type])||{spark:[],runs7:0,runs30:0,recent:[]};
   var skills='<div class="chips">'+a.skills.map(function(s){return '<span class="chip">'+esc(s)+'</span>';}).join("")+'</div>';
   var routines=a.routines.length?('<div class="btn-row">'+a.routines.map(function(r){return '<button class="dispatch-btn'+(r.custom?' custom':'')+'" onclick="openForm(\''+r.tt+'\',\''+a.type+'\')">'+esc(r.t)+'</button>';}).join("")+'</div>'):'<div class="empty-state">On-demand agent — open its project to work with it.</div>';
-  var presets=a.presets.length?('<div class="btn-row" style="flex-direction:column;align-items:stretch">'+a.presets.map(function(p,i){return '<button class="preset-btn" onclick="firePreset(\''+a.key+'\','+i+')">⚡ '+esc(p.label)+'<span class="pz">'+esc(p.taskType)+'</span></button>';}).join("")+'</div>'):'';
+  var presets=a.presets.length?('<div class="btn-row">'+a.presets.map(function(p,i){return '<button class="dispatch-btn" onclick="firePreset(\''+a.key+'\','+i+')">'+esc(p.label)+'</button>';}).join("")+'</div>'):'';
   var spark=(pa.spark&&pa.spark.length)?('<div class="spark">'+pa.spark.map(function(n){var h=Math.min(34,4+n*8);return '<div class="bar" style="height:'+h+'px;background:var(--tag-'+a.key+')"></div>';}).join("")+'</div>'):'<div class="empty-state">No activity data yet.</div>';
   var recent=(pa.recent&&pa.recent.length)?('<div class="list">'+pa.recent.map(function(r){var inner=esc(r.notes||r.run||"run");var g=r.output?('<a class="grow" href="'+esc(r.output)+'" target="_blank" rel="noopener">'+inner+'</a>'):('<span class="grow">'+inner+'</span>');return '<div class="row"><span class="st '+stClass(r.status)+'">'+esc(r.status||"")+'</span>'+g+'<span class="time">'+esc(r.when||"")+'</span></div>';}).join("")+'</div>'):'<div class="empty-state">No runs logged yet.</div>';
   var run=(STATE.queue||[]).some(function(r){return r.status==="Running"&&r.agent===a.type;});
@@ -331,8 +331,7 @@ function openAgent(key){
   var modelOpts=["Auto","Opus","Sonnet","Haiku"].map(function(m){return '<option'+(m===curModel?' selected':'')+'>'+m+'</option>';}).join("");
   document.getElementById("modal").classList.add("wide");
   document.getElementById("modal").innerHTML=
-    '<div class="profile-art" onclick="openArt(\''+a.key+'\')"><span class="emoji-fallback">'+a.icon+'</span><img src="agents/'+a.key+'.png" alt="" onerror="this.style.display=\'none\'"><span class="zoom-hint">⤢ expand</span></div>'
-    +'<div class="profile-top"><div><div class="modal-title">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div><span class="health" style="margin-left:auto"><span class="hdot '+h.c+'"></span>'+esc(h.t)+'</span></div>'
+    '<div class="modal-head"><div class="modal-icon" style="overflow:hidden">'+iconHtml(a)+'</div><div style="flex:1"><div class="modal-title">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div><span class="health"><span class="hdot '+h.c+'"></span>'+esc(h.t)+'</span></div>'
     +'<div class="modal-sub" style="margin-top:6px">'+esc(a.desc)+'</div>'
     +(a.displayOnly?'':'<div class="profile-ctl"><span class="mini-field">Default model <select onchange="setAgentModelChoice(\''+a.type+'\',this.value)">'+modelOpts+'</select></span><button class="agent-toggle'+(paused?' paused':'')+'" onclick="toggleAgentPause(\''+a.type+'\')">'+(paused?'▶ Resume agent':'⏸ Pause agent')+'</button>'+(nrp?'<span class="next-run" style="margin-left:auto">'+esc(nrp)+'</span>':'')+'</div>')
     +(a.routines.length?'<div class="sec"><div class="sec-label">Routines — dispatch a job</div>'+routines+'</div>':'')
