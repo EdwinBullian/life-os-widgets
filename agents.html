@@ -132,6 +132,26 @@
   .btn-primary{background:var(--tag-assistant);color:#11161d;border-color:var(--tag-assistant)} .btn-primary:hover{filter:brightness(1.08)}
   .btn-primary:disabled{opacity:.5;cursor:not-allowed}
   .fallback-box{background:var(--card2);border:1px solid var(--border2);border-radius:8px;padding:10px;font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:6px;white-space:pre-wrap;word-break:break-word}
+  .modal.wide{max-width:780px}
+  .profile-art{position:relative;width:100%;height:220px;border-radius:11px;overflow:hidden;background:var(--card2);border:1px solid var(--border);cursor:zoom-in;display:flex;align-items:center;justify-content:center}
+  .profile-art img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
+  .profile-art .emoji-fallback{font-size:80px}
+  .profile-art .zoom-hint{position:absolute;bottom:7px;right:9px;font-size:9px;color:#eee;background:rgba(0,0,0,.55);padding:2px 7px;border-radius:4px}
+  .profile-top{display:flex;align-items:center;gap:10px;margin:12px 0 2px}
+  .profile-ctl{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:10px 0;padding:10px 12px;background:var(--card);border:1px solid var(--border);border-radius:10px}
+  .mini-field{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)}
+  .mini-field select{background:var(--card2);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-family:inherit;font-size:11.5px;padding:5px 8px}
+  .agent-toggle{cursor:pointer;font-family:inherit;font-size:11px;font-weight:600;padding:5px 11px;border-radius:7px;border:1px solid var(--border2);background:var(--card2);color:var(--text)}
+  .agent-toggle.paused{background:rgba(227,160,92,.14);color:var(--warn);border-color:rgba(227,160,92,.4)}
+  .health{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:var(--muted)}
+  .hdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .h-green{background:var(--success)}.h-amber{background:var(--warn)}.h-red{background:var(--fail)}.h-gray{background:var(--faint)}.h-run{background:var(--running);animation:pulse 1.3s infinite}
+  .card-meta-row{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:1px}
+  .next-run{font-size:10px;color:var(--faint)}
+  .badge{font-size:9px;font-weight:700;color:var(--muted);background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:1px 7px;white-space:nowrap}
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;align-items:center;justify-content:center;z-index:70;cursor:zoom-out;padding:24px}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:88%;max-height:88%;image-rendering:pixelated;border-radius:14px;border:2px solid var(--border2)}
 
   .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:#2a2a2a;border:1px solid var(--border2);color:var(--text);padding:11px 18px;border-radius:10px;font-size:12.5px;opacity:0;transition:all .25s;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,.4);pointer-events:none}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -186,6 +206,7 @@
 
 <div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
 <div class="toast" id="toast"></div>
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('open')"><img id="lightboxImg" src="" alt=""></div>
 
 <script>
 var NOTION_DISPATCH_DB="https://www.notion.so/b0b3d7efa0c64b358aa0d7d9b667633c";
@@ -253,19 +274,42 @@ var FORMS={
 function firstWords(s,n){if(!s)return "Job";var w=s.replace(/\s+/g," ").trim().split(" ").slice(0,n).join(" ");return w.length>48?w.slice(0,48)+"…":w;}
 function esc(s){return (s==null?"":String(s)).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
 function iconHtml(a){return '<img src="agents/'+a.key+'.png" class="agent-img" alt="" onerror="this.replaceWith(\''+a.icon+'\')">';}
+var SCHED={finance:[[1,11,7,"thesis"],[3,11,7,"market scan"]],research:[[2,11,12,"weekly project"]],health:[[4,11,10,"check-in"],[6,21,6,"review"],[0,5,38,"plan"]],assistant:[["daily",6,0,"briefing"]]};
+function nextRun(key){
+  var list=SCHED[key];if(!list)return "";var now=new Date(),best=null,bestLabel="";
+  list.forEach(function(s){for(var add=0;add<8;add++){var d=new Date(now);d.setDate(now.getDate()+add);d.setHours(s[1],s[2],0,0);var ok=(s[0]==="daily")||(d.getDay()===s[0]);if(ok&&d>now){if(!best||d<best){best=d;bestLabel=s[3];}break;}}});
+  if(!best)return "";var days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var hh=("0"+best.getHours()).slice(-2)+":"+("0"+best.getMinutes()).slice(-2);
+  var dayTxt=(best.toDateString()===now.toDateString())?"today":days[best.getDay()];
+  return "↻ "+dayTxt+" "+hh+" · "+bestLabel;
+}
+function healthOf(type,key,running){
+  if(running)return {c:"h-run",t:"running"};
+  var p=STATE.perAgent&&STATE.perAgent[type],last=p&&p.last;
+  if(!last)return {c:"h-gray",t:"no runs yet"};
+  var s=(last.status||"").toLowerCase();
+  if(s==="failed"||s==="partial")return {c:"h-red",t:"last run "+s};
+  if(SCHED[key]&&last.ageDays!=null&&last.ageDays>8)return {c:"h-amber",t:"stale "+last.ageDays+"d"};
+  return {c:"h-green",t:"healthy"};
+}
+function openArt(key){document.getElementById("lightboxImg").src="agents/"+key+".png";document.getElementById("lightbox").classList.add("open");}
+function setAgentModelChoice(type,model){post({action:"setagentmodel",agent:type,model:model}).then(function(){toast(type+" default → "+model,"ok");setTimeout(loadStatus,1500);}).catch(function(){toast("Need proxy for this","err");});}
+function toggleAgentPause(type){post({action:"toggleagentpause",agent:type}).then(function(){toast("Toggled "+type+" pause","ok");setTimeout(loadStatus,1500);}).catch(function(){toast("Need proxy for this","err");});}
 function stClass(s){return "st-"+(s||"").toLowerCase();}
 
 // ---------- agent grid (compact, clickable) ----------
 function renderAgents(){
   document.getElementById("agentGrid").innerHTML=AGENTS.map(function(a){
-    var dot=a.displayOnly?"":'<span class="live-dot" id="live-'+a.key+'"><span class="dot idle"></span>idle</span>';
-    return '<div class="card'+(a.displayOnly?' display-only':'')+'" style="border-top:3px solid var(--tag-'+a.key+')" onclick="openAgent(\''+a.key+'\')">'
+    var nr=nextRun(a.key);
+    return '<div class="card" style="border-top:3px solid var(--tag-'+a.key+')" onclick="openAgent(\''+a.key+'\')">'
       +'<div class="card-img-wrap"><span class="emoji-fallback">'+a.icon+'</span><img class="card-img" src="agents/'+a.key+'.png" alt="" onerror="this.style.display=\'none\'"></div>'
       +'<div class="card-body">'
-      +'<div class="card-header"><div><div class="agent-name">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div>'+dot+'</div>'
+      +'<div class="card-header"><div><div class="agent-name">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div>'
+      +'<span class="health" id="live-'+a.key+'"><span class="hdot h-gray"></span><span>—</span></span></div>'
       +'<div class="card-desc">'+esc(a.desc)+'</div>'
-      +(a.displayOnly?'':'<div class="last-activity" id="act-'+a.key+'">—</div>')
-      +'<div class="open-hint">'+(a.displayOnly?"on demand":"tap to open →")+'</div>'
+      +'<div class="card-meta-row"><span class="next-run" id="next-'+a.key+'">'+esc(nr)+'</span><span class="badge" id="out-'+a.key+'">—</span></div>'
+      +'<div class="last-activity" id="act-'+a.key+'">—</div>'
+      +'<div class="open-hint">'+(a.displayOnly?"on demand →":"tap to open →")+'</div>'
       +'</div></div>';
   }).join("");
 }
@@ -279,9 +323,18 @@ function openAgent(key){
   var presets=a.presets.length?('<div class="btn-row" style="flex-direction:column;align-items:stretch">'+a.presets.map(function(p,i){return '<button class="preset-btn" onclick="firePreset(\''+a.key+'\','+i+')">⚡ '+esc(p.label)+'<span class="pz">'+esc(p.taskType)+'</span></button>';}).join("")+'</div>'):'';
   var spark=(pa.spark&&pa.spark.length)?('<div class="spark">'+pa.spark.map(function(n){var h=Math.min(34,4+n*8);return '<div class="bar" style="height:'+h+'px;background:var(--tag-'+a.key+')"></div>';}).join("")+'</div>'):'<div class="empty-state">No activity data yet.</div>';
   var recent=(pa.recent&&pa.recent.length)?('<div class="list">'+pa.recent.map(function(r){var inner=esc(r.notes||r.run||"run");var g=r.output?('<a class="grow" href="'+esc(r.output)+'" target="_blank" rel="noopener">'+inner+'</a>'):('<span class="grow">'+inner+'</span>');return '<div class="row"><span class="st '+stClass(r.status)+'">'+esc(r.status||"")+'</span>'+g+'<span class="time">'+esc(r.when||"")+'</span></div>';}).join("")+'</div>'):'<div class="empty-state">No runs logged yet.</div>';
+  var run=(STATE.queue||[]).some(function(r){return r.status==="Running"&&r.agent===a.type;});
+  var h=healthOf(a.type,a.key,run);
+  var curModel=(STATE.settings&&STATE.settings.agentModels&&STATE.settings.agentModels[a.type])||"Auto";
+  var paused=(STATE.settings&&STATE.settings.pausedAgents&&STATE.settings.pausedAgents.indexOf(a.type)>-1);
+  var nrp=nextRun(a.key);
+  var modelOpts=["Auto","Opus","Sonnet","Haiku"].map(function(m){return '<option'+(m===curModel?' selected':'')+'>'+m+'</option>';}).join("");
+  document.getElementById("modal").classList.add("wide");
   document.getElementById("modal").innerHTML=
-    '<div class="modal-head"><div class="modal-icon" style="overflow:hidden">'+iconHtml(a)+'</div><div><div class="modal-title">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div></div>'
+    '<div class="profile-art" onclick="openArt(\''+a.key+'\')"><span class="emoji-fallback">'+a.icon+'</span><img src="agents/'+a.key+'.png" alt="" onerror="this.style.display=\'none\'"><span class="zoom-hint">⤢ expand</span></div>'
+    +'<div class="profile-top"><div><div class="modal-title">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div><span class="health" style="margin-left:auto"><span class="hdot '+h.c+'"></span>'+esc(h.t)+'</span></div>'
     +'<div class="modal-sub" style="margin-top:6px">'+esc(a.desc)+'</div>'
+    +(a.displayOnly?'':'<div class="profile-ctl"><span class="mini-field">Default model <select onchange="setAgentModelChoice(\''+a.type+'\',this.value)">'+modelOpts+'</select></span><button class="agent-toggle'+(paused?' paused':'')+'" onclick="toggleAgentPause(\''+a.type+'\')">'+(paused?'▶ Resume agent':'⏸ Pause agent')+'</button>'+(nrp?'<span class="next-run" style="margin-left:auto">'+esc(nrp)+'</span>':'')+'</div>')
     +(a.routines.length?'<div class="sec"><div class="sec-label">Routines — dispatch a job</div>'+routines+'</div>':'')
     +(a.presets.length?'<div class="sec"><div class="sec-label">One-tap presets</div>'+presets+'</div>':'')
     +'<div class="sec"><div class="sec-label">Activity (14 days)</div>'+spark+'<div class="activity-line"><span><b>'+pa.runs7+'</b> last 7d</span><span><b>'+pa.runs30+'</b> last 30d</span></div></div>'
@@ -313,10 +366,13 @@ function openForm(taskType,agentType){
     +'<div class="when-opt" data-w="Now" onclick="pickWhen(this)">Run now</div>'
     +'<div class="when-opt" data-w="Scheduled" onclick="pickWhen(this)">At a time</div></div>'
     +'<input id="fld-runAfter" type="datetime-local" style="display:none;margin-top:8px"></div>';
+  var defModel=(STATE.settings&&STATE.settings.agentModels&&STATE.settings.agentModels[activeForm.agent])||"Auto";
+  var modelHtml='<div class="field"><label>Model <span class="hint">(this job)</span></label><select id="fld-model">'+["Auto","Opus","Sonnet","Haiku"].map(function(m){return '<option'+(m===defModel?' selected':'')+'>'+m+'</option>';}).join("")+'</select></div>';
+  document.getElementById("modal").classList.remove("wide");
   document.getElementById("modal").innerHTML=
     '<div class="modal-head"><div class="modal-icon">'+f.icon+'</div><div class="modal-title">'+esc(taskType)+'</div></div>'
     +'<div class="modal-sub">'+esc(f.sub)+'</div>'
-    +'<form id="dispatchForm" onsubmit="return submitForm(event)">'+fieldsHtml+whenHtml
+    +'<form id="dispatchForm" onsubmit="return submitForm(event)">'+fieldsHtml+whenHtml+modelHtml
     +'<div id="fallbackArea"></div>'
     +'<div class="modal-actions"><button type="button" class="btn btn-ghost" onclick="closeModal()">Cancel</button>'
     +'<button type="submit" class="btn btn-primary" id="dispatchSubmit">Dispatch →</button></div></form>';
@@ -329,7 +385,7 @@ function pickWhen(el){
   el.classList.add("sel");
   document.getElementById("fld-runAfter").style.display=(activeForm.when==="Scheduled")?"block":"none";
 }
-function closeModal(){document.getElementById("overlay").classList.remove("open");activeForm=null;}
+function closeModal(){document.getElementById("overlay").classList.remove("open");document.getElementById("modal").classList.remove("wide");activeForm=null;}
 function collect(){var v={},def=activeForm.def,miss=false;def.fields.forEach(function(fl){var el=document.getElementById("fld-"+fl.k);var val=el?el.value.trim():"";v[fl.k]=val;if(fl.req&&!val){miss=true;if(el)el.style.borderColor="var(--fail)";}});return miss?null:v;}
 function assembleDetails(v){var lines=[];activeForm.def.fields.forEach(function(fl){var val=v[fl.k];if(val&&fl.k!=="agent")lines.push(fl.label+": "+val);});return lines.join("\n");}
 function submitForm(e){
@@ -337,7 +393,7 @@ function submitForm(e){
   var v=collect(); if(!v){toast("Fill in the required field","err");return false;}
   var agent=activeForm.agent||v.agent||"Assistant";
   if(activeForm.taskType==="Custom"&&v.agent)agent=v.agent;
-  var payload={job:activeForm.def.titleTpl(v),agent:agent,taskType:activeForm.taskType,details:assembleDetails(v),runMode:activeForm.when,priority:"Normal"};
+  var payload={job:activeForm.def.titleTpl(v),agent:agent,taskType:activeForm.taskType,details:assembleDetails(v),runMode:activeForm.when,model:(document.getElementById("fld-model")||{}).value||"Auto",priority:"Normal"};
   if(activeForm.when==="Scheduled"){var ra=document.getElementById("fld-runAfter").value;if(ra)payload.runAfter=new Date(ra).toISOString();}
   var proxy=getProxy();
   if(!proxy){showFallback(payload);return false;}
@@ -419,9 +475,11 @@ function applyStatus(data){
   if(ts){ts.innerHTML=totals.map(function(n){return '<div class="bar" style="height:'+Math.round(4+(n/maxv)*28)+'px"></div>';}).join("");}
   var tss=document.getElementById("totalSparkSub");if(tss)tss.textContent=sum30+" runs · last 30d";
   AGENTS.forEach(function(a){
-    if(a.displayOnly)return;
+    var run=!!running[a.key];
     var live=document.getElementById("live-"+a.key);
-    if(live){var run=running[a.key];live.innerHTML='<span class="dot '+(run?"running":"idle")+'"></span>'+(run?"running":"idle");}
+    if(live){var hh=healthOf(a.type,a.key,run);live.innerHTML='<span class="hdot '+hh.c+'"></span><span>'+esc(hh.t)+'</span>';}
+    var outb=document.getElementById("out-"+a.key);
+    if(outb){var pp=pa[a.type];outb.textContent=((pp&&pp.runs7)||0)+" this wk";}
     var act=document.getElementById("act-"+a.key);
     if(act){var p=pa[a.type];var last=p&&p.recent&&p.recent[0];act.innerHTML=last?('<b>Last:</b> '+esc(last.notes||last.run||"")+(last.when?' · '+esc(last.when):'')):'—';}
   });
@@ -430,7 +488,7 @@ function nowTime(){var d=new Date();return ("0"+d.getHours()).slice(-2)+":"+("0"
 
 // ---------- settings ----------
 function openSettings(){
-  activeForm=null;var cur=getProxy();
+  activeForm=null;document.getElementById("modal").classList.remove("wide");var cur=getProxy();
   document.getElementById("modal").innerHTML=
     '<div class="modal-head"><div class="modal-icon">⚙</div><div class="modal-title">Settings</div></div>'
     +'<div class="modal-sub">Paste your deployed dispatch proxy URL (Apps Script /exec). Saved on this device.</div>'
