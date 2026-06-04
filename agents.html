@@ -64,7 +64,11 @@
   .st-skipped,.st-cancelled{background:rgba(155,155,155,.14);color:var(--muted)}
   .mode-tag{font-size:8.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.4px}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:4px}
+  .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:4px}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:repeat(2,1fr)}}
+  .activity-card{flex:1;min-width:190px;display:flex;flex-direction:column;justify-content:center}
+  .activity-card .spark{margin:4px 0 2px}
   .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:9px;cursor:pointer;transition:border-color .15s,transform .12s}
   .card:hover{border-color:var(--border2);transform:translateY(-2px)}
   .card.display-only{opacity:.8}
@@ -155,6 +159,7 @@
   <div class="kpi"><div class="kpi-label">Running</div><div class="kpi-value" id="kpiRunning">–</div><div class="kpi-sub">in progress</div></div>
   <div class="kpi"><div class="kpi-label">Done Today</div><div class="kpi-value" id="kpiDone">–</div><div class="kpi-sub">delivered</div></div>
   <div class="kpi"><div class="kpi-label">Agents</div><div class="kpi-value">6</div><div class="kpi-sub">3 autonomous</div></div>
+  <div class="kpi activity-card"><div class="kpi-label">Activity · 14 days</div><div class="spark" id="totalSpark"></div><div class="kpi-sub" id="totalSparkSub">connect proxy</div></div>
 </div>
 
 <div class="cols">
@@ -398,6 +403,13 @@ function applyStatus(data){
   // per-agent dots + last activity
   var running={};q.forEach(function(r){if(r.status==="Running"&&r.agent)running[r.agent.toLowerCase()]=true;});
   var pa=data.perAgent||{};
+  // total activity sparkline (fills the KPI row)
+  var totals=[],i;for(i=0;i<14;i++)totals.push(0);var sum30=0;
+  Object.keys(pa).forEach(function(t){var p=pa[t];if(p&&p.spark){for(i=0;i<14;i++)totals[i]+=(p.spark[i]||0);}if(p)sum30+=(p.runs30||0);});
+  var maxv=Math.max.apply(null,totals.concat([1]));
+  var ts=document.getElementById("totalSpark");
+  if(ts){ts.innerHTML=totals.map(function(n){return '<div class="bar" style="height:'+Math.round(4+(n/maxv)*28)+'px"></div>';}).join("");}
+  var tss=document.getElementById("totalSparkSub");if(tss)tss.textContent=sum30+" runs · last 30d";
   AGENTS.forEach(function(a){
     if(a.displayOnly)return;
     var live=document.getElementById("live-"+a.key);
