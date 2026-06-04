@@ -69,7 +69,8 @@
   .card:hover{border-color:var(--border2);transform:translateY(-2px)}
   .card.display-only{opacity:.8}
   .card-header{display:flex;align-items:center;gap:10px}
-  .agent-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;background:var(--card2);border:1px solid var(--border);flex-shrink:0}
+  .agent-icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--card2);border:1px solid var(--border);flex-shrink:0;overflow:hidden}
+  .agent-img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated;border-radius:9px;display:block}
   .agent-name{font-size:14px;font-weight:700;color:var(--accent);line-height:1.15}
   .agent-type{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;border-radius:4px;color:#15110c;margin-top:3px}
   .type-assistant{background:var(--tag-assistant)} .type-finance{background:var(--tag-finance)} .type-health{background:var(--tag-health)}
@@ -241,6 +242,7 @@ var FORMS={
 
 function firstWords(s,n){if(!s)return "Job";var w=s.replace(/\s+/g," ").trim().split(" ").slice(0,n).join(" ");return w.length>48?w.slice(0,48)+"…":w;}
 function esc(s){return (s==null?"":String(s)).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function iconHtml(a){return '<img src="agents/'+a.key+'.png" class="agent-img" alt="" onerror="this.replaceWith(\''+a.icon+'\')">';}
 function stClass(s){return "st-"+(s||"").toLowerCase();}
 
 // ---------- agent grid (compact, clickable) ----------
@@ -248,7 +250,7 @@ function renderAgents(){
   document.getElementById("agentGrid").innerHTML=AGENTS.map(function(a){
     var dot=a.displayOnly?"":'<span class="live-dot" id="live-'+a.key+'"><span class="dot idle"></span>idle</span>';
     return '<div class="card'+(a.displayOnly?' display-only':'')+'" onclick="openAgent(\''+a.key+'\')">'
-      +'<div class="card-header"><div class="agent-icon">'+a.icon+'</div>'
+      +'<div class="card-header"><div class="agent-icon">'+iconHtml(a)+'</div>'
       +'<div><div class="agent-name">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div>'+dot+'</div>'
       +'<div class="last-activity" id="act-'+a.key+'">—</div>'
       +'<div class="open-hint">'+(a.displayOnly?"on demand":"tap to open →")+'</div></div>';
@@ -265,7 +267,7 @@ function openAgent(key){
   var spark=(pa.spark&&pa.spark.length)?('<div class="spark">'+pa.spark.map(function(n){var h=Math.min(34,4+n*8);return '<div class="bar" style="height:'+h+'px;background:var(--tag-'+a.key+')"></div>';}).join("")+'</div>'):'<div class="empty-state">No activity data yet.</div>';
   var recent=(pa.recent&&pa.recent.length)?('<div class="list">'+pa.recent.map(function(r){var inner=esc(r.notes||r.run||"run");var g=r.output?('<a class="grow" href="'+esc(r.output)+'" target="_blank" rel="noopener">'+inner+'</a>'):('<span class="grow">'+inner+'</span>');return '<div class="row"><span class="st '+stClass(r.status)+'">'+esc(r.status||"")+'</span>'+g+'<span class="time">'+esc(r.when||"")+'</span></div>';}).join("")+'</div>'):'<div class="empty-state">No runs logged yet.</div>';
   document.getElementById("modal").innerHTML=
-    '<div class="modal-head"><div class="modal-icon">'+a.icon+'</div><div><div class="modal-title">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div></div>'
+    '<div class="modal-head"><div class="modal-icon" style="overflow:hidden">'+iconHtml(a)+'</div><div><div class="modal-title">'+esc(a.name)+'</div><span class="agent-type type-'+a.key+'">'+esc(a.type)+'</span></div></div>'
     +'<div class="modal-sub" style="margin-top:6px">'+esc(a.desc)+'</div>'
     +(a.routines.length?'<div class="sec"><div class="sec-label">Routines — dispatch a job</div>'+routines+'</div>':'')
     +(a.presets.length?'<div class="sec"><div class="sec-label">One-tap presets</div>'+presets+'</div>':'')
