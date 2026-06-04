@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Status HUD</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#191919;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;height:100%;overflow:hidden}
+  body{display:flex;flex-direction:column;justify-content:center;padding:12px 14px}
+
+  .status{display:flex;flex-direction:column;gap:9px;width:100%}
+
+  /* top line: LEVEL + total xp */
+  .top{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+  .lvl{display:flex;align-items:baseline;gap:8px}
+  .lvl-word{font-size:10.5px;font-weight:600;letter-spacing:1.5px;color:rgba(255,255,255,0.4)}
+  .lvl-num{font-size:30px;font-weight:800;line-height:.9;letter-spacing:-.5px;
+           background:linear-gradient(90deg,#caa94f,#e2c97e);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .total{font-size:11px;color:rgba(255,255,255,0.4)}
+  .total b{color:#e2c97e;font-weight:700;font-size:13px}
+
+  /* overall xp bar */
+  .bar-wrap{width:100%;background:rgba(255,255,255,0.07);border-radius:6px;height:22px;overflow:hidden;position:relative}
+  .bar-fill{height:100%;width:0%;border-radius:6px;background:linear-gradient(90deg,#7c6520,#e2c97e);
+            transition:width 1.4s cubic-bezier(0.22,1,0.36,1);position:relative}
+  .bar-fill::after{content:'';position:absolute;inset:0;
+            background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.16) 50%,transparent 100%);
+            background-size:200% 100%;animation:sweep 3s ease-in-out infinite}
+  @keyframes sweep{0%{background-position:-200% 0}100%{background-position:200% 0}}
+  .bar-pct{position:absolute;top:0;right:9px;height:22px;display:flex;align-items:center;
+           font-size:10.5px;font-weight:700;color:rgba(0,0,0,0.55)}
+
+  /* foot */
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:10px;color:rgba(255,255,255,0.38)}
+  .foot strong{color:#e2c97e;font-weight:700}
+
+  #liveStatus{position:fixed;bottom:3px;right:8px;font-size:8px;color:rgba(255,255,255,0.18);letter-spacing:.5px}
+</style>
+</head>
+<body>
+  <div class="status" id="status"></div>
+  <div id="liveStatus">loading…</div>
+
+  <script>
+    const REFRESH = 15 * 60 * 1000;
+
+    // Seed / fallback — your XP engine overwrites status.json with the live numbers.
+    const FALLBACK = { level:7, totalXP:1240, xpIntoLevel:340, xpForLevel:550 };
+
+    function render(d){
+      const into = Math.max(0, d.xpIntoLevel|0);
+      const need = Math.max(1, d.xpForLevel|0);
+      const pct  = Math.min(100, Math.round(into / need * 100));
+      const toNext = Math.max(0, need - into);
+
+      document.getElementById("status").innerHTML = `
+        <div class="top">
+          <div class="lvl"><span class="lvl-word">LEVEL</span><span class="lvl-num">${d.level}</span></div>
+          <div class="total"><b>${(d.totalXP).toLocaleString()}</b> XP total</div>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-fill" data-pct="${pct}"></div>
+          <div class="bar-pct">${pct}%</div>
+        </div>
+        <div class="foot">
+          <span><strong>${into.toLocaleString()}</strong> / ${need.toLocaleString()} XP this level</span>
+          <span><strong>${toNext.toLocaleString()} XP</strong> to Level ${d.level + 1}</span>
+        </div>`;
+
+      requestAnimationFrame(() => setTimeout(() => {
+        const b = document.querySelector(".bar-fill");
+        if (b) b.style.width = b.dataset.pct + "%";
+      }, 150));
+    }
+
+    function setStatus(txt, col){
+      const el = document.getElementById("liveStatus");
+      el.textContent = txt; if (col) el.style.color = col;
+    }
+
+    async function load(){
+      try{
+        const r = await fetch("./status.json?t=" + Date.now());
+        if (!r.ok) throw new Error("no json");
+        const j = await r.json();
+        render(j);
+        const d = j.updated ? new Date(j.updated * 1000) : new Date();
+        setStatus("synced " + d.toLocaleDateString(), "rgba(226,201,126,0.35)");
+      }catch{
+        render(FALLBACK);
+        setStatus("offline · seed data", "rgba(255,255,255,0.15)");
+      }
+    }
+    load();
+    setInterval(load, REFRESH);
+  </script>
+</body>
+</html>
