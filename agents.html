@@ -13,7 +13,9 @@
     --tag-programming:#d4905c;--tag-career:#c478c4;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--text);font-family:'Inter','Helvetica Neue',sans-serif;min-height:100vh;padding:18px 20px 40px;-webkit-font-smoothing:antialiased}
+  html{scrollbar-width:none;-ms-overflow-style:none}
+  html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0;display:none}
+  body{background:var(--bg);color:var(--text);font-family:'Inter','Helvetica Neue',sans-serif;min-height:100vh;padding:10px 20px 34px;-webkit-font-smoothing:antialiased;scrollbar-width:none}
   .header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .subtitle{font-size:11.5px;color:var(--muted)}
   .header-actions{display:flex;gap:8px;align-items:center}
@@ -21,7 +23,7 @@
   .icon-btn:hover{background:var(--card3);color:var(--accent)}
 
   /* control bar */
-  .control-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 4px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:10px}
+  .control-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 6px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:10px}
   .ctl-status{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}
   .ctl-status b{color:var(--text);font-weight:600}
   .pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;border:1px solid var(--border2);background:var(--card2)}
@@ -72,9 +74,9 @@
   .card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:border-color .15s,transform .12s}
   .card:hover{border-color:var(--border2);transform:translateY(-2px)}
   .card.display-only{opacity:.82}
-  .card-img-wrap{position:relative;width:100%;aspect-ratio:1/1;background:var(--card2);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
-  .emoji-fallback{font-size:44px}
-  .card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
+  .card-img-wrap{position:relative;width:100%;height:84px;background:var(--card2);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
+  .emoji-fallback{font-size:32px}
+  .card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;image-rendering:pixelated}
   .card-body{padding:11px 13px;display:flex;flex-direction:column;gap:7px}
   .card-desc{font-size:11px;line-height:1.45;color:var(--muted)}
   .card-header{display:flex;align-items:center;gap:10px}
@@ -160,19 +162,13 @@
 </head>
 <body>
 
-<div class="header">
-  <div class="subtitle">Dispatch a one-shot job · agents run it on your schedule · results land here</div>
-  <div class="header-actions">
-    <button class="icon-btn" id="refreshBtn" title="Refresh">↻ Refresh</button>
-    <button class="icon-btn" id="settingsBtn" title="Settings">⚙</button>
-  </div>
-</div>
-
 <div class="control-bar">
   <span class="ctl-status" id="autoStatus"><span class="pill on">Auto-run</span> <span id="autoText">checking…</span></span>
   <div class="spacer"></div>
   <button class="toggle" id="pauseBtn" title="Pause/resume all auto-execution">⏸ Pause auto-run</button>
   <button class="toggle" id="runAllBtn" title="Run everything in the queue now">▶ Run queued now</button>
+  <button class="icon-btn" id="refreshBtn" title="Refresh">↻ Refresh</button>
+  <button class="icon-btn" id="settingsBtn" title="Settings">⚙</button>
 </div>
 
 <div class="notice" id="connectNotice" style="display:none">
