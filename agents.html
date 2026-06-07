@@ -167,6 +167,7 @@
   <div class="spacer"></div>
   <button class="toggle" id="pauseBtn" title="Pause/resume all auto-execution">⏸ Pause auto-run</button>
   <button class="toggle" id="runAllBtn" title="Run everything in the queue now">▶ Run queued now</button>
+  <button class="icon-btn" id="schedBtn" title="All scheduled routines">🗓 Scheduled</button>
   <button class="icon-btn" id="refreshBtn" title="Refresh">↻ Refresh</button>
   <button class="icon-btn" id="settingsBtn" title="Settings">⚙</button>
 </div>
@@ -481,6 +482,66 @@ function applyStatus(data){
 }
 function nowTime(){var d=new Date();return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);}
 
+// ---------- scheduled routines view ----------
+var SCHEDULED_TASKS=[
+ {agent:"assistant",name:"Daily Briefing",day:"daily",h:6,m:1,desc:"Briefing page + iMessage summary"},
+ {agent:"assistant",name:"Evening Reschedule",day:"daily",h:22,m:36,desc:"Bumps overdue tasks, rebalances the week"},
+ {agent:"assistant",name:"Weekly Schedule",day:0,h:5,m:2,desc:"Builds next week across all agents"},
+ {agent:"assistant",name:"Weekly Review",day:0,h:4,m:10,desc:"Grade, LifeOS levels, time, habits"},
+ {agent:"assistant",name:"Midweek Quality Check",day:4,h:8,m:39,desc:"Confirms Mon/Tue deliverables landed"},
+ {agent:"finance",name:"Weekly Thesis",day:1,h:11,m:7,desc:"Thesis + DCF/comps on a watchlist name"},
+ {agent:"finance",name:"Market Scan",day:3,h:11,m:7,desc:"Top moves, earnings, deals"},
+ {agent:"research",name:"Weekly Project",day:2,h:11,m:12,desc:"Top item from the research queue"},
+ {agent:"health",name:"Midweek Sync",day:4,h:11,m:10,desc:"Adherence + recent sleep check-in"},
+ {agent:"health",name:"Weekly Review",day:6,h:21,m:6,desc:"Full Zepp + Cronometer review"},
+ {agent:"health",name:"Sunday Plan",day:0,h:5,m:38,desc:"Next-week workout + meal plan"},
+ {agent:"system",name:"Habit Heatmap",day:"daily",h:2,m:0,desc:"Per-habit data → habits widget (GitHub Action)"},
+ {agent:"system",name:"Media Curator",day:"daily",h:5,m:53,desc:"Daily video + podcast picks"},
+ {agent:"system",name:"Vitals Bar Refresh",day:"daily",h:7,m:4,desc:"Refreshes the Notion vitals bar"},
+ {agent:"system",name:"Dispatch Worker",day:"15min",h:0,m:0,desc:"Runs eligible queued jobs",paused:true}
+];
+function cadenceText(t){
+  if(t.day==="15min")return "every 15 min";
+  var hh=("0"+t.h).slice(-2)+":"+("0"+t.m).slice(-2);
+  if(t.day==="daily")return "daily · "+hh;
+  return ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][t.day]+" · "+hh;
+}
+function schedNextRun(t){
+  if(t.paused||t.day==="15min")return "";
+  var now=new Date(),best=null;
+  for(var add=0;add<8;add++){var d=new Date(now);d.setDate(now.getDate()+add);d.setHours(t.h,t.m,0,0);var ok=(t.day==="daily")||(d.getDay()===t.day);if(ok&&d>now){best=d;break;}}
+  if(!best)return "";
+  var days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var dayTxt=(best.toDateString()===now.toDateString())?"today":days[best.getDay()];
+  return "↻ "+dayTxt;
+}
+function openScheduled(){
+  activeForm=null;document.getElementById("modal").classList.remove("wide");
+  var order=["assistant","finance","research","health","system"];
+  var labels={assistant:"🧠 Assistant",finance:"💰 Finance",research:"🔬 Research",health:"💪 Health",system:"⚙ System / Infra"};
+  var activeN=SCHEDULED_TASKS.filter(function(t){return !t.paused;}).length;
+  var pausedN=SCHEDULED_TASKS.length-activeN;
+  var html='<div class="modal-head"><div class="modal-icon">🗓</div><div class="modal-title">Scheduled Routines</div></div>'
+    +'<div class="modal-sub">Everything AgentOS runs on a timer — times in PST. <b>'+activeN+'</b> active · '+pausedN+' paused.</div>';
+  order.forEach(function(k){
+    var rows=SCHEDULED_TASKS.filter(function(t){return t.agent===k;});
+    if(!rows.length)return;
+    html+='<div class="sec"><div class="sec-label">'+labels[k]+'</div><div class="list">';
+    rows.forEach(function(t){
+      var dotC=t.paused?"h-amber":"h-green";
+      var nr=schedNextRun(t);
+      var meta=esc(cadenceText(t))+(t.paused?' · paused':(nr?' · '+esc(nr):''));
+      html+='<div class="row"><span class="hdot '+dotC+'" style="flex:0 0 auto"></span>'
+        +'<span class="grow" style="white-space:normal"><b style="color:var(--text)">'+esc(t.name)+'</b> <span style="color:var(--faint)">— '+esc(t.desc)+'</span></span>'
+        +'<span class="time" style="flex:0 0 auto">'+meta+'</span></div>';
+    });
+    html+='</div></div>';
+  });
+  html+='<div class="modal-actions"><button class="btn btn-ghost" onclick="closeModal()">Close</button></div>';
+  document.getElementById("modal").innerHTML=html;
+  document.getElementById("overlay").classList.add("open");
+}
+
 // ---------- settings ----------
 function openSettings(){
   activeForm=null;document.getElementById("modal").classList.remove("wide");var cur=getProxy();
@@ -499,6 +560,7 @@ function toast(m,k){var t=document.getElementById("toast");t.textContent=m;t.cla
 
 document.getElementById("refreshBtn").onclick=loadStatus;
 document.getElementById("settingsBtn").onclick=openSettings;
+document.getElementById("schedBtn").onclick=openScheduled;
 document.getElementById("pauseBtn").onclick=togglePause;
 document.getElementById("runAllBtn").onclick=runAllNow;
 document.getElementById("overlay").onclick=function(e){if(e.target.id==="overlay")closeModal();};
