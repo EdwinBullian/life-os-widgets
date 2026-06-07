@@ -9,14 +9,14 @@
   html,body{background:#191919;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;height:100%;overflow:hidden}
   body{display:flex;flex-direction:column;justify-content:center;padding:12px 14px}
 
-  .wrap{display:flex;flex-direction:column;gap:9px;width:100%}
+  .wrap{position:relative;display:flex;flex-direction:column;gap:9px;width:100%}
   .head{display:flex;align-items:center;justify-content:space-between}
   .title{font-size:10.5px;font-weight:600;letter-spacing:1.2px;color:#a8a8a8}
   .sub{font-size:9.5px;color:rgba(255,255,255,0.32);letter-spacing:.4px}
 
   /* 4 x 7 — each row a rolling week, newest bottom-right */
   .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
-  .cell{aspect-ratio:1;border-radius:4px;background:#242424;border:1px solid rgba(255,255,255,0.05);cursor:default;transition:transform .12s}
+  .cell{aspect-ratio:1;border-radius:4px;background:#242424;border:1px solid rgba(255,255,255,0.05);cursor:pointer;transition:transform .12s}
   .cell:hover{transform:scale(1.12)}
   .cell.l1{background:#2c5d3a}
   .cell.l2{background:#357a49}
@@ -24,18 +24,34 @@
   .cell.l4{background:#4ade80;border-color:rgba(74,222,128,0.3)}
   .cell.nodata{background:transparent;border:1px dashed rgba(255,255,255,0.08)}
   .cell.today{box-shadow:0 0 0 1.5px rgba(226,201,126,0.75)}
+  .cell.sel{box-shadow:0 0 0 1.5px #fff;transform:scale(1.08)}
 
   .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:7px;border-top:1px solid rgba(255,255,255,0.07)}
   .today-count{font-size:10px;color:rgba(255,255,255,0.4)}
   .today-count b{color:#e0e0e0;font-weight:700}
-  .streak{display:flex;align-items:center;gap:5px}
-  .flame{position:relative;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;font-size:20px;line-height:1}
-  .flame-n{position:absolute;bottom:1px;left:0;right:0;text-align:center;font-size:8.5px;font-weight:900;color:#fff;text-shadow:0 0 4px #000,0 0 4px #000;letter-spacing:-.5px}
-  .streak-lbl{font-size:9.5px;color:rgba(255,255,255,0.4)}
+  .hint{font-size:9px;color:rgba(255,255,255,0.28);letter-spacing:.3px}
 
   .tip{position:fixed;background:#1c2128;border:1px solid #444c56;border-radius:6px;padding:6px 10px;font-size:11px;color:#e6edf3;pointer-events:none;z-index:9999;display:none;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,0.6);line-height:1.5}
   .tip b{font-weight:700}
   .tip .d{color:rgba(255,255,255,0.45);font-size:10px}
+
+  /* per-day breakdown overlay */
+  .panel{position:absolute;inset:-2px;background:#191919;border-radius:6px;display:none;flex-direction:column;gap:8px;z-index:50;padding:1px}
+  .panel.show{display:flex}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .panel-date{font-size:11.5px;font-weight:700;color:#e8e8e8;letter-spacing:.3px}
+  .panel-back{font-size:9.5px;color:rgba(255,255,255,0.45);cursor:pointer;border:1px solid rgba(255,255,255,0.14);border-radius:5px;padding:2px 8px;white-space:nowrap}
+  .panel-back:hover{color:#e0e0e0;border-color:rgba(255,255,255,0.32)}
+  .panel-score{font-size:10px;color:rgba(255,255,255,0.5);margin-top:-3px}
+  .panel-score b{color:#4ade80;font-weight:800}
+  .hlist{display:grid;grid-template-columns:1fr 1fr;gap:5px 14px}
+  .hrow{display:flex;align-items:center;gap:7px;font-size:10.5px;line-height:1.1}
+  .hrow .mk{width:15px;height:15px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex:0 0 auto}
+  .hrow.on .mk{background:#234d33;color:#4ade80}
+  .hrow.off .mk{background:#3a2326;color:#f87171}
+  .hrow.on .nm{color:#d2d2d2}
+  .hrow.off .nm{color:rgba(255,255,255,0.42)}
+  .panel-empty{grid-column:1/3;font-size:10px;color:rgba(255,255,255,0.35);text-align:center;padding:16px 0}
 
   #liveStatus{position:fixed;bottom:3px;right:8px;font-size:8px;color:rgba(255,255,255,0.18);letter-spacing:.5px}
 </style>
@@ -46,64 +62,118 @@
     <div class="grid" id="grid"></div>
     <div class="foot">
       <span class="today-count" id="todayCount"></span>
-      <span class="streak"><span class="flame">🔥<span class="flame-n" id="flameN">0</span></span><span class="streak-lbl">day streak</span></span>
+      <span class="hint">tap a day ›</span>
+    </div>
+
+    <div class="panel" id="panel">
+      <div class="panel-head">
+        <span class="panel-date" id="pDate"></span>
+        <span class="panel-back" id="pBack">‹ back</span>
+      </div>
+      <div class="panel-score" id="pScore"></div>
+      <div class="hlist" id="pList"></div>
     </div>
   </div>
   <div class="tip" id="tip"></div>
   <div id="liveStatus">loading…</div>
 
   <script>
-    // Reads the EXISTING habits.json shape: { habits: { "YYYY-MM-DD": percent 0-100, -1 = unlogged }, streak, totalHabits, updated }
+    // Reads habits.json: { habits:{date:pct, -1=unlogged}, details:{date:{habit:bool}}, totalHabits, updated }
     const REFRESH = 15 * 60 * 1000;
     const DAYS = 28;
-    const PERFECT = 100; // a "perfect day" for streak purposes
+    // canonical display order for the breakdown panel
+    const HABIT_ORDER = ["10k Steps","Lift","Calories","Clean","Meditate","Stretch","Screen Time","Supplements"];
+
+    let HABITS = {}, DETAILS = {}, TOTAL = 8;
 
     function keyOf(dt){const y=dt.getFullYear(),m=String(dt.getMonth()+1).padStart(2,'0'),d=String(dt.getDate()).padStart(2,'0');return `${y}-${m}-${d}`;}
     function today0(){const t=new Date();return new Date(t.getFullYear(),t.getMonth(),t.getDate());}
 
-    // Seed / fallback demo in the same percent format (only used if fetch fails, e.g. local preview)
-    function demoMap(){
+    // Seed / fallback demo (only used if fetch fails, e.g. local preview)
+    function demo(){
       const pct=[88,62,100,88,75,88,100, 88,75,50,88,100,88,75, 100,88,100,100,75,88,100, 100,88,75,100,100,88,-1];
-      const base=today0(),m={};
-      for(let i=0;i<DAYS;i++){const dt=new Date(base);dt.setDate(base.getDate()-(DAYS-1-i));m[keyOf(dt)]=pct[i];}
-      return m;
+      const base=today0(),h={},d={};
+      for(let i=0;i<DAYS;i++){
+        const dt=new Date(base);dt.setDate(base.getDate()-(DAYS-1-i));const k=keyOf(dt);
+        h[k]=pct[i];
+        if(pct[i]>=0){const det={};HABIT_ORDER.forEach((nm,j)=>det[nm]=((i*3+j*5)%8)>=Math.round((100-pct[i])/12.5));d[k]=det;}
+      }
+      return {habits:h,details:d};
     }
 
     const tip=document.getElementById("tip");
-    function showTip(el,html){el.addEventListener("mouseenter",()=>{tip.innerHTML=html;tip.style.display="block";});
+    function showTip(el,html){
+      el.addEventListener("mouseenter",()=>{tip.innerHTML=html;tip.style.display="block";});
       el.addEventListener("mousemove",e=>{tip.style.left=(e.clientX+13)+"px";tip.style.top=(e.clientY-8)+"px";});
-      el.addEventListener("mouseleave",()=>tip.style.display="none");}
+      el.addEventListener("mouseleave",()=>tip.style.display="none");
+    }
 
-    function bucket(p){ if(p<0||p==null)return"nodata"; if(p>=PERFECT)return"l4"; if(p>=85)return"l3"; if(p>=60)return"l2"; if(p>0)return"l1"; return""; }
+    function bucket(p){ if(p<0||p==null)return"nodata"; if(p>=100)return"l4"; if(p>=85)return"l3"; if(p>=60)return"l2"; if(p>0)return"l1"; return""; }
 
-    function render(habits){
+    // returns {n,t} done/total from details, or null if no detail for that day
+    function countDone(k){
+      const d=DETAILS[k]; if(!d) return null;
+      let n=0,t=0; for(const h in d){t++; if(d[h])n++;} return {n,t};
+    }
+
+    function openPanel(k,dt){
+      tip.style.display="none";
+      const det=DETAILS[k];
+      document.getElementById("pDate").textContent=dt.toLocaleDateString(undefined,{weekday:'long',month:'short',day:'numeric'});
+      const list=document.getElementById("pList"); list.innerHTML="";
+      const score=document.getElementById("pScore");
+      if(!det){
+        score.textContent="";
+        list.innerHTML='<div class="panel-empty">No habits logged this day.</div>';
+      } else {
+        const order=HABIT_ORDER.filter(h=>h in det).concat(Object.keys(det).filter(h=>!HABIT_ORDER.includes(h)));
+        let n=0;
+        order.forEach(h=>{
+          const on=!!det[h]; if(on)n++;
+          const row=document.createElement("div");
+          row.className="hrow "+(on?"on":"off");
+          row.innerHTML=`<span class="mk">${on?'✓':'✕'}</span><span class="nm">${h}</span>`;
+          list.appendChild(row);
+        });
+        score.innerHTML=`<b>${n}</b> / ${order.length} completed`;
+      }
+      document.getElementById("panel").classList.add("show");
+    }
+    function closePanel(){
+      document.getElementById("panel").classList.remove("show");
+      document.querySelectorAll(".cell.sel").forEach(c=>c.classList.remove("sel"));
+    }
+    document.getElementById("pBack").addEventListener("click",closePanel);
+
+    function render(){
       const base=today0(),tkey=keyOf(base);
       const grid=document.getElementById("grid");grid.innerHTML="";
       const dates=[];for(let i=0;i<DAYS;i++){const dt=new Date(base);dt.setDate(base.getDate()-(DAYS-1-i));dates.push(dt);}
 
       dates.forEach(dt=>{
         const k=keyOf(dt);
-        const p=(k in habits)?habits[k]:null;
+        const p=(k in HABITS)?HABITS[k]:null;
         const cell=document.createElement("div");
         cell.className="cell "+bucket(p)+(k===tkey?" today":"");
         const nice=dt.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
+        const c=countDone(k);
         const val=(p==null||p<0)?"—":p+"%";
-        showTip(cell,`<b>${val}</b><br><span class="d">${nice}${k===tkey?" · today":""}</span>`);
+        const sub=c?` · ${c.n}/${c.t}`:"";
+        showTip(cell,`<b>${val}</b>${sub}<br><span class="d">${nice}${k===tkey?" · today":""}</span>`);
+        cell.addEventListener("click",()=>{
+          document.querySelectorAll(".cell.sel").forEach(x=>x.classList.remove("sel"));
+          cell.classList.add("sel");
+          openPanel(k,dt);
+        });
         grid.appendChild(cell);
       });
 
-      // streak: consecutive perfect days ending at the latest logged day (today skipped if unlogged)
-      let streak=0;
-      for(let i=DAYS-1;i>=0;i--){
-        const k=keyOf(dates[i]);
-        const p=(k in habits)?habits[k]:null;
-        if(k===tkey && (p==null||p<0)) continue; // today not logged yet → don't break
-        if(p!=null && p>=PERFECT) streak++; else break;
-      }
-      document.getElementById("flameN").textContent=streak;
-
-      const tp=(tkey in habits)?habits[tkey]:null;
-      document.getElementById("todayCount").innerHTML = (tp==null||tp<0) ? `Today <b>—</b>` : `Today <b>${tp}%</b>`;
+      // footer: today's count out of total
+      const c=countDone(tkey), tp=(tkey in HABITS)?HABITS[tkey]:null;
+      const cnt=document.getElementById("todayCount");
+      if(c) cnt.innerHTML=`Today <b>${c.n}/${c.t}</b>`;
+      else if(tp!=null && tp>=0) cnt.innerHTML=`Today <b>${Math.round(tp/100*TOTAL)}/${TOTAL}</b>`;
+      else cnt.innerHTML=`Today <b>—</b>`;
     }
 
     function setStatus(txt,col){const el=document.getElementById("liveStatus");el.textContent=txt;if(col)el.style.color=col;}
@@ -113,11 +183,13 @@
         const r=await fetch("./habits.json?t="+Date.now());
         if(!r.ok) throw new Error("no json");
         const j=await r.json();
-        render(j.habits||{});
+        HABITS=j.habits||{}; DETAILS=j.details||{}; TOTAL=j.totalHabits||8;
+        render();
         const d=j.updated?new Date(j.updated*1000):new Date();
         setStatus("synced "+d.toLocaleDateString(),"rgba(74,222,128,0.35)");
       }catch{
-        render(demoMap());
+        const dm=demo(); HABITS=dm.habits; DETAILS=dm.details; TOTAL=8;
+        render();
         setStatus("offline · seed data","rgba(255,255,255,0.15)");
       }
     }
