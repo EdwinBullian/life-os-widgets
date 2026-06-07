@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Fetch today's habits from Notion and update habits.json
+      - name: Fetch habits from Notion and update habits.json
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
         run: |
@@ -29,15 +29,17 @@ jobs:
           API_URL = f"https://api.notion.com/v1/databases/{DB_ID}/query"
 
           PDT = timezone(timedelta(hours=-7))  # PDT (UTC-7); update to -8 Nov–Mar
-          today_str = datetime.now(PDT).strftime("%Y-%m-%d")
-          two_weeks_ago = (datetime.now(PDT) - timedelta(days=14)).strftime("%Y-%m-%d")
+          today_str  = datetime.now(PDT).strftime("%Y-%m-%d")
+          # 35-day window so the full 28-day heatmap gets per-habit detail
+          window_start = (datetime.now(PDT) - timedelta(days=35)).strftime("%Y-%m-%d")
+          streak_cutoff = (datetime.now(PDT) - timedelta(days=14)).strftime("%Y-%m-%d")
 
-          print(f"Querying habits for {two_weeks_ago} → {today_str}")
+          print(f"Querying habits for {window_start} → {today_str}")
 
           payload = json.dumps({
               "filter": {
                   "and": [
-                      {"property": "Date", "date": {"on_or_after": two_weeks_ago}},
+                      {"property": "Date", "date": {"on_or_after": window_start}},
                       {"property": "Date", "date": {"on_or_before": today_str}},
                   ]
               },
@@ -61,14 +63,15 @@ jobs:
               print(f"Notion API error {e.code}: {e.read().decode()}")
               raise
 
-          # Load existing habits.json
+          # Load existing habits.json (preserve history beyond the query window)
           try:
               with open("habits.json") as f:
                   existing = json.load(f)
           except Exception:
-              existing = {"habits": {}, "streaks": {}, "totalHabits": 8, "streak": 0, "updated": 0}
+              existing = {"habits": {}, "details": {}, "streaks": {}, "totalHabits": 8, "streak": 0, "updated": 0}
 
           habits_data  = existing.get("habits", {})
+          details_data = existing.get("details", {})
           total_habits = existing.get("totalHabits", 8)
 
           # Habit name mapping: Notion property → widget display name
@@ -82,13 +85,8 @@ jobs:
               "Stretch":           "Stretch",
               "Supplements":       "Supplements",
           }
-          # per-habit per-day: {display_name: {date_str: True/False}}
+          # per-habit per-day, used for habit streaks: {display_name: {date_str: bool}}
           per_habit = {v: {} for v in HABIT_MAP.values()}
-
-          SKIP_TYPES = {"title", "date", "formula", "rollup", "relation", "created_time",
-                        "last_edited_time", "created_by", "last_edited_by", "files", "url",
-                        "email", "phone_number", "people", "select", "multi_select",
-                        "number", "rich_text"}
 
           for page in pages:
               props = page.get("properties", {})
@@ -128,10 +126,15 @@ jobs:
               habits_data[day_str] = pct if pct > 0 else -1
               print(f"  {day_str}: {checked}/{total_habits} habits = {pct}%")
 
-              # Record per-habit data for this day
+              # Record per-habit data for this day (for streaks AND the details block)
+              day_detail = {}
               for notion_name, display_name in HABIT_MAP.items():
-                  if notion_name in props:
-                      per_habit[display_name][day_str] = props[notion_name].get("checkbox", False)
+                  if notion_name in props and props[notion_name].get("type") == "checkbox":
+                      val = bool(props[notion_name].get("checkbox", False))
+                      per_habit[display_name][day_str] = val
+                      day_detail[display_name] = val
+              if day_detail:
+                  details_data[day_str] = day_detail
 
           # Compute global streak (last 14 days only)
           def compute_streak(data):
@@ -147,7 +150,7 @@ jobs:
                   d -= timedelta(days=1)
               return streak
 
-          recent_data = {k: v for k, v in habits_data.items() if k >= two_weeks_ago}
+          recent_data = {k: v for k, v in habits_data.items() if k >= streak_cutoff}
           streak = compute_streak(recent_data)
           print(f"\nGlobal streak: {streak} days")
 
@@ -172,6 +175,7 @@ jobs:
 
           output = {
               "habits":      habits_data,
+              "details":     details_data,
               "streaks":     habit_streaks,
               "totalHabits": total_habits,
               "streak":      streak,
@@ -181,7 +185,7 @@ jobs:
           with open("habits.json", "w") as f:
               json.dump(output, f, indent=2, ensure_ascii=False, sort_keys=True)
 
-          print(f"\nhabits.json updated — {len(habits_data)} days, streak={streak}")
+          print(f"\nhabits.json updated — {len(habits_data)} days, {len(details_data)} detailed, streak={streak}")
           PYEOF
 
       - name: Commit and push if changed
