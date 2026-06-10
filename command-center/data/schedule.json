@@ -1,14 +1,16 @@
 {
-  "updated": "2026-06-09T11:00:00-07:00",
+  "updated": "2026-06-09T12:00:00-07:00",
   "dailyBaseK": 50,
   "week": [
-    { "day": 1, "hour": 6, "name": "Daily Briefing", "agent": "assistant", "model": "claude-haiku-4-5", "tier": "budget", "tok": 18000 },
-    { "day": 1, "hour": 9, "name": "Finance Thesis", "agent": "finance", "model": "claude-opus-4-8", "tier": "premium", "tok": 120000 },
-    { "day": 2, "hour": 9, "name": "Research Sweep", "agent": "research", "model": "claude-sonnet-4-6", "tier": "standard", "tok": 90000 },
-    { "day": 3, "hour": 9, "name": "Market Scan", "agent": "finance", "model": "claude-sonnet-4-6", "tier": "standard", "tok": 70000 },
-    { "day": 4, "hour": 9, "name": "Health Review", "agent": "health", "model": "claude-haiku-4-5", "tier": "budget", "tok": 40000 },
-    { "day": 5, "hour": 9, "name": "Career Check", "agent": "career", "model": "deepseek-chat", "tier": "budget", "tok": 35000 },
-    { "day": 0, "hour": 18, "name": "Weekly Review", "agent": "assistant", "model": "claude-opus-4-8", "tier": "premium", "tok": 110000 }
+    { "day": 0, "hour": 4, "name": "Weekly Review", "agent": "assistant", "model": "Claude Sonnet", "tier": "max", "tok": 120000 },
+    { "day": 0, "hour": 5, "name": "Weekly Schedule", "agent": "assistant", "model": "DeepSeek R1", "tier": "open", "tok": 80000 },
+    { "day": 0, "hour": 6, "name": "Health Plan (meal + workout)", "agent": "health", "model": "DeepSeek V3.2", "tier": "open", "tok": 45000 },
+    { "day": 1, "hour": 11, "name": "Finance Weekly Thesis", "agent": "finance", "model": "Claude Sonnet", "tier": "max", "tok": 250000 },
+    { "day": 2, "hour": 11, "name": "Research Weekly Project", "agent": "research", "model": "DeepSeek R1", "tier": "open", "tok": 150000 },
+    { "day": 3, "hour": 11, "name": "Market Scan", "agent": "finance", "model": "DeepSeek V3.2", "tier": "open", "tok": 60000 },
+    { "day": 4, "hour": 8, "name": "Midweek Quality Check", "agent": "assistant", "model": "DeepSeek R1", "tier": "open", "tok": 40000 },
+    { "day": 4, "hour": 11, "name": "Health Check", "agent": "health", "model": "Groq", "tier": "free", "tok": 25000 },
+    { "day": 6, "hour": 21, "name": "Health Weekly Review", "agent": "health", "model": "DeepSeek V3.2", "tier": "open", "tok": 60000 }
   ],
   "dailies": ["Daily Briefing", "Inbox Triage", "Calendar Sync"]
 }

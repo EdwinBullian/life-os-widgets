@@ -24,7 +24,8 @@ export const EMPTY_SCHEDULE = Object.freeze({
 
 async function fetchJson(path, fallback) {
   try {
-    const res = await fetch(path);
+    // no-store: spend/schedule are edited out-of-band; don't let the 10-min Pages cache stale them.
+    const res = await fetch(path, { cache: 'no-store' });
     if (!res || !res.ok) return fallback;
     const json = await res.json();
     return safe(json, fallback); // safe → fallback when null/wrong container kind
