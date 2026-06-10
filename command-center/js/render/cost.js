@@ -5,6 +5,7 @@
 
 import { esc, safe, isStale } from '../util.js';
 import { toast } from './agents.js';
+import { getMaxPct } from '../proxy.js';
 
 const SPEND_CADENCE_MS = 6 * 60 * 60 * 1000; // slow job, not the 60s poll
 const num = (v) => typeof v === 'number' && Number.isFinite(v);
@@ -85,8 +86,9 @@ export function renderCost(state, panelArg) {
   const kpis = '<div class="grid cols-4">'
     + kpi(money(week), 'OpenRouter this week', 'muted', `cap ${money(cap)} · ${capPct}% used`)
     + kpi(num(or.projectedMonth) ? money(or.projectedMonth) : '—', 'Projected month', 'muted', 'OpenRouter spend est.')
-    + kpi(num(max.pctUsed) ? `${max.pctUsed}%` : '—', 'Max plan used', 'muted',
-      max.resetAt ? 'resets soon' : 'rolling window')
+    + kpi((getMaxPct() != null ? getMaxPct() : (num(max.pctUsed) ? max.pctUsed : null)) != null
+      ? `${getMaxPct() != null ? getMaxPct() : max.pctUsed}%` : '—', 'Max plan used', 'muted',
+      getMaxPct() != null ? 'you set this' : (max.resetAt ? 'resets soon' : 'rolling window'))
     + kpi(tokfmt(spend.tokensOffloadedWeek), 'Tokens offloaded / wk', 'up', '▲ kept off Max')
     + '</div>';
 

@@ -7,6 +7,7 @@ import { getState, setState } from '../state.js';
 import { esc, normalizeQueue, safe, isStale } from '../util.js';
 import { countdown } from './overview.js';
 import { tick } from '../poll.js';
+import { getMaxPct } from '../proxy.js';
 import { openSettings } from './settings.js';
 
 const TABS = ['overview', 'chat', 'agents', 'schedule', 'queue', 'cost'];
@@ -33,7 +34,9 @@ export function renderTopbar(state) {
   const spend = safe(state.spend, null); // null when missing/malformed (wrong container kind)
   const gatewayUp = state.status != null && !state.polling.lastError;
 
-  const pct = spend && spend.max && num(spend.max.pctUsed) ? `${esc(spend.max.pctUsed)}%` : '—';
+  const ovrPct = getMaxPct(); // manual override wins over spend.json
+  const pctNum = ovrPct != null ? ovrPct : (spend && spend.max && num(spend.max.pctUsed) ? spend.max.pctUsed : null);
+  const pct = pctNum != null ? `${esc(pctNum)}%` : '—';
   const weekCap = spend && spend.openrouter && num(spend.openrouter.weekCap)
     ? `$${esc(spend.openrouter.weekCap)}` : null;
   const weekDisplay = weekCap && num(spend.openrouter.weekSpend)

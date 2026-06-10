@@ -3,7 +3,7 @@
 // goes through proxy.js (localStorage key agentos_proxy_url, with the in-memory fallback when the
 // Notion embed blocks storage). Saving triggers an immediate status fetch so the gateway pill flips.
 
-import { getProxyUrl, setProxyUrl, fetchStatus } from '../proxy.js';
+import { getProxyUrl, setProxyUrl, fetchStatus, getMaxPct, setMaxPct } from '../proxy.js';
 import { getState, setState } from '../state.js';
 import { esc } from '../util.js';
 import { toast } from './agents.js';
@@ -31,6 +31,8 @@ export function openSettings() {
     + '— it carries over automatically on the same site, or paste it once below.</div>'
     + `<div class="field"><label>Apps Script proxy URL <span class="hint">(ends in /exec)</span></label>`
     + `<input id="set-proxy" type="text" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(cur)}"></div>`
+    + `<div class="field"><label>Claude Max plan % used <span class="hint">(you set this — Anthropic exposes no API for it)</span></label>`
+    + `<input id="set-maxpct" type="number" min="0" max="100" step="1" placeholder="e.g. 24" value="${getMaxPct() != null ? esc(getMaxPct()) : ''}"></div>`
     + `<div class="note">Status: ${connected ? '<span style="color:var(--success)">● connected</span>' : '<span class="faint">● not connected yet</span>'}. `
     + 'The URL is stored only in this browser — never committed or shared.</div>'
     + '<div class="modal-actions">'
@@ -61,10 +63,12 @@ export function openSettings() {
     if (action === 'settingsSave') {
       const input = modal.querySelector('#set-proxy');
       const v = input ? String(input.value || '').trim() : '';
+      const pctEl = modal.querySelector('#set-maxpct');
+      setMaxPct(pctEl ? pctEl.value : null); // empty → clears the override
       setProxyUrl(v || null);
-      setState({ proxyUrl: v || null });
+      setState({ proxyUrl: v || null }); // any setState re-renders topbar + active tab
       close();
-      toast(v ? 'Proxy URL saved — connecting…' : 'Proxy URL cleared');
+      toast('Settings saved');
       if (v) refreshStatus();
     }
   }

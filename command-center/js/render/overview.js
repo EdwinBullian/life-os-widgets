@@ -5,6 +5,7 @@
 
 import { esc, safe, parseRunFeed, isStale } from '../util.js';
 import { modelSelectHtml, dispatchAction, toast } from './agents.js';
+import { getMaxPct } from '../proxy.js';
 
 // spend.json is produced by a slow job, not the 60s poll — flag stale past ~12h (2×6h cadence).
 const SPEND_CADENCE_MS = 6 * 60 * 60 * 1000;
@@ -74,7 +75,8 @@ function fuelBox(spend) {
   const stale = isStale(spend.updated, SPEND_CADENCE_MS)
     ? ' <span class="faint">stale</span>' : '';
 
-  const pct = max && num(max.pctUsed) ? max.pctUsed : 0;
+  const ovrPct = getMaxPct(); // manual Max% override wins over spend.json
+  const pct = ovrPct != null ? ovrPct : (max && num(max.pctUsed) ? max.pctUsed : 0);
   const est = max && num(max.estTokens) ? Math.round(max.estTokens / 1000) : null;
   const cap = max && num(max.capTokens) ? Math.round(max.capTokens / 1000) : null;
   const tokLine = (est !== null && cap !== null)

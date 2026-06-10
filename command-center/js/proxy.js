@@ -32,6 +32,35 @@ export function setProxyUrl(url) {
   return mem;
 }
 
+// ── Manual Claude Max % override ──────────────────────────────────────────────
+// Anthropic exposes no API for "% of Max plan used this cycle", so Eddie types it in by hand. It
+// persists in localStorage (in-memory fallback) and OVERRIDES spend.json's max.pctUsed everywhere
+// it's shown (topbar pill, Overview fuel donut, Cost KPI). null = "use spend.json".
+const MAX_PCT_KEY = 'agentos_max_pct';
+let maxPctMem;
+
+export function getMaxPct() {
+  if (maxPctMem !== undefined) return maxPctMem;
+  try {
+    const v = localStorage.getItem(MAX_PCT_KEY);
+    maxPctMem = v == null || v === '' ? null : Number(v);
+    if (maxPctMem != null && !Number.isFinite(maxPctMem)) maxPctMem = null;
+    return maxPctMem;
+  } catch {
+    return null;
+  }
+}
+
+export function setMaxPct(pct) {
+  const n = pct == null || pct === '' ? null : Number(pct);
+  maxPctMem = n != null && Number.isFinite(n) ? Math.max(0, Math.min(100, Math.round(n))) : null;
+  try {
+    if (maxPctMem == null) localStorage.removeItem(MAX_PCT_KEY);
+    else localStorage.setItem(MAX_PCT_KEY, String(maxPctMem));
+  } catch { /* storage denied — in-memory mirror holds for the session */ }
+  return maxPctMem;
+}
+
 // JSONP GET ?action=status&callback=… → resolves parsed status. Times out (~8s) and rejects,
 // ALWAYS cleaning up the injected <script> and the global callback (no leaks across polls).
 export function fetchStatus({ timeoutMs = 8000, signal } = {}) {
