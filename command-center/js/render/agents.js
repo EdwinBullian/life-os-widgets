@@ -225,25 +225,30 @@ export function dispatchForm(jobType, presetAgent) {
     + `<div class="modal-sub">${esc(f.sub)}</div>`
     + `<form id="dispatchForm" data-tt="${esc(jobType)}" data-agent="${esc(agent)}" data-action-form>`
     + `${fields}${when}${model}`
-    + '<div class="modal-actions"><button type="button" class="btn btn-ghost" data-action="closeModal">Cancel</button>'
-    + '<button type="submit" class="btn btn-primary" data-action="submitDispatch">Dispatch →</button></div></form>';
+    + '<div class="modal-actions"><button type="button" class="btn ghost" data-action="closeModal">Cancel</button>'
+    + '<button type="submit" class="btn" data-action="submitDispatch">Dispatch →</button></div></form>';
 }
 
-// ── Roster grid card ──────────────────────────────────────────────────────────────────────────
+// ── Roster grid card (markup ported verbatim from the mockup: .acard, border-top accent,
+// emoji-behind-PNG image, health dot + text, 7-skill skillrow with +N overflow). ───────────────
 function cardHtml(a, perAgent) {
   const live = perAgent && perAgent[a.key] && perAgent[a.key].health;
   const dot = healthDot(live || a.health);
-  const chips = a.skills.slice(0, 5).map((s) => `<span class="chip">${esc(s)}</span>`).join('');
-  return `<div class="card${a.displayOnly ? ' display-only' : ''}" data-id="${esc(a.key)}" data-action="openAgent" role="button" tabindex="0">`
+  const healthText = live ? dot.label : a.ht;
+  const chips = a.skills.slice(0, 7).map((s) => `<span class="chip">${esc(s)}</span>`).join('')
+    + (a.skills.length > 7 ? `<span class="chip">+${a.skills.length - 7}</span>` : '');
+  // Image path is relative to the document (index.html at the widget root), NOT this module —
+  // so it must be "agent-art/…", never "../agent-art/…" (which would escape the widget root).
+  return `<div class="acard${a.displayOnly ? ' display-only' : ''}" style="border-top:3px solid var(--tag-${esc(a.key)})" data-id="${esc(a.key)}" data-action="openAgent" role="button" tabindex="0">`
     + `<div class="card-img-wrap"><span class="emoji-fallback">${esc(a.icon)}</span>`
-    + `<img class="card-img" src="../agent-art/${esc(a.key)}.png" alt="" onerror="this.style.display='none'"></div>`
+    + `<img class="card-img" src="agent-art/${esc(a.key)}.png" alt="" onerror="this.style.display='none'"></div>`
     + '<div class="card-body"><div class="card-header"><div>'
     + `<div class="agent-name">${esc(a.name)}</div>`
     + `<span class="agent-type type-${esc(a.key)}">${esc(a.type)}</span></div>`
-    + `<span class="health"><span class="hdot h-${dot.cls}" title="${esc(dot.label)}"></span></span></div>`
+    + `<span class="health"><span class="hdot h-${dot.cls}"></span>${esc(healthText)}</span></div>`
     + `<div class="card-desc">${esc(a.desc)}</div>`
-    + `<div class="chips">${chips}</div>`
-    + `<div class="open-hint">${a.displayOnly ? 'on demand' : 'tap to open →'}</div>`
+    + `<div class="skillrow">${chips}</div>`
+    + `<div class="open-hint">${a.displayOnly ? 'on demand →' : 'tap to open →'}</div>`
     + '</div></div>';
 }
 
@@ -274,14 +279,16 @@ function agentModalHtml(a, state) {
     }</div></div>`
     : '';
   const spark = (pa.spark && pa.spark.length)
-    ? `<div class="spark">${pa.spark.map((n) => `<div class="bar" style="height:${Math.min(34, 4 + (Number(n) || 0) * 8)}px"></div>`).join('')}</div>`
-    : '<div class="empty-state">No activity data yet.</div>';
+    ? `<div class="spark">${pa.spark.map((n) => `<div class="bar" style="height:${Math.min(32, 4 + (Number(n) || 0) * 7)}px;background:var(--tag-${esc(a.key)})"></div>`).join('')}</div>`
+    : '<div class="muted" style="font-size:12px">No activity data yet.</div>';
   const recent = (pa.recent && pa.recent.length)
-    ? `<div class="list">${pa.recent.map((r) => `<div class="row"><span class="st st-${esc((r.status || '').toLowerCase())}">${esc(r.status || '')}</span><span class="grow">${esc(r.title || 'run')}</span><span class="time">${esc(r.when || '')}</span></div>`).join('')}</div>`
-    : '<div class="empty-state">No runs logged yet.</div>';
-  const skills = `<div class="skill-acc">${a.skills.map((s) => `<div class="skill-item"><button class="chip" data-action="toggleSkill" data-skill="${esc(s)}">${esc(s)}</button><div class="skill-desc" data-skill-desc="${esc(s)}" hidden>${esc(SKILL_DESC[s] || '')}</div></div>`).join('')}</div>`;
+    ? `<div class="list">${pa.recent.map((r) => `<div class="lrow"><span class="st st-${esc((r.status || '').toLowerCase())}">${esc(r.status || '')}</span><span class="grow">${esc(r.title || 'run')}</span><span class="time">${esc(r.when || '')}</span></div>`).join('')}</div>`
+    : '<div class="muted" style="font-size:12px">No runs logged yet.</div>';
+  // Skill accordion: mockup .skillacc > .skl (toggles .open) > .skl-h (label + .caret) + .skl-b (desc).
+  const skills = `<div class="skillacc">${a.skills.map((s) => `<div class="skl" data-skill="${esc(s)}"><div class="skl-h" data-action="toggleSkill" data-skill="${esc(s)}">${esc(s)}<span class="caret">▶</span></div><div class="skl-b">${esc(SKILL_DESC[s] || 'Skill.')}</div></div>`).join('')}</div>`;
 
-  return `<div class="modal-head"><div class="modal-icon">${esc(a.icon)}</div>`
+  return `<div class="modal-head"><div class="modal-icon"><span>${esc(a.icon)}</span>`
+    + `<img src="agent-art/${esc(a.key)}.png" alt="" onerror="this.style.display='none'"></div>`
     + `<div style="flex:1"><div class="modal-title">${esc(a.name)}</div>`
     + `<span class="agent-type type-${esc(a.key)}">${esc(a.type)}</span></div>`
     + `<span class="health"><span class="hdot h-${dot.cls}"></span>${esc(dot.label)}</span></div>`
@@ -290,8 +297,8 @@ function agentModalHtml(a, state) {
     + `<div class="sec"><div class="sec-label">Activity (recent)</div>${spark}`
     + `<div class="activity-line"><span><b>${esc(pa.runs7 || 0)}</b> last 7d</span><span><b>${esc(pa.runs30 || 0)}</b> last 30d</span></div></div>`
     + `<div class="sec"><div class="sec-label">Recent runs</div>${recent}</div>`
-    + `<div class="sec"><div class="sec-label">Skills</div>${skills}</div>`
-    + '<div class="modal-actions"><button class="btn btn-ghost" data-action="closeModal">Close</button></div>';
+    + `<div class="sec"><div class="sec-label">Skills — tap to see what each does</div>${skills}</div>`
+    + '<div class="modal-actions"><button class="btn ghost" data-action="closeModal">Close</button></div>';
 }
 
 // Sync the overlay/modal with state.modal (agent drill-down or dispatch form).
@@ -307,8 +314,10 @@ function renderModal(state) {
   }
   if (m.kind === 'agent') {
     const a = agentByKey(m.payload && m.payload.key);
+    modal.className = 'modal wide'; // agent drill-down is the wide modal in the mockup
     modal.innerHTML = a ? agentModalHtml(a, state) : '';
   } else {
+    modal.className = 'modal'; // dispatch form is the standard-width modal
     modal.innerHTML = dispatchForm(m.payload.taskType, m.payload.agent);
   }
   overlay.classList.add('open');
@@ -321,7 +330,8 @@ export function renderAgents(state, panelArg) {
   if (!panel) return;
   const status = safe(state.status, null);
   const perAgent = (status && status.perAgent) || {};
-  panel.innerHTML = `<div class="agent-grid">${roster().map((a) => cardHtml(a, perAgent)).join('')}</div>`;
+  panel.innerHTML = `<div class="agrid grow" style="align-content:center">${roster().map((a) => cardHtml(a, perAgent)).join('')}</div>`
+    + '<div class="note" style="text-align:center">Click an agent for routines, presets, recent runs, and an expandable skill list. Finance → <b>Financial Thesis</b> → just type the company.</div>';
   wirePanel(panel);
   renderModal(state);
 }
@@ -384,8 +394,8 @@ function wireOverlay(overlay) {
       return;
     }
     if (action === 'toggleSkill') {
-      const desc = overlay.querySelector(`[data-skill-desc="${cssEsc(el.dataset.skill)}"]`);
-      if (desc) desc.hidden = !desc.hidden;
+      const skl = el.closest('.skl');
+      if (skl) skl.classList.toggle('open');
       return;
     }
     if (action === 'pickWhen') {

@@ -1,53 +1,75 @@
-// Queue tab: kanban (Waiting / Approved / Scheduled) derived from normalizeQueue(status).
-// The proxy queue is FLAT — only `status==="Queued"` is actionable, so Approved/Scheduled stay
-// empty (with a Phase-2 note) unless the proxy exposes those states. Only runnow/cancel are real
-// writes; Approve/Schedule/Reschedule/Edit/notify are stubs that toast and never call postAction.
+// Queue tab: 3-column kanban (Waiting approval / Approved / Scheduled), markup ported verbatim
+// from the approved mockup and bound to live state via normalizeQueue(status). The proxy queue is
+// FLAT — only status==="Queued" lands in Waiting, so Approved/Scheduled stay empty (placeholder)
+// until the proxy exposes those states (Phase 2). Only runnow/cancel are real writes; Approve,
+// Schedule, Reschedule, Edit, and the notify checkbox are Phase-2 stubs (toast only, no postAction).
 
 import { esc, normalizeQueue, safe } from '../util.js';
 import { toast, dispatchAction } from './agents.js';
 
+
+const EMOJI = { finance: '💰', research: '🔬', health: '💪', assistant: '🧠', programming: '💻', career: '🎓' };
+const emojiFor = (key) => EMOJI[key] || '◆';
+
+// Column definitions: data-col drives delegation + tests; cls is the .kcol-h modifier; head is the
+// label markup; empty is the faint placeholder; acts(id) is the per-card action row for that lane.
 const COLS = [
-  { key: 'waiting', label: 'Waiting' },
-  { key: 'approved', label: 'Approved' },
-  { key: 'scheduled', label: 'Scheduled' },
+  {
+    key: 'waiting', col: 'waiting', cls: 'w', countId: 'nW', bodyId: 'colWaiting',
+    head: '⏳ Waiting approval', empty: 'Nothing waiting.',
+    acts: (id) => '<button class="btn sm ghost" data-action="edit" data-id="' + id + '">Edit</button>'
+      + '<button class="btn sm go" data-action="approve" data-id="' + id + '">Approve</button>'
+      + '<button class="btn sm danger" data-action="reject" data-id="' + id + '">Reject</button>',
+  },
+  {
+    key: 'approved', col: 'approved', cls: 'a', countId: 'nA', bodyId: 'colApproved',
+    head: '✓ Approved', empty: 'Nothing approved yet.',
+    acts: (id) => '<button class="btn sm ghost" data-action="edit" data-id="' + id + '">Edit</button>'
+      + '<button class="btn sm" data-action="schedule" data-id="' + id + '">Schedule →</button>'
+      + '<button class="btn sm go" data-action="runnow" data-id="' + id + '">▶ Now</button>',
+  },
+  {
+    key: 'scheduled', col: 'scheduled', cls: 's', countId: 'nS', bodyId: 'colScheduled',
+    head: '◷ Scheduled', empty: 'Nothing scheduled.',
+    acts: (id) => '<button class="btn sm ghost" data-action="edit" data-id="' + id + '">Edit</button>'
+      + '<button class="btn sm ghost" data-action="reschedule" data-id="' + id + '">Reschedule</button>'
+      + '<button class="btn sm danger" data-action="cancel" data-id="' + id + '">Cancel</button>',
+  },
 ];
 
-// Action buttons render only for the Waiting lane (the only lane the proxy actually acts on).
-// runnow/cancel are real writes; Approve/Schedule/Edit are P2 stubs (toast-only, no postAction).
-function actionsHtml(id) {
-  return '<div class="qcard-actions">'
-    + `<button class="btn btn-sm" data-action="runnow" data-id="${id}">Run now</button>`
-    + `<button class="btn btn-sm" data-action="approve" data-id="${id}">Approve</button>`
-    + `<button class="btn btn-sm" data-action="schedule" data-id="${id}">Schedule</button>`
-    + `<button class="btn btn-sm btn-ghost" data-action="edit" data-id="${id}">Edit</button>`
-    + `<button class="btn btn-sm btn-ghost" data-action="cancel" data-id="${id}">Cancel</button>`
-    + '</div>';
-}
-
-function cardHtml(item, colKey) {
+// qcard — every dynamic value through esc(); buttons carry data-id so quote-laden prompts/titles
+// can never break wiring (no inline handlers anywhere).
+function qcard(item, col) {
   const id = esc(item.id || '');
-  const slot = item.slot ? `<span class="slot-pill">${esc(item.slot)}</span>` : '';
-  return `<div class="qcard" data-id="${id}">`
-    + `<div class="qcard-head"><span class="agent-tag type-${esc(item.agent || '')}">${esc(item.agent || '')}</span>`
-    + `<span class="chip">${esc(item.model || '')}</span>${slot}</div>`
-    + `<div class="qcard-title">${esc(item.title || '')}</div>`
-    + `<div class="qcard-src">${esc(item.src || '')}</div>`
-    + `<div class="qcard-prompt">${esc(item.prompt || '')}</div>`
-    + '<label class="notify-row"><input type="checkbox" data-action="notify"'
-    + `${item.notify ? ' checked' : ''}> notify</label>`
-    + (colKey === 'waiting' ? actionsHtml(id) : '')
-    + '</div>';
+  // Icon/art/tag-color key off the AGENT type (e.g. "finance"), not the job key (e.g. "fin-thesis").
+  const agentKey = String(item.agent || '').toLowerCase();
+  const agent = esc(agentKey);
+  const agentLabel = esc(agentKey ? agentKey.charAt(0).toUpperCase() + agentKey.slice(1) : (item.agent || ''));
+  const slot = item.slot
+    ? '<div class="slotpill">◷ ' + esc(item.slot) + '</div>'
+    : '';
+  return '<div class="qcard" data-id="' + id + '"><div class="qtop">'
+    + '<div class="qic"><span>' + esc(emojiFor(agentKey)) + '</span>'
+    + '<img src="agent-art/' + agent + '.png" alt="" onerror="this.style.display=\'none\'"></div>'
+    + '<div style="flex:1;min-width:0"><div class="qtitle">' + esc(item.title || '') + '</div>'
+    + '<div class="qmeta"><span class="tag t-' + agent + '">' + agentLabel + '</span>'
+    + '<span class="chip ' + esc(item.tier || '') + '">' + esc(item.model || '') + '</span>'
+    + '<span class="src">' + esc(item.src || '') + '</span></div></div>'
+    + '</div>'
+    + '<div class="qprompt">' + esc(item.prompt || '') + '</div>' + slot
+    + '<label class="qnotify"><input type="checkbox" data-action="notify"'
+    + (item.notify ? ' checked' : '') + '> 🔔 Notify me on completion</label>'
+    + '<div class="qacts">' + col.acts(id) + '</div></div>';
 }
 
 function colHtml(col, items) {
-  const note = (col.key !== 'waiting' && items.length === 0)
-    ? '<div class="empty-state">Phase 2 — proxy has no such state yet.</div>'
-    : (items.length === 0 ? '<div class="empty-state">Empty.</div>' : items.map((it) => cardHtml(it, col.key)).join(''));
-  // dynamic rebalance: fullest lane grows, empty lanes shrink.
-  const grow = items.length === 0 ? 1 : items.length + 1;
-  return `<div class="kcol" data-col="${col.key}" style="flex-grow:${grow}">`
-    + `<div class="kcol-head">${esc(col.label)} <span class="count">${items.length}</span></div>`
-    + `<div class="kcol-body">${note}</div></div>`;
+  const body = items.length
+    ? items.map((it) => qcard(it, col)).join('')
+    : '<div class="qempty">' + esc(col.empty) + '</div>';
+  return '<div class="kcol" data-col="' + col.col + '">'
+    + '<div class="kcol-h ' + col.cls + '">' + col.head
+    + ' <span class="n" id="' + col.countId + '">' + items.length + '</span></div>'
+    + '<div class="kbody" id="' + col.bodyId + '">' + body + '</div></div>';
 }
 
 export function renderQueue(state, panelArg) {
@@ -55,13 +77,27 @@ export function renderQueue(state, panelArg) {
   if (!panel) return;
   const status = safe(state.status, null);
   if (!status) {
-    panel.innerHTML = '<div class="empty-state">No data yet.</div>';
+    panel.innerHTML = '<div class="qempty">No data yet.</div>';
     wireQueue(panel);
     return;
   }
-  const cols = normalizeQueue(status); // {waiting, approved, scheduled}
-  panel.innerHTML = `<div class="kanban">${COLS.map((c) => colHtml(c, cols[c.key] || [])).join('')}</div>`;
+  const cols = normalizeQueue(status); // {waiting, approved, scheduled} — never throws
+  panel.innerHTML = '<div class="kanban grow">'
+    + COLS.map((c) => colHtml(c, cols[c.key] || [])).join('')
+    + '</div>';
+  rebalance(panel, cols);
   wireQueue(panel);
+}
+
+// Dynamic column balancing (verbatim from mockup): empty lanes shrink to 0.4, populated lanes grow
+// proportional to their item count (min 2.5). Keeps Waiting prominent when Approved/Scheduled empty.
+function rebalance(panel, cols) {
+  for (const c of COLS) {
+    const el = panel.querySelector('[data-col="' + c.col + '"]');
+    if (!el) continue;
+    const count = (cols[c.key] || []).length;
+    el.style.flexGrow = count === 0 ? 0.4 : Math.max(2.5, count);
+  }
 }
 
 function wireQueue(panel) {
@@ -75,7 +111,7 @@ function wireQueue(panel) {
     if (action === 'runnow') {
       dispatchAction('runnow', { id }, 'Marked Run Now');
       markPending(el);
-    } else if (action === 'cancel') {
+    } else if (action === 'cancel' || action === 'reject') {
       dispatchAction('cancel', { id }, 'Cancelled');
       markPending(el);
     } else if (action === 'approve' || action === 'schedule' || action === 'reschedule' || action === 'edit') {
@@ -84,7 +120,7 @@ function wireQueue(panel) {
   });
   // notify checkbox is visual-only (Phase 2) — never persists.
   panel.addEventListener('change', (e) => {
-    if (e.target.closest('[data-action="notify"]')) toast('Notify rules are Phase 2');
+    if (e.target.closest('[data-action="notify"]')) toast('Phase 2');
   });
 }
 

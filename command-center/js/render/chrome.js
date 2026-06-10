@@ -5,11 +5,14 @@
 
 import { getState, setState } from '../state.js';
 import { esc, normalizeQueue, safe, isStale } from '../util.js';
+import { countdown } from './overview.js';
+import { tick } from '../poll.js';
+import { openSettings } from './settings.js';
 
 const TABS = ['overview', 'chat', 'agents', 'schedule', 'queue', 'cost'];
 const TAB_LABELS = {
-  overview: 'Overview', chat: 'Chat', agents: 'Agents',
-  schedule: 'Schedule', queue: 'Queue', cost: 'Cost',
+  overview: '▦ Overview', chat: '✦ Chat', agents: '◎ Agents',
+  schedule: '◷ Schedule', queue: '⚑ Queue', cost: '▤ Cost',
 };
 const AGENT_COUNT = 6; // fixed inline roster (section 05)
 
@@ -31,8 +34,12 @@ export function renderTopbar(state) {
   const gatewayUp = state.status != null && !state.polling.lastError;
 
   const pct = spend && spend.max && num(spend.max.pctUsed) ? `${esc(spend.max.pctUsed)}%` : '—';
-  const week = spend && spend.openrouter && num(spend.openrouter.weekSpend)
-    ? `$${esc(spend.openrouter.weekSpend)}` : '—';
+  const weekCap = spend && spend.openrouter && num(spend.openrouter.weekCap)
+    ? `$${esc(spend.openrouter.weekCap)}` : null;
+  const weekDisplay = weekCap && num(spend.openrouter.weekSpend)
+    ? `$${esc(spend.openrouter.weekSpend)}/${weekCap}` : '—';
+  const resetAt = spend && spend.max && spend.max.resetAt ? spend.max.resetAt : null;
+  const resetText = resetAt && countdown(resetAt) !== '—' ? ` · resets ${countdown(resetAt)}` : '';
   const stale = spend ? isStale(spend.updated, SPEND_CADENCE_MS) : false;
   const staleMark = stale ? ' <span class="stale" title="data may be stale">stale</span>' : '';
 
@@ -40,8 +47,8 @@ export function renderTopbar(state) {
     <span class="pill" id="pill-gateway">
       <span class="dot ${gatewayUp ? 'ok' : 'bad'}"></span><b>${gatewayUp ? 'Gateway up' : 'Gateway down'}</b>
     </span>
-    <span class="pill" id="pill-max"><b>Max ${pct}</b>${staleMark}</span>
-    <span class="pill" id="pill-or"><b>OR ${week}</b></span>`;
+    <span class="pill" id="pill-max">Max plan <b>${pct}</b>${resetText}${staleMark}</span>
+    <span class="pill" id="pill-or">OpenRouter wk <b>${weekDisplay}</b></span>`;
 }
 
 // ── Tabs ─────────────────────────────────────────────────────────────────────
@@ -91,6 +98,20 @@ export function initChrome() {
   const bar = document.getElementById('tabs');
   if (!bar) return;
   wired = true;
+
+  // Topbar buttons: glyphs (the mockup's ↻ / ⚙) + handlers. Refresh forces an immediate status
+  // poll; Settings opens the proxy-URL modal. Guarded so missing nodes never throw.
+  const refreshBtn = document.getElementById('btn-refresh');
+  if (refreshBtn) {
+    refreshBtn.textContent = '↻';
+    refreshBtn.addEventListener('click', () => { try { tick(); } catch { /* no poller under test */ } });
+  }
+  const settingsBtn = document.getElementById('btn-settings');
+  if (settingsBtn) {
+    settingsBtn.textContent = '⚙';
+    settingsBtn.addEventListener('click', () => openSettings());
+  }
+
   bar.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-tab]');
     if (btn) setActiveTab(btn.dataset.tab);

@@ -1,5 +1,6 @@
 // Overview tab: KPI row, quick-dispatch box, fuel gauges, and the read-only live activity feed.
-// All values route through safe()/parseRunFeed so a null/malformed status or spend renders a
+// Markup matches the approved mockup verbatim (classes ported into css/styles.css); every value
+// routes through esc()/safe()/parseRunFeed so a null/malformed status or spend renders a graceful
 // placeholder, never throws. Quick dispatch is a real P1 write via the shared dispatchAction.
 
 import { esc, safe, parseRunFeed, isStale } from '../util.js';
@@ -9,8 +10,8 @@ import { modelSelectHtml, dispatchAction, toast } from './agents.js';
 const SPEND_CADENCE_MS = 6 * 60 * 60 * 1000;
 const num = (v) => typeof v === 'number' && Number.isFinite(v);
 
-// resetAt ISO → compact "3d 4h" / "5h" / "—". Past or unparseable → "now".
-function countdown(resetAt) {
+// resetAt ISO → compact "3d 4h" / "5h" / "—". Past or unparseable → "now"/"—".
+export function countdown(resetAt) {
   if (!resetAt) return '—';
   const t = Date.parse(resetAt);
   if (Number.isNaN(t)) return '—';
@@ -21,61 +22,119 @@ function countdown(resetAt) {
   return d > 0 ? `${d}d ${h}h` : `${h}h`;
 }
 
-function kpiCard(label, value) {
-  return `<div class="kpi"><div class="kpi-val">${esc(value)}</div><div class="kpi-label">${esc(label)}</div></div>`;
+// ── KPI row (mockup: .grid.cols-4 of .box.kpi) ──────────────────────────────────
+function kpiCard(value, label, opts = {}) {
+  const style = opts.color ? ` style="color:var(--${opts.color})"` : '';
+  const delta = opts.delta
+    ? `<div class="delta ${esc(opts.deltaCls || 'muted')}">${esc(opts.delta)}</div>`
+    : '<div class="delta muted">—</div>';
+  return `<div class="box kpi"><div class="big"${style}>${esc(value)}</div>`
+    + `<div class="lbl">${esc(label)}</div>${delta}</div>`;
 }
 
 function kpiRow(status) {
   const c = (status && typeof status.counts === 'object' && status.counts) || null;
-  if (!c) return '<div class="kpi-row"><div class="empty-state">No data yet.</div></div>';
-  return '<div class="kpi-row">'
-    + kpiCard('Done today', num(c.doneToday) ? c.doneToday : '—')
-    + kpiCard('Running now', num(c.running) ? c.running : '—')
-    + kpiCard('Queued', num(c.queued) ? c.queued : '—')
-    + kpiCard('Agents healthy', num(c.agentsHealthy) ? c.agentsHealthy : '—')
+  if (!c) {
+    return '<div class="grid cols-4"><div class="box kpi"><div class="big">—</div>'
+      + '<div class="lbl">No data yet.</div><div class="delta muted">—</div></div></div>';
+  }
+  return '<div class="grid cols-4">'
+    + kpiCard(num(c.doneToday) ? c.doneToday : '—', 'Jobs completed today')
+    + kpiCard(num(c.running) ? c.running : '—', 'Running now', { color: 'running' })
+    + kpiCard(num(c.queued) ? c.queued : '—', 'Queued', { color: 'queued' })
+    + kpiCard(num(c.agentsHealthy) ? c.agentsHealthy : '—', 'Agents healthy')
     + '</div>';
 }
 
-const AGENT_OPTS = ['Finance', 'Research', 'Health', 'Assistant'];
+// ── Quick dispatch + Fuel (mockup: .grid.cols-2) ────────────────────────────────
+const AGENT_OPTS = ['Finance', 'Research', 'Health', 'Assistant', 'Programming', 'Career'];
+
 function quickDispatch() {
-  return '<div class="quick-dispatch"><div class="sec-label">Quick dispatch</div>'
-    + `<select id="ov-agent">${AGENT_OPTS.map((a) => `<option>${esc(a)}</option>`).join('')}</select>`
-    + `<select id="ov-model">${modelSelectHtml('Auto')}</select>`
-    + '<textarea id="ov-task" placeholder="Describe a one-shot job…"></textarea>'
-    + '<button class="btn btn-primary" data-action="quickDispatch">Dispatch →</button></div>';
+  const agents = AGENT_OPTS.map((a) => `<option>${esc(a)}</option>`).join('');
+  return '<div class="box">'
+    + '<div class="ptitle">Quick dispatch <span class="faint mono">→ Notion queue</span></div>'
+    + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">'
+    + `<div><label class="fld">Agent</label><select id="ov-agent">${agents}</select></div>`
+    + `<div><label class="fld">Model</label><select id="ov-model">${modelSelectHtml('Auto')}</select></div>`
+    + '</div>'
+    + '<label class="fld">Task</label>'
+    + '<textarea id="ov-task" placeholder="e.g. Pull NVDA 10-Q highlights and update the thesis tracker…"></textarea>'
+    + '<div style="display:flex;justify-content:flex-end;margin-top:11px">'
+    + '<button class="btn" data-action="quickDispatch">Dispatch →</button></div>'
+    + '</div>';
 }
 
-function gauges(spend) {
-  if (!spend) return '<div class="gauges"><div class="empty-state">No spend data yet.</div></div>';
+function fuelBox(spend) {
+  if (!spend) {
+    return '<div class="box"><div class="ptitle">Fuel <span class="faint">never get '
+      + 'maxed-out blind again</span></div><div class="muted">No spend data yet.</div></div>';
+  }
   const max = spend.max && typeof spend.max === 'object' ? spend.max : null;
   const or = spend.openrouter && typeof spend.openrouter === 'object' ? spend.openrouter : null;
   const stale = isStale(spend.updated, SPEND_CADENCE_MS)
-    ? ' <span class="stale" title="data may be stale">stale</span>' : '';
+    ? ' <span class="faint">stale</span>' : '';
+
   const pct = max && num(max.pctUsed) ? max.pctUsed : 0;
-  const maxBox = max
-    ? `<div class="gauge"><div class="gauge-donut" style="--pct:${esc(pct)}"></div>`
-      + `<div class="gauge-label">Max plan <b>${esc(pct)}%</b>${stale}<br><span class="muted">resets ${esc(countdown(max.resetAt))}</span></div></div>`
-    : '<div class="gauge"><div class="empty-state">No Max data.</div></div>';
-  const week = or && num(or.weekSpend) ? or.weekSpend : 0;
-  const cap = or && num(or.weekCap) ? or.weekCap : 0;
-  const barPct = cap > 0 ? Math.min(100, Math.round((week / cap) * 100)) : 0;
-  const orBox = or
-    ? `<div class="gauge"><div class="gauge-bar"><span style="width:${esc(barPct)}%"></span></div>`
-      + `<div class="gauge-label">OpenRouter <b>$${esc(week)}</b> / $${esc(cap)}</div></div>`
-    : '<div class="gauge"><div class="empty-state">No OpenRouter data.</div></div>';
-  return `<div class="gauges">${maxBox}${orBox}</div>`;
+  const est = max && num(max.estTokens) ? Math.round(max.estTokens / 1000) : null;
+  const cap = max && num(max.capTokens) ? Math.round(max.capTokens / 1000) : null;
+  const tokLine = (est !== null && cap !== null)
+    ? `est. ~${esc(est)}k / ${esc(cap)}k tokens this cycle`
+    : 'est. tokens unavailable';
+  const reset = max ? countdown(max.resetAt) : '—';
+  const donut = '<div class="gaugewrap" style="margin-bottom:10px">'
+    + `<div class="donut" style="background:conic-gradient(var(--running) 0% ${esc(pct)}%, `
+    + `var(--card3) ${esc(pct)}% 100%)"><span class="val">${esc(pct)}%</span></div>`
+    + '<div><div style="font-weight:600">Claude Max plan</div>'
+    + `<div class="muted" style="font-size:12px">~${esc(pct)}% of weekly capacity · `
+    + `resets in <b style="color:var(--text)">${esc(reset)}</b>${stale}</div>`
+    + `<div class="muted" style="font-size:12px">${tokLine}</div></div></div>`;
+
+  const weekSpend = or && num(or.weekSpend) ? or.weekSpend : 0;
+  const weekCap = or && num(or.weekCap) ? or.weekCap : 0;
+  const barPct = weekCap > 0 ? Math.min(100, Math.round((weekSpend / weekCap) * 100)) : 0;
+  const bar = '<div class="barrow"><div class="top"><span>OpenRouter spend (this week)</span>'
+    + `<span class="mono">$${esc(weekSpend.toFixed(2))} / $${esc(weekCap.toFixed(2))}</span></div>`
+    + `<div class="track"><div class="fill" style="width:${esc(barPct)}%;`
+    + 'background:var(--tag-finance)"></div></div></div>';
+
+  return '<div class="box"><div class="ptitle">Fuel <span class="faint">never get '
+    + `maxed-out blind again</span></div>${donut}${bar}</div>`;
+}
+
+function midGrid(spend) {
+  return `<div class="grid cols-2">${quickDispatch()}${fuelBox(spend)}</div>`;
+}
+
+// ── Live activity feed (mockup: .box.grow > .feed.grow > .row) ───────────────────
+// status string → dot class: done/success→ok, running→run, fail→fail, else ok.
+function dotClass(st) {
+  const s = String(st || '').toLowerCase();
+  if (s === 'running' || s === 'run') return 'run';
+  if (s === 'fail' || s === 'failed' || s === 'error') return 'fail';
+  if (s === 'warn' || s === 'stale') return 'warn';
+  return 'ok'; // done / success / unknown
 }
 
 function feed(status) {
   const rows = parseRunFeed(status);
-  if (!rows.length) return '<div class="activity"><div class="sec-label">Live activity</div><div class="empty-state">No recent activity.</div></div>';
-  const items = rows.map((r) => '<div class="feed-row">'
-    + `<span class="time">${esc(r.time)}</span>`
-    + `<span class="agent-tag">${esc(r.agent)}</span>`
-    + `<span class="msg">${esc(r.message)}</span>`
-    + `<span class="dot st-${esc((r.status || '').toLowerCase())}" title="${esc(r.status)}"></span>`
-    + '</div>').join('');
-  return `<div class="activity"><div class="sec-label">Live activity</div>${items}</div>`;
+  const head = '<div class="box grow"><div class="ptitle">Live activity '
+    + '<span class="faint">streaming from activity_log.md</span></div>';
+  if (!rows.length) {
+    return `${head}<div class="feed grow"><div class="muted">No recent activity.</div></div></div>`;
+  }
+  // ISO timestamp → compact HH:MM (mockup shows "09:41"); non-ISO labels (e.g. "Tue") pass through.
+  const fmtWhen = (t) => { const m = /T(\d{2}:\d{2})/.exec(String(t || '')); return m ? m[1] : String(t || ''); };
+  const items = rows.map((r) => {
+    const agentKey = String(r.agent || '').toLowerCase();
+    const agentLabel = agentKey ? agentKey.charAt(0).toUpperCase() + agentKey.slice(1) : '—';
+    return '<div class="row">'
+      + `<div class="when mono">${esc(fmtWhen(r.time))}</div>`
+      + `<div class="msg"><span class="tag t-${esc(agentKey)}">${esc(agentLabel)}</span> `
+      + `&nbsp;${esc(r.message)}</div>`
+      + `<span class="dot ${dotClass(r.status)}"></span>`
+      + '</div>';
+  }).join('');
+  return `${head}<div class="feed grow">${items}</div></div>`;
 }
 
 export function renderOverview(state, panelArg) {
@@ -83,7 +142,7 @@ export function renderOverview(state, panelArg) {
   if (!panel) return;
   const status = safe(state.status, null);
   const spend = safe(state.spend, null);
-  panel.innerHTML = kpiRow(status) + quickDispatch() + gauges(spend) + feed(status);
+  panel.innerHTML = kpiRow(status) + midGrid(spend) + feed(status);
   wireOverview(panel);
 }
 
