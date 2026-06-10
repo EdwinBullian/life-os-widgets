@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Topbar: pills (gateway / Max % / OpenRouter $) are populated by render/chrome.js (section 04). -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      <div>
+        <h1>AI Command Center</h1>
+        <div class="sub">Agent operations</div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <!-- Pills (gateway / Max % / OpenRouter $) are rendered into #pills by render/chrome.js. -->
+    <span id="pills"></span>
+    <button class="iconbtn" id="btn-refresh" title="Refresh" aria-label="Refresh"></button>
+    <button class="iconbtn" id="btn-settings" title="Settings" aria-label="Settings"></button>
+  </div>
+
+  <!-- Tab bar: accessible tablist. Buttons + switching are rendered by render/chrome.js (section 04). -->
+  <div class="tabs" id="tabs" role="tablist" aria-label="Command Center sections"></div>
+
+  <!-- Six fixed-height panels (height: var(--app-h)). Content rendered in sections 04-06. -->
+  <!-- Visibility is owned solely by CSS (.panel{display:none} / .panel.active{display:flex});
+       section 04's render() toggles .active. No `hidden` attr, to avoid a dual-mechanism desync. -->
+  <div class="panel active" id="overview" role="tabpanel" aria-labelledby="tab-overview"></div>
+  <div class="panel" id="chat" role="tabpanel" aria-labelledby="tab-chat"></div>
+  <div class="panel" id="agents" role="tabpanel" aria-labelledby="tab-agents"></div>
+  <div class="panel" id="schedule" role="tabpanel" aria-labelledby="tab-schedule"></div>
+  <div class="panel" id="queue" role="tabpanel" aria-labelledby="tab-queue"></div>
+  <div class="panel" id="cost" role="tabpanel" aria-labelledby="tab-cost"></div>
+
+  <!-- Overlay + modal container (populated by render/agents.js etc.). CSS .overlay.open drives visibility. -->
+  <div class="overlay" id="overlay">
+    <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "updated": "2026-06-09T11:00:00-07:00",
+  "dailyBaseK": 50,
+  "week": [
+    { "day": 1, "hour": 6, "name": "Daily Briefing", "agent": "assistant", "model": "claude-haiku-4-5", "tier": "budget", "tok": 18000 },
+    { "day": 1, "hour": 9, "name": "Finance Thesis", "agent": "finance", "model": "claude-opus-4-8", "tier": "premium", "tok": 120000 },
+    { "day": 2, "hour": 9, "name": "Research Sweep", "agent": "research", "model": "claude-sonnet-4-6", "tier": "standard", "tok": 90000 },
+    { "day": 3, "hour": 9, "name": "Market Scan", "agent": "finance", "model": "claude-sonnet-4-6", "tier": "standard", "tok": 70000 },
+    { "day": 4, "hour": 9, "name": "Health Review", "agent": "health", "model": "claude-haiku-4-5", "tier": "budget", "tok": 40000 },
+    { "day": 5, "hour": 9, "name": "Career Check", "agent": "career", "model": "deepseek-chat", "tier": "budget", "tok": 35000 },
+    { "day": 0, "hour": 18, "name": "Weekly Review", "agent": "assistant", "model": "claude-opus-4-8", "tier": "premium", "tok": 110000 }
+  ],
+  "dailies": ["Daily Briefing", "Inbox Triage", "Calendar Sync"]
+}

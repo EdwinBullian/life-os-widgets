@@ -1,0 +1,20 @@
+{
+  "updated": "2026-06-09T11:00:00-07:00",
+  "max": { "pctUsed": 38, "resetAt": "2026-06-12T00:00:00-07:00", "estTokens": 1900000, "capTokens": 5000000 },
+  "openrouter": { "weekSpend": 6.42, "weekCap": 25, "projectedMonth": 27.5 },
+  "byModel": [
+    { "name": "claude-opus-4-8", "spend": 3.10, "tier": "premium" },
+    { "name": "claude-sonnet-4-6", "spend": 1.85, "tier": "standard" },
+    { "name": "deepseek-chat", "spend": 0.92, "tier": "budget" },
+    { "name": "claude-haiku-4-5", "spend": 0.55, "tier": "budget" }
+  ],
+  "byAgent": [
+    { "type": "finance", "spend": 1.95 },
+    { "type": "research", "spend": 1.60 },
+    { "type": "health", "spend": 0.70 },
+    { "type": "assistant", "spend": 1.05 },
+    { "type": "programming", "spend": 0.82 },
+    { "type": "career", "spend": 0.30 }
+  ],
+  "tokensOffloadedWeek": 1240000
+}
