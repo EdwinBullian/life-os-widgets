@@ -10,24 +10,16 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Topbar: pills (gateway / Max % / OpenRouter $) are populated by render/chrome.js (section 04). -->
+  <!-- Single header row: tabs on the left, status pills + refresh/settings on the right. The
+       Notion page title above the embed serves as the heading, so no in-widget brand block. -->
   <div class="topbar">
-    <div class="brand">
-      <div class="logo"></div>
-      <div>
-        <h1>AI Command Center</h1>
-        <div class="sub">AgentOS · embedded in Notion</div>
-      </div>
-    </div>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Command Center sections"></div>
     <div class="spacer"></div>
     <!-- Pills (gateway / Max % / OpenRouter $) are rendered into #pills by render/chrome.js. -->
     <span id="pills"></span>
     <button class="iconbtn" id="btn-refresh" title="Refresh" aria-label="Refresh"></button>
     <button class="iconbtn" id="btn-settings" title="Settings" aria-label="Settings"></button>
   </div>
-
-  <!-- Tab bar: accessible tablist. Buttons + switching are rendered by render/chrome.js (section 04). -->
-  <div class="tabs" id="tabs" role="tablist" aria-label="Command Center sections"></div>
 
   <!-- Six fixed-height panels (height: var(--app-h)). Content rendered in sections 04-06. -->
   <!-- Visibility is owned solely by CSS (.panel{display:none} / .panel.active{display:flex});
