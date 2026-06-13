@@ -341,24 +341,84 @@
       "Supplements": true
     },
     "2026-06-05": {
-      "10k Steps": false,
-      "Calories": false,
-      "Clean": false,
+      "10k Steps": true,
+      "Calories": true,
+      "Clean": true,
       "Lift": false,
-      "Meditate": false,
-      "Screen Time": false,
-      "Stretch": false,
-      "Supplements": false
+      "Meditate": true,
+      "Screen Time": true,
+      "Stretch": true,
+      "Supplements": true
     },
     "2026-06-06": {
       "10k Steps": false,
-      "Calories": false,
-      "Clean": false,
-      "Lift": false,
-      "Meditate": false,
+      "Calories": true,
+      "Clean": true,
+      "Lift": true,
+      "Meditate": true,
+      "Screen Time": true,
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-06-07": {
+      "10k Steps": true,
+      "Calories": true,
+      "Clean": true,
+      "Lift": true,
+      "Meditate": true,
+      "Screen Time": true,
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-06-08": {
+      "10k Steps": true,
+      "Calories": true,
+      "Clean": true,
+      "Lift": true,
+      "Meditate": true,
+      "Screen Time": true,
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-06-09": {
+      "10k Steps": false,
+      "Calories": true,
+      "Clean": true,
+      "Lift": true,
+      "Meditate": true,
       "Screen Time": false,
-      "Stretch": false,
-      "Supplements": false
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-06-10": {
+      "10k Steps": true,
+      "Calories": true,
+      "Clean": false,
+      "Lift": true,
+      "Meditate": true,
+      "Screen Time": false,
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-06-11": {
+      "10k Steps": true,
+      "Calories": true,
+      "Clean": true,
+      "Lift": false,
+      "Meditate": true,
+      "Screen Time": true,
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-06-12": {
+      "10k Steps": true,
+      "Calories": true,
+      "Clean": true,
+      "Lift": true,
+      "Meditate": true,
+      "Screen Time": true,
+      "Stretch": true,
+      "Supplements": true
     }
   },
   "habits": {
@@ -517,20 +577,26 @@
     "2026-06-02": 88,
     "2026-06-03": 100,
     "2026-06-04": 88,
-    "2026-06-05": -1,
-    "2026-06-06": -1
+    "2026-06-05": 88,
+    "2026-06-06": 88,
+    "2026-06-07": 100,
+    "2026-06-08": 100,
+    "2026-06-09": 75,
+    "2026-06-10": 75,
+    "2026-06-11": 88,
+    "2026-06-12": 100
   },
-  "streak": 0,
+  "streak": 14,
   "streaks": {
-    "10k Steps": 0,
-    "Calories": 0,
-    "Clean": 0,
-    "Lift": 0,
-    "Meditate": 0,
-    "Screen Time": 0,
-    "Stretch": 0,
-    "Supplements": 0
+    "10k Steps": 3,
+    "Calories": 33,
+    "Clean": 2,
+    "Lift": 1,
+    "Meditate": 34,
+    "Screen Time": 2,
+    "Stretch": 28,
+    "Supplements": 35
   },
   "totalHabits": 8,
-  "updated": 1781266843
+  "updated": 1781349303
 }
