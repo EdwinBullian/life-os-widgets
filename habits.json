@@ -586,17 +586,17 @@
     "2026-06-11": 88,
     "2026-06-12": 100
   },
-  "streak": 14,
+  "streak": 0,
   "streaks": {
-    "10k Steps": 3,
-    "Calories": 33,
-    "Clean": 2,
-    "Lift": 1,
-    "Meditate": 34,
-    "Screen Time": 2,
-    "Stretch": 28,
-    "Supplements": 35
+    "10k Steps": 0,
+    "Calories": 0,
+    "Clean": 0,
+    "Lift": 0,
+    "Meditate": 0,
+    "Screen Time": 0,
+    "Stretch": 0,
+    "Supplements": 0
   },
   "totalHabits": 8,
-  "updated": 1781349303
+  "updated": 1781436687
 }
