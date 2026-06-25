@@ -4,6 +4,7 @@
 // each column because .caltotal lives OUTSIDE the scrollable .calscroll. Day totals come from
 // dayTotals() (in K) so the unit tests' unit math holds. Drag-drop + "New one-off" are Phase-2
 // stubs (toast only). Every dynamic value escaped via esc(); never throws on null/empty schedule.
+// v2: recentRuns section added below the tray — reads sched.recentRuns[] (max 5 rows).
 
 import { esc, hh, estCost, dayTotals, safe, isStale } from '../util.js';
 import { toast } from './agents.js';
@@ -11,11 +12,31 @@ import { toast } from './agents.js';
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 // schedule.json is regenerated ~daily; flag stale past 2×24h (isStale uses 2× cadence).
 const SCHEDULE_CADENCE_MS = 24 * 60 * 60 * 1000;
-// mockup block-height formula: min(150, round(24 + tokK*0.5)). tokK is tokens in THOUSANDS.
-const HEAVY_DAY_K = 220;
+
+const STATUS_ICON = { success: '✓', failed: '✗', partial: '~', skipped: '–', running: '⟳' };
+const STATUS_COLOR = {
+  success: 'var(--success)',
+  failed:  'var(--fail)',
+  partial: 'var(--warn)',
+  skipped: 'var(--faint)',
+  running: 'var(--running)',
+};
 
 function isSchedule(s) {
   return s && typeof s === 'object' && Array.isArray(s.week);
+}
+
+// relative-time helper (no deps)
+function relTime(isoStr) {
+  if (!isoStr) return '—';
+  const ms = Date.now() - new Date(isoStr).getTime();
+  if (ms < 0 || ms < 30000) return 'just now';
+  const m = Math.floor(ms / 60000);
+  if (m < 60) return `${m}m ago`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${h}h ago`;
+  const d = Math.floor(h / 24);
+  return `${d}d ago`;
 }
 
 // One event block. `tok` arrives RAW (e.g. 120000) → convert to K for display + height.
@@ -29,6 +50,25 @@ function eventHtml(e) {
     + `<div style="margin-top:1px"><span class="chip ${esc(e.tier || '')}">${esc(e.model || '')}</span></div>`
     + `<div class="ft"><span>≈${esc(tokK)}k tok</span>`
     + `<span>${esc(estCost({ tier: e.tier, tok: Number(e.tok) || 0 }))}</span></div></div>`;
+}
+
+function buildRecentRunsHtml(runs) {
+  if (!Array.isArray(runs) || runs.length === 0) {
+    return '<span class="faint" style="font-size:12px">No recent runs yet.</span>';
+  }
+  return runs.slice(0, 5).map((r) => {
+    const status = (r.status || 'success').toLowerCase();
+    const icon  = STATUS_ICON[status]  || '·';
+    const color = STATUS_COLOR[status] || 'var(--text)';
+    const agent = esc(r.agent || '');
+    return `<div class="rr-row">`
+      + `<span class="rr-icon" style="color:${color}">${icon}</span>`
+      + `<span class="rr-name ag-text-${agent}">${esc(r.name || r.taskId || '?')}</span>`
+      + `<span class="rr-sep faint">·</span>`
+      + `<span class="rr-agent faint">${agent}</span>`
+      + `<span class="rr-time faint">${esc(relTime(r.ranAt))}</span>`
+      + `</div>`;
+  }).join('');
 }
 
 export function renderSchedule(state, panelArg) {
@@ -79,6 +119,10 @@ export function renderSchedule(state, panelArg) {
     + `<span class="spacer"></span>`
     + `<button class="btn sm ghost" data-action="newOneOff">+ New one-off</button></div>`
     + `<div class="tray-items" id="trayItems">${trayItemsHtml}</div>`
+    + `</div>`
+    + `<div class="rr-box">`
+    + `<div class="ptitle">Recent runs <span class="faint">last 5 completed jobs</span></div>`
+    + `<div class="rr-list">${buildRecentRunsHtml(sched.recentRuns)}</div>`
     + `</div>`;
   wireSchedule(panel);
 }

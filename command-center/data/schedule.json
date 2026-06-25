@@ -1,16 +1,31 @@
 {
-  "updated": "2026-06-09T12:00:00-07:00",
-  "dailyBaseK": 50,
+  "updated": "2026-06-26T00:00:00-07:00",
+  "dailyBaseK": 150,
   "week": [
-    { "day": 0, "hour": 4, "name": "Weekly Review", "agent": "assistant", "model": "Claude Sonnet", "tier": "max", "tok": 120000 },
-    { "day": 0, "hour": 5, "name": "Weekly Schedule", "agent": "assistant", "model": "DeepSeek R1", "tier": "open", "tok": 80000 },
-    { "day": 0, "hour": 6, "name": "Health Plan (meal + workout)", "agent": "health", "model": "DeepSeek V3.2", "tier": "open", "tok": 45000 },
-    { "day": 1, "hour": 11, "name": "Finance Weekly Thesis", "agent": "finance", "model": "Claude Sonnet", "tier": "max", "tok": 250000 },
-    { "day": 2, "hour": 11, "name": "Research Weekly Project", "agent": "research", "model": "DeepSeek R1", "tier": "open", "tok": 150000 },
-    { "day": 3, "hour": 11, "name": "Market Scan", "agent": "finance", "model": "DeepSeek V3.2", "tier": "open", "tok": 60000 },
-    { "day": 4, "hour": 8, "name": "Midweek Quality Check", "agent": "assistant", "model": "DeepSeek R1", "tier": "open", "tok": 40000 },
-    { "day": 4, "hour": 11, "name": "Health Check", "agent": "health", "model": "Groq", "tier": "free", "tok": 25000 },
-    { "day": 6, "hour": 21, "name": "Health Weekly Review", "agent": "health", "model": "DeepSeek V3.2", "tier": "open", "tok": 60000 }
+    { "day": 0, "hour": 4,  "name": "Weekly Review",          "agent": "assistant", "model": "Sonnet",       "tier": "max",  "tok": 200000 },
+    { "day": 0, "hour": 5,  "name": "Weekly Schedule",         "agent": "assistant", "model": "Sonnet",       "tier": "max",  "tok": 80000  },
+    { "day": 0, "hour": 5,  "name": "Health Sunday Plan",       "agent": "health",    "model": "DeepSeek V3.2","tier": "open", "tok": 80000  },
+    { "day": 1, "hour": 8,  "name": "Salil Social Dashboard",   "agent": "assistant", "model": "Sonnet",       "tier": "max",  "tok": 80000  },
+    { "day": 1, "hour": 9,  "name": "Salil Analytics Brief",    "agent": "assistant", "model": "Sonnet",       "tier": "max",  "tok": 60000  },
+    { "day": 1, "hour": 11, "name": "Finance Weekly Thesis",    "agent": "finance",   "model": "Sonnet",       "tier": "max",  "tok": 300000 },
+    { "day": 1, "hour": 12, "name": "Shopping List Scraper 🆕", "agent": "assistant", "model": "TBD",          "tier": "open", "tok": 20000  },
+    { "day": 1, "hour": 17, "name": "Daily Finance Scan",       "agent": "finance",   "model": "DeepSeek R1",  "tier": "open", "tok": 50000  },
+    { "day": 2, "hour": 11, "name": "Research Weekly Project",  "agent": "research",  "model": "DeepSeek R1",  "tier": "open", "tok": 200000 },
+    { "day": 2, "hour": 17, "name": "Daily Finance Scan",       "agent": "finance",   "model": "DeepSeek R1",  "tier": "open", "tok": 50000  },
+    { "day": 3, "hour": 11, "name": "Market Scan",              "agent": "finance",   "model": "DeepSeek V3.2","tier": "open", "tok": 80000  },
+    { "day": 3, "hour": 17, "name": "Daily Finance Scan",       "agent": "finance",   "model": "DeepSeek R1",  "tier": "open", "tok": 50000  },
+    { "day": 4, "hour": 8,  "name": "Midweek Quality Check",    "agent": "assistant", "model": "DeepSeek R1",  "tier": "open", "tok": 40000  },
+    { "day": 4, "hour": 11, "name": "Health Midweek Sync",      "agent": "health",    "model": "Sonnet",       "tier": "max",  "tok": 30000  },
+    { "day": 4, "hour": 17, "name": "Daily Finance Scan",       "agent": "finance",   "model": "DeepSeek R1",  "tier": "open", "tok": 50000  },
+    { "day": 5, "hour": 17, "name": "Daily Finance Scan",       "agent": "finance",   "model": "DeepSeek R1",  "tier": "open", "tok": 50000  },
+    { "day": 6, "hour": 21, "name": "Health Weekly Review",     "agent": "health",    "model": "DeepSeek V3.2","tier": "open", "tok": 80000  }
   ],
-  "dailies": ["Daily Briefing", "Inbox Triage", "Calendar Sync"]
+  "dailies": ["Daily Briefing", "Media Curator", "Vitals Bar Refresh", "Finance Handoff", "Pre-Workout Alerts", "Post-Workout Analyzer"],
+  "recentRuns": [
+    { "name": "Pre-Workout Alerts",   "taskId": "workout-preworkout-checker",   "agent": "health",   "status": "success", "ranAt": "2026-06-25T15:35:01Z" },
+    { "name": "Post-Workout Analyzer","taskId": "workout-postworkout-analyzer", "agent": "health",   "status": "success", "ranAt": "2026-06-25T15:23:08Z" },
+    { "name": "Daily Finance Scan",   "taskId": "daily-finance-scan",          "agent": "finance",  "status": "success", "ranAt": "2026-06-25T15:23:07Z" },
+    { "name": "Finance Handoff",      "taskId": "finance-handoff-consumer",    "agent": "finance",  "status": "success", "ranAt": "2026-06-25T07:23:03Z" },
+    { "name": "Health Midweek Sync",  "taskId": "health-weekly-sync",          "agent": "health",   "status": "success", "ranAt": "2026-06-25T04:09:45Z" }
+  ]
 }

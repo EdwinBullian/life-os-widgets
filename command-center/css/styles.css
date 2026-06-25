@@ -163,6 +163,20 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .dragchip:active{cursor:grabbing}.dragchip .gr{color:var(--faint);font-size:13px}
 .dragchip.ag-finance{border-left-color:var(--tag-finance)}.dragchip.ag-research{border-left-color:var(--tag-research)}.dragchip.ag-health{border-left-color:var(--tag-health)}.dragchip.ag-assistant{border-left-color:var(--tag-assistant)}
 
+/* RECENT RUNS */
+.rr-box{border:1px solid var(--border);border-radius:10px;padding:10px 13px;background:var(--card)}
+.rr-list{display:flex;flex-direction:column}
+.rr-row{display:flex;align-items:center;gap:8px;font-size:11.5px;padding:5px 0;border-bottom:1px solid var(--border)}
+.rr-row:last-child{border-bottom:none}
+.rr-icon{font-weight:700;width:14px;text-align:center;flex-shrink:0;font-size:12px}
+.rr-name{font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rr-sep{margin:0 2px}
+.rr-agent{font-size:10px;text-transform:uppercase;letter-spacing:.4px}
+.rr-time{font-size:10.5px;margin-left:auto;white-space:nowrap}
+.ag-text-finance{color:var(--tag-finance)}.ag-text-health{color:var(--tag-health)}
+.ag-text-research{color:var(--tag-research)}.ag-text-assistant{color:var(--tag-assistant)}
+.ag-text-programming{color:var(--tag-programming)}.ag-text-career{color:var(--tag-career)}
+
 /* QUEUE kanban */
 .kanban{display:flex;gap:12px;flex:1;min-height:0}
 .kcol{background:var(--card2);border:1px solid var(--border);border-radius:11px;padding:10px;display:flex;flex-direction:column;min-height:0;flex:1 1 0;min-width:170px;transition:flex-grow .25s ease}
