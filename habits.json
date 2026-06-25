@@ -539,6 +539,16 @@
       "Screen Time": true,
       "Stretch": true,
       "Supplements": true
+    },
+    "2026-06-25": {
+      "10k Steps": false,
+      "Calories": false,
+      "Clean": false,
+      "Lift": false,
+      "Meditate": false,
+      "Screen Time": false,
+      "Stretch": false,
+      "Supplements": false
     }
   },
   "habits": {
@@ -716,19 +726,20 @@
     "2026-06-21": 100,
     "2026-06-22": 88,
     "2026-06-23": 88,
-    "2026-06-24": 75
+    "2026-06-24": 75,
+    "2026-06-25": -1
   },
-  "streak": 15,
+  "streak": 0,
   "streaks": {
-    "10k Steps": 1,
-    "Calories": 7,
+    "10k Steps": 0,
+    "Calories": 0,
     "Clean": 0,
     "Lift": 0,
-    "Meditate": 36,
-    "Screen Time": 14,
-    "Stretch": 7,
-    "Supplements": 36
+    "Meditate": 0,
+    "Screen Time": 0,
+    "Stretch": 0,
+    "Supplements": 0
   },
   "totalHabits": 8,
-  "updated": 1782346693
+  "updated": 1782387624
 }
