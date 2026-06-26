@@ -2,6 +2,8 @@
 // toggle (Manual | Scheduled | All). "Manual" shows the existing Notion Agent Dispatch kanban;
 // "Scheduled" shows upcoming routine runs from schedule.json sorted by next occurrence;
 // "All" shows both in a combined scrollable list.
+// NOTE: Scheduled and All views do NOT require state.status (which is null when the dispatch
+// worker is disabled). Only Manual depends on status for the kanban data.
 
 import { esc, normalizeQueue, safe } from '../util.js';
 import { toast, dispatchAction } from './agents.js';
@@ -10,8 +12,8 @@ const EMOJI = { finance: '💰', research: '🔬', health: '💪', assistant: '�
 const emojiFor = (key) => EMOJI[key] || '◆';
 
 // ── Filter state (persists across re-renders within a session) ─────────────────────────────────
-let queueFilter = 'manual'; // 'manual' | 'scheduled' | 'all'
-let _lastState = null;      // cached so filter-tab clicks can re-render without passing state
+let queueFilter = 'scheduled'; // default to Scheduled so content is visible immediately
+let _lastState = null;
 
 // Column definitions
 const COLS = [
@@ -74,9 +76,9 @@ function colHtml(col, items) {
 // ── Scheduled view helpers ────────────────────────────────────────────────────────────────────
 function nextOccurrence(dayOfWeek, hour) {
   const now = new Date();
-  const today = now.getDay(); // 0=Sun
+  const today = now.getDay();
   let d = ((dayOfWeek - today) + 7) % 7;
-  if (d === 0 && now.getHours() >= hour) d = 7; // same day but already past → next week
+  if (d === 0 && now.getHours() >= hour) d = 7;
   const next = new Date(now);
   next.setDate(now.getDate() + d);
   next.setHours(hour, 0, 0, 0);
@@ -131,7 +133,7 @@ function renderScheduledView(schedule) {
   return '<div class="sched-list grow">'
     + (rows.length
         ? rows.map(schedRowHtml).join('')
-        : '<div class="qempty">No scheduled runs in schedule data.</div>')
+        : '<div class="qempty">No schedule data loaded yet.</div>')
     + '</div>';
 }
 
@@ -170,21 +172,34 @@ export function renderQueue(state, panelArg) {
   const panel = panelArg || document.getElementById('queue');
   if (!panel) return;
   _lastState = state;
+
+  // Scheduled view: never needs status — render directly from schedule data.
+  if (queueFilter === 'scheduled') {
+    panel.innerHTML = filterBarHtml() + renderScheduledView(state.schedule);
+    wireQueue(panel);
+    return;
+  }
+
+  // All view: show schedule regardless; include manual cols if status available.
+  if (queueFilter === 'all') {
+    const status = safe(state.status, null);
+    const cols = status ? normalizeQueue(status) : { waiting: [], approved: [], scheduled: [] };
+    panel.innerHTML = filterBarHtml() + renderAllView(cols, state.schedule);
+    wireQueue(panel);
+    return;
+  }
+
+  // Manual view: depends on status.
   const status = safe(state.status, null);
   if (!status) {
-    panel.innerHTML = filterBarHtml() + '<div class="qempty" style="margin-top:20px">No data yet.</div>';
+    panel.innerHTML = filterBarHtml()
+      + '<div class="qempty" style="margin-top:20px">No manual jobs queued.<br><span style="font-size:11px">Switch to Scheduled to see upcoming routine runs.</span></div>';
     wireQueue(panel);
     return;
   }
   const cols = normalizeQueue(status);
-  if (queueFilter === 'scheduled') {
-    panel.innerHTML = filterBarHtml() + renderScheduledView(state.schedule);
-  } else if (queueFilter === 'all') {
-    panel.innerHTML = filterBarHtml() + renderAllView(cols, state.schedule);
-  } else {
-    panel.innerHTML = filterBarHtml() + renderManualView(cols);
-    rebalance(panel, cols);
-  }
+  panel.innerHTML = filterBarHtml() + renderManualView(cols);
+  rebalance(panel, cols);
   wireQueue(panel);
 }
 
@@ -203,7 +218,6 @@ function wireQueue(panel) {
   if (panel.__queueWired) return;
   panel.__queueWired = true;
   panel.addEventListener('click', (e) => {
-    // Filter tab switch — re-render with updated filter
     const ftab = e.target.closest('[data-qf]');
     if (ftab) {
       queueFilter = ftab.dataset.qf;
