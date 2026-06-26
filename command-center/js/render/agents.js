@@ -24,9 +24,7 @@ function firstWords(s, n) {
   return w.length > 48 ? `${w.slice(0, 48)}…` : w;
 }
 
-// ── FORMS — dispatch field schemas keyed by taskType. Mockup forms ported verbatim;
-// DCF / Heavy {Max,Breadth,Depth} Research / Daily Briefing added so the authoritative
-// routine sets (§4.3) each resolve to a real form. ───────────────────────────────────────────
+// ── FORMS — dispatch field schemas keyed by taskType. ───────────────────────────────────────
 export const FORMS = {
   'Financial Thesis': { agent: 'Finance', icon: '💰', sub: 'Full thesis + DCF + comps. Numbers get a review flag.', titleTpl: (v) => `Thesis — ${v.company || 'company'}`, fields: [{ k: 'company', label: 'Company or ticker', req: true, ph: 'e.g. Palantir / PLTR' }, { k: 'angle', label: 'Angle or focus', hint: 'optional', ph: 'e.g. AI defense moat' }, { k: 'notes', label: 'Anything else', hint: 'optional', type: 'textarea', ph: '' }] },
   DCF: { agent: 'Finance', icon: '🧮', sub: 'Standalone DCF valuation with a comps-informed terminal multiple.', titleTpl: (v) => `DCF — ${v.company || 'company'}`, fields: [{ k: 'company', label: 'Company or ticker', req: true, ph: 'e.g. Nvidia / NVDA' }, { k: 'assumptions', label: 'Key assumptions', hint: 'optional', type: 'textarea', ph: 'growth, margins, WACC if you have a view' }] },
@@ -44,7 +42,12 @@ export const FORMS = {
   'Daily Briefing': { agent: 'Assistant', icon: '🌅', sub: 'Builds your morning briefing from calendar + tasks + inboxes.', titleTpl: () => 'Daily Briefing', fields: [{ k: 'focus', label: 'Anything to emphasize', hint: 'optional', type: 'textarea', ph: 'e.g. recruiting deadlines, today only' }] },
   'Calendar Edit': { agent: 'Assistant', icon: '📆', sub: 'Adds / moves / removes events (PST).', titleTpl: (v) => `Calendar — ${firstWords(v.changes, 4)}`, fields: [{ k: 'changes', label: 'What to change', req: true, type: 'textarea', ph: 'e.g. add gym 6-7pm Tue & Thu, move dentist to Fri 3pm' }, { k: 'dates', label: 'Date(s)', hint: 'optional', ph: '' }] },
   'Quick Task': { agent: 'Assistant', icon: '✅', sub: 'Does the small thing, or files a task.', titleTpl: (v) => firstWords(v.task, 6), fields: [{ k: 'task', label: 'Task', req: true, type: 'textarea', ph: 'e.g. reorganize my Downloads by file type' }] },
-  Custom: { agent: '', icon: '✨', sub: 'Free-form one-shot prompt.', titleTpl: (v) => firstWords(v.prompt, 6), fields: [{ k: 'agent', label: 'Agent', type: 'select', opts: ['Finance', 'Health', 'Research', 'Assistant'] }, { k: 'prompt', label: 'Prompt', req: true, type: 'textarea', ph: 'Describe exactly what you want done.' }] },
+  'Social Dashboard': { agent: 'Business', icon: '📊', sub: 'Generates the weekly Salil Group social analytics dashboard via Supermetrics.', titleTpl: (v) => `Social Dashboard${v.account ? ` — ${v.account}` : ''}`, fields: [{ k: 'account', label: 'Account / page', hint: 'optional', ph: 'e.g. Salil Riverside' }, { k: 'notes', label: 'Notes', hint: 'optional', type: 'textarea', ph: '' }] },
+  'Analytics Brief': { agent: 'Business', icon: '📈', sub: 'Generates the weekly analytics brief with key insights and recommendations.', titleTpl: (v) => `Analytics Brief${v.account ? ` — ${v.account}` : ''}`, fields: [{ k: 'account', label: 'Account / page', hint: 'optional', ph: 'e.g. Salil Riverside' }, { k: 'period', label: 'Period', hint: 'optional', ph: 'e.g. last 7 days' }, { k: 'notes', label: 'Notes', hint: 'optional', type: 'textarea', ph: '' }] },
+  'Content Draft': { agent: 'Marketing', icon: '✍️', sub: 'Drafts marketing content for any channel in your brand voice.', titleTpl: (v) => `Content — ${v.type || 'post'}`, fields: [{ k: 'type', label: 'Content type', req: true, ph: 'e.g. Instagram post, blog post, email' }, { k: 'topic', label: 'Topic or brief', req: true, type: 'textarea', ph: '' }, { k: 'tone', label: 'Tone', hint: 'optional', ph: 'e.g. professional, casual, playful' }] },
+  'Campaign Plan': { agent: 'Marketing', icon: '📣', sub: 'Full campaign brief with objectives, channel strategy, and week-by-week content calendar.', titleTpl: (v) => `Campaign — ${v.goal || ''}`, fields: [{ k: 'goal', label: 'Campaign goal', req: true, ph: 'e.g. Q3 product launch, brand awareness' }, { k: 'audience', label: 'Target audience', hint: 'optional', ph: '' }, { k: 'channels', label: 'Channels', hint: 'optional', ph: 'e.g. Instagram, email, TikTok' }, { k: 'notes', label: 'Notes', hint: 'optional', type: 'textarea', ph: '' }] },
+  'SEO Audit': { agent: 'Marketing', icon: '🔍', sub: 'Comprehensive SEO audit with keyword research, content gaps, and a prioritized action plan.', titleTpl: (v) => `SEO Audit — ${v.site || ''}`, fields: [{ k: 'site', label: 'Site or URL', req: true, ph: 'e.g. salilriverside.com' }, { k: 'focus', label: 'Focus area', hint: 'optional', ph: 'e.g. local SEO, content gaps, competitor keywords' }] },
+  Custom: { agent: '', icon: '✨', sub: 'Free-form one-shot prompt.', titleTpl: (v) => firstWords(v.prompt, 6), fields: [{ k: 'agent', label: 'Agent', type: 'select', opts: ['Finance', 'Health', 'Research', 'Assistant', 'Business', 'Marketing'] }, { k: 'prompt', label: 'Prompt', req: true, type: 'textarea', ph: 'Describe exactly what you want done.' }] },
 };
 
 // ── SKILL_DESC — slash-command → one-line description (skill chip accordion). ──────────────────
@@ -98,10 +101,20 @@ export const SKILL_DESC = {
   '/linkedin': 'LinkedIn posts and profile copy in your voice.',
   '/personal-statement': 'Personal statement / application essay.',
   '/voice': 'Calibrate writing to your personal voice.',
+  'Social Dashboard': 'Generate the weekly Salil Group social analytics dashboard.',
+  'Analytics Brief': 'Generate the weekly analytics brief with key insights.',
+  'Supermetrics': 'Pull marketing and analytics data via Supermetrics connectors.',
+  '/brand-review': 'Review content against your brand voice and style guide.',
+  '/campaign-plan': 'Full campaign brief with objectives, channel strategy, and content calendar.',
+  '/competitive-brief': 'Competitive positioning and messaging comparison with content gaps.',
+  '/content-creation': 'Draft marketing content across channels — blog, social, email, landing pages.',
+  '/draft-content': 'Draft and refine copy for any channel or format.',
+  '/email-sequence': 'Design multi-email drip sequences with timing and branching logic.',
+  '/performance-report': 'Marketing performance report with trend analysis and recommendations.',
+  '/seo-audit': 'SEO audit with keyword research, content gaps, and prioritized action plan.',
 };
 
-// ── Roster — six agents. routines/presets are OBJECTS (the §4.3 test guards against
-// regressing to bare strings, which would break every dispatch/preset button). ─────────────────
+// ── Roster — eight agents. ─────────────────────────────────────────────────────────────────
 export function buildRoster() {
   return [
     {
@@ -159,6 +172,24 @@ export function buildRoster() {
       skills: ['/cover-letter', '/cold-outreach', '/business', '/linkedin', '/personal-statement', '/voice'],
       routines: [], presets: [], displayOnly: true, health: 'gray', ht: 'on demand',
     },
+    {
+      key: 'business', name: 'Business Agent', type: 'Business', icon: '🏢',
+      desc: 'Client work and reporting for The Salil Group. Runs weekly social dashboards and analytics briefs via Supermetrics; handles client-facing output and account management.',
+      skills: ['Social Dashboard', 'Analytics Brief', 'Supermetrics', '/brand-review', '/campaign-plan'],
+      routines: [{ t: 'Social Dashboard', tt: 'Social Dashboard' }, { t: 'Analytics Brief', tt: 'Analytics Brief' }, { t: 'Custom', tt: 'Custom', custom: true }],
+      presets: [
+        { label: 'Salil weekly social brief', taskType: 'Analytics Brief', details: 'Account: Salil Riverside\nPeriod: last 7 days' },
+      ],
+      displayOnly: false, health: 'gray', ht: 'no runs yet',
+    },
+    {
+      key: 'marketing', name: 'Marketing Agent', type: 'Marketing', icon: '📣',
+      desc: 'Content strategy, social media, and campaign analytics. Drafts posts and campaigns, reviews brand voice, and runs SEO audits. Pairs with the Business agent for client accounts.',
+      skills: ['/content-creation', '/draft-content', '/campaign-plan', '/brand-review', '/email-sequence', '/seo-audit', '/competitive-brief', '/performance-report'],
+      routines: [{ t: 'Content Draft', tt: 'Content Draft' }, { t: 'Campaign Plan', tt: 'Campaign Plan' }, { t: 'SEO Audit', tt: 'SEO Audit' }, { t: 'Custom', tt: 'Custom', custom: true }],
+      presets: [],
+      displayOnly: false, health: 'gray', ht: 'no runs yet',
+    },
   ];
 }
 
@@ -187,7 +218,6 @@ export function toast(msg) {
 
 // Fire a write action, toast, then schedule the fast re-poll. Never throws into the handler.
 export function dispatchAction(action, params, label) {
-  // Call postAction synchronously (so the write fires immediately), then handle its promise.
   try {
     postAction(action, params)
       .then(() => { toast(label || 'Done'); })
@@ -198,7 +228,7 @@ export function dispatchAction(action, params, label) {
   try { repollSoon(); } catch { /* no poller under test — ignore */ }
 }
 
-// ── Shared dispatch form (§6.3.1) — returns modal HTML for a taskType. ─────────────────────────
+// ── Shared dispatch form (§6.3.1) ─────────────────────────────────────────────────────────────
 export function dispatchForm(jobType, presetAgent) {
   const f = FORMS[jobType];
   if (!f) return '';
@@ -229,16 +259,13 @@ export function dispatchForm(jobType, presetAgent) {
     + '<button type="submit" class="btn" data-action="submitDispatch">Dispatch →</button></div></form>';
 }
 
-// ── Roster grid card (markup ported verbatim from the mockup: .acard, border-top accent,
-// emoji-behind-PNG image, health dot + text, 7-skill skillrow with +N overflow). ───────────────
+// ── Roster grid card ────────────────────────────────────────────────────────────────────────────
 function cardHtml(a, perAgent) {
   const live = perAgent && perAgent[a.key] && perAgent[a.key].health;
   const dot = healthDot(live || a.health);
   const healthText = live ? dot.label : a.ht;
   const chips = a.skills.slice(0, 7).map((s) => `<span class="chip">${esc(s)}</span>`).join('')
     + (a.skills.length > 7 ? `<span class="chip">+${a.skills.length - 7}</span>` : '');
-  // Image path is relative to the document (index.html at the widget root), NOT this module —
-  // so it must be "agent-art/…", never "../agent-art/…" (which would escape the widget root).
   return `<div class="acard${a.displayOnly ? ' display-only' : ''}" style="border-top:3px solid var(--tag-${esc(a.key)})" data-id="${esc(a.key)}" data-action="openAgent" role="button" tabindex="0">`
     + `<div class="card-img-wrap"><span class="emoji-fallback">${esc(a.icon)}</span>`
     + `<img class="card-img" src="agent-art/${esc(a.key)}.png" alt="" onerror="this.style.display='none'"></div>`
@@ -265,7 +292,7 @@ function agentModalHtml(a, state) {
   const controls = a.displayOnly ? '' : (
     '<div class="profile-ctl">'
     + `<span class="mini-field">Default model <select data-action="setModel" data-id="${esc(a.key)}">${modelSelectHtml(curModel)}</select></span>`
-    + `<button class="agent-toggle${paused ? ' paused' : ''}" data-action="togglePause" data-id="${esc(a.key)}">`
+    + `<button class="agent-toggle${paused ? ' paused' : ''}" data-action="togglePause" data-id="${esc(a.key)}">` 
     + `${paused ? '▶ Resume agent' : '⏸ Pause agent'}</button></div>`
   );
   const routines = a.routines.length
@@ -284,7 +311,6 @@ function agentModalHtml(a, state) {
   const recent = (pa.recent && pa.recent.length)
     ? `<div class="list">${pa.recent.map((r) => `<div class="lrow"><span class="st st-${esc((r.status || '').toLowerCase())}">${esc(r.status || '')}</span><span class="grow">${esc(r.title || 'run')}</span><span class="time">${esc(r.when || '')}</span></div>`).join('')}</div>`
     : '<div class="muted" style="font-size:12px">No runs logged yet.</div>';
-  // Skill accordion: mockup .skillacc > .skl (toggles .open) > .skl-h (label + .caret) + .skl-b (desc).
   const skills = `<div class="skillacc">${a.skills.map((s) => `<div class="skl" data-skill="${esc(s)}"><div class="skl-h" data-action="toggleSkill" data-skill="${esc(s)}">${esc(s)}<span class="caret">▶</span></div><div class="skl-b">${esc(SKILL_DESC[s] || 'Skill.')}</div></div>`).join('')}</div>`;
 
   return `<div class="modal-head"><div class="modal-icon"><span>${esc(a.icon)}</span>`
@@ -301,7 +327,6 @@ function agentModalHtml(a, state) {
     + '<div class="modal-actions"><button class="btn ghost" data-action="closeModal">Close</button></div>';
 }
 
-// Sync the overlay/modal with state.modal (agent drill-down or dispatch form).
 function renderModal(state) {
   const overlay = document.getElementById('overlay');
   const modal = document.getElementById('modal');
@@ -314,32 +339,29 @@ function renderModal(state) {
   }
   if (m.kind === 'agent') {
     const a = agentByKey(m.payload && m.payload.key);
-    modal.className = 'modal wide'; // agent drill-down is the wide modal in the mockup
+    modal.className = 'modal wide';
     modal.innerHTML = a ? agentModalHtml(a, state) : '';
   } else {
-    modal.className = 'modal'; // dispatch form is the standard-width modal
+    modal.className = 'modal';
     modal.innerHTML = dispatchForm(m.payload.taskType, m.payload.agent);
   }
   overlay.classList.add('open');
   wireOverlay(overlay);
 }
 
-// ── renderAgents — roster grid into the panel + modal sync. ────────────────────────────────────
+// ── renderAgents — roster grid (4-wide × 2-row for 8 agents) ─────────────────────────────────
 export function renderAgents(state, panelArg) {
   const panel = panelArg || document.getElementById('agents');
   if (!panel) return;
   const status = safe(state.status, null);
   const perAgent = (status && status.perAgent) || {};
-  panel.innerHTML = `<div class="agrid grow" style="align-content:center">${roster().map((a) => cardHtml(a, perAgent)).join('')}</div>`
+  panel.innerHTML = `<div class="agrid grow" style="align-content:start">${roster().map((a) => cardHtml(a, perAgent)).join('')}</div>`
     + '<div class="note" style="text-align:center">Click an agent for routines, presets, recent runs, and an expandable skill list. Finance → <b>Financial Thesis</b> → just type the company.</div>';
   wirePanel(panel);
   renderModal(state);
 }
 
-// ── Event delegation ────────────────────────────────────────────────────────────────────────
-// Roster-card clicks live on the panel; modal/form interactions live on the overlay. One
-// delegated listener each, bound once per element. data-action drives every branch — no inline
-// handlers, so dynamic text with quotes (escaped via esc) can never break or inject wiring.
+// ── Event delegation ──────────────────────────────────────────────────────────────────────────
 function wirePanel(panel) {
   if (panel.__agentsWired) return;
   panel.__agentsWired = true;
@@ -359,9 +381,6 @@ function wirePanel(panel) {
   });
 }
 
-// Invariant: section-04's chrome must NOT recreate the #overlay element — this one-time
-// guard binds the listener once and relies on the same overlay node persisting across
-// renderModal() innerHTML swaps. If #overlay is ever replaced, modal buttons go dead.
 function wireOverlay(overlay) {
   if (overlay.__agentsWired) return;
   overlay.__agentsWired = true;
@@ -369,7 +388,7 @@ function wireOverlay(overlay) {
   const close = () => { setState({ modal: null }); renderModal(getState()); };
 
   overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) { close(); return; } // click backdrop to close
+    if (e.target === overlay) { close(); return; }
     const el = e.target.closest('[data-action]');
     if (!el) return;
     const action = el.dataset.action;
@@ -421,7 +440,6 @@ function wireOverlay(overlay) {
 }
 
 function agentTypeOf(key) { const a = agentByKey(key); return a ? a.type : key; }
-// minimal CSS.escape fallback for the skill-desc attribute selector (jsdom lacks it sometimes).
 function cssEsc(s) { return String(s).replace(/["\\]/g, '\\$&'); }
 
 function submitDispatch(form, close) {

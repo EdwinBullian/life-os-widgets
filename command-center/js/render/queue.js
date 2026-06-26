@@ -1,18 +1,19 @@
-// Queue tab: 3-column kanban (Waiting approval / Approved / Scheduled), markup ported verbatim
-// from the approved mockup and bound to live state via normalizeQueue(status). The proxy queue is
-// FLAT — only status==="Queued" lands in Waiting, so Approved/Scheduled stay empty (placeholder)
-// until the proxy exposes those states (Phase 2). Only runnow/cancel are real writes; Approve,
-// Schedule, Reschedule, Edit, and the notify checkbox are Phase-2 stubs (toast only, no postAction).
+// Queue tab: 3-column kanban (Waiting approval / Approved / Scheduled), plus a 3-way filter
+// toggle (Manual | Scheduled | All). "Manual" shows the existing Notion Agent Dispatch kanban;
+// "Scheduled" shows upcoming routine runs from schedule.json sorted by next occurrence;
+// "All" shows both in a combined scrollable list.
 
 import { esc, normalizeQueue, safe } from '../util.js';
 import { toast, dispatchAction } from './agents.js';
 
-
-const EMOJI = { finance: '💰', research: '🔬', health: '💪', assistant: '🧠', programming: '💻', career: '🎓' };
+const EMOJI = { finance: '💰', research: '🔬', health: '💪', assistant: '🧠', programming: '💻', career: '🎓', business: '🏢', marketing: '📣' };
 const emojiFor = (key) => EMOJI[key] || '◆';
 
-// Column definitions: data-col drives delegation + tests; cls is the .kcol-h modifier; head is the
-// label markup; empty is the faint placeholder; acts(id) is the per-card action row for that lane.
+// ── Filter state (persists across re-renders within a session) ─────────────────────────────────
+let queueFilter = 'manual'; // 'manual' | 'scheduled' | 'all'
+let _lastState = null;      // cached so filter-tab clicks can re-render without passing state
+
+// Column definitions
 const COLS = [
   {
     key: 'waiting', col: 'waiting', cls: 'w', countId: 'nW', bodyId: 'colWaiting',
@@ -37,11 +38,9 @@ const COLS = [
   },
 ];
 
-// qcard — every dynamic value through esc(); buttons carry data-id so quote-laden prompts/titles
-// can never break wiring (no inline handlers anywhere).
+// ── Manual view helpers ────────────────────────────────────────────────────────────────────────
 function qcard(item, col) {
   const id = esc(item.id || '');
-  // Icon/art/tag-color key off the AGENT type (e.g. "finance"), not the job key (e.g. "fin-thesis").
   const agentKey = String(item.agent || '').toLowerCase();
   const agent = esc(agentKey);
   const agentLabel = esc(agentKey ? agentKey.charAt(0).toUpperCase() + agentKey.slice(1) : (item.agent || ''));
@@ -72,28 +71,128 @@ function colHtml(col, items) {
     + '<div class="kbody" id="' + col.bodyId + '">' + body + '</div></div>';
 }
 
+// ── Scheduled view helpers ────────────────────────────────────────────────────────────────────
+function nextOccurrence(dayOfWeek, hour) {
+  const now = new Date();
+  const today = now.getDay(); // 0=Sun
+  let d = ((dayOfWeek - today) + 7) % 7;
+  if (d === 0 && now.getHours() >= hour) d = 7; // same day but already past → next week
+  const next = new Date(now);
+  next.setDate(now.getDate() + d);
+  next.setHours(hour, 0, 0, 0);
+  return next;
+}
+
+function fmtNext(date) {
+  const now = new Date();
+  const h = date.getHours();
+  const ampm = h >= 12 ? 'pm' : 'am';
+  const time = `${h % 12 || 12}${ampm}`;
+  if (date.toDateString() === now.toDateString()) return `Today ${time}`;
+  const tom = new Date(now.getTime() + 86400000);
+  if (date.toDateString() === tom.toDateString()) return `Tmrw ${time}`;
+  return `${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][date.getDay()]} ${time}`;
+}
+
+function getScheduledRows(schedule) {
+  if (!schedule || !Array.isArray(schedule.week) || !schedule.week.length) return [];
+  return schedule.week
+    .map((e) => ({ ...e, _next: nextOccurrence(Number(e.day), Number(e.hour || 0)) }))
+    .sort((a, b) => a._next - b._next);
+}
+
+function schedRowHtml(e) {
+  const agent = esc(e.agent || '');
+  return `<div class="sched-row">`
+    + `<span class="sched-when faint">${esc(fmtNext(e._next))}</span>`
+    + `<span class="sched-bar ag-${agent}"></span>`
+    + `<span class="sched-name">${esc(e.name || '')}</span>`
+    + `<span class="chip ${esc(e.tier || '')}">${esc(e.model || '')}</span>`
+    + `<span class="sched-tok faint">~${Math.round((Number(e.tok) || 0) / 1000)}k</span>`
+    + `</div>`;
+}
+
+// ── Filter bar ────────────────────────────────────────────────────────────────────────────────
+function filterBarHtml() {
+  const t = (f, label) =>
+    `<button class="q-ftab${queueFilter === f ? ' active' : ''}" data-qf="${f}">${label}</button>`;
+  return `<div class="q-filter">${t('manual','Manual')}${t('scheduled','Scheduled')}${t('all','All')}</div>`;
+}
+
+// ── View renderers ────────────────────────────────────────────────────────────────────────────
+function renderManualView(cols) {
+  return '<div class="kanban grow">'
+    + COLS.map((c) => colHtml(c, cols[c.key] || [])).join('')
+    + '</div>';
+}
+
+function renderScheduledView(schedule) {
+  const rows = getScheduledRows(schedule);
+  return '<div class="sched-list grow">'
+    + (rows.length
+        ? rows.map(schedRowHtml).join('')
+        : '<div class="qempty">No scheduled runs in schedule data.</div>')
+    + '</div>';
+}
+
+function renderAllView(cols, schedule) {
+  const rows = getScheduledRows(schedule);
+  const manual = [
+    ...(cols.waiting  || []).map((it) => ({ ...it, _src: 'waiting'  })),
+    ...(cols.approved || []).map((it) => ({ ...it, _src: 'approved' })),
+    ...(cols.scheduled|| []).map((it) => ({ ...it, _src: 'scheduled'})),
+  ];
+  const schedSection = rows.length
+    ? rows.map(schedRowHtml).join('')
+    : '<div style="padding:5px 4px;color:var(--faint);font-size:12px">No scheduled runs.</div>';
+  const manSection = manual.length
+    ? manual.map((it) => {
+        const k = esc(String(it.agent || '').toLowerCase());
+        return `<div class="sched-row">`
+          + `<span class="sched-when" style="color:var(--queued);font-size:10px;text-transform:uppercase;letter-spacing:.4px">Manual</span>`
+          + `<span class="sched-bar ag-${k}"></span>`
+          + `<span class="sched-name">${esc(it.title || '')}</span>`
+          + `<span class="chip ${esc(it.tier || '')}">${esc(it.model || '')}</span>`
+          + `<span class="faint" style="font-size:10px">${esc(it._src || '')}</span>`
+          + `</div>`;
+      }).join('')
+    : '<div style="padding:5px 4px;color:var(--faint);font-size:12px">No manual jobs queued.</div>';
+  return '<div class="sched-list grow">'
+    + '<div class="q-section-head">Upcoming routine runs</div>'
+    + schedSection
+    + '<div class="q-section-head" style="margin-top:12px">Manual dispatch queue</div>'
+    + manSection
+    + '</div>';
+}
+
+// ── renderQueue ────────────────────────────────────────────────────────────────────────────────
 export function renderQueue(state, panelArg) {
   const panel = panelArg || document.getElementById('queue');
   if (!panel) return;
+  _lastState = state;
   const status = safe(state.status, null);
   if (!status) {
-    panel.innerHTML = '<div class="qempty">No data yet.</div>';
+    panel.innerHTML = filterBarHtml() + '<div class="qempty" style="margin-top:20px">No data yet.</div>';
     wireQueue(panel);
     return;
   }
-  const cols = normalizeQueue(status); // {waiting, approved, scheduled} — never throws
-  panel.innerHTML = '<div class="kanban grow">'
-    + COLS.map((c) => colHtml(c, cols[c.key] || [])).join('')
-    + '</div>';
-  rebalance(panel, cols);
+  const cols = normalizeQueue(status);
+  if (queueFilter === 'scheduled') {
+    panel.innerHTML = filterBarHtml() + renderScheduledView(state.schedule);
+  } else if (queueFilter === 'all') {
+    panel.innerHTML = filterBarHtml() + renderAllView(cols, state.schedule);
+  } else {
+    panel.innerHTML = filterBarHtml() + renderManualView(cols);
+    rebalance(panel, cols);
+  }
   wireQueue(panel);
 }
 
-// Dynamic column balancing (verbatim from mockup): empty lanes shrink to 0.4, populated lanes grow
-// proportional to their item count (min 2.5). Keeps Waiting prominent when Approved/Scheduled empty.
+// Dynamic column balancing — only applies to the kanban (manual) view.
 function rebalance(panel, cols) {
+  if (queueFilter !== 'manual') return;
   for (const c of COLS) {
-    const el = panel.querySelector('[data-col="' + c.col + '"]');
+    const el = panel.querySelector('[data-col="' + c.col + '"');
     if (!el) continue;
     const count = (cols[c.key] || []).length;
     el.style.flexGrow = count === 0 ? 0.4 : Math.max(2.5, count);
@@ -104,6 +203,13 @@ function wireQueue(panel) {
   if (panel.__queueWired) return;
   panel.__queueWired = true;
   panel.addEventListener('click', (e) => {
+    // Filter tab switch — re-render with updated filter
+    const ftab = e.target.closest('[data-qf]');
+    if (ftab) {
+      queueFilter = ftab.dataset.qf;
+      if (_lastState) renderQueue(_lastState, panel);
+      return;
+    }
     const el = e.target.closest('[data-action]');
     if (!el) return;
     const action = el.dataset.action;
@@ -115,16 +221,14 @@ function wireQueue(panel) {
       dispatchAction('cancel', { id }, 'Cancelled');
       markPending(el);
     } else if (action === 'approve' || action === 'schedule' || action === 'reschedule' || action === 'edit') {
-      toast('Phase 2'); // P2 stubs — no proxy action exists; must NOT call postAction
+      toast('Phase 2');
     }
   });
-  // notify checkbox is visual-only (Phase 2) — never persists.
   panel.addEventListener('change', (e) => {
     if (e.target.closest('[data-action="notify"]')) toast('Phase 2');
   });
 }
 
-// Mark the affected card pending until the next status poll reconciles it.
 function markPending(el) {
   const card = el.closest('.qcard');
   if (card) card.classList.add('pending');

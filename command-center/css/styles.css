@@ -3,11 +3,11 @@
   --muted:#9b9b9b;--faint:#6f6f6f;--border:#383838;--border2:#474747;
   --success:#5bbd7e;--running:#6aa3e0;--warn:#e3a05c;--fail:#e07a7a;--queued:#d8c06a;
   --tag-assistant:#7a9fd1;--tag-finance:#5fb98a;--tag-health:#e08585;--tag-research:#9d83d6;
-  --tag-programming:#d4905c;--tag-career:#c478c4;--radius:12px;
-  --app-h:780px; /* one fixed widget height — every tab fills exactly this (match your Notion embed) */
+  --tag-programming:#d4905c;--tag-career:#c478c4;--tag-business:#d4b85c;--tag-marketing:#5cb8c0;
+  --radius:12px;
+  --app-h:780px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-/* dark scrollbars everywhere (no white bars on the dark theme) */
 *{scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-track{background:transparent}
@@ -62,6 +62,7 @@ h1,h2,h3{margin:0;font-weight:600}.muted{color:var(--muted)}.faint{color:var(--f
 .tag::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor}
 .t-assistant{color:var(--tag-assistant)}.t-finance{color:var(--tag-finance)}.t-health{color:var(--tag-health)}
 .t-research{color:var(--tag-research)}.t-programming{color:var(--tag-programming)}.t-career{color:var(--tag-career)}
+.t-business{color:var(--tag-business)}.t-marketing{color:var(--tag-marketing)}
 .chip{font-family:'JetBrains Mono','Courier New',monospace;font-size:10px;background:var(--card2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;color:var(--muted);white-space:nowrap;display:inline-block}
 .chip.max{color:var(--running);border-color:rgba(106,163,224,.4)}.chip.open{color:var(--tag-finance);border-color:rgba(95,185,138,.4)}
 .chip.free{color:var(--muted)}.chip.code{color:var(--faint)}
@@ -75,11 +76,9 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .feed .row{display:flex;gap:11px;padding:9px 2px;border-bottom:1px solid var(--border);align-items:center}
 .feed .row:last-child{border-bottom:none}.feed .when{color:var(--faint);font-size:11px;min-width:46px}.feed .msg{flex:1}
 
-/* AGENTS */
-.agrid{display:grid;grid-template-columns:repeat(6,1fr);gap:13px;align-items:stretch}
-@media(max-width:1100px){.agrid{grid-template-columns:repeat(3,1fr)}}@media(max-width:620px){.agrid{grid-template-columns:repeat(2,1fr)}}
-/* Sole child of the agents panel: scroll the roster INSIDE the fixed --app-h canvas (flex:1
-   + min-height:0 + overflow-y:auto), same pattern as .kbody — never let it grow the page. */
+/* AGENTS — 4 columns × 2 rows for 8 agents */
+.agrid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;align-items:stretch}
+@media(max-width:1100px){.agrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.agrid{grid-template-columns:repeat(2,1fr)}}
 .agent-grid{flex:1;min-height:0;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:9px;align-content:start}
 .acard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:border-color .15s,transform .12s}
 .acard:hover{border-color:var(--border2);transform:translateY(-2px)}.acard.display-only{opacity:.85}
@@ -92,6 +91,7 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .agent-type{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;border-radius:4px;color:#15110c;margin-top:4px}
 .type-assistant{background:var(--tag-assistant)}.type-finance{background:var(--tag-finance)}.type-health{background:var(--tag-health)}
 .type-research{background:var(--tag-research)}.type-programming{background:var(--tag-programming)}.type-career{background:var(--tag-career)}
+.type-business{background:var(--tag-business)}.type-marketing{background:var(--tag-marketing)}
 .health{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--faint);margin-left:auto;white-space:nowrap}
 .hdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .h-green{background:var(--success)}.h-amber{background:var(--warn)}.h-red{background:var(--fail)}.h-gray{background:var(--faint)}.h-run{background:var(--running);animation:pulse 1.3s infinite}
@@ -155,6 +155,7 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .evt .ft{font-size:9.5px;color:var(--muted);display:flex;justify-content:space-between;gap:6px}
 .evt.ag-finance{border-left-color:var(--tag-finance)}.evt.ag-research{border-left-color:var(--tag-research)}.evt.ag-health{border-left-color:var(--tag-health)}
 .evt.ag-assistant{border-left-color:var(--tag-assistant)}.evt.ag-programming{border-left-color:var(--tag-programming)}.evt.ag-career{border-left-color:var(--tag-career)}
+.evt.ag-business{border-left-color:var(--tag-business)}.evt.ag-marketing{border-left-color:var(--tag-marketing)}
 .evt.oneoff{border-style:dashed;border-left-style:solid;background:rgba(122,159,209,.06)}
 .tray{border:1px dashed var(--border2);border-radius:10px;padding:11px 13px;background:var(--card)}
 .tray-h{font-size:11px;color:var(--muted);margin-bottom:9px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -162,6 +163,7 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .dragchip{display:flex;align-items:center;gap:7px;background:var(--card2);border:1px solid var(--border2);border-left:3px solid var(--border2);border-radius:8px;padding:7px 11px;font-size:12px;cursor:grab}
 .dragchip:active{cursor:grabbing}.dragchip .gr{color:var(--faint);font-size:13px}
 .dragchip.ag-finance{border-left-color:var(--tag-finance)}.dragchip.ag-research{border-left-color:var(--tag-research)}.dragchip.ag-health{border-left-color:var(--tag-health)}.dragchip.ag-assistant{border-left-color:var(--tag-assistant)}
+.dragchip.ag-business{border-left-color:var(--tag-business)}.dragchip.ag-marketing{border-left-color:var(--tag-marketing)}
 
 /* RECENT RUNS */
 .rr-box{border:1px solid var(--border);border-radius:10px;padding:10px 13px;background:var(--card)}
@@ -176,8 +178,13 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .ag-text-finance{color:var(--tag-finance)}.ag-text-health{color:var(--tag-health)}
 .ag-text-research{color:var(--tag-research)}.ag-text-assistant{color:var(--tag-assistant)}
 .ag-text-programming{color:var(--tag-programming)}.ag-text-career{color:var(--tag-career)}
+.ag-text-business{color:var(--tag-business)}.ag-text-marketing{color:var(--tag-marketing)}
 
-/* QUEUE kanban */
+/* QUEUE kanban + filter */
+.q-filter{display:flex;gap:6px;padding-bottom:12px;border-bottom:1px solid var(--border);flex-shrink:0}
+.q-ftab{font-size:11.5px;font-weight:600;padding:5px 14px;border-radius:999px;border:1px solid var(--border2);background:var(--card2);color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s}
+.q-ftab:hover{border-color:var(--faint);color:var(--text)}
+.q-ftab.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent)}
 .kanban{display:flex;gap:12px;flex:1;min-height:0}
 .kcol{background:var(--card2);border:1px solid var(--border);border-radius:11px;padding:10px;display:flex;flex-direction:column;min-height:0;flex:1 1 0;min-width:170px;transition:flex-grow .25s ease}
 .kcol-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);padding:2px 4px 10px;display:flex;align-items:center;gap:8px}
@@ -197,6 +204,20 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .qnotify input{width:auto;cursor:pointer;accent-color:var(--tag-assistant)}
 .qacts{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
 .qedit{display:none;margin-top:9px;border-top:1px solid var(--border);padding-top:9px}.qedit.open{display:block}
+.qempty{color:var(--faint);font-size:12.5px;padding:18px 4px;text-align:center}
+
+/* QUEUE scheduled / all views */
+.sched-list{display:flex;flex-direction:column;overflow-y:auto;flex:1;min-height:0}
+.sched-row{display:flex;align-items:center;gap:10px;padding:8px 4px;border-bottom:1px solid var(--border);font-size:12px}
+.sched-row:last-child{border-bottom:none}
+.sched-when{width:76px;flex-shrink:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:10.5px}
+.sched-bar{width:3px;height:26px;border-radius:2px;flex-shrink:0;background:var(--border2)}
+.sched-bar.ag-finance{background:var(--tag-finance)}.sched-bar.ag-research{background:var(--tag-research)}.sched-bar.ag-health{background:var(--tag-health)}
+.sched-bar.ag-assistant{background:var(--tag-assistant)}.sched-bar.ag-programming{background:var(--tag-programming)}.sched-bar.ag-career{background:var(--tag-career)}
+.sched-bar.ag-business{background:var(--tag-business)}.sched-bar.ag-marketing{background:var(--tag-marketing)}
+.sched-name{flex:1;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sched-tok{font-size:10px;min-width:38px;text-align:right;white-space:nowrap}
+.q-section-head{font-size:9.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--faint);padding:4px 2px;font-weight:600}
 
 /* chat */
 .ctxbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
