@@ -22,6 +22,11 @@ export const EMPTY_SCHEDULE = Object.freeze({
   dailies: Object.freeze([]),
 });
 
+export const EMPTY_REGISTRY = Object.freeze({
+  updated: null,
+  tasks: Object.freeze([]),
+});
+
 async function fetchJson(path, fallback) {
   try {
     // no-store: spend/schedule are edited out-of-band; don't let the 10-min Pages cache stale them.
@@ -44,8 +49,4 @@ export async function loadSchedule() {
   const schedule = await fetchJson('./data/schedule.json', EMPTY_SCHEDULE);
   setState({ schedule });
   return schedule;
-}
-
-export async function loadStaticData() {
-  return Promise.all([loadSpend(), loadSchedule()]);
 }

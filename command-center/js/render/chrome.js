@@ -10,10 +10,10 @@ import { tick } from '../poll.js';
 import { getMaxPct } from '../proxy.js';
 import { openSettings } from './settings.js';
 
-const TABS = ['overview', 'chat', 'agents', 'schedule', 'queue', 'cost'];
+const TABS = ['overview', 'chat', 'agents', 'schedule', 'queue', 'cost', 'registry'];
 const TAB_LABELS = {
   overview: '▦ Overview', chat: '✦ Chat', agents: '◎ Agents',
-  schedule: '◷ Schedule', queue: '⚑ Queue', cost: '▤ Cost',
+  schedule: '◷ Schedule', queue: '⚑ Queue', cost: '▤ Cost', registry: '⊞ Registry',
 };
 const AGENT_COUNT = 6; // fixed inline roster (section 05)
 
@@ -132,6 +132,4 @@ export function initChrome() {
 }
 
 export function _resetChromeForTests() {
-  wired = false;
-  tabRenderers.clear();
-}
+  wired 

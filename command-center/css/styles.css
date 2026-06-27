@@ -235,3 +235,20 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:#2a2a2a;border:1px solid var(--border2);color:var(--text);padding:11px 18px;border-radius:10px;font-size:12.5px;opacity:0;transition:all .25s;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,.4);pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.toast.ok{border-left:3px solid var(--success)}
+
+/* registry tab */
+.chip.private{color:var(--tag-health);border-color:rgba(224,133,133,.4)}
+.chip.open-first{color:var(--queued);border-color:rgba(216,192,106,.4)}
+.chip.infra{color:var(--faint)}
+.reg-filterbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.reg-filter{padding:3px 10px!important;font-size:11px!important}.reg-filter.active{color:var(--text)!important;border-color:var(--accent)!important}
+.reg-scroll{overflow-y:auto;flex:1;min-height:0}
+.reg-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.reg-table tbody tr:hover{background:var(--card2)}
+.reg-table tbody tr.reg-row-migrate{background:rgba(95,185,138,.04)}
+.reg-th{padding:6px 10px;text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--faint);border-bottom:1px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap}
+.reg-th:hover{color:var(--muted)}.reg-th.active{color:var(--text)}
+.reg-table td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.4}
+.reg-name{font-weight:500}
+.reg-mono{font-family:'JetBrains Mono','Courier New',monospace;font-size:11px;color:var(--muted)}
+.reg-notes{font-size:11px;color:var(--faint);max-width:320px}

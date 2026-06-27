@@ -12,6 +12,7 @@ import { renderSchedule } from './render/schedule.js';
 import { renderQueue } from './render/queue.js';
 import { renderCost } from './render/cost.js';
 import { renderChat } from './render/chat.js';
+import { renderRegistry } from './render/registry.js';
 
 export function buildInitialState() {
   return {
@@ -19,6 +20,7 @@ export function buildInitialState() {
     status: null,
     spend: null,
     schedule: null,
+    registry: null,
     agents: buildRoster(), // inline roster (section 05) — static, seeded at boot
     proxyUrl: getProxyUrl(),
     polling: { inFlight: false, lastError: null },
@@ -34,6 +36,7 @@ export function boot() {
   registerTabRenderer('queue', renderQueue);
   registerTabRenderer('cost', renderCost);
   registerTabRenderer('chat', renderChat);
+  registerTabRenderer('registry', renderRegistry);
   subscribe(render);   // every setState re-renders chrome + active tab
   initChrome();        // delegated tab click + arrow-key listeners
   render(getState());  // first paint
@@ -49,7 +52,4 @@ export function boot() {
   startPoller(); // §03 owns the in-flight guard / teardown / re-poll
 }
 
-// Auto-boot only in the real shell (the #tabs container exists). Importing under test does nothing.
-if (typeof document !== 'undefined' && document.getElementById('tabs')) {
-  boot();
-}
+// Auto-boot only in the real shell (the #tabs container exist
