@@ -10,10 +10,10 @@ import { tick } from '../poll.js';
 import { getMaxPct } from '../proxy.js';
 import { openSettings } from './settings.js';
 
-const TABS = ['overview', 'chat', 'agents', 'schedule', 'queue', 'cost'];
+const TABS = ['overview', 'chat', 'agents', 'schedule', 'queue', 'cost', 'registry'];
 const TAB_LABELS = {
   overview: '▦ Overview', chat: '✦ Chat', agents: '◎ Agents',
-  schedule: '◷ Schedule', queue: '⚑ Queue', cost: '▤ Cost',
+  schedule: '◷ Schedule', queue: '⚑ Queue', cost: '▤ Cost', registry: '⊞ Registry',
 };
 const AGENT_COUNT = 6; // fixed inline roster (section 05)
 
@@ -27,7 +27,7 @@ export function registerTabRenderer(tab, fn) { tabRenderers.set(tab, fn); }
 
 const num = (v) => (typeof v === 'number' && Number.isFinite(v));
 
-// ── Topbar ───────────────────────────────────────────────────────────────────
+// ── Topbar ───────────────────────────────────────────────────────────────────────────
 export function renderTopbar(state) {
   const pills = document.getElementById('pills');
   if (!pills) return;
@@ -54,7 +54,7 @@ export function renderTopbar(state) {
     <span class="pill" id="pill-or">OpenRouter wk <b>${weekDisplay}</b></span>`;
 }
 
-// ── Tabs ─────────────────────────────────────────────────────────────────────
+// ── Tabs ─────────────────────────────────────────────────────────────────────────────
 export function renderTabs(state) {
   const bar = document.getElementById('tabs');
   if (!bar) return;
@@ -69,13 +69,13 @@ export function renderTabs(state) {
   }).join('');
 }
 
-// ── Tab switching ────────────────────────────────────────────────────────────
+// ── Tab switching ───────────────────────────────────────────────────────────────────────
 export function setActiveTab(tab) {
   if (!TABS.includes(tab)) return;
   setState({ activeTab: tab });
 }
 
-// ── The single dispatcher ────────────────────────────────────────────────────
+// ── The single dispatcher ───────────────────────────────────────────────────────────────
 export function render(state) {
   renderTopbar(state);
   renderTabs(state);
@@ -94,7 +94,7 @@ export function render(state) {
   }
 }
 
-// ── Event wiring (one delegated listener each; called once at boot) ───────────
+// ── Event wiring (one delegated listener each; called once at boot) ───────────────────
 let wired = false;
 export function initChrome() {
   if (wired) return;

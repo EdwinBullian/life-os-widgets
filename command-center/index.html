@@ -21,7 +21,7 @@
     <button class="iconbtn" id="btn-settings" title="Settings" aria-label="Settings"></button>
   </div>
 
-  <!-- Six fixed-height panels (height: var(--app-h)). Content rendered in sections 04-06. -->
+  <!-- Seven fixed-height panels (height: var(--app-h)). Content rendered in sections 04-06. -->
   <!-- Visibility is owned solely by CSS (.panel{display:none} / .panel.active{display:flex});
        section 04's render() toggles .active. No `hidden` attr, to avoid a dual-mechanism desync. -->
   <div class="panel active" id="overview" role="tabpanel" aria-labelledby="tab-overview"></div>
@@ -30,6 +30,7 @@
   <div class="panel" id="schedule" role="tabpanel" aria-labelledby="tab-schedule"></div>
   <div class="panel" id="queue" role="tabpanel" aria-labelledby="tab-queue"></div>
   <div class="panel" id="cost" role="tabpanel" aria-labelledby="tab-cost"></div>
+  <div class="panel" id="registry" role="tabpanel" aria-labelledby="tab-registry"></div>
 
   <!-- Overlay + modal container (populated by render/agents.js etc.). CSS .overlay.open drives visibility. -->
   <div class="overlay" id="overlay">
