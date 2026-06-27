@@ -1,20 +1,19 @@
 {
-  "updated": "2026-06-09T11:00:00-07:00",
-  "max": { "pctUsed": 38, "resetAt": "2026-06-12T00:00:00-07:00", "estTokens": 1900000, "capTokens": 5000000 },
-  "openrouter": { "weekSpend": 6.42, "weekCap": 25, "projectedMonth": 27.5 },
+  "updated": "2026-06-27T09:00:00-07:00",
+  "_note": "OpenRouter $ + Max% headroom. The Cost tab computes the by-model / by-agent breakdowns directly from registry.json (estTokensPerRun × runsPerWeek × blended model rate) so all agents stay consistent; the fields below seed the KPI row + fuel gauges. Update weekSpend/pctUsed from the gateway + Max usage when the telemetry job runs.",
+  "max": { "pctUsed": 62, "resetAt": "2026-06-29T00:00:00-07:00", "estTokens": 3100000, "capTokens": 5000000 },
+  "openrouter": { "weekSpend": 4.10, "weekCap": 15, "projectedMonth": 17.6 },
   "byModel": [
-    { "name": "claude-opus-4-8", "spend": 3.10, "tier": "premium" },
-    { "name": "claude-sonnet-4-6", "spend": 1.85, "tier": "standard" },
-    { "name": "deepseek-chat", "spend": 0.92, "tier": "budget" },
-    { "name": "claude-haiku-4-5", "spend": 0.55, "tier": "budget" }
+    { "name": "DeepSeek V3.2", "spend": 3.05, "tier": "open" },
+    { "name": "Qwen3 Coder", "spend": 0.65, "tier": "open" },
+    { "name": "DeepSeek R1", "spend": 0.40, "tier": "open" }
   ],
   "byAgent": [
-    { "type": "finance", "spend": 1.95 },
-    { "type": "research", "spend": 1.60 },
-    { "type": "health", "spend": 0.70 },
-    { "type": "assistant", "spend": 1.05 },
-    { "type": "programming", "spend": 0.82 },
-    { "type": "career", "spend": 0.30 }
+    { "type": "finance", "spend": 1.55 },
+    { "type": "research", "spend": 0.95 },
+    { "type": "assistant", "spend": 0.85 },
+    { "type": "business", "spend": 0.45 },
+    { "type": "health", "spend": 0.30 }
   ],
-  "tokensOffloadedWeek": 1240000
+  "tokensOffloadedWeek": 2400000
 }

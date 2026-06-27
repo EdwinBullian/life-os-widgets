@@ -24,21 +24,54 @@ function tokfmt(n) {
   return String(Math.round(t));
 }
 
-// Per-model fill color, mirroring the mockup's choices. Prefer name match, fall back to tier.
+// Per-model fill color — explicit hexes so model colors never shift when an agent theme color
+// changes (e.g. finance going gold). Each model gets a stable, distinct color.
 function modelColor(r) {
   const name = String((r && r.name) || '').toLowerCase();
-  if (name.includes('r1')) return 'var(--tag-research)';
-  if (name.includes('v3.2') || name.includes('v3')) return 'var(--tag-finance)';
-  if (name.includes('qwen')) return 'var(--tag-programming)';
-  if (name.includes('claude') || name.includes('opus') || name.includes('sonnet') || name.includes('haiku')) return 'var(--running)';
+  if (name.includes('opus')) return '#6aa3e0';   // blue
+  if (name.includes('sonnet')) return '#7a9fd1'; // soft blue
+  if (name.includes('haiku')) return '#9d83d6';  // purple
+  if (name.includes('r1')) return '#c478c4';     // magenta
+  if (name.includes('v3') || name.includes('deepseek')) return '#5fb98a'; // green
+  if (name.includes('qwen')) return '#d4905c';   // orange
   if (name.includes('free')) return 'var(--faint)';
-  switch (String((r && r.tier) || '').toLowerCase()) {
-    case 'premium': return 'var(--running)';
-    case 'standard': return 'var(--tag-finance)';
-    case 'budget': return 'var(--tag-programming)';
-    case 'free': return 'var(--faint)';
-    default: return 'var(--tag-research)';
+  return 'var(--tag-research)';
+}
+
+// ── Registry-derived cost (the consistent source) ─────────────────────────────
+// Blended $/Mtok per model (rough in+out blend). Max-plan jobs are $0 marginal under the cap, but
+// we surface a blended-equivalent cost so every agent/model shows a comparable bar.
+const BLENDED_RATE = {
+  opus: 7.5, sonnet: 3.0, haiku: 0.8, 'deepseek r1': 0.55, 'deepseek v3.2': 0.30, deepseek: 0.30, qwen: 0.30,
+};
+function rateFor(model) {
+  const m = String(model || '').toLowerCase();
+  for (const key of Object.keys(BLENDED_RATE)) if (m.includes(key)) return BLENDED_RATE[key];
+  return 1.0;
+}
+
+// Aggregate enabled registry tasks into by-agent and by-model weekly cost. Returns null when
+// there's no registry, so renderCost falls back to spend.json's arrays.
+function computeRegistryCost(registry) {
+  const tasks = (registry && Array.isArray(registry.tasks)) ? registry.tasks : [];
+  if (!tasks.length) return null;
+  const byAgent = {};
+  const byModel = {};
+  for (const t of tasks) {
+    if (!t.enabled) continue;
+    const wk = (Number(t.estTokensPerRun) || 0) * (Number(t.runsPerWeek) || 0);
+    if (!wk) continue;
+    const cost = (wk / 1e6) * rateFor(t.model);
+    const agent = String(t.agent || 'infra').toLowerCase();
+    if (agent !== 'infra') byAgent[agent] = (byAgent[agent] || 0) + cost;
+    const model = t.model || '—';
+    if (!byModel[model]) byModel[model] = { name: model, spend: 0, tier: t.currentTier || '' };
+    byModel[model].spend += cost;
   }
+  return {
+    byAgent: Object.entries(byAgent).map(([type, spend]) => ({ type, spend })).sort((a, b) => b.spend - a.spend),
+    byModel: Object.values(byModel).sort((a, b) => b.spend - a.spend),
+  };
 }
 
 function kpi(big, lbl, deltaCls, deltaTxt) {
@@ -93,7 +126,7 @@ export function renderCost(state, panelArg) {
     + '</div>';
 
   // ── Donut: 0% renders as an all-card3 ring (intentional), never a NaN gradient. ──
-  const donutBg = `conic-gradient(var(--tag-finance) 0% ${capPct}%, var(--card3) ${capPct}% 100%)`;
+  const donutBg = `conic-gradient(var(--running) 0% ${capPct}%, var(--card3) ${capPct}% 100%)`;
   const gauge = '<div class="gaugewrap" style="margin:6px 0 14px">'
     + `<div class="donut" style="--pct:${capPct};background:${donutBg}"><span class="val">${capPct}%</span></div>`
     + '<div><div style="font-weight:600">'
@@ -109,16 +142,23 @@ export function renderCost(state, panelArg) {
   };
   const agentColor = (r) => `var(--tag-${esc(String((r && r.type) || 'research'))})`;
 
-  const modelBars = bars(spend.byModel, modelLabel, modelColor);
-  const agentBars = bars(spend.byAgent, agentLabel, agentColor);
+  // Prefer registry-derived breakdowns (consistent, covers every agent); fall back to spend.json.
+  const reg = computeRegistryCost(safe(state.registry, null));
+  const modelRows = reg ? reg.byModel : spend.byModel;
+  const agentRows = reg ? reg.byAgent : spend.byAgent;
+  const regUpdated = state.registry && state.registry.updated
+    ? ` <span class="faint" style="font-size:11px">· registry ${esc(state.registry.updated)}</span>` : '';
+
+  const modelBars = bars(modelRows, modelLabel, modelColor);
+  const agentBars = bars(agentRows, agentLabel, agentColor);
 
   const cols = '<div class="grid cols-2 grow">'
     + '<div class="box">'
-    + `<div class="ptitle">Spend by model (this week)${stale}</div>${modelBars}</div>`
+    + `<div class="ptitle">Est. weekly cost by model${stale}${regUpdated}</div>${modelBars}</div>`
     + '<div class="box">'
     + '<div class="ptitle">Weekly $ cap <button class="btn sm ghost" data-action="editCap">Edit cap</button></div>'
     + gauge
-    + '<div class="ptitle" style="margin-top:6px">Spend by agent</div>'
+    + '<div class="ptitle" style="margin-top:6px">Est. weekly cost by agent <span class="faint">blended model rates</span></div>'
     + `${agentBars}</div>`
     + '</div>';
 

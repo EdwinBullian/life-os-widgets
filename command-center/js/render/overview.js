@@ -33,22 +33,52 @@ function kpiCard(value, label, opts = {}) {
     + `<div class="lbl">${esc(label)}</div>${delta}</div>`;
 }
 
-function kpiRow(status) {
-  const c = (status && typeof status.counts === 'object' && status.counts) || null;
-  if (!c) {
-    return '<div class="grid cols-4"><div class="box kpi"><div class="big">—</div>'
-      + '<div class="lbl">No data yet.</div><div class="delta muted">—</div></div></div>';
-  }
+// compact relative time for the recent-runs feed
+function relTime(iso) {
+  if (!iso) return '';
+  const ms = Date.now() - new Date(iso).getTime();
+  if (Number.isNaN(ms) || ms < 0) return '';
+  const m = Math.floor(ms / 60000);
+  if (m < 1) return 'now';
+  if (m < 60) return `${m}m ago`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${h}h ago`;
+  return `${Math.floor(h / 24)}d ago`;
+}
+
+// Derive the KPI numbers. Prefer the live status feed; when it's absent (proxy disabled), fall
+// back to registry + schedule so the row is informative instead of a blank "—".
+function deriveCounts(status, schedule, registry) {
+  const c = (status && typeof status.counts === 'object' && status.counts) || {};
+  const live = !!(status && status.counts);
+  const recent = (schedule && Array.isArray(schedule.recentRuns)) ? schedule.recentRuns : [];
+  const todayStr = new Date().toDateString();
+  const doneToday = num(c.doneToday) ? c.doneToday
+    : recent.filter((r) => { const d = new Date(r.ranAt); return !Number.isNaN(d.getTime()) && d.toDateString() === todayStr; }).length;
+  const tasks = (registry && Array.isArray(registry.tasks)) ? registry.tasks : [];
+  const activeTasks = tasks.filter((t) => t.enabled && t.agent !== 'infra').length;
+  return {
+    live,
+    doneToday,
+    running: num(c.running) ? c.running : 0,
+    scheduled: num(c.queued) ? c.queued : activeTasks,
+    agents: num(c.agentsHealthy) ? c.agentsHealthy : 8,
+  };
+}
+
+function kpiRow(status, schedule, registry) {
+  const k = deriveCounts(status, schedule, registry);
+  const src = k.live ? '' : ' · from registry';
   return '<div class="grid cols-4">'
-    + kpiCard(num(c.doneToday) ? c.doneToday : '—', 'Jobs completed today')
-    + kpiCard(num(c.running) ? c.running : '—', 'Running now', { color: 'running' })
-    + kpiCard(num(c.queued) ? c.queued : '—', 'Queued', { color: 'queued' })
-    + kpiCard(num(c.agentsHealthy) ? c.agentsHealthy : '—', 'Agents healthy')
+    + kpiCard(k.doneToday, 'Jobs completed today')
+    + kpiCard(k.running, 'Running now', { color: 'running' })
+    + kpiCard(k.scheduled, 'Scheduled tasks', { color: 'queued', delta: `active${src}`, deltaCls: 'muted' })
+    + kpiCard(k.agents, 'Agents')
     + '</div>';
 }
 
 // ── Quick dispatch + Fuel (mockup: .grid.cols-2) ────────────────────────────────
-const AGENT_OPTS = ['Finance', 'Research', 'Health', 'Assistant', 'Programming', 'Career'];
+const AGENT_OPTS = ['Finance', 'Research', 'Health', 'Assistant', 'Programming', 'Career', 'Business', 'Marketing'];
 
 function quickDispatch() {
   const agents = AGENT_OPTS.map((a) => `<option>${esc(a)}</option>`).join('');
@@ -97,7 +127,7 @@ function fuelBox(spend) {
   const bar = '<div class="barrow"><div class="top"><span>OpenRouter spend (this week)</span>'
     + `<span class="mono">$${esc(weekSpend.toFixed(2))} / $${esc(weekCap.toFixed(2))}</span></div>`
     + `<div class="track"><div class="fill" style="width:${esc(barPct)}%;`
-    + 'background:var(--tag-finance)"></div></div></div>';
+    + 'background:var(--success)"></div></div></div>';
 
   return '<div class="box"><div class="ptitle">Fuel <span class="faint">never get '
     + `maxed-out blind again</span></div>${donut}${bar}</div>`;
@@ -139,12 +169,38 @@ function feed(status) {
   return `${head}<div class="feed grow">${items}</div></div>`;
 }
 
+// Recent completed runs — sourced from schedule.recentRuns, so it shows real history even when
+// the live status feed (activity_log.md) is empty because the dispatch worker is disabled.
+function recentRunsBox(schedule) {
+  const runs = (schedule && Array.isArray(schedule.recentRuns)) ? schedule.recentRuns : [];
+  const head = '<div class="box grow"><div class="ptitle">Recent runs '
+    + '<span class="faint">last completed scheduled jobs</span></div>';
+  if (!runs.length) {
+    return `${head}<div class="feed grow"><div class="muted">No recent runs.</div></div></div>`;
+  }
+  const items = runs.slice(0, 12).map((r) => {
+    const a = String(r.agent || '').toLowerCase();
+    const label = a ? a.charAt(0).toUpperCase() + a.slice(1) : '—';
+    const model = r.model ? `<span class="chip">${esc(r.model)}</span>` : '';
+    return '<div class="row">'
+      + `<div class="msg"><span class="tag t-${esc(a)}">${esc(label)}</span> &nbsp;${esc(r.name || r.taskId || '')}</div>`
+      + model
+      + `<span class="when faint" style="min-width:auto">${esc(relTime(r.ranAt))}</span>`
+      + `<span class="dot ${dotClass(r.status)}"></span></div>`;
+  }).join('');
+  return `${head}<div class="feed grow">${items}</div></div>`;
+}
+
 export function renderOverview(state, panelArg) {
   const panel = panelArg || document.getElementById('overview');
   if (!panel) return;
   const status = safe(state.status, null);
   const spend = safe(state.spend, null);
-  panel.innerHTML = kpiRow(status) + midGrid(spend) + feed(status);
+  const schedule = safe(state.schedule, null);
+  const registry = safe(state.registry, null);
+  // With the taller widget there's room for both the live feed and recent history side by side.
+  panel.innerHTML = kpiRow(status, schedule, registry) + midGrid(spend)
+    + `<div class="grid cols-2 grow">${feed(status)}${recentRunsBox(schedule)}</div>`;
   wireOverview(panel);
 }
 

@@ -50,3 +50,14 @@ export async function loadSchedule() {
   setState({ schedule });
   return schedule;
 }
+
+export async function loadRegistry() {
+  // registry.json is the task roster; infrequently edited, but still skip the 10-min Pages cache.
+  const registry = await fetchJson('./data/registry.json', EMPTY_REGISTRY);
+  setState({ registry });
+  return registry;
+}
+
+export async function loadStaticData() {
+  return Promise.all([loadSpend(), loadSchedule(), loadRegistry()]);
+}

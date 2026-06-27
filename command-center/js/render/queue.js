@@ -28,7 +28,7 @@ const COLS = [
     key: 'approved', col: 'approved', cls: 'a', countId: 'nA', bodyId: 'colApproved',
     head: '✓ Approved', empty: 'Nothing approved yet.',
     acts: (id) => '<button class="btn sm ghost" data-action="edit" data-id="' + id + '">Edit</button>'
-      + '<button class="btn sm" data-action="schedule" data-id="' + id + '">Schedule →</button>'
+      + '<button class="btn sm ghost" data-action="schedule" data-id="' + id + '">Schedule →</button>'
       + '<button class="btn sm go" data-action="runnow" data-id="' + id + '">▶ Now</button>',
   },
   {
@@ -103,15 +103,37 @@ function getScheduledRows(schedule) {
     .sort((a, b) => a._next - b._next);
 }
 
+// Shared full-width row used by the Scheduled + All views. Color-coded by agent (left border +
+// tag), with a clear SCHEDULED/MANUAL badge so the two sources never blur together.
+function fullRow({ agent, kind, name, model, tier, when, tok, extra }) {
+  const a = esc(String(agent || '').toLowerCase());
+  const agentLabel = a ? a.charAt(0).toUpperCase() + a.slice(1) : '—';
+  const badge = kind === 'manual'
+    ? '<span class="src-badge manual">Manual</span>'
+    : '<span class="src-badge scheduled">Scheduled</span>';
+  const tokHtml = (tok != null && tok !== '') ? `<span class="qrow-tok faint">~${esc(tok)}k</span>` : '';
+  const modelChip = model ? `<span class="chip ${esc(tier || '')}">${esc(model)}</span>` : '';
+  return `<div class="qrow ag-${a}">`
+    + badge
+    + `<span class="qrow-when mono">${esc(when || '')}</span>`
+    + `<span class="qrow-name">${esc(name || '')}</span>`
+    + `<span class="tag t-${a}">${esc(agentLabel)}</span>`
+    + modelChip
+    + tokHtml
+    + (extra || '')
+    + '</div>';
+}
+
 function schedRowHtml(e) {
-  const agent = esc(e.agent || '');
-  return `<div class="sched-row">`
-    + `<span class="sched-when faint">${esc(fmtNext(e._next))}</span>`
-    + `<span class="sched-bar ag-${agent}"></span>`
-    + `<span class="sched-name">${esc(e.name || '')}</span>`
-    + `<span class="chip ${esc(e.tier || '')}">${esc(e.model || '')}</span>`
-    + `<span class="sched-tok faint">~${Math.round((Number(e.tok) || 0) / 1000)}k</span>`
-    + `</div>`;
+  return fullRow({
+    agent: e.agent,
+    kind: 'scheduled',
+    name: e.name,
+    model: e.model,
+    tier: e.tier,
+    when: fmtNext(e._next),
+    tok: Math.round((Number(e.tok) || 0) / 1000),
+  });
 }
 
 // ── Filter bar ────────────────────────────────────────────────────────────────────────────────
@@ -148,17 +170,16 @@ function renderAllView(cols, schedule) {
     ? rows.map(schedRowHtml).join('')
     : '<div style="padding:5px 4px;color:var(--faint);font-size:12px">No scheduled runs.</div>';
   const manSection = manual.length
-    ? manual.map((it) => {
-        const k = esc(String(it.agent || '').toLowerCase());
-        return `<div class="sched-row">`
-          + `<span class="sched-when" style="color:var(--queued);font-size:10px;text-transform:uppercase;letter-spacing:.4px">Manual</span>`
-          + `<span class="sched-bar ag-${k}"></span>`
-          + `<span class="sched-name">${esc(it.title || '')}</span>`
-          + `<span class="chip ${esc(it.tier || '')}">${esc(it.model || '')}</span>`
-          + `<span class="faint" style="font-size:10px">${esc(it._src || '')}</span>`
-          + `</div>`;
-      }).join('')
-    : '<div style="padding:5px 4px;color:var(--faint);font-size:12px">No manual jobs queued.</div>';
+    ? manual.map((it) => fullRow({
+        agent: it.agent,
+        kind: 'manual',
+        name: it.title,
+        model: it.model,
+        tier: it.tier,
+        when: (it._src || '').toUpperCase(),
+        extra: '',
+      })).join('')
+    : '<div style="padding:8px 4px;color:var(--faint);font-size:12px">No manual jobs queued.</div>';
   return '<div class="sched-list grow">'
     + '<div class="q-section-head">Upcoming routine runs</div>'
     + schedSection

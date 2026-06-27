@@ -52,4 +52,7 @@ export function boot() {
   startPoller(); // §03 owns the in-flight guard / teardown / re-poll
 }
 
-// Auto-boot only in the real shell (the #tabs container exist
+// Auto-boot only in the real shell (the #tabs container exists). Importing under test does nothing.
+if (typeof document !== 'undefined' && document.getElementById('tabs')) {
+  boot();
+}

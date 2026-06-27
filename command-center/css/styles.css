@@ -2,10 +2,12 @@
   --bg:#191919;--card:#232323;--card2:#2f2f2f;--card3:#383838;--accent:#ececec;--text:#e6e6e6;
   --muted:#9b9b9b;--faint:#6f6f6f;--border:#383838;--border2:#474747;
   --success:#5bbd7e;--running:#6aa3e0;--warn:#e3a05c;--fail:#e07a7a;--queued:#d8c06a;
-  --tag-assistant:#7a9fd1;--tag-finance:#5fb98a;--tag-health:#e08585;--tag-research:#9d83d6;
-  --tag-programming:#d4905c;--tag-career:#c478c4;--tag-business:#d4b85c;--tag-marketing:#5cb8c0;
+  /* Agent theme colors — MUST match the agent-art bezels: finance=gold, health=green,
+     business=red, marketing=teal. Everything color-codes off these vars. */
+  --tag-assistant:#7a9fd1;--tag-finance:#d4b85c;--tag-health:#5fb98a;--tag-research:#9d83d6;
+  --tag-programming:#d4905c;--tag-career:#c478c4;--tag-business:#e08585;--tag-marketing:#5cb8c0;
   --radius:12px;
-  --app-h:780px;
+  --app-h:1180px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 *{scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
@@ -64,7 +66,7 @@ h1,h2,h3{margin:0;font-weight:600}.muted{color:var(--muted)}.faint{color:var(--f
 .t-research{color:var(--tag-research)}.t-programming{color:var(--tag-programming)}.t-career{color:var(--tag-career)}
 .t-business{color:var(--tag-business)}.t-marketing{color:var(--tag-marketing)}
 .chip{font-family:'JetBrains Mono','Courier New',monospace;font-size:10px;background:var(--card2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;color:var(--muted);white-space:nowrap;display:inline-block}
-.chip.max{color:var(--running);border-color:rgba(106,163,224,.4)}.chip.open{color:var(--tag-finance);border-color:rgba(95,185,138,.4)}
+.chip.max{color:var(--running);border-color:rgba(106,163,224,.4)}.chip.open{color:var(--success);border-color:rgba(91,189,126,.4)}
 .chip.free{color:var(--muted)}.chip.code{color:var(--faint)}
 .btn{background:var(--accent);color:#1a1a1a;border:none;border-radius:8px;padding:8px 13px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
 .btn:hover{filter:brightness(.93)}.btn.ghost{background:var(--card2);color:var(--text);border:1px solid var(--border2)}
@@ -98,7 +100,14 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .card-desc{font-size:11px;line-height:1.5;color:var(--muted)}
 .skillrow{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto}
-.open-hint{font-size:10px;color:var(--faint);text-align:right}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+.card-foot .did{font-size:10px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.open-hint{font-size:10px;color:var(--faint);text-align:right;flex-shrink:0}
+/* left accent carries agent color identity (no top border → no double line over the art bezel) */
+.acard.ag-finance{border-left:3px solid var(--tag-finance)}.acard.ag-health{border-left:3px solid var(--tag-health)}
+.acard.ag-research{border-left:3px solid var(--tag-research)}.acard.ag-assistant{border-left:3px solid var(--tag-assistant)}
+.acard.ag-programming{border-left:3px solid var(--tag-programming)}.acard.ag-career{border-left:3px solid var(--tag-career)}
+.acard.ag-business{border-left:3px solid var(--tag-business)}.acard.ag-marketing{border-left:3px solid var(--tag-marketing)}
 
 /* modal */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;align-items:flex-start;justify-content:center;padding:24px 16px;z-index:50;overflow-y:auto}
@@ -110,14 +119,24 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .modal-icon span{position:absolute}.modal-icon img{position:relative;width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
 .modal-title{font-size:16px;font-weight:700;color:var(--accent)}
 .modal-sub{font-size:11.5px;color:var(--muted);margin:8px 0 4px;line-height:1.55}
-.sec{margin:14px 0}.sec-label{font-size:9.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--faint);margin-bottom:8px}
-.btn-row{display:flex;flex-wrap:wrap;gap:6px}
-.dispatch-btn{font-size:11.5px;font-weight:600;font-family:inherit;background:var(--card2);border:1px solid var(--border2);border-radius:7px;padding:7px 11px;color:var(--text);cursor:pointer;transition:all .14s}
+.sec{margin:16px 0}.sec-label{font-size:9.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--faint);margin-bottom:9px}
+.btn-row{display:flex;flex-wrap:wrap;gap:9px}
+/* All profile-page buttons share one gray treatment — bigger, more padding, clear border. */
+.dispatch-btn{font-size:12.5px;font-weight:600;font-family:inherit;background:var(--card2);border:1px solid var(--border2);border-radius:9px;padding:10px 16px;color:var(--text);cursor:pointer;transition:all .14s}
 .dispatch-btn:hover{background:var(--card3);border-color:var(--faint)}.dispatch-btn.custom{color:var(--muted);border-style:dashed}
 .preset-btn{font-size:11.5px;font-weight:600;font-family:inherit;background:rgba(122,159,209,.1);border:1px solid var(--border2);border-radius:7px;padding:7px 11px;color:var(--text);cursor:pointer;text-align:left}
 .preset-btn:hover{background:rgba(122,159,209,.18)}
-.profile-ctl{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:8px 0;padding:10px 12px;background:var(--card);border:1px solid var(--border);border-radius:10px}
-.mini-field{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)}.mini-field select{width:auto}
+.profile-ctl{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:12px 0;padding:13px 15px;background:var(--card);border:1px solid var(--border2);border-radius:11px}
+.mini-field{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--muted)}.mini-field select{width:auto;padding:7px 9px}
+/* Agent active/paused status light */
+.agent-state{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.agent-state .state-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.agent-state.active{color:var(--success)}.agent-state.active .state-dot{background:var(--success);box-shadow:0 0 0 3px rgba(91,189,126,.16)}
+.agent-state.paused{color:var(--warn)}.agent-state.paused .state-dot{background:var(--warn);box-shadow:0 0 0 3px rgba(227,160,92,.16)}
+/* Pause/Start toggle — gray to match the rest of the profile page, never white */
+.agent-toggle{font-family:inherit;font-size:12.5px;font-weight:600;background:var(--card3);color:var(--text);border:1px solid var(--border2);border-radius:9px;padding:10px 18px;cursor:pointer;transition:all .14s}
+.agent-toggle:hover{background:var(--card2);border-color:var(--faint)}
+.agent-toggle.paused{color:var(--warn);border-color:rgba(227,160,92,.45);background:rgba(227,160,92,.08)}
 .skillacc{display:flex;flex-direction:column;gap:5px}
 .skl{border:1px solid var(--border);border-radius:8px;background:var(--card2);overflow:hidden}
 .skl-h{display:flex;align-items:center;gap:8px;padding:8px 11px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text)}
@@ -166,9 +185,9 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .dragchip.ag-business{border-left-color:var(--tag-business)}.dragchip.ag-marketing{border-left-color:var(--tag-marketing)}
 
 /* RECENT RUNS */
-.rr-box{border:1px solid var(--border);border-radius:10px;padding:10px 13px;background:var(--card)}
-.rr-list{display:flex;flex-direction:column}
-.rr-row{display:flex;align-items:center;gap:8px;font-size:11.5px;padding:5px 0;border-bottom:1px solid var(--border)}
+.rr-box{border:1px solid var(--border);border-radius:10px;padding:10px 13px;background:var(--card);flex-shrink:0}
+.rr-list{display:flex;flex-direction:column;max-height:260px;overflow-y:auto}
+.rr-row{display:flex;align-items:center;gap:8px;font-size:11.5px;padding:6px 0;border-bottom:1px solid var(--border)}
 .rr-row:last-child{border-bottom:none}
 .rr-icon{font-weight:700;width:14px;text-align:center;flex-shrink:0;font-size:12px}
 .rr-name{font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -219,6 +238,20 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .sched-tok{font-size:10px;min-width:38px;text-align:right;white-space:nowrap}
 .q-section-head{font-size:9.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--faint);padding:4px 2px;font-weight:600}
 
+/* QUEUE full-width rows (Scheduled / All views) — color-coded by agent, roomy, badged */
+.qrow{display:flex;align-items:center;gap:11px;width:100%;padding:12px 15px;margin-bottom:9px;
+  background:var(--card);border:1px solid var(--border);border-left:4px solid var(--border2);border-radius:10px}
+.qrow:hover{border-color:var(--border2)}
+.qrow .src-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:5px;flex-shrink:0;white-space:nowrap}
+.qrow .src-badge.scheduled{color:var(--success);background:rgba(91,189,126,.12);border:1px solid rgba(91,189,126,.35)}
+.qrow .src-badge.manual{color:var(--queued);background:rgba(216,192,106,.12);border:1px solid rgba(216,192,106,.35)}
+.qrow .qrow-when{font-size:11px;color:var(--faint);min-width:74px;flex-shrink:0}
+.qrow .qrow-name{flex:1;font-weight:600;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.qrow .qrow-tok{font-size:10.5px;min-width:40px;text-align:right;white-space:nowrap}
+.qrow.ag-finance{border-left-color:var(--tag-finance)}.qrow.ag-research{border-left-color:var(--tag-research)}.qrow.ag-health{border-left-color:var(--tag-health)}
+.qrow.ag-assistant{border-left-color:var(--tag-assistant)}.qrow.ag-programming{border-left-color:var(--tag-programming)}.qrow.ag-career{border-left-color:var(--tag-career)}
+.qrow.ag-business{border-left-color:var(--tag-business)}.qrow.ag-marketing{border-left-color:var(--tag-marketing)}
+
 /* chat */
 .ctxbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
 .ctxbar .lab{font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.5px}
@@ -248,7 +281,27 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .reg-table tbody tr.reg-row-migrate{background:rgba(95,185,138,.04)}
 .reg-th{padding:6px 10px;text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--faint);border-bottom:1px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap}
 .reg-th:hover{color:var(--muted)}.reg-th.active{color:var(--text)}
-.reg-table td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.4}
-.reg-name{font-weight:500}
+.reg-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.4}
+.reg-name{font-weight:600}
 .reg-mono{font-family:'JetBrains Mono','Courier New',monospace;font-size:11px;color:var(--muted)}
-.reg-notes{font-size:11px;color:var(--faint);max-width:320px}
+.reg-notes{font-size:11px;color:var(--faint);max-width:300px;vertical-align:top}
+.reg-hint{font-size:11px;line-height:1.45;margin-bottom:2px}
+/* agent color accent on the first cell → full-width identity per row */
+.reg-table tbody tr td:first-child{border-left:3px solid var(--border2)}
+.reg-table tbody tr.ag-finance td:first-child{border-left-color:var(--tag-finance)}.reg-table tbody tr.ag-research td:first-child{border-left-color:var(--tag-research)}
+.reg-table tbody tr.ag-health td:first-child{border-left-color:var(--tag-health)}.reg-table tbody tr.ag-assistant td:first-child{border-left-color:var(--tag-assistant)}
+.reg-table tbody tr.ag-programming td:first-child{border-left-color:var(--tag-programming)}.reg-table tbody tr.ag-career td:first-child{border-left-color:var(--tag-career)}
+.reg-table tbody tr.ag-business td:first-child{border-left-color:var(--tag-business)}.reg-table tbody tr.ag-marketing td:first-child{border-left-color:var(--tag-marketing)}
+.reg-table tbody tr.reg-row-off{opacity:.5}
+/* on/off toggle switch */
+.reg-toggle{position:relative;display:inline-block;width:34px;height:19px;cursor:pointer}
+.reg-toggle input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:1}
+.reg-slider{position:absolute;inset:0;background:var(--card3);border:1px solid var(--border2);border-radius:999px;transition:all .15s}
+.reg-slider::before{content:'';position:absolute;width:13px;height:13px;left:2px;top:2px;border-radius:50%;background:var(--muted);transition:all .15s}
+.reg-toggle input:checked + .reg-slider{background:rgba(91,189,126,.25);border-color:var(--success)}
+.reg-toggle input:checked + .reg-slider::before{transform:translateX(15px);background:var(--success)}
+/* inline schedule + model editors */
+.reg-sched-input{width:118px;padding:5px 8px;font-size:11px;font-family:'JetBrains Mono','Courier New',monospace;background:var(--card2);border:1px solid var(--border2);border-radius:6px;color:var(--text)}
+.reg-sched-input:focus{border-color:var(--accent);outline:none}
+.reg-select{width:auto;min-width:118px;padding:5px 8px;font-size:11.5px}
+.reg-select:focus{border-color:var(--accent);outline:none}

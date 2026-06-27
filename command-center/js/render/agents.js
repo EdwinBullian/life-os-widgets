@@ -5,7 +5,7 @@
 
 import { getState, setState } from '../state.js';
 import { esc, safe } from '../util.js';
-import { postAction } from '../proxy.js';
+import { postAction, getPausedAgents, setAgentPaused } from '../proxy.js';
 import { repollSoon } from '../poll.js';
 
 // ── Model menus (ported verbatim from the mockup) ─────────────────────────────
@@ -261,12 +261,19 @@ export function dispatchForm(jobType, presetAgent) {
 
 // ── Roster grid card ────────────────────────────────────────────────────────────────────────────
 function cardHtml(a, perAgent) {
-  const live = perAgent && perAgent[a.key] && perAgent[a.key].health;
-  const dot = healthDot(live || a.health);
-  const healthText = live ? dot.label : a.ht;
+  const live = perAgent && perAgent[a.key];
+  const dot = healthDot((live && live.health) || a.health);
+  const healthText = (live && live.health) ? dot.label : a.ht;
   const chips = a.skills.slice(0, 7).map((s) => `<span class="chip">${esc(s)}</span>`).join('')
     + (a.skills.length > 7 ? `<span class="chip">+${a.skills.length - 7}</span>` : '');
-  return `<div class="acard${a.displayOnly ? ' display-only' : ''}" style="border-top:3px solid var(--tag-${esc(a.key)})" data-id="${esc(a.key)}" data-action="openAgent" role="button" tabindex="0">`
+  // "what they did" footer line: live runs this week when available, else a static hint.
+  const runs7 = live && Number.isFinite(Number(live.runs7)) ? Number(live.runs7) : null;
+  const didText = a.displayOnly
+    ? 'On-demand — open its project'
+    : (runs7 != null ? `${runs7} run${runs7 === 1 ? '' : 's'} in the last 7d` : 'No runs logged yet');
+  // Color identity moves to a LEFT accent (the art already carries a top bezel — a top
+  // border here produced the "double line"). border-left can't collide with the bezel.
+  return `<div class="acard ag-${esc(a.key)}${a.displayOnly ? ' display-only' : ''}" data-id="${esc(a.key)}" data-action="openAgent" role="button" tabindex="0">`
     + `<div class="card-img-wrap"><span class="emoji-fallback">${esc(a.icon)}</span>`
     + `<img class="card-img" src="agent-art/${esc(a.key)}.png" alt="" onerror="this.style.display='none'"></div>`
     + '<div class="card-body"><div class="card-header"><div>'
@@ -275,7 +282,8 @@ function cardHtml(a, perAgent) {
     + `<span class="health"><span class="hdot h-${dot.cls}"></span>${esc(healthText)}</span></div>`
     + `<div class="card-desc">${esc(a.desc)}</div>`
     + `<div class="skillrow">${chips}</div>`
-    + `<div class="open-hint">${a.displayOnly ? 'on demand →' : 'tap to open →'}</div>`
+    + `<div class="card-foot"><span class="did">${esc(didText)}</span>`
+    + `<span class="open-hint">${a.displayOnly ? 'on demand →' : 'tap to open →'}</span></div>`
     + '</div></div>';
 }
 
@@ -287,13 +295,17 @@ function agentModalHtml(a, state) {
   const pa = perAgent[a.key] || { spark: [], runs7: 0, runs30: 0, recent: [] };
   const dot = healthDot(pa.health || a.health);
   const curModel = (settings.perAgentModel && settings.perAgentModel[a.key]) || 'Auto';
-  const paused = Array.isArray(settings.pausedAgents) && settings.pausedAgents.indexOf(a.key) > -1;
+  // Merge the live backend state with the local optimistic override (latter wins for instant UI).
+  const backendPaused = Array.isArray(settings.pausedAgents) && settings.pausedAgents.indexOf(a.key) > -1;
+  const paused = backendPaused || getPausedAgents().indexOf(a.key) > -1;
 
   const controls = a.displayOnly ? '' : (
     '<div class="profile-ctl">'
+    + `<span class="agent-state ${paused ? 'paused' : 'active'}"><span class="state-dot"></span>${paused ? 'Paused' : 'Active'}</span>`
     + `<span class="mini-field">Default model <select data-action="setModel" data-id="${esc(a.key)}">${modelSelectHtml(curModel)}</select></span>`
-    + `<button class="agent-toggle${paused ? ' paused' : ''}" data-action="togglePause" data-id="${esc(a.key)}">` 
-    + `${paused ? '▶ Resume agent' : '⏸ Pause agent'}</button></div>`
+    + '<span class="spacer"></span>'
+    + `<button class="agent-toggle${paused ? ' paused' : ''}" data-action="togglePause" data-id="${esc(a.key)}">`
+    + `${paused ? '▶ Start agent' : '⏸ Pause agent'}</button></div>`
   );
   const routines = a.routines.length
     ? `<div class="sec"><div class="sec-label">Routines — dispatch a job</div><div class="btn-row">${
@@ -313,8 +325,7 @@ function agentModalHtml(a, state) {
     : '<div class="muted" style="font-size:12px">No runs logged yet.</div>';
   const skills = `<div class="skillacc">${a.skills.map((s) => `<div class="skl" data-skill="${esc(s)}"><div class="skl-h" data-action="toggleSkill" data-skill="${esc(s)}">${esc(s)}<span class="caret">▶</span></div><div class="skl-b">${esc(SKILL_DESC[s] || 'Skill.')}</div></div>`).join('')}</div>`;
 
-  return `<div class="modal-head"><div class="modal-icon"><span>${esc(a.icon)}</span>`
-    + `<img src="agent-art/${esc(a.key)}.png" alt="" onerror="this.style.display='none'"></div>`
+  return `<div class="modal-head agent-head">`
     + `<div style="flex:1"><div class="modal-title">${esc(a.name)}</div>`
     + `<span class="agent-type type-${esc(a.key)}">${esc(a.type)}</span></div>`
     + `<span class="health"><span class="hdot h-${dot.cls}"></span>${esc(dot.label)}</span></div>`
@@ -409,7 +420,12 @@ function wireOverlay(overlay) {
       return;
     }
     if (action === 'togglePause') {
-      dispatchAction('toggleagentpause', { agent: agentTypeOf(el.dataset.id) }, 'Toggled agent pause');
+      const key = el.dataset.id;
+      const willPause = getPausedAgents().indexOf(key) === -1; // toggle relative to current local state
+      setAgentPaused(key, willPause); // optimistic + persisted
+      dispatchAction('toggleagentpause', { agent: agentTypeOf(key), paused: willPause },
+        willPause ? 'Agent paused' : 'Agent started');
+      renderModal(getState()); // re-render so the label + status light flip immediately
       return;
     }
     if (action === 'toggleSkill') {

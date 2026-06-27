@@ -56,16 +56,18 @@ function buildRecentRunsHtml(runs) {
   if (!Array.isArray(runs) || runs.length === 0) {
     return '<span class="faint" style="font-size:12px">No recent runs yet.</span>';
   }
-  return runs.slice(0, 5).map((r) => {
+  return runs.slice(0, 10).map((r) => {
     const status = (r.status || 'success').toLowerCase();
     const icon  = STATUS_ICON[status]  || '·';
     const color = STATUS_COLOR[status] || 'var(--text)';
     const agent = esc(r.agent || '');
+    const model = r.model ? `<span class="chip" style="margin-left:auto">${esc(r.model)}</span>` : '<span class="spacer"></span>';
     return `<div class="rr-row">`
       + `<span class="rr-icon" style="color:${color}">${icon}</span>`
       + `<span class="rr-name ag-text-${agent}">${esc(r.name || r.taskId || '?')}</span>`
       + `<span class="rr-sep faint">·</span>`
       + `<span class="rr-agent faint">${agent}</span>`
+      + model
       + `<span class="rr-time faint">${esc(relTime(r.ranAt))}</span>`
       + `</div>`;
   }).join('');
@@ -121,7 +123,7 @@ export function renderSchedule(state, panelArg) {
     + `<div class="tray-items" id="trayItems">${trayItemsHtml}</div>`
     + `</div>`
     + `<div class="rr-box">`
-    + `<div class="ptitle">Recent runs <span class="faint">last 5 completed jobs</span></div>`
+    + `<div class="ptitle">Recent runs <span class="faint">most recent completed jobs</span></div>`
     + `<div class="rr-list">${buildRecentRunsHtml(sched.recentRuns)}</div>`
     + `</div>`;
   wireSchedule(panel);

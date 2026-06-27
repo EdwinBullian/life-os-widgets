@@ -40,4 +40,9 @@
   ],
   "open_questions": [
     "Two command-center copies exist (Misc/AgentOS/command-center and Coding/Tooling/life-os-widgets/command-center). Confirm which renders the live Agent Command Center widget before building the Registry tab.",
-    "Health 'private' tasks: stay Max until the local desktop box is online at colleg
+    "Health 'private' tasks: stay Max until the local desktop box is online at college, then move to a local model — never free-cloud.",
+    "estTokensPerRun are rough estimates; replace with real telemetry once the worker logs token counts.",
+    "mcp field (added 2026-06-27) = comma list of connectors a job needs, resolved by Coding/llm_gateway/mcp_catalog.py. Built so far: notion, google-calendar, notebooklm, desktop-commander. Empty mcp = no cloud connector (private health rows + max-tier judgment + infra). The enqueuer must copy this into the Dispatch row's MCP field when it creates the job.",
+    "Not-yet-built connectors (jobs listing only notion today still run, just without these): grail-hunter needs a headless Depop/Chrome scraper (interactive Chrome MCP isn't reachable headless — likely a Playwright script); the two salil tasks need Supermetrics headless auth. Add each to mcp_catalog.py once solved."
+  ]
+}

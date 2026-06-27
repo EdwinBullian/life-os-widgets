@@ -15,7 +15,7 @@ const TAB_LABELS = {
   overview: '▦ Overview', chat: '✦ Chat', agents: '◎ Agents',
   schedule: '◷ Schedule', queue: '⚑ Queue', cost: '▤ Cost', registry: '⊞ Registry',
 };
-const AGENT_COUNT = 6; // fixed inline roster (section 05)
+const AGENT_COUNT = 8; // fixed inline roster (section 05) — 8 agents
 
 // spend.json is produced by a slow job (not the 60s poll). isStale trips at 2×cadence, so a 6h
 // cadence flags "stale" once the data is older than ~12h.
@@ -132,4 +132,6 @@ export function initChrome() {
 }
 
 export function _resetChromeForTests() {
-  wired 
+  wired = false;
+  tabRenderers.clear();
+}
