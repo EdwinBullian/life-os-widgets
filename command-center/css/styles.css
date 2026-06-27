@@ -80,6 +80,7 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .feed{display:flex;flex-direction:column;overflow:auto}
 .feed .row{display:flex;gap:11px;padding:9px 2px;border-bottom:1px solid var(--border);align-items:center}
 .feed .row:last-child{border-bottom:none}.feed .when{color:var(--faint);font-size:11px;min-width:46px}.feed .msg{flex:1}
+.now-line{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--muted);padding:9px 13px;background:var(--card);border:1px solid var(--border);border-radius:10px;flex-shrink:0}
 
 /* AGENTS — 4 columns × 2 rows for 8 agents */
 .agrid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;align-items:stretch}

@@ -121,11 +121,9 @@ export function renderSchedule(state, panelArg) {
     + `<span class="spacer"></span>`
     + `<button class="btn sm ghost" data-action="newOneOff">+ New one-off</button></div>`
     + `<div class="tray-items" id="trayItems">${trayItemsHtml}</div>`
-    + `</div>`
-    + `<div class="rr-box">`
-    + `<div class="ptitle">Recent runs <span class="faint">most recent completed jobs</span></div>`
-    + `<div class="rr-list">${buildRecentRunsHtml(sched.recentRuns)}</div>`
     + `</div>`;
+  // Recent-runs block intentionally removed from this tab — that history lives on the Overview tab.
+  // Dropping it lets the calendar + one-off tray fill the embed's max height without scrolling.
   wireSchedule(panel);
 }
 

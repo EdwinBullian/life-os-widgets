@@ -191,6 +191,75 @@ function recentRunsBox(schedule) {
   return `${head}<div class="feed grow">${items}</div></div>`;
 }
 
+// One-line "now" status pill. Agents run infrequently, so this is usually "Idle" — a thin strip,
+// not a big feed. Shows a count when the live status feed reports running jobs.
+function nowLine(status) {
+  const running = (status && status.counts && Number(status.counts.running)) || 0;
+  const cls = running > 0 ? 'run' : 'ok';
+  const label = running > 0
+    ? `${running} job${running === 1 ? '' : 's'} running now`
+    : 'Idle — nothing running right now';
+  return `<div class="now-line"><span class="dot ${cls}"></span><span>${esc(label)}</span></div>`;
+}
+
+// Next occurrence of a weekly (day,hour) slot, from `now`.
+function nextOccurrence(day, hour, now) {
+  const today = now.getDay();
+  let d = ((day - today) + 7) % 7;
+  if (d === 0 && now.getHours() >= hour) d = 7; // already passed today → next week
+  const nx = new Date(now);
+  nx.setDate(now.getDate() + d);
+  nx.setHours(hour, 0, 0, 0);
+  return nx;
+}
+
+// Human label: a live countdown within 24h ("in 3h 20m"), otherwise a day+time ("Sat 9pm").
+function whenLabel(date, now) {
+  const mins = Math.round((date - now) / 60000);
+  if (mins < 1) return 'now';
+  if (mins < 60) return `in ${mins}m`;
+  if (mins < 24 * 60) {
+    const h = Math.floor(mins / 60); const m = mins % 60;
+    return m ? `in ${h}h ${m}m` : `in ${h}h`;
+  }
+  const ampm = date.getHours() >= 12 ? 'pm' : 'am';
+  const t = `${date.getHours() % 12 || 12}${ampm}`;
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const tom = new Date(now.getTime() + 86400000);
+  if (date.toDateString() === tom.toDateString()) return `Tmrw ${t}`;
+  return `${days[date.getDay()]} ${t}`;
+}
+
+function getUpcoming(schedule, n) {
+  const week = (schedule && Array.isArray(schedule.week)) ? schedule.week : [];
+  if (!week.length) return [];
+  const now = new Date();
+  return week
+    .map((e) => { const next = nextOccurrence(Number(e.day), Number(e.hour) || 0, now); return { ...e, _next: next, _when: whenLabel(next, now) }; })
+    .sort((a, b) => a._next - b._next)
+    .slice(0, n);
+}
+
+// Up Next — the next scheduled runs with countdowns. Always populated from schedule.json.
+function upNextBox(schedule) {
+  const rows = getUpcoming(schedule, 7);
+  const head = '<div class="box grow"><div class="ptitle">Up next '
+    + '<span class="faint">next scheduled runs</span></div>';
+  if (!rows.length) {
+    return `${head}<div class="feed grow"><div class="muted">No scheduled runs.</div></div></div>`;
+  }
+  const items = rows.map((e) => {
+    const a = String(e.agent || '').toLowerCase();
+    const label = a ? a.charAt(0).toUpperCase() + a.slice(1) : '—';
+    const model = e.model ? `<span class="chip">${esc(e.model)}</span>` : '';
+    return '<div class="row">'
+      + `<div class="msg"><span class="tag t-${esc(a)}">${esc(label)}</span> &nbsp;${esc(e.name || '')}</div>`
+      + model
+      + `<span class="when faint" style="min-width:auto">${esc(e._when)}</span></div>`;
+  }).join('');
+  return `${head}<div class="feed grow">${items}</div></div>`;
+}
+
 export function renderOverview(state, panelArg) {
   const panel = panelArg || document.getElementById('overview');
   if (!panel) return;
@@ -198,9 +267,10 @@ export function renderOverview(state, panelArg) {
   const spend = safe(state.spend, null);
   const schedule = safe(state.schedule, null);
   const registry = safe(state.registry, null);
-  // With the taller widget there's room for both the live feed and recent history side by side.
+  // "Now" is a thin pill (agents run rarely); the space goes to Up Next + Recent runs side by side.
   panel.innerHTML = kpiRow(status, schedule, registry) + midGrid(spend)
-    + `<div class="grid cols-2 grow">${feed(status)}${recentRunsBox(schedule)}</div>`;
+    + nowLine(status)
+    + `<div class="grid cols-2 grow">${upNextBox(schedule)}${recentRunsBox(schedule)}</div>`;
   wireOverview(panel);
 }
 
