@@ -7,7 +7,10 @@
   --tag-assistant:#7a9fd1;--tag-finance:#d4b85c;--tag-health:#5fb98a;--tag-research:#9d83d6;
   --tag-programming:#d4905c;--tag-career:#c478c4;--tag-business:#e08585;--tag-marketing:#5cb8c0;
   --radius:12px;
-  --app-h:1180px;
+  /* Panel height tracks the embed/viewport instead of a fixed lock, so dragging the Notion
+     embed taller grows the whole widget (no more scrolling inside a fixed box). The floor keeps
+     it usable on a short embed; raise/lower 680px if you want a different minimum. */
+  --app-h:max(680px, calc(100vh - 100px));
 }
 *{box-sizing:border-box;margin:0;padding:0}
 *{scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
