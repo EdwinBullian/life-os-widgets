@@ -22,6 +22,11 @@ export const EMPTY_SCHEDULE = Object.freeze({
   dailies: Object.freeze([]),
 });
 
+export const EMPTY_REGISTRY = Object.freeze({
+  updated: null,
+  tasks: Object.freeze([]),
+});
+
 async function fetchJson(path, fallback) {
   try {
     // no-store: spend/schedule are edited out-of-band; don't let the 10-min Pages cache stale them.
@@ -46,6 +51,13 @@ export async function loadSchedule() {
   return schedule;
 }
 
+export async function loadRegistry() {
+  // registry.json is the task roster; infrequently edited, but still skip the 10-min Pages cache.
+  const registry = await fetchJson('./data/registry.json', EMPTY_REGISTRY);
+  setState({ registry });
+  return registry;
+}
+
 export async function loadStaticData() {
-  return Promise.all([loadSpend(), loadSchedule()]);
+  return Promise.all([loadSpend(), loadSchedule(), loadRegistry()]);
 }
