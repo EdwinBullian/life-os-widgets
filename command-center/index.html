@@ -6,31 +6,52 @@
   <title>AI Command Center</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Single header row: tabs on the left, status pills + refresh/settings on the right. The
-       Notion page title above the embed serves as the heading, so no in-widget brand block. -->
-  <div class="topbar">
-    <div class="tabs" id="tabs" role="tablist" aria-label="Command Center sections"></div>
-    <div class="spacer"></div>
-    <!-- Pills (gateway / Max % / OpenRouter $) are rendered into #pills by render/chrome.js. -->
-    <span id="pills"></span>
-    <button class="iconbtn" id="btn-refresh" title="Refresh" aria-label="Refresh"></button>
-    <button class="iconbtn" id="btn-settings" title="Settings" aria-label="Settings"></button>
-  </div>
+  <!-- App shell: fixed left nav rail + flexible main stage. The JS only needs the #tabs, #pills,
+       #btn-refresh, #btn-settings, .panel, #overlay and #toast hooks — all preserved below. -->
+  <div class="app">
 
-  <!-- Seven fixed-height panels (height: var(--app-h)). Content rendered in sections 04-06. -->
-  <!-- Visibility is owned solely by CSS (.panel{display:none} / .panel.active{display:flex});
-       section 04's render() toggles .active. No `hidden` attr, to avoid a dual-mechanism desync. -->
-  <div class="panel active" id="overview" role="tabpanel" aria-labelledby="tab-overview"></div>
-  <div class="panel" id="chat" role="tabpanel" aria-labelledby="tab-chat"></div>
-  <div class="panel" id="agents" role="tabpanel" aria-labelledby="tab-agents"></div>
-  <div class="panel" id="schedule" role="tabpanel" aria-labelledby="tab-schedule"></div>
-  <div class="panel" id="queue" role="tabpanel" aria-labelledby="tab-queue"></div>
-  <div class="panel" id="cost" role="tabpanel" aria-labelledby="tab-cost"></div>
-  <div class="panel" id="registry" role="tabpanel" aria-labelledby="tab-registry"></div>
+    <!-- ── Left nav rail ─────────────────────────────────────────────────────────── -->
+    <nav class="rail" aria-label="Primary">
+      <!-- Logo mark only — the Notion page title above the embed is the heading, so no wordmark. -->
+      <div class="brand">
+        <div class="logo" aria-hidden="true">C</div>
+      </div>
+
+      <!-- Vertical tab list (rendered by render/chrome.js). -->
+      <div class="tabs" id="tabs" role="tablist" aria-label="Command Center sections"></div>
+
+      <!-- Footer row of square icon buttons (refresh / settings). -->
+      <div class="rail-foot">
+        <button class="iconbtn" id="btn-refresh" title="Refresh" aria-label="Refresh"></button>
+        <button class="iconbtn" id="btn-settings" title="Settings" aria-label="Settings"></button>
+      </div>
+    </nav>
+
+    <!-- ── Main stage ───────────────────────────────────────────────────────────── -->
+    <main class="stage">
+      <!-- Slim status strip. Pills (gateway / Max % / OpenRouter $) render into #pills. -->
+      <div class="statusstrip">
+        <span class="strip-label mono">STATUS</span>
+        <span class="spacer"></span>
+        <span id="pills"></span>
+      </div>
+
+      <!-- Seven swappable panels. Visibility owned by CSS (.panel{display:none}/.panel.active{display:flex}). -->
+      <div class="stage-body">
+        <div class="panel active" id="overview" role="tabpanel" aria-labelledby="tab-overview"></div>
+        <div class="panel" id="chat" role="tabpanel" aria-labelledby="tab-chat"></div>
+        <div class="panel" id="agents" role="tabpanel" aria-labelledby="tab-agents"></div>
+        <div class="panel" id="schedule" role="tabpanel" aria-labelledby="tab-schedule"></div>
+        <div class="panel" id="queue" role="tabpanel" aria-labelledby="tab-queue"></div>
+        <div class="panel" id="cost" role="tabpanel" aria-labelledby="tab-cost"></div>
+        <div class="panel" id="registry" role="tabpanel" aria-labelledby="tab-registry"></div>
+      </div>
+    </main>
+  </div>
 
   <!-- Overlay + modal container (populated by render/agents.js etc.). CSS .overlay.open drives visibility. -->
   <div class="overlay" id="overlay">
