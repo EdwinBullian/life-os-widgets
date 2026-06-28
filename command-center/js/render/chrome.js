@@ -27,7 +27,7 @@ export function registerTabRenderer(tab, fn) { tabRenderers.set(tab, fn); }
 
 const num = (v) => (typeof v === 'number' && Number.isFinite(v));
 
-// ── Topbar ───────────────────────────────────────────────────────────────────────────
+// ── Topbar ───────────────────────────────────────────────────────
 export function renderTopbar(state) {
   const pills = document.getElementById('pills');
   if (!pills) return;
@@ -54,7 +54,7 @@ export function renderTopbar(state) {
     <span class="pill" id="pill-or">OpenRouter wk <b>${weekDisplay}</b></span>`;
 }
 
-// ── Tabs ─────────────────────────────────────────────────────────────────────────────
+// ── Tabs ────────────────────────────────────────────────────────
 export function renderTabs(state) {
   const bar = document.getElementById('tabs');
   if (!bar) return;
@@ -69,13 +69,13 @@ export function renderTabs(state) {
   }).join('');
 }
 
-// ── Tab switching ───────────────────────────────────────────────────────────────────────
+// ── Tab switching ────────────────────────────────────────────────
 export function setActiveTab(tab) {
   if (!TABS.includes(tab)) return;
   setState({ activeTab: tab });
 }
 
-// ── The single dispatcher ───────────────────────────────────────────────────────────────
+// ── The single dispatcher ──────────────────────────────────────────
 export function render(state) {
   renderTopbar(state);
   renderTabs(state);
@@ -94,7 +94,7 @@ export function render(state) {
   }
 }
 
-// ── Event wiring (one delegated listener each; called once at boot) ───────────────────
+// ── Event wiring (one delegated listener each; called once at boot) ───────────────
 let wired = false;
 export function initChrome() {
   if (wired) return;
@@ -113,6 +113,26 @@ export function initChrome() {
   if (settingsBtn) {
     settingsBtn.textContent = '⚙';
     settingsBtn.addEventListener('click', () => openSettings());
+  }
+
+  // Phone-layout toggle: flips body.phone (CSS owns the responsive collapse) and persists the
+  // choice. Self-contained — the Notion embed can report a desktop width on a phone, so this is a
+  // manual override rather than a width media query. Storage is wrapped (embed can deny access).
+  const phoneBtn = document.getElementById('btn-phone');
+  if (phoneBtn) {
+    const applyPhone = (on) => {
+      document.body.classList.toggle('phone', on);
+      phoneBtn.classList.toggle('active', on);
+      phoneBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    };
+    let phoneOn = false;
+    try { phoneOn = localStorage.getItem('agentos_phone_view') === '1'; } catch { /* storage denied */ }
+    applyPhone(phoneOn);
+    phoneBtn.addEventListener('click', () => {
+      phoneOn = !phoneOn;
+      try { localStorage.setItem('agentos_phone_view', phoneOn ? '1' : '0'); } catch { /* storage denied */ }
+      applyPhone(phoneOn);
+    });
   }
 
   bar.addEventListener('click', (e) => {
