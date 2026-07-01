@@ -154,6 +154,32 @@ export function setTaskOverride(id, patch) {
   return taskOvrMem;
 }
 
+// ── Phone Link Bridge snooze ───────────────────────────────────────────────────
+// Local-only countdown for the Phone Bridge tab's snooze presets (1h / 4h / until tomorrow).
+// Separate from the settaskenabled override above — this just remembers WHEN to auto-flip the
+// task override back to enabled. Cleared once the snooze passes (see render/phonebridge.js).
+const PB_SNOOZE_KEY = 'agentos_phonebridge_snooze_until';
+let pbSnoozeMem;
+
+export function getPhoneBridgeSnoozeUntil() {
+  if (pbSnoozeMem !== undefined) return pbSnoozeMem;
+  try {
+    const v = localStorage.getItem(PB_SNOOZE_KEY);
+    pbSnoozeMem = v ? Number(v) : null;
+    if (pbSnoozeMem != null && !Number.isFinite(pbSnoozeMem)) pbSnoozeMem = null;
+  } catch { pbSnoozeMem = null; }
+  return pbSnoozeMem;
+}
+
+export function setPhoneBridgeSnoozeUntil(ts) {
+  pbSnoozeMem = ts == null ? null : Number(ts);
+  try {
+    if (pbSnoozeMem == null) localStorage.removeItem(PB_SNOOZE_KEY);
+    else localStorage.setItem(PB_SNOOZE_KEY, String(pbSnoozeMem));
+  } catch { /* storage denied — in-memory mirror holds for the session */ }
+  return pbSnoozeMem;
+}
+
 export function postAction(action, params = {}) {
   if (!ALLOWED_ACTIONS.has(action)) {
     return Promise.reject(new Error(`disallowed action: ${action}`));

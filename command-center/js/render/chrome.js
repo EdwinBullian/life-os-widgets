@@ -10,10 +10,11 @@ import { tick } from '../poll.js';
 import { getMaxPct } from '../proxy.js';
 import { openSettings } from './settings.js';
 
-const TABS = ['overview', 'chat', 'agents', 'schedule', 'queue', 'cost', 'registry'];
+const TABS = ['overview', 'chat', 'agents', 'schedule', 'queue', 'cost', 'registry', 'phonebridge', 'brain'];
 const TAB_LABELS = {
   overview: '▦ Overview', chat: '✦ Chat', agents: '◎ Agents',
   schedule: '◷ Schedule', queue: '⚑ Queue', cost: '▤ Cost', registry: '⊞ Registry',
+  phonebridge: '☏ Bridge', brain: '✺ Brain',
 };
 const AGENT_COUNT = 8; // fixed inline roster (section 05) — 8 agents
 

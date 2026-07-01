@@ -5,12 +5,19 @@
 import { POLL_MS } from './util.js';
 import { fetchStatus } from './proxy.js';
 import { getState, setState } from './state.js';
+import { loadKbGraph } from './data.js';
 
 let timer = null;
 let controller = null;
 let repollTimer = null;
+let kbGraphTimer = null;
 
 const REPOLL_MS = 1500;
+// kb_graph.json is 350KB+ and only changes when reindex.py's nightly job reruns graph_export —
+// polling it on the 60s status cadence (POLL_MS) would be ~30x more network traffic than the
+// data ever changes. loadKbGraph() also no-ops the state update when generated_at is unchanged,
+// so most of these ticks cost one fetch and nothing else (no re-render, no D3 rebuild).
+const KB_GRAPH_POLL_MS = 10 * 60 * 1000;
 
 // One poll attempt. Skips entirely if a request is already in flight.
 export function tick() {
@@ -40,8 +47,21 @@ export function startPoller() {
   timer = setInterval(tick, POLL_MS);
 }
 
+function clearKbGraphTimer() {
+  if (kbGraphTimer) { clearInterval(kbGraphTimer); kbGraphTimer = null; }
+}
+
+// Separate, much slower poller for the Brain tab's kb_graph.json — see KB_GRAPH_POLL_MS.
+// Independent of the status poller/in-flight guard above: a stalled status fetch must never
+// block this, and vice versa.
+export function startKbGraphPoller() {
+  clearKbGraphTimer();
+  kbGraphTimer = setInterval(() => { loadKbGraph().catch(() => {}); }, KB_GRAPH_POLL_MS);
+}
+
 export function stopPoller() {
   clearTimer();
+  clearKbGraphTimer();
   if (controller) { controller.abort(); controller = null; }
   if (repollTimer) { clearTimeout(repollTimer); repollTimer = null; }
 }
@@ -54,6 +74,7 @@ export function repollSoon(ms = REPOLL_MS) {
 
 export function _resetPollerForTests() {
   clearTimer();
+  clearKbGraphTimer();
   controller = null;
   if (repollTimer) { clearTimeout(repollTimer); repollTimer = null; }
 }

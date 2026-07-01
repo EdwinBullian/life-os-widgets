@@ -4,7 +4,7 @@
 import { getState, setState, subscribe } from './state.js';
 import { getProxyUrl, fetchStatus } from './proxy.js';
 import { loadStaticData } from './data.js';
-import { startPoller } from './poll.js';
+import { startPoller, startKbGraphPoller } from './poll.js';
 import { render, initChrome, registerTabRenderer } from './render/chrome.js';
 import { renderOverview } from './render/overview.js';
 import { renderAgents, buildRoster } from './render/agents.js';
@@ -13,6 +13,8 @@ import { renderQueue } from './render/queue.js';
 import { renderCost } from './render/cost.js';
 import { renderChat } from './render/chat.js';
 import { renderRegistry } from './render/registry.js';
+import { renderPhoneBridge } from './render/phonebridge.js';
+import { renderBrain } from './render/brain.js';
 
 export function buildInitialState() {
   return {
@@ -21,6 +23,7 @@ export function buildInitialState() {
     spend: null,
     schedule: null,
     registry: null,
+    kbGraph: null,
     agents: buildRoster(), // inline roster (section 05) — static, seeded at boot
     proxyUrl: getProxyUrl(),
     polling: { inFlight: false, lastError: null },
@@ -37,6 +40,8 @@ export function boot() {
   registerTabRenderer('cost', renderCost);
   registerTabRenderer('chat', renderChat);
   registerTabRenderer('registry', renderRegistry);
+  registerTabRenderer('phonebridge', renderPhoneBridge);
+  registerTabRenderer('brain', renderBrain);
   subscribe(render);   // every setState re-renders chrome + active tab
   initChrome();        // delegated tab click + arrow-key listeners
   render(getState());  // first paint
@@ -50,6 +55,7 @@ export function boot() {
     .catch((err) => setState({ polling: { inFlight: false, lastError: String((err && err.message) || err) } }));
 
   startPoller(); // §03 owns the in-flight guard / teardown / re-poll
+  startKbGraphPoller(); // separate slow (10min) poller — kb_graph.json is 350KB+ and rarely changes
 }
 
 // Auto-boot only in the real shell (the #tabs container exists). Importing under test does nothing.

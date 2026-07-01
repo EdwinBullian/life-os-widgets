@@ -47,6 +47,8 @@
         <div class="panel" id="queue" role="tabpanel" aria-labelledby="tab-queue"></div>
         <div class="panel" id="cost" role="tabpanel" aria-labelledby="tab-cost"></div>
         <div class="panel" id="registry" role="tabpanel" aria-labelledby="tab-registry"></div>
+        <div class="panel" id="phonebridge" role="tabpanel" aria-labelledby="tab-phonebridge"></div>
+        <div class="panel" id="brain" role="tabpanel" aria-labelledby="tab-brain"></div>
       </div>
     </main>
   </div>
@@ -59,6 +61,10 @@
   <!-- Toast container -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <!-- D3 (brain-map force-directed graph only; every other tab stays DOM-string/no-lib).
+       defer so a slow/unreachable CDN never blocks the rest of the app from booting — brain.js
+       checks window.d3 and shows a graceful message if it never loaded. -->
+  <script src="https://d3js.org/d3.v7.min.js" defer></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>

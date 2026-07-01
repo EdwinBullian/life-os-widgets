@@ -14,6 +14,8 @@
      business=red, marketing=teal. Everything color-codes off these vars. */
   --tag-assistant:#7a9fd1;--tag-finance:#d4b85c;--tag-health:#5fb98a;--tag-research:#9d83d6;
   --tag-programming:#d4905c;--tag-career:#c478c4;--tag-business:#e08585;--tag-marketing:#5cb8c0;
+  /* Knowledge-base subjects not already covered by an agent color (brain-map tab) */
+  --tag-trading:#c9975c;--tag-school:#6fa3c9;--tag-memory:#9490c9;--tag-knowledge:#7cbfa0;--tag-other:#8a8a87;
   /* ── shape ── */
   --radius:11px;--radius-sm:8px;--rail-w:212px;
 }
@@ -110,6 +112,7 @@ h1,h2,h3{margin:0;font-family:'Newsreader','Georgia',serif;font-weight:600}
 .chip{font-family:'JetBrains Mono','Courier New',monospace;font-size:10px;background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:2px 7px;color:var(--muted);white-space:nowrap;display:inline-block}
 .chip.max{color:var(--running);border-color:rgba(106,163,224,.4)}.chip.open{color:var(--success);border-color:rgba(91,189,126,.4)}
 .chip.free{color:var(--muted)}.chip.code{color:var(--faint)}
+.chip.warn{color:var(--warn);border-color:rgba(227,160,92,.4)}
 .btn{background:var(--accent);color:var(--on-accent);border:none;border-radius:var(--radius-sm);padding:9px 15px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit;transition:background .14s}
 .btn:hover{background:var(--accent-2)}.btn.ghost{background:var(--panel2);color:var(--text);border:1px solid var(--line2)}
 .btn.ghost:hover{background:var(--raise)}
@@ -353,6 +356,72 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .reg-select{width:auto;min-width:118px;padding:5px 8px;font-size:11.5px}
 .reg-select:focus{border-color:var(--accent);outline:none}
 
+/* PHONE BRIDGE — hero on/off switch (§phonebridge tab), scaled-up variant of .reg-toggle */
+.pb-hero{display:flex;align-items:center;gap:16px;padding:14px 16px;background:var(--panel2);border:1px solid var(--line2);border-radius:11px}
+.pb-toggle{position:relative;display:inline-block;width:52px;height:29px;cursor:pointer;flex-shrink:0}
+.pb-toggle input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:1}
+.pb-slider{position:absolute;inset:0;background:var(--raise);border:1px solid var(--line2);border-radius:999px;transition:all .15s}
+.pb-slider::before{content:'';position:absolute;width:21px;height:21px;left:3px;top:3px;border-radius:50%;background:var(--muted);transition:all .15s}
+.pb-toggle input:checked + .pb-slider{background:rgba(91,189,126,.25);border-color:var(--success)}
+.pb-toggle input:checked + .pb-slider::before{transform:translateX(23px);background:var(--success)}
+.pb-hero-text{display:flex;flex-direction:column;gap:2px}
+.pb-hero-state{font-family:'JetBrains Mono','Courier New',monospace;font-size:15px;font-weight:700;letter-spacing:.02em}
+.pb-hero-state.on{color:var(--success)}.pb-hero-state.off{color:var(--faint)}
+
+/* BRAIN MAP — knowledge-base force-directed graph (§brain tab) */
+.brain-wrap{position:relative;flex:1;min-height:0;background:var(--sunken);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.brain-wrap svg{display:block;width:100%;height:100%;cursor:grab}
+.brain-wrap svg:active{cursor:grabbing}
+.brain-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.brain-toolbar .lab{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--faint)}
+.brain-legend{display:flex;gap:6px;flex-wrap:wrap}
+.brain-legend .tag{cursor:pointer;user-select:none;transition:opacity .15s}
+.brain-legend .tag.dim{opacity:.35}
+.brain-active-badge{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.02em}
+.brain-stats{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--faint)}
+/* Resting neurons sit dim; n-halo/n-core only brighten momentarily when brain.js's firing
+   engine flashes them (see fireOnce/flashNode) — no steady-state glow, no CSS loop here.
+   n-halo/n-core are the tiny (down to ~3px) VISIBLE circles, too small to reliably hover/click/
+   drag on their own — pointer-events:none here pushes all interaction onto n-hit, a larger
+   invisible circle underneath sized for real hit-testing (Fitts's-law fix; this was the bug
+   where nodes couldn't be hovered/clicked/moved at all — n-hit didn't exist and the visible
+   circles had no viable hit target). */
+.brain-node{transition:opacity .18s}
+.brain-node .n-halo,.brain-node .n-core{pointer-events:none}
+.brain-node .n-halo{mix-blend-mode:screen}
+.brain-node .n-hit{fill:transparent;pointer-events:all}
+/* Lobes are a faint, slow-breathing haze (ambient) that brightens + breathes faster when a
+   subject has a live agent running (see .active, toggled by updateActivity()). */
+.brain-lobe{pointer-events:none;mix-blend-mode:screen;opacity:.1;animation:brain-lobe-idle 6s ease-in-out infinite}
+.brain-lobe.active{opacity:.22;animation:brain-lobe-hot 1.8s ease-in-out infinite}
+@keyframes brain-lobe-idle{0%,100%{opacity:.07}50%{opacity:.13}}
+@keyframes brain-lobe-hot{0%,100%{opacity:.16}50%{opacity:.3}}
+/* Accent ring around a lobe — invisible at rest, pulses in the app's clay accent while that
+   subject's agent is actually running, so "live" reads as a distinct signal from subject color. */
+.brain-lobe-ring{fill:none;stroke-width:1.2px;opacity:0;transition:opacity .5s}
+.brain-lobe-ring.active{stroke:var(--accent);opacity:.5;animation:brain-ring-pulse 1.6s ease-in-out infinite}
+@keyframes brain-ring-pulse{0%,100%{stroke-opacity:.3;stroke-width:1px}50%{stroke-opacity:.9;stroke-width:2.2px}}
+/* Base "dendrite" — always faintly visible at rest, like Obsidian's graph-view edges, not the
+   near-invisible hairlines from the first pass (that's what made the graph read as unconnected
+   dots even where real edges existed). Hover a node to see its highlighted neighborhood
+   (brain.js's highlightNeighborhood/clearHighlight sets opacity/stroke-width inline over this). */
+.brain-edge{stroke:var(--line2);stroke-opacity:.4;fill:none;transition:opacity .15s,stroke-width .15s}
+/* Semantic edges (embedding cosine-similarity — see graph_export.py's build_semantic_edges) are
+   an AI-inferred relationship, not a manual tag, so they get a distinct cool tint to tell them
+   apart from the tag/ticker/wikilink layer at a glance. */
+.brain-edge.semantic{stroke:var(--running);stroke-opacity:.3}
+.brain-edge.ticker{stroke:var(--tag-finance);stroke-opacity:.32}
+.brain-pulse-dot{pointer-events:none;mix-blend-mode:screen}
+.brain-tooltip{position:fixed;z-index:70;pointer-events:none;background:var(--raise);border:1px solid var(--line2);
+  border-radius:9px;padding:9px 11px;font-size:11.5px;max-width:260px;box-shadow:0 10px 30px rgba(0,0,0,.45);
+  opacity:0;transition:opacity .1s;line-height:1.5}
+.brain-tooltip.show{opacity:1}
+.brain-tooltip .tt-title{font-weight:700;color:var(--text);margin-bottom:3px}
+.brain-tooltip .tt-meta{color:var(--muted);font-size:10.5px}
+.brain-tooltip .tt-tags{margin-top:5px;display:flex;flex-wrap:wrap;gap:3px}
+.brain-tooltip .tt-tag{font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--panel2);border-radius:4px;padding:1px 5px;color:var(--faint)}
+.brain-tooltip .tt-contested{color:var(--warn);font-weight:700}
+
 /* On a narrow embed, collapse the rail to an icon strip so the stage keeps its room. */
 @media(max-width:720px){
   :root{--rail-w:60px}
@@ -392,6 +461,8 @@ body.phone .calcol{overflow:visible}
 body.phone .feed,body.phone .reg-scroll,body.phone .sched-list,body.phone .rr-list{overflow:visible;max-height:none}
 body.phone .grow{flex:none;min-height:0}
 body.phone .chatwrap{min-height:60vh}
+body.phone .brain-wrap{height:65vh}
+body.phone .brain-stats{margin-left:0;width:100%}
 body.phone .reg-table{font-size:11.5px}
 body.phone .reg-table td,body.phone .reg-th{padding:6px 7px}
 body.phone .kpi .big{font-size:28px}
