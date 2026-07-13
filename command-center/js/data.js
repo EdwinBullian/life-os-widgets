@@ -78,6 +78,15 @@ export async function loadKbGraph() {
   return kbGraph;
 }
 
+export async function loadVitals() {
+  // vitals-data.json is produced by Task 4.1 (reply streak + weekly XP). Fall back to null
+  // (not a frozen empty object) so renderVitals can distinguish "no data yet" from "zeroed out"
+  // and hide the bar entirely rather than showing misleading placeholder numbers.
+  const vitals = await fetchJson('./data/vitals/vitals-data.json', null);
+  setState({ vitals });
+  return vitals;
+}
+
 export async function loadStaticData() {
-  return Promise.all([loadSpend(), loadSchedule(), loadRegistry(), loadKbGraph()]);
+  return Promise.all([loadSpend(), loadSchedule(), loadRegistry(), loadKbGraph(), loadVitals()]);
 }

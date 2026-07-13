@@ -38,6 +38,10 @@
         <span id="pills"></span>
       </div>
 
+      <!-- Vitals bar: reply streak + weekly XP (Task 4.2). Persistent across tabs, rendered by
+           render/vitals.js from data/vitals/vitals-data.json. Empty when data is missing. -->
+      <div id="vitals-bar"></div>
+
       <!-- Seven swappable panels. Visibility owned by CSS (.panel{display:none}/.panel.active{display:flex}). -->
       <div class="stage-body">
         <div class="panel active" id="overview" role="tabpanel" aria-labelledby="tab-overview"></div>

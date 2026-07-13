@@ -6,6 +6,7 @@
 import { getState, setState } from '../state.js';
 import { esc, normalizeQueue, safe, isStale } from '../util.js';
 import { countdown } from './overview.js';
+import { renderVitals } from './vitals.js';
 import { tick } from '../poll.js';
 import { getMaxPct } from '../proxy.js';
 import { openSettings } from './settings.js';
@@ -80,6 +81,7 @@ export function setActiveTab(tab) {
 export function render(state) {
   renderTopbar(state);
   renderTabs(state);
+  renderVitals(state.vitals); // persistent strip, all tabs — not a tab renderer
   // Invariant (asserted by §07 smoke): exactly one .panel.active.
   document.querySelectorAll('.panel').forEach((p) => {
     p.classList.toggle('active', p.id === state.activeTab);

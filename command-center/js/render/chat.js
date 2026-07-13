@@ -3,6 +3,7 @@
 // postAction. Phase 2 swaps the static body + send handler for the real Assistant-agent retrieval.
 
 import { toast } from './agents.js';
+import { busConfigured, postChat, fetchReply } from '../busclient.js';
 
 export function renderChat(state, panelArg) {
   const panel = panelArg || document.getElementById('chat');
@@ -28,11 +29,45 @@ export function renderChat(state, panelArg) {
   wireChat(panel);
 }
 
+function appendBubble(panel, who, text, cls) {
+  const body = panel.querySelector('.chat-body');
+  if (!body) return;
+  const div = document.createElement('div');
+  div.className = `bubble ${cls}`;
+  div.innerHTML = `<div class="who">${who}</div>`;
+  div.appendChild(document.createTextNode(text));
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+}
+
+// Poll the bus for the Assistant's reply (~30-60s band, same as iMessage). Best
+// effort: a handful of tries, then a gentle timeout note — never hangs the UI.
+function awaitReply(panel, reqId, tries = 20) {
+  if (tries <= 0) { appendBubble(panel, 'Assistant', '(still working — check back or watch iMessage)', 'ai'); return; }
+  fetchReply(reqId).then((reply) => {
+    if (reply && (reply.result || reply.reason)) {
+      appendBubble(panel, 'Assistant', String(reply.result || reply.reason), 'ai');
+    } else {
+      setTimeout(() => awaitReply(panel, reqId, tries - 1), 3000);
+    }
+  }).catch(() => setTimeout(() => awaitReply(panel, reqId, tries - 1), 3000));
+}
+
 function wireChat(panel) {
   if (panel.__chatWired) return;
   panel.__chatWired = true;
   panel.addEventListener('click', (e) => {
     const btn = e.target.closest('.chat-input .btn');
-    if (btn) toast('Sent (Phase 2)');
+    if (!btn) return;
+    const input = panel.querySelector('.chat-input input');
+    const msg = input ? String(input.value || '').trim() : '';
+    if (!msg) return;
+    // Declared-not-armed until a bus token is set (arm-time, per device).
+    if (!busConfigured()) { toast('Set an acc-bus token in Settings to chat'); return; }
+    appendBubble(panel, 'You', msg, 'me');
+    if (input) input.value = '';
+    postChat(msg)
+      .then((reqId) => { toast('Sent to Assistant'); awaitReply(panel, reqId); })
+      .catch((err) => { toast(`Couldn't reach the bus — ${String((err && err.message) || err)}`); });
   });
 }

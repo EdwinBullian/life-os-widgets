@@ -1,6 +1,8 @@
 // Proxy config + transport. Storage access is ALWAYS wrapped in try/catch (the Notion embed can
 // throw "Access is denied" on localStorage). JSONP for cross-origin reads; resolvable POST for writes.
 
+import { busConfigured, busActionFor, submitLegacyAction } from './busclient.js';
+
 const LS_KEY = 'agentos_proxy_url'; // exact predecessor key — a previously-saved URL carries over.
 const DEFAULT_PROXY = null;
 
@@ -126,6 +128,8 @@ export function fetchStatus({ timeoutMs = 8000, signal } = {}) {
 const ALLOWED_ACTIONS = new Set([
   'dispatch', 'pause', 'runnow', 'cancel', 'setagentmodel', 'toggleagentpause',
   'settaskenabled', 'settaskmodel', 'settaskschedule',
+  // ACC rewire: these route through the bus (busclient.busActionFor).
+  'settasknotify', 'globalpause',
 ]);
 
 // ── Local registry overrides ──────────────────────────────────────────────────
@@ -183,6 +187,14 @@ export function setPhoneBridgeSnoozeUntil(ts) {
 export function postAction(action, params = {}) {
   if (!ALLOWED_ACTIONS.has(action)) {
     return Promise.reject(new Error(`disallowed action: ${action}`));
+  }
+  // ACC rewire (P3.5): when the acc-bus token is configured, the GitHub-as-bus
+  // path (doc 34 Ruling 1) is the canonical writer — it replaces the rejected
+  // Apps Script proxy. Actions with no valid bus mapping fall through to the
+  // legacy POST (or reject) so nothing silently no-ops.
+  if (busConfigured()) {
+    const mapped = busActionFor(action, params);
+    if (!mapped.unsupported) return submitLegacyAction(action, params);
   }
   const url = getProxyUrl();
   if (!url) return Promise.reject(new Error('no proxy url configured'));

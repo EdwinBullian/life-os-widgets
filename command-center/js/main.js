@@ -7,6 +7,7 @@ import { loadStaticData } from './data.js';
 import { startPoller, startKbGraphPoller } from './poll.js';
 import { render, initChrome, registerTabRenderer } from './render/chrome.js';
 import { renderOverview } from './render/overview.js';
+import { renderVitals } from './render/vitals.js';
 import { renderAgents, buildRoster } from './render/agents.js';
 import { renderSchedule } from './render/schedule.js';
 import { renderQueue } from './render/queue.js';
@@ -24,6 +25,7 @@ export function buildInitialState() {
     schedule: null,
     registry: null,
     kbGraph: null,
+    vitals: null,
     agents: buildRoster(), // inline roster (section 05) — static, seeded at boot
     proxyUrl: getProxyUrl(),
     polling: { inFlight: false, lastError: null },

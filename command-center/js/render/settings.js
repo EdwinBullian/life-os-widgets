@@ -4,6 +4,7 @@
 // Notion embed blocks storage). Saving triggers an immediate status fetch so the gateway pill flips.
 
 import { getProxyUrl, setProxyUrl, fetchStatus, getMaxPct, setMaxPct } from '../proxy.js';
+import { getBusToken, setBusToken, busConfigured, setGlobalPause } from '../busclient.js';
 import { getState, setState } from '../state.js';
 import { esc } from '../util.js';
 import { toast } from './agents.js';
@@ -33,9 +34,14 @@ export function openSettings() {
     + `<input id="set-proxy" type="text" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(cur)}"></div>`
     + `<div class="field"><label>Claude Max plan % used <span class="hint">(you set this — Anthropic exposes no API for it)</span></label>`
     + `<input id="set-maxpct" type="number" min="0" max="100" step="1" placeholder="e.g. 24" value="${getMaxPct() != null ? esc(getMaxPct()) : ''}"></div>`
+    + `<div class="field"><label>acc-bus token <span class="hint">(fine-grained PAT, acc-bus repo only — the live write path)</span></label>`
+    + `<input id="set-bustoken" type="password" placeholder="${busConfigured() ? '•••••••• (set — leave blank to keep)' : 'github_pat_…'}"></div>`
     + `<div class="note">Status: ${connected ? '<span style="color:var(--success)">● connected</span>' : '<span class="faint">● not connected yet</span>'}. `
-    + 'The URL is stored only in this browser — never committed or shared.</div>'
+    + `Bus write path: ${busConfigured() ? '<span style="color:var(--success)">● armed</span>' : '<span class="faint">● not armed</span>'}. `
+    + 'Stored only in this browser — never committed or shared.</div>'
     + '<div class="modal-actions">'
+    + '<button class="btn ghost" data-action="settingsPause">Pause all agents</button>'
+    + '<button class="btn ghost" data-action="settingsResume">Resume</button>'
     + '<button class="btn ghost" data-action="settingsClear">Clear</button>'
     + '<button class="btn ghost" data-action="settingsCancel">Cancel</button>'
     + '<button class="btn" data-action="settingsSave">Save & connect</button></div>';
@@ -53,11 +59,25 @@ export function openSettings() {
     if (!el) return;
     const action = el.dataset.action;
     if (action === 'settingsCancel') { close(); return; }
+    if (action === 'settingsPause' || action === 'settingsResume') {
+      // Global kill switch → a global_pause bus request. The consumer flips
+      // registry.global_pause; run.py then exits early for every non-exempt job
+      // (the Programming maintenance watchdog + the bridge stay alive). Resume
+      // sends paused:false so the pause is never one-way from the dashboard.
+      if (!busConfigured()) { toast('Set an acc-bus token first'); return; }
+      const paused = action === 'settingsPause';
+      setGlobalPause(paused)
+        .then(() => toast(paused ? 'Kill switch sent — fleet pausing' : 'Resume sent — fleet un-pausing'))
+        .catch((err) => toast(`Couldn't reach the bus — ${String((err && err.message) || err)}`));
+      close();
+      return;
+    }
     if (action === 'settingsClear') {
       setProxyUrl(null);
+      setBusToken(null);
       setState({ proxyUrl: null });
       close();
-      toast('Proxy URL cleared');
+      toast('Proxy URL + bus token cleared');
       return;
     }
     if (action === 'settingsSave') {
@@ -65,6 +85,9 @@ export function openSettings() {
       const v = input ? String(input.value || '').trim() : '';
       const pctEl = modal.querySelector('#set-maxpct');
       setMaxPct(pctEl ? pctEl.value : null); // empty → clears the override
+      const tokEl = modal.querySelector('#set-bustoken');
+      const tok = tokEl ? String(tokEl.value || '').trim() : '';
+      if (tok) setBusToken(tok); // blank leaves the existing token untouched
       setProxyUrl(v || null);
       setState({ proxyUrl: v || null }); // any setState re-renders topbar + active tab
       close();
