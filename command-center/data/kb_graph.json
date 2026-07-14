@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T21:42:37.170853+00:00",
+  "generated_at": "2026-07-14T14:13:49.501115+00:00",
   "nodes": [
     {
       "id": "Finance\\commands\\thesis.md",
@@ -2431,6 +2431,16 @@
       "date": "2026-06-04"
     },
     {
+      "id": "Agent\\agentos\\lifeos_snapshots.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "LifeOS XP Snapshots",
+      "chunks": 10,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-03"
+    },
+    {
       "id": "Agent\\agentos\\LIFEOS_WRITEUP_2026-06.md",
       "subject": "Agent",
       "doc_type": "note",
@@ -3121,86 +3131,6 @@
       "date": "2026-06-13"
     },
     {
-      "id": "Agent\\agentos\\SystemMap\\02_NOTION_LIFEOS.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Notion — The Life OS Dashboard",
-      "chunks": 14,
-      "tags": [],
-      "contested": false,
-      "date": "2026-06-29"
-    },
-    {
-      "id": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Plugins & Skills — The Agents' Verbs",
-      "chunks": 16,
-      "tags": [],
-      "contested": false,
-      "date": "2026-06-29"
-    },
-    {
-      "id": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "A Day in the Life — and a Week",
-      "chunks": 6,
-      "tags": [],
-      "contested": false,
-      "date": "2026-06-13"
-    },
-    {
-      "id": "Agent\\agentos\\lifeos_snapshots.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "LifeOS XP Snapshots",
-      "chunks": 10,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-03"
-    },
-    {
-      "id": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "AGENT-FRAMEWORK-SPEC",
-      "chunks": 26,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-05"
-    },
-    {
-      "id": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Fable Brief — General Agent Framework",
-      "chunks": 8,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-05"
-    },
-    {
-      "id": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Fable Brief — Full LifeOS / AgentOS Audit",
-      "chunks": 7,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-05"
-    },
-    {
-      "id": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "System Reality Dossier — Eddie's LifeOS/AgentOS",
-      "chunks": 17,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-05"
-    },
-    {
       "id": "Finance\\Market_Scans\\2026-06-12-spacex-ipo-market-scan.html",
       "subject": "Finance",
       "doc_type": "market_scan",
@@ -3773,16 +3703,6 @@
       "date": "2026-W28"
     },
     {
-      "id": "Research\\_reference\\RESEARCH_QUEUE.md",
-      "subject": "Research",
-      "doc_type": "reference",
-      "title": "Research Agent — Research Queue",
-      "chunks": 5,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-07"
-    },
-    {
       "id": "Marketing\\faceless-ig\\SETUP_CHECKLIST.md",
       "subject": "Marketing",
       "doc_type": "note",
@@ -3793,16 +3713,6 @@
       "date": "2026-07-07"
     },
     {
-      "id": "Marketing\\Salil Hotels\\Weekly-Reports\\Salil_Brief_2026-06-23.md",
-      "subject": "Marketing",
-      "doc_type": "note",
-      "title": "Salil Hotel Group — Weekly Social Media Brief",
-      "chunks": 1,
-      "tags": [],
-      "contested": false,
-      "date": "2026-06-23"
-    },
-    {
       "id": "Trading\\finance-terminal\\ARCHITECTURE.md",
       "subject": "Trading",
       "doc_type": "note",
@@ -3811,26 +3721,6 @@
       "tags": [],
       "contested": false,
       "date": "2026-07-07"
-    },
-    {
-      "id": "Trading\\finance-terminal\\CLAUDE.md",
-      "subject": "Trading",
-      "doc_type": "note",
-      "title": "Finance Terminal — Project Instructions",
-      "chunks": 3,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Trading\\finance-terminal\\INTEGRATION.md",
-      "subject": "Trading",
-      "doc_type": "note",
-      "title": "Finance Terminal ⇄ PTBot — Integration Contract",
-      "chunks": 8,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
     },
     {
       "id": "Trading\\finance-terminal\\README.md",
@@ -3923,16 +3813,6 @@
       "date": "2026-07-07"
     },
     {
-      "id": "Trading\\finance-terminal\\planning\\08-test-pillar.md",
-      "subject": "Trading",
-      "doc_type": "note",
-      "title": "08 — TEST Pillar (backtest front-end)  [mixed]",
-      "chunks": 7,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
       "id": "Trading\\finance-terminal\\planning\\09-trade-pillar.md",
       "subject": "Trading",
       "doc_type": "note",
@@ -3941,16 +3821,6 @@
       "tags": [],
       "contested": false,
       "date": "2026-07-07"
-    },
-    {
-      "id": "Trading\\finance-terminal\\planning\\10-ptbot-integration.md",
-      "subject": "Trading",
-      "doc_type": "note",
-      "title": "10 — PTBot Integration  [OPUS-FINISHABLE — plumbing]",
-      "chunks": 7,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
     },
     {
       "id": "Trading\\finance-terminal\\planning\\AUDIT-2026-07-09.md",
@@ -3983,6 +3853,16 @@
       "date": "2026-07-09"
     },
     {
+      "id": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "AGENT-FRAMEWORK-SPEC",
+      "chunks": 26,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-05"
+    },
+    {
       "id": "Agent\\agentos\\AGENT-MASTER-PLAN.md",
       "subject": "Agent",
       "doc_type": "note",
@@ -4001,16 +3881,6 @@
       "tags": [],
       "contested": false,
       "date": "2026-07-06"
-    },
-    {
-      "id": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Comms Voice Guide — how the system texts Eddie",
-      "chunks": 6,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
     },
     {
       "id": "Agent\\agentos\\COORDINATION-DESIGN.md",
@@ -4034,6 +3904,26 @@
       ],
       "contested": false,
       "date": "2026-07-08"
+    },
+    {
+      "id": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Fable Brief — General Agent Framework",
+      "chunks": 8,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-06"
+    },
+    {
+      "id": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Fable Brief — Full LifeOS / AgentOS Audit",
+      "chunks": 7,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-06"
     },
     {
       "id": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
@@ -4116,6 +4006,16 @@
       "date": "2026-07-07"
     },
     {
+      "id": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "System Reality Dossier — Eddie's LifeOS/AgentOS",
+      "chunks": 17,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-06"
+    },
+    {
       "id": "Agent\\agentos\\lifeos-system-audit\\00_AUDIT-PLAN.md",
       "subject": "Agent",
       "doc_type": "note",
@@ -4171,26 +4071,6 @@
       "doc_type": "note",
       "title": "22 — Agent Dossier, Multi-Engine Design, Self-Improvement, Portability",
       "chunks": 20,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "23 — Desk Job Additions, Research Engine, ACC Rewire, Daily Rhythm",
-      "chunks": 17,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "24 — Final Plan Revisions (naming, ACC parity, comms redesign, project markdowns, graph memory)",
-      "chunks": 8,
       "tags": [],
       "contested": false,
       "date": "2026-07-10"
@@ -4336,16 +4216,6 @@
       "date": "2026-07-05"
     },
     {
-      "id": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Filesystem — Where Everything Lives on Disk",
-      "chunks": 9,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
       "id": "Finance\\CLAUDE.md",
       "subject": "Finance",
       "doc_type": "note",
@@ -4374,326 +4244,6 @@
       "tags": [],
       "contested": false,
       "date": "2026-07-11"
-    },
-    {
-      "id": "Research\\CLAUDE.md",
-      "subject": "Research",
-      "doc_type": "note",
-      "title": "Research — Project Instructions",
-      "chunks": 3,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "School\\CLAUDE.md",
-      "subject": "School",
-      "doc_type": "note",
-      "title": "School — Project Instructions",
-      "chunks": 2,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "School\\Tutor\\learner-model.md",
-      "subject": "School",
-      "doc_type": "note",
-      "title": "Learner Model — Eddie",
-      "chunks": 5,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "School\\Tutor\\domains\\cooking-technique.md",
-      "subject": "School",
-      "doc_type": "note",
-      "title": "Domain: Cooking Technique",
-      "chunks": 5,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "School\\Tutor\\domains\\finance-modeling.md",
-      "subject": "School",
-      "doc_type": "note",
-      "title": "Domain: Finance Modeling",
-      "chunks": 5,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Career\\CLAUDE.md",
-      "subject": "Career",
-      "doc_type": "note",
-      "title": "Career Agent — Project Instructions",
-      "chunks": 10,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Business\\CLAUDE.md",
-      "subject": "Business",
-      "doc_type": "note",
-      "title": "Business — Project Instructions",
-      "chunks": 9,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Trading\\CLAUDE.md",
-      "subject": "Trading",
-      "doc_type": "note",
-      "title": "Trading — Project Instructions",
-      "chunks": 3,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Trading\\paper-trading-bot-v2.MOVED.md",
-      "subject": "Trading",
-      "doc_type": "note",
-      "title": "MOVED: paper-trading-bot-v2",
-      "chunks": 1,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Trading\\paper-trading-bot.MOVED.md",
-      "subject": "Trading",
-      "doc_type": "note",
-      "title": "MOVED: paper-trading-bot",
-      "chunks": 1,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-DESIGN.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Accountability Upgrade — Design Spec",
-      "chunks": 11,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-HANDOFF.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Accountability Upgrade — Session Handoff",
-      "chunks": 8,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Accountability Upgrade — LAPTOP Quickstart",
-      "chunks": 13,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Accountability Upgrade — Implementation Plan",
-      "chunks": 35,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
-      "subject": "Agent",
-      "doc_type": "runbook",
-      "title": "Accountability Upgrade — Operator Runbook",
-      "chunks": 12,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\activity_log.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "AgentOS — Activity Log",
-      "chunks": 21,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "CAREER-AGENT-DESIGN — the Career Desk on agent_framework",
-      "chunks": 11,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\CLAUDE_CODE_LIFEOS_SNIPPET.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Claude Code — LifeOS Tracking Snippet",
-      "chunks": 4,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "HEALTH-AGENT-DESIGN — the Health Desk on agent_framework",
-      "chunks": 15,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "LifeOS Tracking Protocol",
-      "chunks": 29,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\pending_actions.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "AgentOS — Pending Actions",
-      "chunks": 6,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\RESEARCH-CORE-PROTOCOL.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Research Core Protocol (P4.17)",
-      "chunks": 10,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\lifeos-system-audit\\30_IMPLEMENTATION-KICKOFFS.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "30 — Implementation Kickoffs (Pass 3)",
-      "chunks": 9,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\lifeos-system-audit\\31_KICKOFF-2-LAPTOP-RUNBOOK.md",
-      "subject": "Agent",
-      "doc_type": "runbook",
-      "title": "31 — Kickoff 2 Laptop Runbook (Arm the Assistant)",
-      "chunks": 15,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\lifeos-system-audit\\32_KICKOFF-3B-RHYTHM-COMMS.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "32 — Kickoff 3B: Rhythm + comms (the deferred half of P1)",
-      "chunks": 7,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\lifeos-system-audit\\33_KICKOFF-4-RESULTS.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "33 — Kickoff 4 results (P2: Scoping + skills)",
-      "chunks": 7,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\lifeos-system-audit\\34_KICKOFF-6-FABLE-CHECKPOINTS.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "34 — Kickoff 6 Fable Checkpoints (rulings)",
-      "chunks": 3,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\lifeos-system-audit\\laptop-check.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Laptop Verification — Kickoff 2 Runbook (§5 checklist)",
-      "chunks": 7,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\MediaCurator\\scheduled_task.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Media Curator — Scheduled Task Definition",
-      "chunks": 9,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
-      "id": "Agent\\agentos\\SystemMap\\00_OVERVIEW.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Eddie's Life OS + Agent OS — System Map",
-      "chunks": 7,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Agents — The Team",
-      "chunks": 25,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
-    },
-    {
-      "id": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Scheduled Tasks — The Cron Layer",
-      "chunks": 9,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-10"
     },
     {
       "id": "Health\\Plans\\2026-W29\\meal_plan.md",
@@ -4776,6 +4326,26 @@
       "date": "2026-07-12"
     },
     {
+      "id": "Research\\CLAUDE.md",
+      "subject": "Research",
+      "doc_type": "note",
+      "title": "Research — Project Instructions",
+      "chunks": 3,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "School\\CLAUDE.md",
+      "subject": "School",
+      "doc_type": "note",
+      "title": "School — Project Instructions",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
       "id": "School\\Notre-Dame-Planning\\Four-Year-Plan-Finance-BBA.md",
       "subject": "School",
       "doc_type": "note",
@@ -4784,6 +4354,56 @@
       "tags": [],
       "contested": false,
       "date": "2026-07-12"
+    },
+    {
+      "id": "School\\Tutor\\learner-model.md",
+      "subject": "School",
+      "doc_type": "note",
+      "title": "Learner Model — Eddie",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "School\\Tutor\\domains\\cooking-technique.md",
+      "subject": "School",
+      "doc_type": "note",
+      "title": "Domain: Cooking Technique",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "School\\Tutor\\domains\\finance-modeling.md",
+      "subject": "School",
+      "doc_type": "note",
+      "title": "Domain: Finance Modeling",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Career\\CLAUDE.md",
+      "subject": "Career",
+      "doc_type": "note",
+      "title": "Career Agent — Project Instructions",
+      "chunks": 10,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Business\\CLAUDE.md",
+      "subject": "Business",
+      "doc_type": "note",
+      "title": "Business — Project Instructions",
+      "chunks": 9,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
     },
     {
       "id": "Marketing\\Personal Brand\\faceless-ig\\history.md",
@@ -4796,6 +4416,216 @@
       "date": "2026-07-12"
     },
     {
+      "id": "Marketing\\Salil Hotels\\Weekly-Reports\\Salil_Brief_2026-06-23.md",
+      "subject": "Marketing",
+      "doc_type": "note",
+      "title": "Salil Hotel Group — Weekly Social Media Brief",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-06-23"
+    },
+    {
+      "id": "Trading\\CLAUDE.md",
+      "subject": "Trading",
+      "doc_type": "note",
+      "title": "Trading — Project Instructions",
+      "chunks": 3,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Trading\\paper-trading-bot-v2.MOVED.md",
+      "subject": "Trading",
+      "doc_type": "note",
+      "title": "MOVED: paper-trading-bot-v2",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Trading\\paper-trading-bot.MOVED.md",
+      "subject": "Trading",
+      "doc_type": "note",
+      "title": "MOVED: paper-trading-bot",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Trading\\finance-terminal\\CLAUDE.md",
+      "subject": "Trading",
+      "doc_type": "note",
+      "title": "Finance Terminal — Project Instructions",
+      "chunks": 3,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Trading\\finance-terminal\\INTEGRATION.md",
+      "subject": "Trading",
+      "doc_type": "note",
+      "title": "Finance Terminal ⇄ PTBot — Integration Contract",
+      "chunks": 8,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Trading\\finance-terminal\\planning\\08-test-pillar.md",
+      "subject": "Trading",
+      "doc_type": "note",
+      "title": "08 — TEST Pillar (backtest front-end)  [mixed]",
+      "chunks": 7,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Trading\\finance-terminal\\planning\\10-ptbot-integration.md",
+      "subject": "Trading",
+      "doc_type": "note",
+      "title": "10 — PTBot Integration  [OPUS-FINISHABLE — plumbing]",
+      "chunks": 7,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-DESIGN.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Accountability Upgrade — Design Spec",
+      "chunks": 11,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-HANDOFF.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Accountability Upgrade — Session Handoff",
+      "chunks": 8,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Accountability Upgrade — LAPTOP Quickstart",
+      "chunks": 13,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Accountability Upgrade — Implementation Plan",
+      "chunks": 35,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
+      "subject": "Agent",
+      "doc_type": "runbook",
+      "title": "Accountability Upgrade — Operator Runbook",
+      "chunks": 12,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\activity_log.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "AgentOS — Activity Log",
+      "chunks": 21,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "CAREER-AGENT-DESIGN — the Career Desk on agent_framework",
+      "chunks": 11,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\CLAUDE_CODE_LIFEOS_SNIPPET.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Claude Code — LifeOS Tracking Snippet",
+      "chunks": 4,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Comms Voice Guide — how the system texts Eddie",
+      "chunks": 6,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "HEALTH-AGENT-DESIGN — the Health Desk on agent_framework",
+      "chunks": 15,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "LifeOS Tracking Protocol",
+      "chunks": 29,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Agent\\agentos\\pending_actions.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "AgentOS — Pending Actions",
+      "chunks": 6,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Agent\\agentos\\RESEARCH-CORE-PROTOCOL.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Research Core Protocol (P4.17)",
+      "chunks": 10,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
       "id": "Agent\\agentos\\signals.md",
       "subject": "Agent",
       "doc_type": "note",
@@ -4806,14 +4636,74 @@
       "date": "2026-07-12"
     },
     {
-      "id": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "id": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
       "subject": "Agent",
       "doc_type": "note",
-      "title": "35 — Kickoff 6 Progress Log (P4 wave)",
-      "chunks": 20,
+      "title": "23 — Desk Job Additions, Research Engine, ACC Rewire, Daily Rhythm",
+      "chunks": 17,
       "tags": [],
       "contested": false,
-      "date": "2026-07-12"
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "24 — Final Plan Revisions (naming, ACC parity, comms redesign, project markdowns, graph memory)",
+      "chunks": 8,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-10"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\30_IMPLEMENTATION-KICKOFFS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "30 — Implementation Kickoffs (Pass 3)",
+      "chunks": 9,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\31_KICKOFF-2-LAPTOP-RUNBOOK.md",
+      "subject": "Agent",
+      "doc_type": "runbook",
+      "title": "31 — Kickoff 2 Laptop Runbook (Arm the Assistant)",
+      "chunks": 15,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\32_KICKOFF-3B-RHYTHM-COMMS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "32 — Kickoff 3B: Rhythm + comms (the deferred half of P1)",
+      "chunks": 7,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\33_KICKOFF-4-RESULTS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "33 — Kickoff 4 results (P2: Scoping + skills)",
+      "chunks": 7,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\34_KICKOFF-6-FABLE-CHECKPOINTS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "34 — Kickoff 6 Fable Checkpoints (rulings)",
+      "chunks": 3,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
     },
     {
       "id": "Agent\\agentos\\lifeos-system-audit\\36_KICKOFF-6-CONTINUATION.md",
@@ -4864,6 +4754,406 @@
       "tags": [],
       "contested": false,
       "date": "2026-07-12"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\laptop-check.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Laptop Verification — Kickoff 2 Runbook (§5 checklist)",
+      "chunks": 7,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Agent\\agentos\\MediaCurator\\scheduled_task.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Media Curator — Scheduled Task Definition",
+      "chunks": 9,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-11"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-13-screen-digest.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Weekly market scan — 2026-07-13",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-13_finance-thesis_no-action.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "finance-thesis — no action this run",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-13_thesis_msft-pst-keep.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Weekly Thesis Desk — Re-Underwrite: Microsoft (MSFT)",
+      "chunks": 10,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-13_watchdesk_be-gev-intc.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Thesis-Update Memo — Finance Watch-Desk",
+      "chunks": 6,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-14_watchdesk_xle-etf-nvda.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Thesis-Update Memo — Finance Watch-Desk",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-14"
+    },
+    {
+      "id": "Research\\outputs\\2026-07-13_research-brief_pst-pms-cagr.md",
+      "subject": "Research",
+      "doc_type": "note",
+      "title": "Independent Hotel Management Software — Outlook Brief",
+      "chunks": 8,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Research\\outputs\\2026-07-13_research-brief_pst.md",
+      "subject": "Research",
+      "doc_type": "note",
+      "title": "Research Queue — Empty Run",
+      "chunks": 7,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Research\\outputs\\2026-07-13_research-brief_update.md",
+      "subject": "Research",
+      "doc_type": "note",
+      "title": "Research Brief — Independent Hotel Management Software: Outlook & Entrant Opening",
+      "chunks": 8,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Research\\_reference\\RESEARCH_QUEUE.md",
+      "subject": "Research",
+      "doc_type": "reference",
+      "title": "Research Agent — Research Queue",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--\\claude-desktop-windows-cowork-msix.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "claude-desktop-windows-cowork-msix",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--\\MEMORY.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Memory Index",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\accountability-notion-token-invalid.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "accountability-notion-token-invalid",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\bridge-daemon-host.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "bridge-daemon-host",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\credential-locations.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "credential-locations",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-14"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\eddie-hardware-specs.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "eddie-hardware-specs",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\eddie-interests.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "eddie-interests",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\health-mcp-disconnect-fixed.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "health-mcp-disconnect-fixed",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\local-knowledge-base.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "local-knowledge-base",
+      "chunks": 6,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\MEMORY.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Memory Index",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-14"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\py-alias-breaks-scheduled-tasks.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "py-alias-breaks-scheduled-tasks",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\registry-write-onedrive-lock.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "registry-write-onedrive-lock",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\report-embed-pipeline-wp8.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "report-embed-pipeline-wp8",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-14"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\request-inbox-armed.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "request-inbox-armed",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-14"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "35 — Kickoff 6 Progress Log (P4 wave)",
+      "chunks": 28,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\40_P4.24-notebooklm-RULING.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "40 — P4.24 NotebookLM integration — RULING",
+      "chunks": 11,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "41 — Agent-Framework vs. Cowork Fidelity Audit",
+      "chunks": 21,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "42 — Parity Restore Plan (framework desks → old Cowork deliverables)",
+      "chunks": 16,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "43 — Parity Restore Progress Log",
+      "chunks": 46,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-14"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp2.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "registry-pending-wp2.md — rows WP2 (Lane B) intends for registry.json",
+      "chunks": 4,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp4.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "registry-pending-wp4.md — rows WP4 (Lane B) intends for registry.json",
+      "chunks": 6,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\MediaCurator\\output\\2026-07-13_digest.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Media to Watch / Listen — Monday, July 13, 2026",
+      "chunks": 11,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\SystemMap\\00_OVERVIEW.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Eddie's Life OS + Agent OS — System Map",
+      "chunks": 7,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Agents — The Team",
+      "chunks": 14,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\SystemMap\\02_NOTION_LIFEOS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Notion — The Life OS Dashboard",
+      "chunks": 14,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Plugins & Skills — The Agents' Verbs",
+      "chunks": 16,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Scheduled Tasks — The Cron Layer",
+      "chunks": 9,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Filesystem — Where Everything Lives on Disk",
+      "chunks": 10,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
+    },
+    {
+      "id": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "A Day in the Life — and a Week",
+      "chunks": 6,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-13"
     }
   ],
   "edges": [
@@ -6386,7 +6676,7 @@
       ],
       "via": [
         "$B",
-        "sim=0.86"
+        "sim=0.85"
       ]
     },
     {
@@ -8855,6 +9145,150 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\accountability-notion-token-invalid.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\bridge-daemon-host.md",
+      "weight": 2,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\credential-locations.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\report-embed-pipeline-wp8.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\eddie-hardware-specs.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\local-knowledge-base.md",
+      "weight": 2,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\eddie-interests.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\local-knowledge-base.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\accountability-notion-token-invalid.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\health-mcp-disconnect-fixed.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\py-alias-breaks-scheduled-tasks.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\registry-write-onedrive-lock.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\accountability-notion-token-invalid.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\registry-write-onedrive-lock.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\py-alias-breaks-scheduled-tasks.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\report-embed-pipeline-wp8.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\py-alias-breaks-scheduled-tasks.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\request-inbox-armed.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\accountability-notion-token-invalid.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\request-inbox-armed.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\bridge-daemon-host.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\request-inbox-armed.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\registry-write-onedrive-lock.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
       "source": "Finance\\Runbooks\\WEEKLY_THESIS_RUNBOOK.md",
       "target": "Finance\\commands\\thesis.md",
       "weight": 8,
@@ -9384,7 +9818,7 @@
     },
     {
       "source": "Finance\\outputs\\finance-agent-dryrun-2026-06-29.md",
-      "target": "Trading\\paper-trading-bot-v2-cifix\\docs\\specs\\2026-04-24-paper-trading-bot-v2-design.md",
+      "target": "Finance\\pipelines\\daily_scanner\\README.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -9913,25 +10347,13 @@
     {
       "source": "Agent\\agentos\\PROTOCOL.md",
       "target": "Finance\\pipelines\\handoff_consumer\\CONSUMER_PLAYBOOK.md",
-      "weight": 4,
+      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
         "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
-      "target": "Finance\\pipelines\\handoff_consumer\\CONSUMER_PLAYBOOK.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
       ]
     },
     {
@@ -9956,6 +10378,18 @@
       ],
       "via": [
         "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\imessage_architecture.md",
+      "target": "Finance\\pipelines\\handoff_consumer\\CONSUMER_PLAYBOOK.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.88"
       ]
     },
     {
@@ -9995,7 +10429,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "source": "Agent\\agentos\\cowork_dispatch_worker_PROMPT.md",
       "target": "Finance\\pipelines\\handoff_consumer\\README.md",
       "weight": 3,
       "type": "semantic",
@@ -10811,6 +11245,18 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "target": "Finance\\Theses\\2026-W25\\PUBLISH_PENDING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
       "source": "Finance\\Runbooks\\MARKET_SCAN_RUNBOOK.md",
       "target": "Finance\\Theses\\2026-W25\\PUBLISH_PENDING.md",
       "weight": 3,
@@ -11107,7 +11553,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.81"
+        "sim=0.80"
       ]
     },
     {
@@ -11291,8 +11737,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Health\\outputs\\caffeine-cognitive-performance_project\\project.md",
+      "source": "Health\\outputs\\caffeine-cognitive-performance_project\\project.md",
+      "target": "Research\\_reference\\STANDING_ORDERS.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -11303,8 +11749,8 @@
       ]
     },
     {
-      "source": "Health\\outputs\\caffeine-cognitive-performance_project\\project.md",
-      "target": "Research\\_reference\\STANDING_ORDERS.md",
+      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "target": "Health\\outputs\\caffeine-cognitive-performance_project\\project.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -11323,7 +11769,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.89"
+        "sim=0.90"
       ]
     },
     {
@@ -12071,8 +12517,8 @@
       ]
     },
     {
-      "source": "Health\\outputs\\neuroscience_project\\depth\\neuropathology\\sources.md",
-      "target": "Health\\outputs\\neuroscience_project\\depth\\neurotransmitters\\sources.md",
+      "source": "Health\\outputs\\neuroscience_project\\depth\\cognitive-modulators\\sources.md",
+      "target": "Health\\outputs\\neuroscience_project\\depth\\neuropathology\\sources.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -12515,7 +12961,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
+      "source": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
       "target": "Health\\pipelines\\refresh-worker\\DEPLOY.md",
       "weight": 3,
       "type": "semantic",
@@ -12527,7 +12973,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
       "target": "Health\\pipelines\\refresh-worker\\DEPLOY.md",
       "weight": 3,
       "type": "semantic",
@@ -12727,7 +13173,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.96"
+        "sim=0.97"
       ]
     },
     {
@@ -13043,7 +13489,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "source": "Agent\\agentos\\PROTOCOL.md",
       "target": "Health\\reviews\\midweek_checkins\\README.md",
       "weight": 3,
       "type": "semantic",
@@ -13051,7 +13497,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.82"
+        "sim=0.80"
       ]
     },
     {
@@ -13355,18 +13801,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Health\\reviews\\weekly_reviews\\README.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.84"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
       "target": "Health\\reviews\\weekly_reviews\\README.md",
       "weight": 3,
@@ -13380,6 +13814,18 @@
     },
     {
       "source": "Agent\\agentos\\SCHEDULER_STANDING_ORDERS.md",
+      "target": "Health\\reviews\\weekly_reviews\\README.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.81"
+      ]
+    },
+    {
+      "source": "Health\\CLAUDE.md",
       "target": "Health\\reviews\\weekly_reviews\\README.md",
       "weight": 3,
       "type": "semantic",
@@ -13787,6 +14233,18 @@
       ]
     },
     {
+      "source": "Finance\\_reference\\03_earnings_calls.md",
+      "target": "Research\\outputs\\2026-W21\\saas-metrics-that-matter.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.80"
+      ]
+    },
+    {
       "source": "Research\\outputs\\2026-W22\\vc-fund-economics.md",
       "target": "Research\\outputs\\2026-W24\\vc-startup-evaluation.md",
       "weight": 6,
@@ -13909,7 +14367,7 @@
     {
       "source": "Agent\\agentos\\SCHEDULER_STANDING_ORDERS.md",
       "target": "Research\\_reference\\STANDING_ORDERS.md",
-      "weight": 4,
+      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
@@ -13921,19 +14379,7 @@
     {
       "source": "Agent\\agentos\\02_agentos_v2_architecture.md",
       "target": "Research\\_reference\\STANDING_ORDERS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Research\\_reference\\STANDING_ORDERS.md",
-      "weight": 4,
+      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
@@ -13952,6 +14398,18 @@
       ],
       "via": [
         "sim=0.90"
+      ]
+    },
+    {
+      "source": "Research\\_reference\\STANDING_ORDERS.md",
+      "target": "memory\\system.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
       ]
     },
     {
@@ -14827,11 +15285,11 @@
         "semantic"
       ],
       "via": [
-        "sim=0.85"
+        "sim=0.84"
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "source": "Agent\\agentos\\SKILLS_PLUGINS_AUDIT_2026-07-07.md",
       "target": "School\\Tutor\\rebuild-handoff.md",
       "weight": 3,
       "type": "semantic",
@@ -15071,8 +15529,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
-      "target": "Career\\_reference\\interview_prep.md",
+      "source": "Career\\_reference\\interview_prep.md",
+      "target": "Finance\\outputs\\stock_analysis_course.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -15083,8 +15541,8 @@
       ]
     },
     {
-      "source": "Career\\_reference\\interview_prep.md",
-      "target": "Finance\\outputs\\stock_analysis_course.md",
+      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
+      "target": "Career\\_reference\\interview_prep.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -15308,6 +15766,30 @@
       ],
       "via": [
         "sim=0.80"
+      ]
+    },
+    {
+      "source": "Business\\hotel-saas-research\\01_software-landscape-brief.md",
+      "target": "Research\\outputs\\2026-07-13_research-brief_pst-pms-cagr.md",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Business\\hotel-saas-research\\01_software-landscape-brief.md",
+      "target": "Research\\outputs\\2026-07-13_research-brief_update.md",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
       ]
     },
     {
@@ -15793,7 +16275,7 @@
     {
       "source": "Agent\\agentos\\MARKETING-AGENT-DESIGN.md",
       "target": "Marketing\\Personal Brand\\faceless-ig\\DESIGN.md",
-      "weight": 6,
+      "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
@@ -15995,6 +16477,18 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
+      "target": "Marketing\\Salil Hotels\\Salil-Offload-Notes.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
       "source": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
       "target": "Marketing\\Salil Hotels\\Salil-Offload-Notes.md",
       "weight": 3,
@@ -16008,18 +16502,6 @@
     },
     {
       "source": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
-      "target": "Marketing\\Salil Hotels\\Salil-Offload-Notes.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.82"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\PLAN_command_center_deepseek_and_scheduled_migration.md",
       "target": "Marketing\\Salil Hotels\\Salil-Offload-Notes.md",
       "weight": 3,
       "type": "semantic",
@@ -16051,7 +16533,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.81"
+        "sim=0.82"
       ]
     },
     {
@@ -16897,13 +17379,13 @@
     {
       "source": "Trading\\_reference\\AUDIT_REPORT.md",
       "target": "Trading\\paper-trading-bot-v2-cifix\\docs\\plans\\2026-04-29-portfolio-construction-engine-implementation-plan.md",
-      "weight": 4,
+      "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.88"
+        "sim=0.87"
       ]
     },
     {
@@ -16955,18 +17437,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "memory\\coding.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\GLOBAL_CLAUDE_MD.md",
       "target": "memory\\coding.md",
       "weight": 3,
@@ -16988,6 +17458,18 @@
       ],
       "via": [
         "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\01_agentos_product.md",
+      "target": "memory\\coding.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
       ]
     },
     {
@@ -17111,7 +17593,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
       "target": "memory\\personal.md",
       "weight": 3,
       "type": "semantic",
@@ -17119,11 +17601,11 @@
         "semantic"
       ],
       "via": [
-        "sim=0.84"
+        "sim=0.83"
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\02_NOTION_LIFEOS.md",
+      "source": "memory\\coding.md",
       "target": "memory\\personal.md",
       "weight": 3,
       "type": "semantic",
@@ -17207,21 +17689,9 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
       "target": "memory\\system.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Research\\_reference\\STANDING_ORDERS.md",
-      "target": "memory\\system.md",
-      "weight": 4,
+      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
@@ -17231,7 +17701,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
+      "source": "Health\\CLAUDE.md",
       "target": "memory\\system.md",
       "weight": 8,
       "type": "semantic",
@@ -17460,7 +17930,7 @@
     },
     {
       "source": "Agent\\agentos\\01_agentos_product.md",
-      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
       "weight": 4,
       "type": "semantic",
       "types": [
@@ -17468,18 +17938,6 @@
       ],
       "via": [
         "sim=0.88"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\02_agentos_v2_architecture.md",
-      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.95"
       ]
     },
     {
@@ -17508,18 +17966,6 @@
     },
     {
       "source": "Agent\\agentos\\02_agentos_v2_architecture.md",
-      "target": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.93"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\02_agentos_v2_architecture.md",
       "target": "Agent\\agentos\\TOKEN_BUDGET.md",
       "weight": 8,
       "type": "semantic",
@@ -17528,6 +17974,18 @@
       ],
       "via": [
         "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\02_agentos_v2_architecture.md",
+      "target": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
       ]
     },
     {
@@ -18047,7 +18505,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
       "target": "Agent\\agentos\\cowork_dispatch_worker_PROMPT.md",
       "weight": 4,
       "type": "semantic",
@@ -18059,15 +18517,15 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
+      "source": "Agent\\agentos\\HANDOFF_offload_6_tasks_to_deepseek.md",
       "target": "Agent\\agentos\\cowork_dispatch_worker_PROMPT.md",
-      "weight": 4,
+      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.89"
+        "sim=0.88"
       ]
     },
     {
@@ -18204,7 +18662,7 @@
     },
     {
       "source": "Agent\\agentos\\GLOBAL_CLAUDE_MD.md",
-      "target": "memory\\system.md",
+      "target": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
       "weight": 4,
       "type": "semantic",
       "types": [
@@ -18216,8 +18674,8 @@
     },
     {
       "source": "Agent\\agentos\\GLOBAL_CLAUDE_MD.md",
-      "target": "Finance\\CLAUDE.md",
-      "weight": 8,
+      "target": "memory\\system.md",
+      "weight": 4,
       "type": "semantic",
       "types": [
         "semantic"
@@ -18371,18 +18829,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\HANDOFF_offload_6_tasks_to_deepseek.md",
-      "target": "Agent\\agentos\\cowork_dispatch_worker_PROMPT.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
       "target": "Agent\\agentos\\HANDOFF_offload_6_tasks_to_deepseek.md",
       "weight": 3,
@@ -18433,7 +18879,7 @@
     {
       "source": "Agent\\agentos\\SCHEDULER_STANDING_ORDERS.md",
       "target": "Agent\\agentos\\imessage_architecture.md",
-      "weight": 4,
+      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
@@ -18457,7 +18903,7 @@
     {
       "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
       "target": "Agent\\agentos\\imessage_architecture.md",
-      "weight": 4,
+      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
@@ -18475,7 +18921,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.81"
+        "sim=0.80"
       ]
     },
     {
@@ -18492,6 +18938,18 @@
     },
     {
       "source": "Agent\\agentos\\IMPLEMENTATION_PLAYBOOK_2026-06.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\IMPLEMENTATION_PLAYBOOK_2026-06.md",
       "target": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
       "weight": 8,
       "type": "semantic",
@@ -18500,6 +18958,18 @@
       ],
       "via": [
         "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\IMPLEMENTATION_PLAYBOOK_2026-06.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
       ]
     },
     {
@@ -18512,30 +18982,6 @@
       ],
       "via": [
         "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\IMPLEMENTATION_PLAYBOOK_2026-06.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\IMPLEMENTATION_PLAYBOOK_2026-06.md",
-      "target": "Agent\\agentos\\PLAN_command_center_deepseek_and_scheduled_migration.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
       ]
     },
     {
@@ -18660,6 +19106,18 @@
     },
     {
       "source": "Agent\\agentos\\lifeos-audit-2026-06.html",
+      "target": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-audit-2026-06.html",
       "target": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
       "weight": 4,
       "type": "semantic",
@@ -18695,18 +19153,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\lifeos-audit-2026-06.html",
-      "target": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\lifeos-mockup.html",
       "target": "Agent\\agentos\\weekly_summary.md",
       "weight": 4,
@@ -18716,18 +19162,6 @@
       ],
       "via": [
         "sim=0.88"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Agent\\agentos\\lifeos-mockup.html",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
       ]
     },
     {
@@ -18767,6 +19201,78 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
+      "target": "Agent\\agentos\\lifeos-mockup.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos_snapshots.md",
+      "target": "Agent\\agentos\\weekly_summary.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\activity_log.md",
+      "target": "Agent\\agentos\\lifeos_snapshots.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-mockup.html",
+      "target": "Agent\\agentos\\lifeos_snapshots.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos_snapshots.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W22.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos_snapshots.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W21.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
       "source": "Agent\\agentos\\LIFEOS_WRITEUP_2026-06.md",
       "target": "Agent\\agentos\\SystemMap\\00_OVERVIEW.md",
       "weight": 8,
@@ -18792,14 +19298,14 @@
     },
     {
       "source": "Agent\\agentos\\LIFEOS_WRITEUP_2026-06.md",
-      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "weight": 4,
+      "target": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
+      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.90"
+        "sim=0.89"
       ]
     },
     {
@@ -18972,26 +19478,14 @@
     },
     {
       "source": "Agent\\agentos\\PROTOCOL.md",
-      "target": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "target": "Agent\\agentos\\TOKEN_BUDGET.md",
       "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.94"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\PROTOCOL.md",
-      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.93"
+        "sim=0.90"
       ]
     },
     {
@@ -19044,7 +19538,7 @@
     },
     {
       "source": "Agent\\agentos\\RESOURCES_PIN_PROTOCOL.md",
-      "target": "Research\\_reference\\STANDING_ORDERS.md",
+      "target": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -19067,18 +19561,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SCHEDULED_TASKS_LAPTOP_SETUP.md",
-      "target": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-HANDOFF.md",
       "target": "Agent\\agentos\\SCHEDULED_TASKS_LAPTOP_SETUP.md",
       "weight": 3,
@@ -19091,27 +19573,15 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SCHEDULER_STANDING_ORDERS.md",
-      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "weight": 8,
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
+      "target": "Agent\\agentos\\SCHEDULED_TASKS_LAPTOP_SETUP.md",
+      "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.93"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SCHEDULER_STANDING_ORDERS.md",
-      "target": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
+        "sim=0.85"
       ]
     },
     {
@@ -19139,39 +19609,15 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Agent\\agentos\\time_allocation.md",
+      "source": "Agent\\agentos\\time_allocation.md",
+      "target": "Agent\\agentos\\weekly_summary.md",
       "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
-      "target": "Agent\\agentos\\TOKEN_BUDGET.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.93"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\PROTOCOL.md",
-      "target": "Agent\\agentos\\TOKEN_BUDGET.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
+        "sim=0.83"
       ]
     },
     {
@@ -19187,33 +19633,33 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Agent\\agentos\\TOKEN_BUDGET.md",
-      "weight": 4,
+      "source": "Agent\\agentos\\TOKEN_BUDGET.md",
+      "target": "Agent\\agentos\\weekly_summary.md",
+      "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.88"
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
+      "target": "Agent\\agentos\\TOKEN_BUDGET.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
       ]
     },
     {
       "source": "Agent\\agentos\\weekly_summary.md",
       "target": "Health\\reviews\\weekly_reviews\\2026-W20.md",
       "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos_snapshots.md",
-      "target": "Agent\\agentos\\weekly_summary.md",
-      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
@@ -19231,7 +19677,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.88"
+        "sim=0.89"
       ]
     },
     {
@@ -19933,7 +20379,7 @@
     {
       "source": "Agent\\agentos\\implementation\\code_review\\section-07-review.md",
       "target": "Agent\\agentos\\reviews\\iteration-1-opus.md",
-      "weight": 3,
+      "weight": 6,
       "type": "semantic",
       "types": [
         "semantic"
@@ -20076,18 +20522,6 @@
     },
     {
       "source": "Agent\\agentos\\MediaCurator\\README.md",
-      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\MediaCurator\\README.md",
       "target": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
       "weight": 3,
       "type": "semantic",
@@ -20101,7 +20535,7 @@
     {
       "source": "Agent\\agentos\\MediaCurator\\README.md",
       "target": "Agent\\agentos\\SystemMap\\02_NOTION_LIFEOS.md",
-      "weight": 3,
+      "weight": 6,
       "type": "semantic",
       "types": [
         "semantic"
@@ -20111,87 +20545,15 @@
       ]
     },
     {
-      "source": "Health\\Plans\\2026-W29\\meal_plan.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W20.md",
+      "source": "Agent\\agentos\\MediaCurator\\README.md",
+      "target": "memory\\system.md",
       "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.82"
-      ]
-    },
-    {
-      "source": "Health\\Plans\\2026-W29\\meal_plan.md",
-      "target": "Health\\_reference\\STANDING_ORDERS.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.82"
-      ]
-    },
-    {
-      "source": "Health\\Plans\\2026-W26\\workout_plan.md",
-      "target": "Health\\Plans\\2026-W29\\workout_plan.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Health\\Plans\\2026-W29\\workout_plan.md",
-      "target": "Health\\_logs\\injury_log.md",
-      "weight": 6,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Health\\Plans\\2026-W24\\workout_plan.md",
-      "target": "Health\\Plans\\2026-W29\\workout_plan.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Health\\Plans\\2026-W25\\workout_plan.md",
-      "target": "Health\\Plans\\2026-W29\\workout_plan.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Health\\Plans\\2026-W29\\workout_plan.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.84"
+        "sim=0.87"
       ]
     },
     {
@@ -20215,7 +20577,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.91"
+        "sim=0.92"
       ]
     },
     {
@@ -20252,6 +20614,18 @@
       ],
       "via": [
         "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-04_digest.md",
+      "target": "Agent\\agentos\\MediaCurator\\output\\2026-07-13_digest.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.94"
       ]
     },
     {
@@ -20300,18 +20674,6 @@
       ],
       "via": [
         "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-04_digest.md",
-      "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-25_digest.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
       ]
     },
     {
@@ -20364,6 +20726,18 @@
     },
     {
       "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-06_digest.md",
+      "target": "Agent\\agentos\\MediaCurator\\output\\2026-07-13_digest.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.93"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-06_digest.md",
       "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-29_digest.md",
       "weight": 8,
       "type": "semantic",
@@ -20372,18 +20746,6 @@
       ],
       "via": [
         "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-06_digest.md",
-      "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-25_digest.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
       ]
     },
     {
@@ -20579,8 +20941,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-06_digest.md",
-      "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-15_digest.md",
+      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-15_digest.md",
+      "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-26_digest.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -20591,8 +20953,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-15_digest.md",
-      "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-26_digest.md",
+      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-06_digest.md",
+      "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-15_digest.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -20803,7 +21165,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.88"
+        "sim=0.89"
       ]
     },
     {
@@ -20891,8 +21253,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-21_digest.md",
-      "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-22_digest.md",
+      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-22_digest.md",
+      "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-25_digest.md",
       "weight": 4,
       "type": "semantic",
       "types": [
@@ -20916,14 +21278,14 @@
     },
     {
       "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-23_digest.md",
-      "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-25_digest.md",
-      "weight": 4,
+      "target": "Agent\\agentos\\MediaCurator\\output\\2026-07-13_digest.md",
+      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.90"
+        "sim=0.93"
       ]
     },
     {
@@ -20965,13 +21327,25 @@
     {
       "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-25_digest.md",
       "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-29_digest.md",
-      "weight": 8,
+      "weight": 4,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
         "sim=0.92"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-26_digest.md",
+      "target": "Agent\\agentos\\MediaCurator\\output\\2026-07-13_digest.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.93"
       ]
     },
     {
@@ -20984,18 +21358,6 @@
       ],
       "via": [
         "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-05_digest.md",
-      "target": "Agent\\agentos\\MediaCurator\\output\\2026-06-26_digest.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
       ]
     },
     {
@@ -21047,63 +21409,15 @@
       ]
     },
     {
-      "source": "Health\\reviews\\weekly_reviews\\2026-W26.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
-      "weight": 4,
+      "source": "Agent\\agentos\\MediaCurator\\output\\2026-06-29_digest.md",
+      "target": "Agent\\agentos\\MediaCurator\\output\\2026-07-13_digest.md",
+      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Health\\reviews\\weekly_reviews\\2026-W24.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Health\\reviews\\weekly_reviews\\2026-W20.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Health\\reviews\\weekly_reviews\\2026-W19.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Health\\reviews\\weekly_reviews\\2026-W25.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
+        "sim=0.92"
       ]
     },
     {
@@ -21132,18 +21446,6 @@
     },
     {
       "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "target": "Agent\\agentos\\reviews\\iteration-1-opus.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\claude-plan-tdd.md",
       "target": "Agent\\agentos\\reviews\\iteration-1-opus.md",
       "weight": 3,
       "type": "semantic",
@@ -21476,918 +21778,6 @@
       ],
       "via": [
         "sim=0.84"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\activity_log.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.83"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\activity_log.md",
-      "target": "Health\\midweek_checkins\\2026-07-09.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.81"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\daily_log.md",
-      "target": "Health\\_reference\\STANDING_ORDERS.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.82"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\injury_log.md",
-      "target": "Health\\_reference\\STANDING_ORDERS.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.83"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\injury_log.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.83"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
-      "target": "Health\\_logs\\injury_log.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.80"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\training_log.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W22.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.93"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\training_log.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W26.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\training_log.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W25.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\training_log.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W24.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\training_log.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W23.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\02_NOTION_LIFEOS.md",
-      "target": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Agent\\agentos\\SystemMap\\02_NOTION_LIFEOS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\02_NOTION_LIFEOS.md",
-      "target": "Health\\CLAUDE.md",
-      "weight": 6,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.93"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
-      "target": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\02_agentos_v2_architecture.md",
-      "target": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\LIFEOS_WRITEUP_2026-06.md",
-      "target": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
-      "target": "Health\\_reference\\STANDING_ORDERS.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\activity_log.md",
-      "target": "Agent\\agentos\\signals.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\pending_actions.md",
-      "target": "Agent\\agentos\\signals.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\signals.md",
-      "target": "Agent\\agentos\\weekly_summary.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\signals.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W26.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.83"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\39_P4.15-self-improvement-L2-RULING.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\36_KICKOFF-6-CONTINUATION.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\30_IMPLEMENTATION-KICKOFFS.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\36_KICKOFF-6-CONTINUATION.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\36_KICKOFF-6-CONTINUATION.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.81"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\32_KICKOFF-3B-RHYTHM-COMMS.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\36_KICKOFF-6-CONTINUATION.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.80"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\36_P4.3d-notion-task-mirror-RULING.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\36_P4.3d-notion-task-mirror-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENT-MASTER-PLAN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\36_P4.3d-notion-task-mirror-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\36_P4.3d-notion-task-mirror-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\36_P4.3d-notion-task-mirror-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\37_P4.4-auto-memory-mirror-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\37_P4.4-auto-memory-mirror-RULING.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1A_memory.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\37_P4.4-auto-memory-mirror-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\10_LIFEOS-ATLAS.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\37_P4.4-auto-memory-mirror-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\37_P4.4-auto-memory-mirror-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\MODEL_ROUTER_PLAN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\38_P4.14-codex-lane-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\38_P4.14-codex-lane-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\38_P4.14-codex-lane-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\38_P4.14-codex-lane-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\PLAN_command_center_deepseek_and_scheduled_migration.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\38_P4.14-codex-lane-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\39_P4.15-self-improvement-L2-RULING.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\39_P4.15-self-improvement-L2-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\39_P4.15-self-improvement-L2-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\39_P4.15-self-improvement-L2-RULING.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\activity_log.md",
-      "target": "Agent\\agentos\\lifeos_snapshots.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-mockup.html",
-      "target": "Agent\\agentos\\lifeos_snapshots.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.82"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos_snapshots.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W22.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.82"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos_snapshots.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W21.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.82"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
-      "target": "Agent\\agentos\\AGENT-MASTER-PLAN.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.94"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
-      "target": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.94"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
-      "target": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
-      "target": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENT-MASTER-PLAN.md",
-      "target": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.94"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
-      "target": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "target": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1D_agents.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
-      "target": "Agent\\agentos\\LIFEOS_WRITEUP_2026-06.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
-      "target": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
-      "target": "Agent\\agentos\\lifeos-audit-2026-06.html",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
-      "target": "Agent\\agentos\\SystemMap\\00_OVERVIEW.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENT-MASTER-PLAN.md",
-      "target": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1D_agents.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
-      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "target": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
-      "target": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SCHEDULER_STANDING_ORDERS.md",
-      "target": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
       ]
     },
     {
@@ -22980,7 +22370,7 @@
     },
     {
       "source": "Health\\processed-foods-investigation\\Chunk-01-Fats-and-Oils.html",
-      "target": "Health\\processed-foods-investigation\\Chunk-07-Dairy.html",
+      "target": "Health\\processed-foods-investigation\\Chunk-04-Red-Meat-and-Organs.html",
       "weight": 6,
       "type": "semantic",
       "types": [
@@ -22992,7 +22382,7 @@
     },
     {
       "source": "Health\\processed-foods-investigation\\Chunk-01-Fats-and-Oils.html",
-      "target": "Health\\processed-foods-investigation\\Chunk-04-Red-Meat-and-Organs.html",
+      "target": "Health\\processed-foods-investigation\\Chunk-07-Dairy.html",
       "weight": 6,
       "type": "semantic",
       "types": [
@@ -23387,7 +22777,7 @@
       ]
     },
     {
-      "source": "Health\\processed-foods-investigation\\Chunk-01-Fats-and-Oils.html",
+      "source": "Health\\processed-foods-investigation\\00_MASTER_REPORT.html",
       "target": "Health\\processed-foods-investigation\\Chunk-11-Soy.html",
       "weight": 3,
       "type": "semantic",
@@ -23399,7 +22789,7 @@
       ]
     },
     {
-      "source": "Health\\processed-foods-investigation\\00_MASTER_REPORT.html",
+      "source": "Health\\processed-foods-investigation\\Chunk-01-Fats-and-Oils.html",
       "target": "Health\\processed-foods-investigation\\Chunk-11-Soy.html",
       "weight": 3,
       "type": "semantic",
@@ -23567,7 +22957,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
+      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
       "target": "Research\\outputs\\agentic_os_report.html",
       "weight": 3,
       "type": "semantic",
@@ -23575,11 +22965,11 @@
         "semantic"
       ],
       "via": [
-        "sim=0.84"
+        "sim=0.85"
       ]
     },
     {
-      "source": "Agent\\agentos\\LIFEOS_WRITEUP_2026-06.md",
+      "source": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
       "target": "Research\\outputs\\agentic_os_report.html",
       "weight": 3,
       "type": "semantic",
@@ -23699,54 +23089,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\02_agentos_v2_architecture.md",
-      "target": "Research\\_reference\\RESEARCH_QUEUE.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Research\\_reference\\RESEARCH_QUEUE.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Finance\\_reference\\STANDING_ORDERS.md",
-      "target": "Research\\_reference\\RESEARCH_QUEUE.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Finance\\_reference\\03_earnings_calls.md",
-      "target": "Research\\_reference\\RESEARCH_QUEUE.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
       "source": "Trading\\finance-terminal\\ARCHITECTURE.md",
       "target": "Trading\\finance-terminal\\README.md",
       "weight": 8,
@@ -23796,42 +23138,6 @@
     },
     {
       "source": "Trading\\finance-terminal\\CLAUDE.md",
-      "target": "Trading\\finance-terminal\\planning\\AUDIT-2026-07-09.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Trading\\finance-terminal\\CLAUDE.md",
-      "target": "Trading\\finance-terminal\\INTEGRATION.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
-      "source": "Trading\\finance-terminal\\ARCHITECTURE.md",
-      "target": "Trading\\finance-terminal\\CLAUDE.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
-      "source": "Trading\\finance-terminal\\CLAUDE.md",
       "target": "Trading\\finance-terminal\\README.md",
       "weight": 8,
       "type": "semantic",
@@ -23840,54 +23146,6 @@
       ],
       "via": [
         "sim=0.88"
-      ]
-    },
-    {
-      "source": "Trading\\finance-terminal\\CLAUDE.md",
-      "target": "Trading\\finance-terminal\\planning\\10-ptbot-integration.md",
-      "weight": 6,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Trading\\finance-terminal\\INTEGRATION.md",
-      "target": "Trading\\finance-terminal\\planning\\AUDIT-2026-07-09.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.94"
-      ]
-    },
-    {
-      "source": "Trading\\finance-terminal\\INTEGRATION.md",
-      "target": "Trading\\finance-terminal\\planning\\10-ptbot-integration.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Trading\\finance-terminal\\INTEGRATION.md",
-      "target": "Trading\\finance-terminal\\planning\\08-test-pillar.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
       ]
     },
     {
@@ -23916,7 +23174,7 @@
     },
     {
       "source": "Trading\\finance-terminal\\README.md",
-      "target": "Trading\\finance-terminal\\planning\\AUDIT-2026-07-09.md",
+      "target": "Trading\\finance-terminal\\planning\\03-api-server.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -24335,6 +23593,18 @@
       ]
     },
     {
+      "source": "Trading\\finance-terminal\\INTEGRATION.md",
+      "target": "Trading\\finance-terminal\\planning\\08-test-pillar.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
       "source": "Trading\\finance-terminal\\ARCHITECTURE.md",
       "target": "Trading\\finance-terminal\\planning\\08-test-pillar.md",
       "weight": 4,
@@ -24407,7 +23677,7 @@
       ]
     },
     {
-      "source": "Trading\\finance-terminal\\planning\\03-api-server.md",
+      "source": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
       "target": "Trading\\finance-terminal\\planning\\09-trade-pillar.md",
       "weight": 3,
       "type": "semantic",
@@ -24416,6 +23686,18 @@
       ],
       "via": [
         "sim=0.85"
+      ]
+    },
+    {
+      "source": "Trading\\finance-terminal\\INTEGRATION.md",
+      "target": "Trading\\finance-terminal\\planning\\10-ptbot-integration.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
       ]
     },
     {
@@ -24443,6 +23725,18 @@
       ]
     },
     {
+      "source": "Trading\\finance-terminal\\CLAUDE.md",
+      "target": "Trading\\finance-terminal\\planning\\10-ptbot-integration.md",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
       "source": "Trading\\finance-terminal\\ARCHITECTURE.md",
       "target": "Trading\\finance-terminal\\planning\\10-ptbot-integration.md",
       "weight": 3,
@@ -24452,6 +23746,30 @@
       ],
       "via": [
         "sim=0.85"
+      ]
+    },
+    {
+      "source": "Trading\\finance-terminal\\INTEGRATION.md",
+      "target": "Trading\\finance-terminal\\planning\\AUDIT-2026-07-09.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.94"
+      ]
+    },
+    {
+      "source": "Trading\\finance-terminal\\CLAUDE.md",
+      "target": "Trading\\finance-terminal\\planning\\AUDIT-2026-07-09.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
       ]
     },
     {
@@ -24479,8 +23797,20 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PROGRESS.md",
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-DESIGN.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-HANDOFF.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.94"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-DESIGN.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
       "weight": 8,
       "type": "semantic",
       "types": [
@@ -24491,8 +23821,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PROGRESS.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-DESIGN.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
       "weight": 8,
       "type": "semantic",
       "types": [
@@ -24515,8 +23845,44 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PROGRESS.md",
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-HANDOFF.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-HANDOFF.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-HANDOFF.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
       "weight": 8,
       "type": "semantic",
       "types": [
@@ -24536,6 +23902,210 @@
       ],
       "via": [
         "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\31_KICKOFF-2-LAPTOP-RUNBOOK.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.94"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.94"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.92"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PROGRESS.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.94"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PROGRESS.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.93"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PROGRESS.md",
+      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.92"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\31_KICKOFF-2-LAPTOP-RUNBOOK.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.92"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\activity_log.md",
+      "target": "Agent\\agentos\\pending_actions.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.92"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\activity_log.md",
+      "target": "Agent\\agentos\\signals.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\activity_log.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
+      "target": "Agent\\agentos\\AGENT-MASTER-PLAN.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.94"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
+      "target": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.94"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
+      "target": "Agent\\agentos\\COORDINATION-DESIGN.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
+      "target": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\AGENT-MASTER-PLAN.md",
+      "target": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.94"
       ]
     },
     {
@@ -24576,6 +24146,18 @@
     },
     {
       "source": "Agent\\agentos\\BUSINESS-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\BUSINESS-AGENT-DESIGN.md",
       "target": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
       "weight": 3,
       "type": "semantic",
@@ -24611,75 +24193,63 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\BUSINESS-AGENT-DESIGN.md",
+      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
+      "target": "Career\\CLAUDE.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
       "target": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "weight": 3,
+      "weight": 4,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.84"
+        "sim=0.89"
       ]
     },
     {
-      "source": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
-      "target": "Agent\\agentos\\imessage_architecture.md",
-      "weight": 3,
+      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "weight": 4,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.85"
+        "sim=0.89"
       ]
     },
     {
-      "source": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
-      "target": "Agent\\agentos\\PROTOCOL.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
+      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
       "target": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
-      "weight": 3,
+      "weight": 4,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
-      "target": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
-      "target": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.84"
+        "sim=0.88"
       ]
     },
     {
@@ -24708,20 +24278,20 @@
     },
     {
       "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
+      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
       "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.91"
+        "sim=0.92"
       ]
     },
     {
       "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
-      "weight": 4,
+      "target": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
+      "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
@@ -24779,6 +24349,102 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
+      "target": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
+      "target": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\FABLE-BRIEF-agent-framework.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1D_agents.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
+      "target": "Agent\\agentos\\LIFEOS_WRITEUP_2026-06.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.88"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
+      "target": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
+      "target": "Agent\\agentos\\lifeos-audit-2026-06.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
+      "target": "Agent\\agentos\\SystemMap\\00_OVERVIEW.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\AGENT-MASTER-PLAN.md",
+      "target": "Agent\\agentos\\FABLE-BRIEF-lifeos-audit.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
       "source": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
       "target": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
       "weight": 8,
@@ -24804,31 +24470,31 @@
     },
     {
       "source": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
-      "target": "Finance\\_reference\\STANDING_ORDERS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
-      "target": "Trading\\paper-trading-bot-v2-cifix\\docs\\specs\\2026-04-29-portfolio-construction-engine-design.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
       "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
       "weight": 4,
       "type": "semantic",
       "types": [
@@ -24836,6 +24502,90 @@
       ],
       "via": [
         "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1E_dashboard.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
+      "target": "Agent\\agentos\\PROTOCOL.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\MARKETING-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
       ]
     },
     {
@@ -24851,8 +24601,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
-      "target": "Agent\\agentos\\MARKETING-AGENT-DESIGN.md",
+      "source": "Agent\\agentos\\MARKETING-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -24863,7 +24613,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\HANDOFF_marketing_business_expansion.md",
+      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
       "target": "Agent\\agentos\\MARKETING-AGENT-DESIGN.md",
       "weight": 3,
       "type": "semantic",
@@ -24935,6 +24685,42 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\pending_actions.md",
+      "target": "Agent\\agentos\\signals.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "target": "Agent\\agentos\\pending_actions.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
+      "target": "Agent\\agentos\\pending_actions.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
       "source": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
       "target": "Agent\\agentos\\PROGRAMMING-AGENT-DESIGN.md",
       "weight": 4,
@@ -24983,8 +24769,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "target": "Agent\\agentos\\PROGRAMMING-AGENT-DESIGN.md",
+      "source": "Agent\\agentos\\PROGRAMMING-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -25032,7 +24818,7 @@
     },
     {
       "source": "Agent\\agentos\\RESEARCH-AGENT-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
+      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -25211,6 +24997,66 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1D_agents.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.92"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
+      "target": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
+      "target": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SCHEDULER_STANDING_ORDERS.md",
+      "target": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\PROTOCOL.md",
+      "target": "Agent\\agentos\\SYSTEM-REALITY-DOSSIER.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
       "source": "Agent\\agentos\\lifeos-system-audit\\00_AUDIT-PLAN.md",
       "target": "Agent\\agentos\\lifeos-system-audit\\01_KICKOFF-PROMPTS.md",
       "weight": 8,
@@ -25271,8 +25117,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\lifeos-system-audit\\01_KICKOFF-PROMPTS.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\10_LIFEOS-ATLAS.md",
+      "source": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\01_KICKOFF-PROMPTS.md",
       "weight": 8,
       "type": "semantic",
       "types": [
@@ -25283,15 +25129,15 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\01_KICKOFF-PROMPTS.md",
-      "weight": 8,
+      "source": "Agent\\agentos\\lifeos-system-audit\\01_KICKOFF-PROMPTS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\10_LIFEOS-ATLAS.md",
+      "weight": 4,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.89"
+        "sim=0.90"
       ]
     },
     {
@@ -25367,6 +25213,18 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\10_LIFEOS-ATLAS.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
       "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
       "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
       "weight": 8,
@@ -25391,6 +25249,18 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
       "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
       "target": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
       "weight": 8,
@@ -25424,78 +25294,6 @@
       ],
       "via": [
         "sim=0.94"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
       ]
     },
     {
@@ -25525,13 +25323,13 @@
     {
       "source": "Agent\\agentos\\lifeos-system-audit\\map\\1A_memory.md",
       "target": "Agent\\agentos\\memory-redesign\\00_CLAUDE_CODE_FINDINGS.md",
-      "weight": 4,
+      "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.88"
+        "sim=0.87"
       ]
     },
     {
@@ -25619,7 +25417,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
+      "source": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
       "target": "Agent\\agentos\\lifeos-system-audit\\map\\1C_skills.md",
       "weight": 3,
       "type": "semantic",
@@ -25643,8 +25441,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1E_dashboard.md",
+      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1D_agents.md",
       "weight": 8,
       "type": "semantic",
       "types": [
@@ -25691,15 +25489,15 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
       "target": "Agent\\agentos\\lifeos-system-audit\\map\\1E_dashboard.md",
-      "weight": 4,
+      "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.88"
+        "sim=0.87"
       ]
     },
     {
@@ -25747,7 +25545,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.85"
+        "sim=0.84"
       ]
     },
     {
@@ -25943,32 +25741,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\10_LIFEOS-ATLAS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\GLOBAL_CLAUDE_MD.md",
-      "target": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\LIFEOS_WRITEUP_2026-06.md",
-      "target": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
+      "target": "Finance\\CLAUDE.md",
       "weight": 4,
       "type": "semantic",
       "types": [
@@ -25981,25 +25755,13 @@
     {
       "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
       "target": "Finance\\CLAUDE.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Health\\CLAUDE.md",
-      "target": "memory\\system.md",
       "weight": 4,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.89"
+        "sim=0.88"
       ]
     },
     {
@@ -26015,7 +25777,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
       "target": "Health\\CLAUDE.md",
       "weight": 3,
       "type": "semantic",
@@ -26024,6 +25786,294 @@
       ],
       "via": [
         "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\02_NOTION_LIFEOS.md",
+      "target": "Health\\CLAUDE.md",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Health\\Plans\\2026-W29\\meal_plan.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W20.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Health\\Plans\\2026-W29\\meal_plan.md",
+      "target": "Health\\_reference\\STANDING_ORDERS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Health\\Plans\\2026-W26\\workout_plan.md",
+      "target": "Health\\Plans\\2026-W29\\workout_plan.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Health\\Plans\\2026-W29\\workout_plan.md",
+      "target": "Health\\_logs\\injury_log.md",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Health\\Plans\\2026-W24\\workout_plan.md",
+      "target": "Health\\Plans\\2026-W29\\workout_plan.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Health\\Plans\\2026-W25\\workout_plan.md",
+      "target": "Health\\Plans\\2026-W29\\workout_plan.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Health\\Plans\\2026-W29\\workout_plan.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Health\\reviews\\weekly_reviews\\2026-W26.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Health\\reviews\\weekly_reviews\\2026-W24.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Health\\reviews\\weekly_reviews\\2026-W20.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Health\\reviews\\weekly_reviews\\2026-W19.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Health\\reviews\\weekly_reviews\\2026-W25.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Health\\_logs\\activity_log.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Health\\_logs\\activity_log.md",
+      "target": "Health\\midweek_checkins\\2026-07-09.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.81"
+      ]
+    },
+    {
+      "source": "Health\\_logs\\daily_log.md",
+      "target": "Health\\_reference\\STANDING_ORDERS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Health\\_logs\\injury_log.md",
+      "target": "Health\\_reference\\STANDING_ORDERS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Health\\_logs\\injury_log.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
+      "target": "Health\\_logs\\injury_log.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.80"
+      ]
+    },
+    {
+      "source": "Health\\_logs\\training_log.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W22.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.93"
+      ]
+    },
+    {
+      "source": "Health\\_logs\\training_log.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W26.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.92"
+      ]
+    },
+    {
+      "source": "Health\\_logs\\training_log.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W25.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.92"
+      ]
+    },
+    {
+      "source": "Health\\_logs\\training_log.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W24.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.92"
+      ]
+    },
+    {
+      "source": "Health\\_logs\\training_log.md",
+      "target": "Health\\reviews\\weekly_reviews\\2026-W23.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.92"
       ]
     },
     {
@@ -26047,7 +26097,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.86"
+        "sim=0.85"
       ]
     },
     {
@@ -26084,18 +26134,6 @@
       ],
       "via": [
         "sim=0.84"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "School\\Tutor\\learner-model.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
       ]
     },
     {
@@ -26136,6 +26174,18 @@
     },
     {
       "source": "School\\Tutor\\domains\\cooking-technique.md",
+      "target": "School\\Tutor\\learner-model.md",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "School\\Tutor\\domains\\cooking-technique.md",
       "target": "School\\Tutor\\domains\\finance-modeling.md",
       "weight": 6,
       "type": "semantic",
@@ -26149,18 +26199,6 @@
     {
       "source": "School\\Tutor\\domains\\cooking-technique.md",
       "target": "memory\\school\\calc.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "School\\Tutor\\domains\\cooking-technique.md",
-      "target": "School\\Tutor\\learner-model.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -26231,30 +26269,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
-      "target": "Career\\CLAUDE.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Career\\CLAUDE.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\PROTOCOL.md",
       "target": "Career\\CLAUDE.md",
       "weight": 3,
@@ -26291,6 +26305,18 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\imessage_architecture.md",
+      "target": "Career\\CLAUDE.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
       "source": "Business\\CLAUDE.md",
       "target": "Finance\\CLAUDE.md",
       "weight": 3,
@@ -26299,7 +26325,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.86"
+        "sim=0.87"
       ]
     },
     {
@@ -26327,7 +26353,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
       "target": "Business\\CLAUDE.md",
       "weight": 3,
       "type": "semantic",
@@ -26411,189 +26437,9 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-DESIGN.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-HANDOFF.md",
+      "source": "Trading\\finance-terminal\\CLAUDE.md",
+      "target": "Trading\\finance-terminal\\INTEGRATION.md",
       "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.94"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-DESIGN.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-DESIGN.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-HANDOFF.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-HANDOFF.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-HANDOFF.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\31_KICKOFF-2-LAPTOP-RUNBOOK.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.94"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.94"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-LAPTOP-QUICKSTART.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PLAN.md",
-      "target": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.94"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-RUNBOOK.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\31_KICKOFF-2-LAPTOP-RUNBOOK.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\activity_log.md",
-      "target": "Agent\\agentos\\pending_actions.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\activity_log.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
-      "target": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
-      "weight": 4,
       "type": "semantic",
       "types": [
         "semantic"
@@ -26603,20 +26449,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
-      "target": "Agent\\agentos\\FINANCE-AGENT-DESIGN.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
+      "source": "Trading\\finance-terminal\\ARCHITECTURE.md",
+      "target": "Trading\\finance-terminal\\CLAUDE.md",
       "weight": 4,
       "type": "semantic",
       "types": [
@@ -26663,99 +26497,63 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
-      "target": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-DESIGN.md",
-      "target": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "target": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\02_agentos_v2_architecture.md",
-      "target": "Agent\\agentos\\pending_actions.md",
+      "source": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
+      "target": "Agent\\agentos\\imessage_architecture.md",
       "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.86"
+        "sim=0.85"
       ]
     },
     {
-      "source": "Agent\\agentos\\SCHEDULER_STANDING_ORDERS.md",
-      "target": "Agent\\agentos\\pending_actions.md",
+      "source": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
+      "target": "Agent\\agentos\\PROTOCOL.md",
       "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.86"
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
+      "target": "Agent\\agentos\\COORDINATION-DESIGN.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
+      "target": "Agent\\agentos\\COMMS-VOICE-GUIDE.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
       ]
     },
     {
@@ -26819,6 +26617,102 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\signals.md",
+      "target": "Agent\\agentos\\weekly_summary.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "target": "Agent\\agentos\\signals.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\24_FINAL-REVISIONS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.88"
+      ]
+    },
+    {
       "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
       "target": "Agent\\agentos\\lifeos-system-audit\\30_IMPLEMENTATION-KICKOFFS.md",
       "weight": 4,
@@ -26856,7 +26750,7 @@
     },
     {
       "source": "Agent\\agentos\\lifeos-system-audit\\30_IMPLEMENTATION-KICKOFFS.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -26867,8 +26761,8 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\IMPLEMENTATION_PLAYBOOK_2026-06.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\30_IMPLEMENTATION-KICKOFFS.md",
+      "source": "Agent\\agentos\\lifeos-system-audit\\30_IMPLEMENTATION-KICKOFFS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -26899,7 +26793,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.90"
+        "sim=0.91"
       ]
     },
     {
@@ -27031,7 +26925,7 @@
         "semantic"
       ],
       "via": [
-        "sim=0.84"
+        "sim=0.83"
       ]
     },
     {
@@ -27080,6 +26974,294 @@
       ],
       "via": [
         "sim=0.81"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\36_KICKOFF-6-CONTINUATION.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\30_IMPLEMENTATION-KICKOFFS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\36_KICKOFF-6-CONTINUATION.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\36_KICKOFF-6-CONTINUATION.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.81"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\32_KICKOFF-3B-RHYTHM-COMMS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\36_KICKOFF-6-CONTINUATION.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.80"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\AGENT-FRAMEWORK-SPEC.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\36_P4.3d-notion-task-mirror-RULING.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.88"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\36_P4.3d-notion-task-mirror-RULING.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\36_P4.3d-notion-task-mirror-RULING.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\36_P4.3d-notion-task-mirror-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\36_P4.3d-notion-task-mirror-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\37_P4.4-auto-memory-mirror-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\37_P4.4-auto-memory-mirror-RULING.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1A_memory.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\37_P4.4-auto-memory-mirror-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\10_LIFEOS-ATLAS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\37_P4.4-auto-memory-mirror-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\37_P4.4-auto-memory-mirror-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\MODEL_ROUTER_PLAN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\38_P4.14-codex-lane-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\38_P4.14-codex-lane-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\38_P4.14-codex-lane-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\38_P4.14-codex-lane-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\PLAN_command_center_deepseek_and_scheduled_migration.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\38_P4.14-codex-lane-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\COORDINATION-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\39_P4.15-self-improvement-L2-RULING.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\39_P4.15-self-improvement-L2-RULING.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\39_P4.15-self-improvement-L2-RULING.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\39_P4.15-self-improvement-L2-RULING.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.88"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\39_P4.15-self-improvement-L2-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
       ]
     },
     {
@@ -27168,7 +27350,7 @@
     },
     {
       "source": "Agent\\agentos\\MediaCurator\\scheduled_task.md",
-      "target": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "target": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -27176,6 +27358,654 @@
       ],
       "via": [
         "sim=0.85"
+      ]
+    },
+    {
+      "source": "Finance\\outputs\\2026-07-13_thesis_msft-pst-keep.md",
+      "target": "Finance\\outputs\\2026-07-13_watchdesk_be-gev-intc.md",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Finance\\outputs\\2026-07-13_thesis_msft-pst-keep.md",
+      "target": "Finance\\outputs\\quant-trading-guide.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\meta_thesis.md",
+      "target": "Finance\\outputs\\2026-07-13_thesis_msft-pst-keep.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Finance\\outputs\\2026-07-13_thesis_msft-pst-keep.md",
+      "target": "Finance\\outputs\\finance-agent-dryrun-2026-06-29.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W18\\palantir_thesis.md",
+      "target": "Finance\\outputs\\2026-07-13_thesis_msft-pst-keep.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Finance\\outputs\\2026-07-13_watchdesk_be-gev-intc.md",
+      "target": "Finance\\outputs\\2026-07-14_watchdesk_xle-etf-nvda.md",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Finance\\_state\\WATCHLIST.md",
+      "target": "Finance\\outputs\\2026-07-13_watchdesk_be-gev-intc.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Finance\\Market_Scans\\2026-W22_scan.md",
+      "target": "Finance\\outputs\\2026-07-13_watchdesk_be-gev-intc.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\activity_log.md",
+      "target": "Finance\\outputs\\2026-07-13_watchdesk_be-gev-intc.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.81"
+      ]
+    },
+    {
+      "source": "Research\\outputs\\2026-07-13_research-brief_pst-pms-cagr.md",
+      "target": "Research\\outputs\\2026-07-13_research-brief_update.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.95"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-audit-2026-06.html",
+      "target": "Research\\outputs\\2026-07-13_research-brief_pst.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.81"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\RESEARCH-AGENT-DESIGN.md",
+      "target": "Research\\outputs\\2026-07-13_research-brief_pst.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.80"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\02_agentos_v2_architecture.md",
+      "target": "Research\\_reference\\RESEARCH_QUEUE.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Finance\\_reference\\STANDING_ORDERS.md",
+      "target": "Research\\_reference\\RESEARCH_QUEUE.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Finance\\_reference\\03_earnings_calls.md",
+      "target": "Research\\_reference\\RESEARCH_QUEUE.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SCHEDULER_STANDING_ORDERS.md",
+      "target": "Research\\_reference\\RESEARCH_QUEUE.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\accountability-notion-token-invalid.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\accountability-notion-token-invalid.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\32_KICKOFF-3B-RHYTHM-COMMS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\accountability-notion-token-invalid.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\ACCOUNTABILITY-UPGRADE-PROGRESS.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\accountability-notion-token-invalid.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\accountability-notion-token-invalid.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\10_LIFEOS-ATLAS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\local-knowledge-base.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\local-knowledge-base.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\local-knowledge-base.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\10_LIFEOS-ATLAS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\local-knowledge-base.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1A_memory.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\local-knowledge-base.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\MEMORY.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\local-knowledge-base.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.80"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\report-embed-pipeline-wp8.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.93"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\40_P4.24-notebooklm-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\40_P4.24-notebooklm-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\40_P4.24-notebooklm-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\40_P4.24-notebooklm-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\40_P4.24-notebooklm-RULING.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.92"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.95"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp2.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp2.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp2.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp4.md",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp2.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp2.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp4.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\HEALTH-AGENT-DESIGN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp4.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp4.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\registry-pending-wp4.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\00_OVERVIEW.md",
+      "target": "Agent\\agentos\\SystemMap\\05_FILESYSTEM.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.88"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\00_OVERVIEW.md",
+      "target": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.88"
       ]
     },
     {
@@ -27187,36 +28017,12 @@
         "semantic"
       ],
       "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\SystemMap\\00_OVERVIEW.md",
-      "target": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\PROTOCOL.md",
-      "target": "Agent\\agentos\\SystemMap\\00_OVERVIEW.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
         "sim=0.88"
       ]
     },
     {
-      "source": "Agent\\agentos\\AGENTS_ANALYSIS_TRUE_AGENT_PLAN.md",
-      "target": "Agent\\agentos\\SystemMap\\00_OVERVIEW.md",
+      "source": "Agent\\agentos\\SystemMap\\00_OVERVIEW.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -27228,14 +28034,170 @@
     },
     {
       "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
-      "target": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\22_AGENT-DOSSIER-AND-PORTABILITY.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.91"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\02_NOTION_LIFEOS.md",
+      "target": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
       "weight": 8,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.92"
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\23_DESK-JOBS-RESEARCH-ENGINE-RHYTHM.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\LIFEOS_WRITEUP_2026-06.md",
+      "target": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\01_AGENTS.md",
+      "target": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\32_KICKOFF-3B-RHYTHM-COMMS.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.88"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\42_PARITY-RESTORE-PLAN.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\04_SCHEDULED_TASKS.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\31_KICKOFF-2-LAPTOP-RUNBOOK.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\02_agentos_v2_architecture.md",
+      "target": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\LIFEOS_WRITEUP_2026-06.md",
+      "target": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.89"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\PROTOCOL.md",
+      "target": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.88"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SCHEDULER_STANDING_ORDERS.md",
+      "target": "Agent\\agentos\\SystemMap\\06_DAILY_FLOW.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
       ]
     }
   ],
@@ -27440,6 +28402,12 @@
         "name": "Health Science Review (agent framework)",
         "agent": "health",
         "trigger": "First Sunday of the month 09:00 PST"
+      },
+      {
+        "id": "health-dashboard-refresh",
+        "name": "Health Dashboard Refresh (deterministic)",
+        "agent": "health",
+        "trigger": "schedule"
       }
     ],
     "Trading": [
@@ -27472,9 +28440,9 @@
     ]
   },
   "embed_coverage": {
-    "files_embedded": 483,
-    "files_total": 483,
-    "chunks_embedded": 5468,
-    "chunks_total": 5468
+    "files_embedded": 512,
+    "files_total": 512,
+    "chunks_embedded": 5651,
+    "chunks_total": 5651
   }
 }
