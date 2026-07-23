@@ -31,9 +31,10 @@ function modelColor(r) {
   if (name.includes('opus')) return '#6aa3e0';   // blue
   if (name.includes('sonnet')) return '#7a9fd1'; // soft blue
   if (name.includes('haiku')) return '#9d83d6';  // purple
-  if (name.includes('r1')) return '#c478c4';     // magenta
-  if (name.includes('v3') || name.includes('deepseek')) return '#5fb98a'; // green
-  if (name.includes('qwen')) return '#d4905c';   // orange
+  if (name.includes('nemotron')) return '#c478c4'; // magenta — reasoning/finance
+  if (name.includes('gpt-oss')) return '#5fb98a';  // green — workhorse
+  if (name.includes('devstral')) return '#d4905c'; // orange — coder
+  if (name.includes('scout')) return '#d6b85c';    // gold — vision
   if (name.includes('free')) return 'var(--faint)';
   return 'var(--tag-research)';
 }
@@ -42,7 +43,7 @@ function modelColor(r) {
 // Blended $/Mtok per model (rough in+out blend). Max-plan jobs are $0 marginal under the cap, but
 // we surface a blended-equivalent cost so every agent/model shows a comparable bar.
 const BLENDED_RATE = {
-  opus: 7.5, sonnet: 3.0, haiku: 0.8, 'deepseek r1': 0.55, 'deepseek v3.2': 0.30, deepseek: 0.30, qwen: 0.30,
+  opus: 7.5, sonnet: 3.0, haiku: 0.8, nemotron: 0.20, devstral: 0.80, scout: 0.15, 'gpt-oss': 0.055,
 };
 function rateFor(model) {
   const m = String(model || '').toLowerCase();

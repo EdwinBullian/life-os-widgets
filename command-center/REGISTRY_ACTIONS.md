@@ -12,7 +12,7 @@ jobs. All three are `application/x-www-form-urlencoded`:
 | Action | Params | Meaning |
 |---|---|---|
 | `settaskenabled` | `id`, `enabled` = `"true"` \| `"false"` | Enable/disable the task with that registry `id`. |
-| `settaskmodel` | `id`, `model` = e.g. `"DeepSeek V3.2"` | Change the model the task runs on. |
+| `settaskmodel` | `id`, `model` = e.g. `"gpt-oss-20b"` | Change the model the task runs on. |
 | `settaskschedule` | `id`, `trigger` = e.g. `"Mon 08:00"` | Change the human-readable schedule/frequency. Map this back to a cron string on the backend. |
 
 `id` is the registry task id (e.g. `daily-finance-scan`). The proxy should write the change back to

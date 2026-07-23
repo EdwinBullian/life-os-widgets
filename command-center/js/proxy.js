@@ -123,7 +123,7 @@ export function fetchStatus({ timeoutMs = 8000, signal } = {}) {
 // applied optimistically to a local override (see getTaskOverrides) so the UI works before the
 // backend handler exists. Payloads (x-www-form-urlencoded):
 //   settaskenabled   → { action, id, enabled:"true"|"false" }
-//   settaskmodel     → { action, id, model:"DeepSeek V3.2" }
+//   settaskmodel     → { action, id, model:"gpt-oss-20b" }
 //   settaskschedule  → { action, id, trigger:"Mon 08:00" }
 const ALLOWED_ACTIONS = new Set([
   'dispatch', 'pause', 'runnow', 'cancel', 'setagentmodel', 'toggleagentpause',

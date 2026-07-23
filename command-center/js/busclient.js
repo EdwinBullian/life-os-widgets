@@ -46,8 +46,8 @@ export function busConfigured() { return !!getBusToken(); }
 // Anything Claude-Max routes to 'claude'; open lanes map to their gateway alias.
 const MODEL_ALIAS = {
   Auto: 'claude', Opus: 'claude', Sonnet: 'claude', Haiku: 'claude',
-  'DeepSeek V3.2': 'claude-deepseek-v3.2', 'DeepSeek R1': 'claude-deepseek-r1',
-  'Qwen3 Coder': 'claude-qwen3-coder',
+  'gpt-oss-20b': 'claude-or-general', 'Nemotron-3 Super': 'claude-or-reasoning',
+  'Devstral': 'claude-or-coder',
 };
 const CRON_RE = /^\S+\s+\S+\s+\S+\s+\S+\s+\S+$/;
 

@@ -10,7 +10,7 @@ import { repollSoon } from '../poll.js';
 
 // ── Model menus (ported verbatim from the mockup) ─────────────────────────────
 const CLAUDE_MODELS = ['Auto', 'Opus', 'Sonnet', 'Haiku'];
-const OPEN_MODELS = ['DeepSeek V3.2', 'DeepSeek R1', 'Qwen3 Coder'];
+const OPEN_MODELS = ['gpt-oss-20b', 'Nemotron-3 Super', 'Devstral'];
 export function modelSelectHtml(cur) {
   const opt = (m) => `<option${m === cur ? ' selected' : ''}>${esc(m)}</option>`;
   return `<optgroup label="Claude · Max plan">${CLAUDE_MODELS.map(opt).join('')}</optgroup>`

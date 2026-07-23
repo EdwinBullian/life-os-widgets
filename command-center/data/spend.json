@@ -4,9 +4,9 @@
   "max": { "pctUsed": 62, "resetAt": "2026-06-29T00:00:00-07:00", "estTokens": 3100000, "capTokens": 5000000 },
   "openrouter": { "weekSpend": 4.10, "weekCap": 15, "projectedMonth": 17.6 },
   "byModel": [
-    { "name": "DeepSeek V3.2", "spend": 3.05, "tier": "open" },
-    { "name": "Qwen3 Coder", "spend": 0.65, "tier": "open" },
-    { "name": "DeepSeek R1", "spend": 0.40, "tier": "open" }
+    { "name": "gpt-oss-20b", "spend": 3.05, "tier": "open" },
+    { "name": "Devstral", "spend": 0.65, "tier": "open" },
+    { "name": "Nemotron-3 Super", "spend": 0.40, "tier": "open" }
   ],
   "byAgent": [
     { "type": "finance", "spend": 1.55 },

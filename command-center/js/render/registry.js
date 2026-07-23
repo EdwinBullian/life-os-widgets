@@ -21,7 +21,7 @@ function postSafe(action, params) {
 
 // Model options offered in the per-row dropdown. The task's current model is appended if unlisted
 // so an exotic value (e.g. "Max now / local later") is never silently dropped.
-const MODEL_OPTS = ['Auto', 'Opus', 'Sonnet', 'Haiku', 'DeepSeek V3.2', 'DeepSeek R1', 'Qwen3 Coder'];
+const MODEL_OPTS = ['Auto', 'Opus', 'Sonnet', 'Haiku', 'gpt-oss-20b', 'Nemotron-3 Super', 'Devstral'];
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
