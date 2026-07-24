@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-22",
-  "_notify_schema": "Per-job notification toggle (Comms redesign, doc 24 §2.1). notify:false = the Escalator suppresses this row's texts before any send; the job still RUNS, it just doesn't text. ABSENT => notify:true (default on). Kill list (P1.13): media-curator-daily + finance-handoff-consumer are notify:false.",
+  "updated": "2026-07-23",
+  "_notify_schema": "Per-job notification toggle (Comms redesign, doc 24 \u00a72.1). notify:false = the Escalator suppresses this row's texts before any send; the job still RUNS, it just doesn't text. ABSENT => notify:true (default on). Kill list (P1.13): media-curator-daily + finance-handoff-consumer are notify:false.",
   "_note": "SINGLE SOURCE OF TRUTH for every scheduled task across all hosts (Cowork, laptop daemon, Task Scheduler). Built 2026-06-27. Replaces ad-hoc 'check Claude scheduled' as tasks migrate off Cowork. Command Center should render sortable views over THIS file (by agent / model / host / tier / weekly tokens). 'currentTier' = where it runs today; 'recommendedTier' = target after migration. Routing policy lives in this file.",
   "_sync_protocol": "Accuracy is maintained by SYNC-PROTOCOL.md in this folder. Rule: any session that creates/edits/deletes a scheduled task on ANY host MUST update this file in the same change. A nightly registry-reconcile infra task diffs declared vs. actual (Cowork list_scheduled_tasks, Windows schtasks, laptop daemon) and flags drift. See SYNC-PROTOCOL.md.",
   "_agent_specs": "Agentic-loop specs live in Claude/Assistant/agents/ (AGENT-LOOP.md scaffold + finance-agent.md + health-agent.md + state/*.json).",
@@ -8,12 +8,12 @@
     "max": "Runs on Claude/Max plan (Cowork). Reserve for Tier-2 JUDGMENT: theses, synthesis, plan composition, voice, client-facing.",
     "open": "Runs on OpenRouter via gateway+openmodel_worker (gpt-oss-20b workhorse / Devstral for code). Mechanical/high-volume: scrape, score, dedupe, data pulls, freshness gates, assembly, file-existence QC.",
     "open-first": "Bulk runs open; only the thin judgment slice escalates to Max via the Agent Dispatch queue.",
-    "private": "Touches personal health data — MUST NOT go to cloud-open per the health-data rule. Stays Max now; LOCAL model later (never free-cloud)."
+    "private": "Touches personal health data \u2014 MUST NOT go to cloud-open per the health-data rule. Stays Max now; LOCAL model later (never free-cloud)."
   },
   "rate_assumptions": {
     "gpt_oss_20b_blended_usd_per_mtok": 0.055,
     "max_marginal_usd": 0.0,
-    "note": "Max marginal cost is $0 under cap, but Eddie hits ~95% of weekly cap — so the real currency is CAP HEADROOM, not dollars. Every 'open' move reclaims Max capacity for 'max'-tier work."
+    "note": "Max marginal cost is $0 under cap, but Eddie hits ~95% of weekly cap \u2014 so the real currency is CAP HEADROOM, not dollars. Every 'open' move reclaims Max capacity for 'max'-tier work."
   },
   "actions_pause": false,
   "tasks": [
@@ -36,7 +36,7 @@
       "observedCron": "45 5,12 * * *",
       "observedEnabled": true,
       "observedHost": "windows",
-      "lastSeen": "2026-07-18T12:34:50Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -54,11 +54,11 @@
       "estTokensPerRun": 60000,
       "runsPerWeek": 1,
       "mcp": "notion",
-      "notes": "CURRENTLY pure-Python (Win task GrailHunter3h, every 3h 7a-10p PT, 0 Claude tokens; gh/depop.py = headless Playwright). Kept labeled open/AI on purpose — AI scoring returns as it's built out, and mcp:notion stays ready for that. Orig: scrape+score+dedupe = pure mechanical.",
+      "notes": "CURRENTLY pure-Python (Win task GrailHunter3h, every 3h 7a-10p PT, 0 Claude tokens; gh/depop.py = headless Playwright). Kept labeled open/AI on purpose \u2014 AI scoring returns as it's built out, and mcp:notion stays ready for that. Orig: scrape+score+dedupe = pure mechanical.",
       "observedCron": "0 8 * * 1",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "enabled differs: declared True vs actual False"
     },
@@ -76,11 +76,11 @@
       "estTokensPerRun": 50000,
       "runsPerWeek": 5,
       "mcp": "notion,desktop-commander",
-      "notes": "RETIRED 2026-07-11 (K5 cutover: both watchdesk rows armed — this row's own cutover clause). ⚠️ LIVE COWORK TASK STILL FIRES until Eddie disables it in the Cowork app (same manual step as Media Curator). ⚠️ BRIEFING DEPENDENCY: morning_digests.py folds this scanner's Finance/pipelines/daily_scanner/output/scan_*.json into the 06:00 briefing's markets section — once the Cowork task is actually off, the briefing shows stale scan data until the watchdesk output is wired in as the markets source (open follow-up). Data pull + delta detection = open; only FINANCE FLAGS escalation note worth Max. Highest weekly token drain after theses. UPGRADE 2026-06-29 (LIVE): AGENT-LOOP layer (STEP 6) — after the SPY-de-marketed scan, loads Assistant/agents/state/finance-state.json, tests fundamental thesis breakpoints, writes decision_log (audit-why incl. no-alert). MONDAY branch also runs weekly self-grading (outcome_log was_right + calibration_notes) + portfolio synthesizer (AI-capex concentration). Watchlist merged to ~42 in Notion Watchlist DB + scanner watchlist.json. Approval gate unchanged. [CUTOVER PLANNED 2026-07-05: retires when finance-watchdesk-daily + finance-watchdesk-postclose are armed — FINANCE-AGENT-DESIGN.md.] MOVED 17:34->05:15 premarket (K3B 1.13, doc 24 §4.4 — Eddie approved 2026-07-11): this is the scanner behind Finance/pipelines/daily_scanner/output/scan_*.json, which morning_digests.py folds into the 06:00 briefing's markets section; running premarket means the brief gets same-day data instead of yesterday afternoon's. Declared here; live Cowork task still fires 17:34 until Eddie edits it there (same manual step as Media Curator).",
+      "notes": "RETIRED 2026-07-11 (K5 cutover: both watchdesk rows armed \u2014 this row's own cutover clause). \u26a0\ufe0f LIVE COWORK TASK STILL FIRES until Eddie disables it in the Cowork app (same manual step as Media Curator). \u26a0\ufe0f BRIEFING DEPENDENCY: morning_digests.py folds this scanner's Finance/pipelines/daily_scanner/output/scan_*.json into the 06:00 briefing's markets section \u2014 once the Cowork task is actually off, the briefing shows stale scan data until the watchdesk output is wired in as the markets source (open follow-up). Data pull + delta detection = open; only FINANCE FLAGS escalation note worth Max. Highest weekly token drain after theses. UPGRADE 2026-06-29 (LIVE): AGENT-LOOP layer (STEP 6) \u2014 after the SPY-de-marketed scan, loads Assistant/agents/state/finance-state.json, tests fundamental thesis breakpoints, writes decision_log (audit-why incl. no-alert). MONDAY branch also runs weekly self-grading (outcome_log was_right + calibration_notes) + portfolio synthesizer (AI-capex concentration). Watchlist merged to ~42 in Notion Watchlist DB + scanner watchlist.json. Approval gate unchanged. [CUTOVER PLANNED 2026-07-05: retires when finance-watchdesk-daily + finance-watchdesk-postclose are armed \u2014 FINANCE-AGENT-DESIGN.md.] MOVED 17:34->05:15 premarket (K3B 1.13, doc 24 \u00a74.4 \u2014 Eddie approved 2026-07-11): this is the scanner behind Finance/pipelines/daily_scanner/output/scan_*.json, which morning_digests.py folds into the 06:00 briefing's markets section; running premarket means the brief gets same-day data instead of yesterday afternoon's. Declared here; live Cowork task still fires 17:34 until Eddie edits it there (same manual step as Media Curator).",
       "observedCron": "30 13 * * 1-5",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "cron differs: declared '15 5 * * 1-5' vs actual '30 13 * * 1-5'"
     },
@@ -98,11 +98,11 @@
       "estTokensPerRun": 80000,
       "runsPerWeek": 1,
       "mcp": "notion",
-      "notes": "RETIRED 2026-07-11 (K5 cutover: finance-thesis-weekly armed; its screen stage absorbs this scan). ⚠️ LIVE COWORK TASK STILL FIRES until Eddie disables it in the Cowork app. Price/earnings/deal assembly = open; the 'counter-intuitive take' escalates to Max. [CUTOVER PLANNED 2026-07-05: retires when finance-thesis-weekly is armed (screen stage absorbs this scan) — FINANCE-AGENT-DESIGN.md.]",
+      "notes": "RETIRED 2026-07-11 (K5 cutover: finance-thesis-weekly armed; its screen stage absorbs this scan). \u26a0\ufe0f LIVE COWORK TASK STILL FIRES until Eddie disables it in the Cowork app. Price/earnings/deal assembly = open; the 'counter-intuitive take' escalates to Max. [CUTOVER PLANNED 2026-07-05: retires when finance-thesis-weekly is armed (screen stage absorbs this scan) \u2014 FINANCE-AGENT-DESIGN.md.]",
       "observedCron": "5 11 * * 3",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -120,11 +120,11 @@
       "estTokensPerRun": 300000,
       "runsPerWeek": 1,
       "mcp": "",
-      "notes": "RETIRED 2026-07-11 (K5 cutover: finance-thesis-weekly armed). ⚠️ LIVE COWORK TASK STILL FIRES until Eddie disables it in the Cowork app. Tier-2. The point of the system. Stays Max. Biggest single token consumer. NOTE 2026-06-29: left UNCHANGED on purpose (fragile token-budget + DCF/comps + GitHub Pages publish chain). The weekly self-grading + portfolio synthesizer now run in daily-finance-scan's MONDAY branch instead, so this pipeline isn't touched. [CUTOVER PLANNED 2026-07-05: retires when finance-thesis-weekly is armed — FINANCE-AGENT-DESIGN.md.]",
+      "notes": "RETIRED 2026-07-11 (K5 cutover: finance-thesis-weekly armed). \u26a0\ufe0f LIVE COWORK TASK STILL FIRES until Eddie disables it in the Cowork app. Tier-2. The point of the system. Stays Max. Biggest single token consumer. NOTE 2026-06-29: left UNCHANGED on purpose (fragile token-budget + DCF/comps + GitHub Pages publish chain). The weekly self-grading + portfolio synthesizer now run in daily-finance-scan's MONDAY branch instead, so this pipeline isn't touched. [CUTOVER PLANNED 2026-07-05: retires when finance-thesis-weekly is armed \u2014 FINANCE-AGENT-DESIGN.md.]",
       "observedCron": "5 11 * * 1",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -146,7 +146,7 @@
       "observedCron": "5 11 * * 2",
       "observedEnabled": true,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -164,7 +164,7 @@
       "estTokensPerRun": 200000,
       "runsPerWeek": 1,
       "mcp": "notion,notebooklm",
-      "notes": "NEW — to build. heavy --continue chunked projects, 3-4 chunks/session.",
+      "notes": "NEW \u2014 to build. heavy --continue chunked projects, 3-4 chunks/session.",
       "observedCron": null,
       "observedEnabled": false,
       "observedHost": null,
@@ -186,7 +186,7 @@
       "estTokensPerRun": 40000,
       "runsPerWeek": 1,
       "mcp": "notion",
-      "notes": "NEW — to build. Sci/medical/political new-findings monitor; dedupe so only genuinely new surfaces.",
+      "notes": "NEW \u2014 to build. Sci/medical/political new-findings monitor; dedupe so only genuinely new surfaces.",
       "observedCron": null,
       "observedEnabled": false,
       "observedHost": null,
@@ -209,11 +209,11 @@
       "estTokensPerRun": 40000,
       "runsPerWeek": 7,
       "mcp": "notion",
-      "notes": "Find/filter media picks = mechanical. Strong open candidate, high frequency. MOVED 05:50->05:40 (K3B 1.13, doc 24 §4.4) so picks land before the 06:00 briefing composes — the standup prefetch (agent_framework/prefetch/morning_digests.py) folds output/*_picks.json into the brief's depth tail + Gap List; notify stays false (kill list). Declared cron updated here + seed_registry.py + scheduled_task.md. Eddie edited the live Cowork task 2026-07-11 — reconciled. RETIRE/SUPERSEDE (Parity Restore doc 42 WP5, 2026-07-13): framework successor 'media-curator-framework' declared (declared-not-armed) — run.py --profile media --job media, same 05:40 slot + IDENTICAL output contract (output/*_picks.json + _digest.md). CUTOVER: disable this cowork task in the SAME change media-curator-framework flips enabled:true.",
+      "notes": "Find/filter media picks = mechanical. Strong open candidate, high frequency. MOVED 05:50->05:40 (K3B 1.13, doc 24 \u00a74.4) so picks land before the 06:00 briefing composes \u2014 the standup prefetch (agent_framework/prefetch/morning_digests.py) folds output/*_picks.json into the brief's depth tail + Gap List; notify stays false (kill list). Declared cron updated here + seed_registry.py + scheduled_task.md. Eddie edited the live Cowork task 2026-07-11 \u2014 reconciled. RETIRE/SUPERSEDE (Parity Restore doc 42 WP5, 2026-07-13): framework successor 'media-curator-framework' declared (declared-not-armed) \u2014 run.py --profile media --job media, same 05:40 slot + IDENTICAL output contract (output/*_picks.json + _digest.md). CUTOVER: disable this cowork task in the SAME change media-curator-framework flips enabled:true.",
       "observedCron": "40 5 * * *",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -228,17 +228,17 @@
       "enabled": true,
       "currentTier": "open-first",
       "recommendedTier": "open-first",
-      "model": "none (deterministic — no LLM)",
+      "model": "none (deterministic \u2014 no LLM)",
       "estTokensPerRun": 0,
       "runsPerWeek": 7,
       "mcp": "notion",
-      "notes": "DECLARED-NOT-ARMED (Parity Restore doc 42 WP5 · audit P7). Framework successor to media-curator-daily. `run.py --profile media --job media` reuses the agentos/MediaCurator gatherer (YouTube+podcast RSS scoring — ZERO LLM, so no open-model spend at all), writes the UNCHANGED output contract agentos/MediaCurator/output/{date}_picks.json + _digest.md (so prefetch/morning_digests.py keeps folding picks into the 06:00 standup's media tail + Gap List), and files each pick to the Notion Media DB via the reversible media_db_rows Actuator (Skip-stale dedupe ledger under state/media/media_rows.json). Runs 05:40 so picks are fresh before the standup composes. notify:false — picks fold into the standup; the desk never texts (escalation channel:none). surfaces: agentos/MediaCurator/output/*_picks.json + _digest.md (standup feed) + Notion Media DB e7574809 rows (Name/Type/Source/Category/Link/Duration/Surfaced/Status=New/Discovery/Note — schema verified live; the old write_media.py used wrong prop names). PREREQ (verify at arm, same signature as WP2 F-B1): the resolved NOTION_TOKEN on EDWIN must have the 🎬 Media DB shared with the integration, else rows 404 (picks JSON still ships). ARM on EDWIN: (1) schtasks /Create /TN MediaCuratorFramework /SC DAILY /ST 05:40 /TR \"<full EDWIN python.exe path, NEVER py> C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile media --job media --task-id media-curator-framework\" then verify LastTaskResult=0x0; (2) to actually WRITE Media DB rows, set the Actuator armed:false->true in profiles/media.yaml (the picks JSON ships either way); (3) flip enabled:true here AND disable cowork media-curator-daily in the SAME change (CUTOVER). MOOD-QUEUE UPGRADE 2026-07-18 (no schedule change — cron/host/enabled untouched): picks are now shaped as a fixed 3-bucket spread (Finance 3-4 / Tech 3-4 / Misc-Learning 2-3, total 8-11) via scoring_config.yaml `buckets` + `bucket_quotas`, and every pick carries a Length band (Quick <15m / Medium 15-40m / Long 40+). YouTube RSS has NO duration, so daily_digest.enrich_youtube_durations backfills runtimes from the watch page for the final picks only — before this ~90% of rows would have shipped with an empty Duration, and Shorts could not be filtered (audit: 1/10, 0/9, 1/8 picks had a runtime on 07-16..18). Notion PREREQ IS DONE: Bucket + Length select properties were added to data source e7574809-e16a-4306-b21f-1c66a438f24a and a 'Deadtime Queue' board view (grouped by Bucket, filtered Status=New) created — arming would have hard-failed on every row without them, since the Notion API errors on unknown property names. NOTE the two ids are different LEVELS, not a conflict: config.MEDIA_DB a1274b8c… is the DATABASE, e7574809… is its DATA SOURCE. **ARMED 2026-07-18 by Eddie** — profiles/media.yaml Actuator armed:false->true, so this desk now WRITES Media DB rows on every run. armed is NOT per-host (media.yaml is a OneDrive-synced vault file, so the flag is identical on both machines); only the laptop has the scheduled task, so only the laptop acts on it. First armed run verified same day: 8/8 rows filed, token + Bucket/Length schema both good. Two post-arm fixes in the same change: (a) picks added by the bucket-minimum/floor passes were never enriched (they run AFTER the enrichment gate) so 3/8 rows filed with no Length — now enriched before banding; (b) those same passes bypassed min_length, filing a 1:03 Short — a bucket minimum no longer licenses a Short, a thinner bucket wins. Tests updated: test_media_profile_shape now asserts armed is True, and the declared-not-armed test forces armed:false itself so the disarm path stays covered.",
+      "notes": "DECLARED-NOT-ARMED (Parity Restore doc 42 WP5 \u00b7 audit P7). Framework successor to media-curator-daily. `run.py --profile media --job media` reuses the agentos/MediaCurator gatherer (YouTube+podcast RSS scoring \u2014 ZERO LLM, so no open-model spend at all), writes the UNCHANGED output contract agentos/MediaCurator/output/{date}_picks.json + _digest.md (so prefetch/morning_digests.py keeps folding picks into the 06:00 standup's media tail + Gap List), and files each pick to the Notion Media DB via the reversible media_db_rows Actuator (Skip-stale dedupe ledger under state/media/media_rows.json). Runs 05:40 so picks are fresh before the standup composes. notify:false \u2014 picks fold into the standup; the desk never texts (escalation channel:none). surfaces: agentos/MediaCurator/output/*_picks.json + _digest.md (standup feed) + Notion Media DB e7574809 rows (Name/Type/Source/Category/Link/Duration/Surfaced/Status=New/Discovery/Note \u2014 schema verified live; the old write_media.py used wrong prop names). PREREQ (verify at arm, same signature as WP2 F-B1): the resolved NOTION_TOKEN on EDWIN must have the \ud83c\udfac Media DB shared with the integration, else rows 404 (picks JSON still ships). ARM on EDWIN: (1) schtasks /Create /TN MediaCuratorFramework /SC DAILY /ST 05:40 /TR \"<full EDWIN python.exe path, NEVER py> C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile media --job media --task-id media-curator-framework\" then verify LastTaskResult=0x0; (2) to actually WRITE Media DB rows, set the Actuator armed:false->true in profiles/media.yaml (the picks JSON ships either way); (3) flip enabled:true here AND disable cowork media-curator-daily in the SAME change (CUTOVER). MOOD-QUEUE UPGRADE 2026-07-18 (no schedule change \u2014 cron/host/enabled untouched): picks are now shaped as a fixed 3-bucket spread (Finance 3-4 / Tech 3-4 / Misc-Learning 2-3, total 8-11) via scoring_config.yaml `buckets` + `bucket_quotas`, and every pick carries a Length band (Quick <15m / Medium 15-40m / Long 40+). YouTube RSS has NO duration, so daily_digest.enrich_youtube_durations backfills runtimes from the watch page for the final picks only \u2014 before this ~90% of rows would have shipped with an empty Duration, and Shorts could not be filtered (audit: 1/10, 0/9, 1/8 picks had a runtime on 07-16..18). Notion PREREQ IS DONE: Bucket + Length select properties were added to data source e7574809-e16a-4306-b21f-1c66a438f24a and a 'Deadtime Queue' board view (grouped by Bucket, filtered Status=New) created \u2014 arming would have hard-failed on every row without them, since the Notion API errors on unknown property names. NOTE the two ids are different LEVELS, not a conflict: config.MEDIA_DB a1274b8c\u2026 is the DATABASE, e7574809\u2026 is its DATA SOURCE. **ARMED 2026-07-18 by Eddie** \u2014 profiles/media.yaml Actuator armed:false->true, so this desk now WRITES Media DB rows on every run. armed is NOT per-host (media.yaml is a OneDrive-synced vault file, so the flag is identical on both machines); only the laptop has the scheduled task, so only the laptop acts on it. First armed run verified same day: 8/8 rows filed, token + Bucket/Length schema both good. Two post-arm fixes in the same change: (a) picks added by the bucket-minimum/floor passes were never enriched (they run AFTER the enrichment gate) so 3/8 rows filed with no Length \u2014 now enriched before banding; (b) those same passes bypassed min_length, filing a 1:03 Short \u2014 a bucket minimum no longer licenses a Short, a thinner bucket wins. Tests updated: test_media_profile_shape now asserts armed is True, and the declared-not-armed test forces armed:false itself so the disarm path stays covered.",
       "observedCron": "40 5 * * *",
       "observedEnabled": true,
       "observedHost": "windows",
-      "lastSeen": "2026-07-22T21:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
-      "driftReason": "RESOLVED 2026-07-22: the 07-19 split stall is fixed. prefetch/media_curator.py:38 now resolves the gatherer against config.VAULT_ROOT (Agent/agentos/MediaCurator/daily_digest.py) instead of config.AGENT_DIR — the MediaCurator tree is content/state that stayed in the vault, and the standup consumer (morning_digests.py, via VAULT_ROOT/Agent) already reads picks there, so producer and consumer agree again. Chose path-repair over migrating the tree into ClaudeLocal (option a): migrating would have dragged content into the code root AND forced rewriting the currently-correct consumer. Verified: `run.py --profile media --job media` shipped 6 picks, Media DB rows 6/6 filed, artifact at Agent/agentos/MediaCurator/output/2026-07-22_picks.json. cowork media-curator-daily NOT revived; not re-armed (already armed 07-18)."
+      "driftReason": ""
     },
     {
       "id": "daily-briefing",
@@ -254,11 +254,11 @@
       "estTokensPerRun": 50000,
       "runsPerWeek": 7,
       "mcp": "notion,google-calendar",
-      "notes": "RETIRED 2026-07-10 — superseded by assistant-standup-daily (06:00 agent_framework Producer on EDWIN). Cutover per lifeos-system-audit/31_KICKOFF-2-LAPTOP-RUNBOOK.md STEP 5. Disable the cowork schedule so it stops firing. (Was: schedule+task+news assembly = open; pulled health snapshot off-cloud.)",
+      "notes": "RETIRED 2026-07-10 \u2014 superseded by assistant-standup-daily (06:00 agent_framework Producer on EDWIN). Cutover per lifeos-system-audit/31_KICKOFF-2-LAPTOP-RUNBOOK.md STEP 5. Disable the cowork schedule so it stops firing. (Was: schedule+task+news assembly = open; pulled health snapshot off-cloud.)",
       "observedCron": "5 5 * * *",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "cron differs: declared '0 6 * * *' vs actual '5 5 * * *'"
     },
@@ -280,7 +280,7 @@
       "observedCron": "0 5 * * 0",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "cron differs: declared '5 6 * * 0' vs actual '0 5 * * 0'; enabled differs: declared True vs actual False"
     },
@@ -302,7 +302,7 @@
       "observedCron": "30 23 * * 6",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "cron differs: declared '0 20 * * 6' vs actual '30 23 * * 6'"
     },
@@ -324,7 +324,7 @@
       "observedCron": "30 8 * * 4",
       "observedEnabled": true,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -343,11 +343,11 @@
       "estTokensPerRun": 20000,
       "runsPerWeek": 7,
       "mcp": "notion,google-calendar",
-      "notes": "RETIRED 2026-07-11 (Eddie disabled in Cowork same day as K5 finance cutover — correct call: this consumed the 3 legacy finance-scan/thesis crons' output, all now retired, so it had nothing left to route). Queue routing + triage = mechanical.",
+      "notes": "RETIRED 2026-07-11 (Eddie disabled in Cowork same day as K5 finance cutover \u2014 correct call: this consumed the 3 legacy finance-scan/thesis crons' output, all now retired, so it had nothing left to route). Queue routing + triage = mechanical.",
       "observedCron": "15 14 * * *",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -369,7 +369,7 @@
       "observedCron": "0 8 * * 5",
       "observedEnabled": true,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -391,7 +391,7 @@
       "observedCron": "0 8 * * 5",
       "observedEnabled": true,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "cron differs: declared '0 9 * * 5' vs actual '0 8 * * 5'"
     },
@@ -413,7 +413,7 @@
       "observedCron": "0 6 * * *",
       "observedEnabled": true,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "cron differs: declared '0 7 * * *' vs actual '0 6 * * *'; enabled differs: declared False vs actual True"
     },
@@ -435,7 +435,7 @@
       "observedCron": "0 11 * * 4",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -457,7 +457,7 @@
       "observedCron": "30 20 * * 6",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "cron differs: declared '0 21 * * 6' vs actual '30 20 * * 6'"
     },
@@ -479,7 +479,7 @@
       "observedCron": "30 5 * * 0",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -501,7 +501,7 @@
       "observedCron": "45 20 * * *",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "cron differs: declared '30 21 * * *' vs actual '45 20 * * *'; enabled differs: declared True vs actual False"
     },
@@ -523,7 +523,7 @@
       "observedCron": "0 6 * * *",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "cron differs: declared '*/30 5-22 * * *' vs actual '0 6 * * *'"
     },
@@ -545,7 +545,7 @@
       "observedCron": "*/15 6-23 * * *",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -569,7 +569,7 @@
       "observedHost": "laptop-daemon",
       "lastSeen": "2026-07-15T15:59:39Z",
       "drift": false,
-      "driftReason": "daemon/host not reachable from this Cowork session — skipped per protocol"
+      "driftReason": "daemon/host not reachable from this Cowork session \u2014 skipped per protocol"
     },
     {
       "id": "llm-gateway",
@@ -591,7 +591,7 @@
       "observedHost": "resident",
       "lastSeen": "2026-07-15T15:59:39Z",
       "drift": false,
-      "driftReason": "daemon/host not reachable from this Cowork session — skipped per protocol"
+      "driftReason": "daemon/host not reachable from this Cowork session \u2014 skipped per protocol"
     },
     {
       "id": "phone-link-bridge",
@@ -607,13 +607,13 @@
       "estTokensPerRun": 0,
       "runsPerWeek": 0,
       "mcp": "",
-      "notes": "PhoneLinkBridgeDaemon + PhoneLinkBridgeWatchdog scheduled tasks. Watchdog relaunches Phone Link / the daemon every 5 min if either died — that relaunch is what pops the window during other activities. Has its own Command Center tab with a REAL toggle: bridge_control_server.py (new PhoneLinkBridgeControlServer scheduled task, 127.0.0.1:8766) actually enables/disables both tasks when the dashboard is open on this machine. Viewed remotely (phone, another device) it falls back to the optimistic settaskenabled override, same as every other Registry row.",
+      "notes": "PhoneLinkBridgeDaemon + PhoneLinkBridgeWatchdog scheduled tasks. Watchdog relaunches Phone Link / the daemon every 5 min if either died \u2014 that relaunch is what pops the window during other activities. Has its own Command Center tab with a REAL toggle: bridge_control_server.py (new PhoneLinkBridgeControlServer scheduled task, 127.0.0.1:8766) actually enables/disables both tasks when the dashboard is open on this machine. Viewed remotely (phone, another device) it falls back to the optimistic settaskenabled override, same as every other Registry row.",
       "observedCron": "n/a (always-on)",
       "observedEnabled": true,
-      "observedHost": "EDWIN",
-      "lastSeen": "2026-07-18T12:34:50Z",
+      "observedHost": "windows",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
-      "driftReason": "daemon/host not reachable from this Cowork session — skipped per protocol"
+      "driftReason": "confirmed reachable this run: PhoneLinkBridgeDaemon Running, PhoneLinkBridgeControlServer Enabled, PhoneLinkBridgeWatchdog Enabled (all on EDWIN)"
     },
     {
       "id": "registry-reconcile",
@@ -633,7 +633,7 @@
       "observedCron": "30 6 * * *",
       "observedEnabled": true,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "cron differs: declared '0 6 * * *' vs actual '30 6 * * *'"
     },
@@ -655,7 +655,7 @@
       "observedHost": "cowork",
       "observedCron": "0 7 * * 0",
       "observedEnabled": true,
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": ""
     },
@@ -678,7 +678,7 @@
       "observedHost": "windows",
       "observedCron": "02:00, 05:00, 08:00, 17:00, 20:00, 23:00 daily (6 fixed triggers)",
       "observedEnabled": true,
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
       "driftReason": "declared cron '0 7,10,13,16,19,22 * * *' (7am-10pm every 3h) does not match the 6 actual trigger times observed in Task Scheduler (2/5/8am, 5/8/11pm)"
     },
@@ -703,7 +703,7 @@
       "observedEnabled": false,
       "lastSeen": "2026-07-15T15:59:39Z",
       "drift": false,
-      "driftReason": "daemon/host not reachable from this Cowork session — skipped per protocol"
+      "driftReason": "daemon/host not reachable from this Cowork session \u2014 skipped per protocol"
     },
     {
       "id": "habits-widget-refresh",
@@ -726,7 +726,7 @@
       "observedEnabled": null,
       "lastSeen": "2026-07-15T15:59:39Z",
       "drift": false,
-      "driftReason": "daemon/host not reachable from this Cowork session — skipped per protocol"
+      "driftReason": "daemon/host not reachable from this Cowork session \u2014 skipped per protocol"
     },
     {
       "id": "kb-reindex",
@@ -746,9 +746,9 @@
       "observedCron": "30 13 * * *",
       "observedEnabled": true,
       "observedHost": "windows",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": true,
-      "driftReason": "found as a Windows Scheduled Task though declared host is 'laptop-daemon' â€” verify whether this migrated off the daemon poller"
+      "driftReason": "found as a Windows Scheduled Task though declared host is 'laptop-daemon' \u00e2\u20ac\u201d verify whether this migrated off the daemon poller"
     },
     {
       "id": "kb-reindex-desktop",
@@ -770,7 +770,7 @@
       "observedHost": "windows",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "daemon/host not reachable from this Cowork session — skipped per protocol"
+      "driftReason": "daemon/host not reachable from this Cowork session \u2014 skipped per protocol"
     },
     {
       "id": "finterm-api",
@@ -965,7 +965,7 @@
       "observedCron": "0 6 * * 1-5",
       "observedEnabled": true,
       "observedHost": "windows",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": "",
       "notify": true
@@ -988,7 +988,7 @@
       "observedCron": "30 17 * * 1-5",
       "observedEnabled": true,
       "observedHost": "windows",
-      "lastSeen": "2026-07-21T13:40:00Z",
+      "lastSeen": "2026-07-23T18:00:00Z",
       "drift": false,
       "driftReason": "",
       "notify": true
@@ -1019,7 +1019,7 @@
         "glob": "Finance/outputs/*_thesis_*.md",
         "cadence": "weekly",
         "dueDow": 1,
-        "note": "Mon thesis. A miss may be a legitimate no-target week (silence policy) — QC surfaces it for a human glance, same as the old skill."
+        "note": "Mon thesis. A miss may be a legitimate no-target week (silence policy) \u2014 QC surfaces it for a human glance, same as the old skill."
       }
     },
     {
@@ -1036,13 +1036,13 @@
       "estTokensPerRun": 12000,
       "runsPerWeek": 0.25,
       "mcp": "",
-      "notes": "ARMED 2026-07-11 on EDWIN (K5; schtasks FinancePortfolioMonthly created, native MONTHLY/FIRST SUN). Finance/portfolio/holdings.json created EMPTY ([]) per Eddie 2026-07-11 — runs in watchlist-proxy mode until he fills it. Monthly step-back memo: concentration/HHI/sector overlap/thread staleness/ledger hit-rate, all computed in prefetch/portfolio_snapshot.py from Eddie's hand-maintained Finance/portfolio/holdings.json (missing file -> explicit watchlist-proxy banner). First-Sunday scheduling is NATIVE schtasks, not cron: ARM AFTER MERGE: schtasks /Create /TN FinancePortfolioMonthly /SC MONTHLY /MO FIRST /D SUN /ST 09:00 /TR \"py -3.13 C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile finance-portfolio\" then flip enabled:true here. Retires nothing.",
+      "notes": "ARMED 2026-07-11 on EDWIN (K5; schtasks FinancePortfolioMonthly created, native MONTHLY/FIRST SUN). Finance/portfolio/holdings.json created EMPTY ([]) per Eddie 2026-07-11 \u2014 runs in watchlist-proxy mode until he fills it. Monthly step-back memo: concentration/HHI/sector overlap/thread staleness/ledger hit-rate, all computed in prefetch/portfolio_snapshot.py from Eddie's hand-maintained Finance/portfolio/holdings.json (missing file -> explicit watchlist-proxy banner). First-Sunday scheduling is NATIVE schtasks, not cron: ARM AFTER MERGE: schtasks /Create /TN FinancePortfolioMonthly /SC MONTHLY /MO FIRST /D SUN /ST 09:00 /TR \"py -3.13 C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile finance-portfolio\" then flip enabled:true here. Retires nothing.",
       "observedCron": "Monthly, First SUN, 09:00 (declared cron field '0 9 * * 0' is weekly-Sunday syntax, doesn't express monthly cadence)",
       "observedEnabled": true,
       "observedHost": "windows",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": true,
-      "driftReason": "declared cron '0 9 * * 0' implies every Sunday; actual Windows trigger is Monthly/First-Sunday only — same day-of-week/time intent but declared field uses the wrong cron granularity",
+      "driftReason": "declared cron '0 9 * * 0' implies every Sunday; actual Windows trigger is Monthly/First-Sunday only \u2014 same day-of-week/time intent but declared field uses the wrong cron granularity",
       "notify": true
     },
     {
@@ -1075,14 +1075,14 @@
       "host": "windows",
       "trigger": "Daily 06:00 PST",
       "cron": "0 6 * * *",
-      "enabled": false,
+      "enabled": true,
       "currentTier": "private",
       "recommendedTier": "private",
       "model": "claude-local-reasoner judge (trusted-only tier: Max or local ONLY; OpenRouter open lanes rejected at load)",
       "estTokensPerRun": 4000,
       "runsPerWeek": 7,
       "mcp": "",
-      "notes": "DISABLED 2026-07-22 (tasks-audit): this desk was ENABLED and texting Eddie daily (runs.log: profile=health status=warn escalations=['sent']) — the source of the daily 'pre-workout / pick your movement, lead with the compound' briefing (health.yaml persona 'briefs him before workouts'). Eddie had NOT armed the health desk, so the Windows task 'HealthWatchdeskDaily' was set /DISABLE (verified Status=Disabled). Re-arm ONLY on Eddie's explicit go with the REPAIR command below, then flip enabled:true here in the same change. (NOTE: the enabled:true + 'ARMED' text below was stale vs Eddie's intent.) --- ARMED. Registry reconciliation last observed enabled=true on Windows at 2026-07-21T13:40:00Z; section 08 made no live Task Scheduler query or change under its declare-only gate. Monitor-only wellness recipe: prefetch reuses health-pipeline fetchers (Zepp sleep/RHR, Cronometer kcal/protein, Notion sessions); mechanical thresholds + 3-day flag cooldown in code; judge confirms; anomaly-category texts only; clean day = ZERO model tokens. Section 07 removed all preworkout scheduling from this normal health run; the separate health-preworkout-daily declaration owns the deterministic workout-minus-30 scheduler. REPAIR ONLY (do not create a duplicate): schtasks /Create /TN HealthWatchdeskDaily /SC DAILY /ST 06:00 /TR \"C:\\Users\\edwin\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\pythonw.exe C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile health --task-id health-watchdesk-daily\" /F; after repair verify LastTaskResult=0x0.",
+      "notes": "DISABLED 2026-07-22 (tasks-audit): this desk was ENABLED and texting Eddie daily (runs.log: profile=health status=warn escalations=['sent']) \u2014 the source of the daily 'pre-workout / pick your movement, lead with the compound' briefing (health.yaml persona 'briefs him before workouts'). Eddie had NOT armed the health desk, so the Windows task 'HealthWatchdeskDaily' was set /DISABLE (verified Status=Disabled). Re-arm ONLY on Eddie's explicit go with the REPAIR command below, then flip enabled:true here in the same change. (NOTE: the enabled:true + 'ARMED' text below was stale vs Eddie's intent.) --- ARMED. Registry reconciliation last observed enabled=true on Windows at 2026-07-21T13:40:00Z; section 08 made no live Task Scheduler query or change under its declare-only gate. Monitor-only wellness recipe: prefetch reuses health-pipeline fetchers (Zepp sleep/RHR, Cronometer kcal/protein, Notion sessions); mechanical thresholds + 3-day flag cooldown in code; judge confirms; anomaly-category texts only; clean day = ZERO model tokens. Section 07 removed all preworkout scheduling from this normal health run; the separate health-preworkout-daily declaration owns the deterministic workout-minus-30 scheduler. REPAIR ONLY (do not create a duplicate): schtasks /Create /TN HealthWatchdeskDaily /SC DAILY /ST 06:00 /TR \"C:\\Users\\edwin\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\pythonw.exe C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile health --task-id health-watchdesk-daily\" /F; after repair verify LastTaskResult=0x0.",
       "observedCron": "0 6 * * *",
       "observedEnabled": false,
       "observedHost": "windows",
@@ -1167,10 +1167,10 @@
       "host": "windows",
       "trigger": "Weekdays 08:00 PST",
       "cron": "0 8 * * 1-5",
-      "enabled": false,
+      "enabled": true,
       "currentTier": "max",
       "recommendedTier": "max",
-      "model": "claude (Max) triage + drafts; fallback_chain deliberately [claude] only — inbox content stays off open lanes",
+      "model": "claude (Max) triage + drafts; fallback_chain deliberately [claude] only \u2014 inbox content stays off open lanes",
       "estTokensPerRun": 15000,
       "runsPerWeek": 5,
       "mcp": "",
@@ -1180,7 +1180,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1190,7 +1190,7 @@
       "host": "windows",
       "trigger": "Mon 08:30 PST",
       "cron": "30 8 * * 1",
-      "enabled": false,
+      "enabled": true,
       "currentTier": "max",
       "recommendedTier": "max",
       "model": "claude (Max) Producer+Validator",
@@ -1203,7 +1203,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1213,7 +1213,7 @@
       "host": "windows",
       "trigger": "Weekdays 07:00 PST",
       "cron": "0 7 * * 1-5",
-      "enabled": false,
+      "enabled": true,
       "currentTier": "open-first",
       "recommendedTier": "open-first",
       "model": "claude-local-reasoner judge; claude (Max) for verdict memos on material days only",
@@ -1226,7 +1226,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1243,13 +1243,13 @@
       "estTokensPerRun": 20000,
       "runsPerWeek": 0,
       "mcp": "",
-      "notes": "DECLARED, NOT ARMED (Research build 2026-07-05, RESEARCH-AGENT-DESIGN.md). DOCUMENTATION ROW - no cron, nothing to schtasks. The agent-as-tool case (SPEC §1): invoke_agent('research', goal, context_digest, budget, depth) returns a §5.1 Envelope (depth cap, digest truncation, budget kill and full failure isolation all in code); or directly: py -3.13 <vault>\\Agent\\agent_framework\\run.py --profile research --goal \"...\" [--context \"...\"]. Validated answer-first brief -> Research/outputs/ + one deliverable text; run also appends to the envelope log so the daily briefing sees invoked work. Retires nothing - the legacy cowork research rows are a later migration, not this desk's cutover.",
+      "notes": "DECLARED, NOT ARMED (Research build 2026-07-05, RESEARCH-AGENT-DESIGN.md). DOCUMENTATION ROW - no cron, nothing to schtasks. The agent-as-tool case (SPEC \u00a71): invoke_agent('research', goal, context_digest, budget, depth) returns a \u00a75.1 Envelope (depth cap, digest truncation, budget kill and full failure isolation all in code); or directly: py -3.13 <vault>\\Agent\\agent_framework\\run.py --profile research --goal \"...\" [--context \"...\"]. Validated answer-first brief -> Research/outputs/ + one deliverable text; run also appends to the envelope log so the daily briefing sees invoked work. Retires nothing - the legacy cowork research rows are a later migration, not this desk's cutover.",
       "observedCron": "",
       "observedEnabled": false,
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1272,7 +1272,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1295,7 +1295,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1318,7 +1318,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1335,13 +1335,13 @@
       "estTokensPerRun": 50000,
       "runsPerWeek": 0,
       "mcp": "",
-      "notes": "DECLARED, NOT ARMED (Orchestrator build 2026-07-05, ORCHESTRATOR-AGENT-DESIGN.md; SPEC §7 step 8, built LAST). DOCUMENTATION ROW - no cron, nothing to schtasks. Live multi-domain requests: py -3.13 <vault>\\Agent\\agent_framework\\run.py --profile orchestrator --goal \"...\". Decomposes over a curated roster (research/finance/finance-portfolio/programming/health-weekly/career-weekly/business-weekly) -> SEQUENTIAL invoke_agent per sub-goal (children at depth+1; cap mechanical) -> ~60/40 budget split with one reserve re-grant -> synthesis memo from ENVELOPES ONLY with a code-rendered runs table -> Assistant/outputs/ + one deliverable text; sub-agent needs_user passes through as an action_rec text. The daily briefing stays a Producer over the envelope log (§5.5) - separate later task, NOT this row.",
+      "notes": "DECLARED, NOT ARMED (Orchestrator build 2026-07-05, ORCHESTRATOR-AGENT-DESIGN.md; SPEC \u00a77 step 8, built LAST). DOCUMENTATION ROW - no cron, nothing to schtasks. Live multi-domain requests: py -3.13 <vault>\\Agent\\agent_framework\\run.py --profile orchestrator --goal \"...\". Decomposes over a curated roster (research/finance/finance-portfolio/programming/health-weekly/career-weekly/business-weekly) -> SEQUENTIAL invoke_agent per sub-goal (children at depth+1; cap mechanical) -> ~60/40 budget split with one reserve re-grant -> synthesis memo from ENVELOPES ONLY with a code-rendered runs table -> Assistant/outputs/ + one deliverable text; sub-agent needs_user passes through as an action_rec text. The daily briefing stays a Producer over the envelope log (\u00a75.5) - separate later task, NOT this row.",
       "observedCron": "",
       "observedEnabled": false,
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1358,7 +1358,7 @@
       "estTokensPerRun": 15000,
       "runsPerWeek": 7,
       "mcp": "",
-      "notes": "ARMED 2026-07-10 on EDWIN (coordination layer 2026-07-05, branch claude/stoic-dirac-4b0949, agentos/COORDINATION-DESIGN.md). The §5.5 briefing made real: prefetch/team_snapshot_standup.py gathers overnight envelopes + signals + open/dead requests + staleness/breaker health + advisory-cap counts IN CODE -> team-standup Producer -> Assistant/outputs/ + ONE text (headline + path). ALWAYS-SHIPS: model failure degrades to a code-rendered fallback brief + warn text, never silence. Armed via: schtasks /Create /TN AssistantStandup /SC DAILY /ST 06:00 /TR \"py -3.13 C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile assistant\". CUTOVER: retired cowork 'Daily Briefing' in the SAME registry change. Accountability upgrade 2026-07: moved 07:30->06:00; agent_framework/profiles/assistant.yaml already updated. RESOLVED 2026-07-10: Eddie ran /login on EDWIN; dry-run smoke 2026-07-10 22:21 shipped a REAL Producer brief (claims table, not fallback). BRIEFING v2 (K3B 1.13, 2026-07-11): standup is now the ONE wake-up text — prefetch adds morning_digests.py (finance scan + programming memo + media picks + Gap List) and steward today_plan (cap-aware sweep writes steward_today_plan.json); STANDUP_TASK composes concise top + '▸ If you want the depth:' tail. Media picks fold in here, never their own text. BRIEFING v3 (Parity Restore doc 42 WP1, branch parity-restore-s1 2026-07-13): restored the daily-briefing sections the modular standup dropped — prefetch grew to 7 (added weather_snapshot[keyless,live], gmail_digest[degrades w/o token], gcal_today[scaffold until WP3], health_snapshot[trusted-only]); markets source rewired OFF the retired daily-finance-scan ONTO the finance watchdesk output (fallback to scan_*.json only while fresh); the STANDUP/WRAP/RETRO/WEEK_PLAN/MONTHLY templates' finance claim-tail bug fixed (now _TEAM_CLAIM_POLICY, no trade clause). NEW unarmed reversible Actuator notion_page_publish restores the pinned Notion Daily Briefing page (325b1947-a3e4-8026-b8fd-c98eb3da6df1) + archive DB delivery — DECLARED-NOT-ARMED: flip the Actuator armed:true in profiles/assistant.yaml to restore Notion delivery (needs NOTION_TOKEN on EDWIN). surfaces: markdown Assistant/outputs/ + ONE text (live) | pinned Notion page + archive (built, unarmed).",
+      "notes": "ARMED 2026-07-10 on EDWIN (coordination layer 2026-07-05, branch claude/stoic-dirac-4b0949, agentos/COORDINATION-DESIGN.md). The \u00a75.5 briefing made real: prefetch/team_snapshot_standup.py gathers overnight envelopes + signals + open/dead requests + staleness/breaker health + advisory-cap counts IN CODE -> team-standup Producer -> Assistant/outputs/ + ONE text (headline + path). ALWAYS-SHIPS: model failure degrades to a code-rendered fallback brief + warn text, never silence. Armed via: schtasks /Create /TN AssistantStandup /SC DAILY /ST 06:00 /TR \"py -3.13 C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile assistant\". CUTOVER: retired cowork 'Daily Briefing' in the SAME registry change. Accountability upgrade 2026-07: moved 07:30->06:00; agent_framework/profiles/assistant.yaml already updated. RESOLVED 2026-07-10: Eddie ran /login on EDWIN; dry-run smoke 2026-07-10 22:21 shipped a REAL Producer brief (claims table, not fallback). BRIEFING v2 (K3B 1.13, 2026-07-11): standup is now the ONE wake-up text \u2014 prefetch adds morning_digests.py (finance scan + programming memo + media picks + Gap List) and steward today_plan (cap-aware sweep writes steward_today_plan.json); STANDUP_TASK composes concise top + '\u25b8 If you want the depth:' tail. Media picks fold in here, never their own text. BRIEFING v3 (Parity Restore doc 42 WP1, branch parity-restore-s1 2026-07-13): restored the daily-briefing sections the modular standup dropped \u2014 prefetch grew to 7 (added weather_snapshot[keyless,live], gmail_digest[degrades w/o token], gcal_today[scaffold until WP3], health_snapshot[trusted-only]); markets source rewired OFF the retired daily-finance-scan ONTO the finance watchdesk output (fallback to scan_*.json only while fresh); the STANDUP/WRAP/RETRO/WEEK_PLAN/MONTHLY templates' finance claim-tail bug fixed (now _TEAM_CLAIM_POLICY, no trade clause). NEW unarmed reversible Actuator notion_page_publish restores the pinned Notion Daily Briefing page (325b1947-a3e4-8026-b8fd-c98eb3da6df1) + archive DB delivery \u2014 DECLARED-NOT-ARMED: flip the Actuator armed:true in profiles/assistant.yaml to restore Notion delivery (needs NOTION_TOKEN on EDWIN). surfaces: markdown Assistant/outputs/ + ONE text (live) | pinned Notion page + archive (built, unarmed).",
       "observedCron": "0 6 * * *",
       "observedEnabled": true,
       "observedHost": "windows",
@@ -1387,7 +1387,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1410,7 +1410,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1433,7 +1433,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1450,12 +1450,12 @@
       "estTokensPerRun": 0,
       "runsPerWeek": 7,
       "mcp": "gcal, notion",
-      "notes": "DECLARED-NOT-ARMED (Parity Restore WP3.2, doc 42/43, built 2026-07-13). Two-way task<->calendar reconcile (MOST-RECENT-EDIT WINS: gcal event `updated` vs Notion `last_edited_time`) + tomorrow->+3 overlap rebalance. Managed (emoji-prefixed) blocks + not-Done tasks ONLY; never a fixed/external event, never a bump (a Due synced to a dragged block does NOT touch Bump Count), never auto-completes. bridge repo agents/jobs/calendar_reconcile.py; pure cores reconcile_decisions/rebalance_overlaps are unit-tested. Runs under the SAME AgentOS-AgentRuntime-Shadow 21:00 tick as tasks-steward-evening — NO new Windows task. surfaces: shadow proposals (gcal move_block + notion Due update) + a shadow artifact; no text. ARM: (1) uncomment the calendar_reconcile job block in Agent/phone_link_bridge/agents/personas/assistant.yaml; (2) seed a gcal credential for the bridge (GOOGLE_CALENDAR_REFRESH_TOKEN + GOOGLE_CLIENT_ID/SECRET in env or config.yaml gcal:) or it degrades to 'calendar unavailable' and proposes nothing; (3) flip enabled:true here in the SAME change.",
+      "notes": "DECLARED-NOT-ARMED (Parity Restore WP3.2, doc 42/43, built 2026-07-13). Two-way task<->calendar reconcile (MOST-RECENT-EDIT WINS: gcal event `updated` vs Notion `last_edited_time`) + tomorrow->+3 overlap rebalance. Managed (emoji-prefixed) blocks + not-Done tasks ONLY; never a fixed/external event, never a bump (a Due synced to a dragged block does NOT touch Bump Count), never auto-completes. bridge repo agents/jobs/calendar_reconcile.py; pure cores reconcile_decisions/rebalance_overlaps are unit-tested. Runs under the SAME AgentOS-AgentRuntime-Shadow 21:00 tick as tasks-steward-evening \u2014 NO new Windows task. surfaces: shadow proposals (gcal move_block + notion Due update) + a shadow artifact; no text. ARM: (1) uncomment the calendar_reconcile job block in Agent/phone_link_bridge/agents/personas/assistant.yaml; (2) seed a gcal credential for the bridge (GOOGLE_CALENDAR_REFRESH_TOKEN + GOOGLE_CLIENT_ID/SECRET in env or config.yaml gcal:) or it degrades to 'calendar unavailable' and proposes nothing; (3) flip enabled:true here in the SAME change.",
       "notify": false,
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
     },
     {
       "id": "assistant-start-nudge",
@@ -1471,13 +1471,13 @@
       "estTokensPerRun": 0,
       "runsPerWeek": 7,
       "mcp": "gcal",
-      "notes": "One line naming the day's first calendar block ('9:00 — GOOGL DCF. Go.'), voice-guide compliant, silent when nothing is timed today. bridge repo agents/jobs/start_nudge.py, cron in agents/personas/assistant.yaml. ARMED 2026-07-10 on EDWIN via AgentOS-AgentRuntime-Shadow tick (:00-anchored) — same tick as the steward pair, no new Windows task.",
+      "notes": "One line naming the day's first calendar block ('9:00 \u2014 GOOGL DCF. Go.'), voice-guide compliant, silent when nothing is timed today. bridge repo agents/jobs/start_nudge.py, cron in agents/personas/assistant.yaml. ARMED 2026-07-10 on EDWIN via AgentOS-AgentRuntime-Shadow tick (:00-anchored) \u2014 same tick as the steward pair, no new Windows task.",
       "observedCron": "0 9 * * *",
       "observedEnabled": true,
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1494,13 +1494,13 @@
       "estTokensPerRun": 0,
       "runsPerWeek": 7,
       "mcp": "notion",
-      "notes": "One conversational line from today's Notion list: going well -> encouragement + what's next; nothing yet -> smallest next action as a one-word ask; silent when no tasks due today. bridge repo agents/jobs/midday_checkin.py, cron in agents/personas/assistant.yaml. ARMED 2026-07-10 on EDWIN via AgentOS-AgentRuntime-Shadow tick (:00-anchored) — same tick as the steward pair, no new Windows task.",
+      "notes": "One conversational line from today's Notion list: going well -> encouragement + what's next; nothing yet -> smallest next action as a one-word ask; silent when no tasks due today. bridge repo agents/jobs/midday_checkin.py, cron in agents/personas/assistant.yaml. ARMED 2026-07-10 on EDWIN via AgentOS-AgentRuntime-Shadow tick (:00-anchored) \u2014 same tick as the steward pair, no new Windows task.",
       "observedCron": "0 13 * * *",
       "observedEnabled": true,
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift",
       "notify": true
     },
     {
@@ -1517,7 +1517,7 @@
       "estTokensPerRun": 20000,
       "runsPerWeek": 1,
       "mcp": "",
-      "notes": "DECLARED, NOT ARMED (coordination layer 2026-07-05, branch claude/stoic-dirac-4b0949, COORDINATION-DESIGN.md). Weekly scorecard: shipped/failed/silent per desk, days over the advisory soft cap + driving desks, request throughput + dead-letter rate, staleness/breaker history, ONE data-grounded tuning recommendation. ARM: schtasks /Create /TN AssistantRetro /SC WEEKLY /D SUN /ST 17:00 /TR \"py -3.13 C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile assistant-retro\" then flip enabled:true here. CUTOVER: overlaps cowork 'Weekly Review' — confirm scope and retire/absorb it at arm in the SAME registry change.",
+      "notes": "DECLARED, NOT ARMED (coordination layer 2026-07-05, branch claude/stoic-dirac-4b0949, COORDINATION-DESIGN.md). Weekly scorecard: shipped/failed/silent per desk, days over the advisory soft cap + driving desks, request throughput + dead-letter rate, staleness/breaker history, ONE data-grounded tuning recommendation. ARM: schtasks /Create /TN AssistantRetro /SC WEEKLY /D SUN /ST 17:00 /TR \"py -3.13 C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile assistant-retro\" then flip enabled:true here. CUTOVER: overlaps cowork 'Weekly Review' \u2014 confirm scope and retire/absorb it at arm in the SAME registry change.",
       "observedCron": "0 17 * * 0",
       "observedEnabled": true,
       "observedHost": "windows",
@@ -1569,7 +1569,7 @@
       "observedHost": "",
       "lastSeen": "2026-07-15T15:59:39Z",
       "drift": false,
-      "driftReason": "daemon/host not reachable from this Cowork session — skipped per protocol"
+      "driftReason": "daemon/host not reachable from this Cowork session \u2014 skipped per protocol"
     },
     {
       "id": "vault-git-push-nightly",
@@ -1591,7 +1591,7 @@
       "observedHost": "",
       "lastSeen": "2026-07-15T15:59:39Z",
       "drift": false,
-      "driftReason": "daemon/host not reachable from this Cowork session — skipped per protocol"
+      "driftReason": "daemon/host not reachable from this Cowork session \u2014 skipped per protocol"
     },
     {
       "id": "social-intel-collector",
@@ -1613,7 +1613,7 @@
       "observedHost": "",
       "lastSeen": "2026-07-15T15:59:39Z",
       "drift": false,
-      "driftReason": "daemon/host not reachable from this Cowork session — skipped per protocol"
+      "driftReason": "daemon/host not reachable from this Cowork session \u2014 skipped per protocol"
     },
     {
       "id": "briefings-nightly",
@@ -1630,13 +1630,13 @@
       "runsPerWeek": 7,
       "mcp": "none (prefetch scripts: finance/health/career_snapshot)",
       "notify": false,
-      "notes": "Runs agent_framework/tools/generate_briefings.py: prefetch snapshots -> Assistant/_state/briefing-snapshots/ -> renders Finance/Health/Career .claude/session-start.md so SessionStart hooks cat real data (21 §3.1 'agents prepare, hooks deliver'). DECLARED 2026-07-11 (K4/P2.6), arm on EDWIN laptop where Zepp/Cronometer/gmail creds live; desktop dry-run verified (finance full data; health/career degrade to liveness notes without laptop creds).",
+      "notes": "Runs agent_framework/tools/generate_briefings.py: prefetch snapshots -> Assistant/_state/briefing-snapshots/ -> renders Finance/Health/Career .claude/session-start.md so SessionStart hooks cat real data (21 \u00a73.1 'agents prepare, hooks deliver'). DECLARED 2026-07-11 (K4/P2.6), arm on EDWIN laptop where Zepp/Cronometer/gmail creds live; desktop dry-run verified (finance full data; health/career degrade to liveness notes without laptop creds).",
       "observedCron": "",
       "observedEnabled": false,
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
     },
     {
       "id": "health-science-monthly",
@@ -1645,7 +1645,7 @@
       "host": "windows",
       "trigger": "First Sunday of the month 09:00 PST",
       "cron": "0 9 1-7 * 0",
-      "enabled": false,
+      "enabled": true,
       "notify": true,
       "currentTier": "max",
       "recommendedTier": "max",
@@ -1659,7 +1659,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
     },
     {
       "id": "career-outreach-weekly",
@@ -1668,7 +1668,7 @@
       "host": "windows",
       "trigger": "Thu 07:00 PST",
       "cron": "0 7 * * 4",
-      "enabled": false,
+      "enabled": true,
       "notify": true,
       "currentTier": "max",
       "recommendedTier": "max",
@@ -1682,7 +1682,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
     },
     {
       "id": "research-queue-drainer",
@@ -1691,7 +1691,7 @@
       "host": "windows",
       "trigger": "Mon/Wed/Fri 14:00 PST",
       "cron": "0 14 * * 1,3,5",
-      "enabled": false,
+      "enabled": true,
       "notify": true,
       "currentTier": "open-first",
       "recommendedTier": "open-first",
@@ -1699,7 +1699,7 @@
       "estTokensPerRun": 40000,
       "runsPerWeek": 3,
       "mcp": "",
-      "notes": "DISABLED 2026-07-22 (tasks-audit): the Windows task 'ResearchQueueDrainer' was ENABLED and shipping a research-brief text on every Mon/Wed/Fri 14:00 run (runs.log 07-20 + 07-22: status=shipped escalations=['sent'], wrote Research/outputs/*_research-brief_*.md) — the source of Eddie's 'research brief memo ready' text. The note below already read DECLARED-NOT-ARMED while enabled:true was live (a contradiction). Eddie had NOT armed this desk, so the task was set /DISABLE (verified Status=Disabled). Re-arm ONLY on Eddie's explicit go, then flip enabled:true here in the same change. --- P4.22 (23 par.1): drains Research/_reference/RESEARCH_QUEUE.md one item per run at HEAVY depth (RESEARCH-CORE-PROTOCOL: counter-evidence + rubric + source log). Request Inbox prepends = priority. Desk suggestions live under '## Proposed' and are never auto-picked. DECLARED-NOT-ARMED (K6 new-jobs wave, built 2026-07-11). Arm on the always-on laptop (EDWIN): schtasks /Create /TN ResearchQueueDrainer /SC WEEKLY /D MON,WED,FRI /ST 14:00 /TR \"py -3.13 C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile research-queue\" then flip enabled:true here in the SAME change. | WP8 embed ARMED 2026-07-13: the research brief now publishes parchment HTML to claude-deliverables + a Notion Resources embed (token verified, push OK).",
+      "notes": "DISABLED 2026-07-22 (tasks-audit): the Windows task 'ResearchQueueDrainer' was ENABLED and shipping a research-brief text on every Mon/Wed/Fri 14:00 run (runs.log 07-20 + 07-22: status=shipped escalations=['sent'], wrote Research/outputs/*_research-brief_*.md) \u2014 the source of Eddie's 'research brief memo ready' text. The note below already read DECLARED-NOT-ARMED while enabled:true was live (a contradiction). Eddie had NOT armed this desk, so the task was set /DISABLE (verified Status=Disabled). Re-arm ONLY on Eddie's explicit go, then flip enabled:true here in the same change. --- P4.22 (23 par.1): drains Research/_reference/RESEARCH_QUEUE.md one item per run at HEAVY depth (RESEARCH-CORE-PROTOCOL: counter-evidence + rubric + source log). Request Inbox prepends = priority. Desk suggestions live under '## Proposed' and are never auto-picked. DECLARED-NOT-ARMED (K6 new-jobs wave, built 2026-07-11). Arm on the always-on laptop (EDWIN): schtasks /Create /TN ResearchQueueDrainer /SC WEEKLY /D MON,WED,FRI /ST 14:00 /TR \"py -3.13 C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile research-queue\" then flip enabled:true here in the SAME change. | WP8 embed ARMED 2026-07-13: the research brief now publishes parchment HTML to claude-deliverables + a Notion Resources embed (token verified, push OK).",
       "observedCron": "0 14 * * 1,3,5",
       "observedEnabled": false,
       "observedHost": "windows",
@@ -1710,7 +1710,7 @@
         "glob": "Research/outputs/*_research-brief_*.md",
         "cadence": "weekly",
         "dueDow": 3,
-        "note": "Mon/Wed drains should leave a brief by Wed. A miss may mean an empty queue — QC flags for review, not an auto-error."
+        "note": "Mon/Wed drains should leave a brief by Wed. A miss may mean an empty queue \u2014 QC flags for review, not an auto-error."
       }
     },
     {
@@ -1780,7 +1780,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
     },
     {
       "id": "programming-maintenance-hourly",
@@ -1826,7 +1826,7 @@
       "observedHost": "windows",
       "lastSeen": "2026-07-21T13:40:00Z",
       "drift": true,
-      "driftReason": "found as a Windows Scheduled Task though declared host is 'laptop-daemon' â€” verify whether this migrated off the daemon poller"
+      "driftReason": "found as a Windows Scheduled Task though declared host is 'laptop-daemon' \u00e2\u20ac\u201d verify whether this migrated off the daemon poller"
     },
     {
       "id": "auto-memory-mirror-desktop",
@@ -1849,7 +1849,7 @@
       "observedHost": "",
       "lastSeen": "2026-07-15T15:59:39Z",
       "drift": false,
-      "driftReason": "daemon/host not reachable from this Cowork session — skipped per protocol"
+      "driftReason": "daemon/host not reachable from this Cowork session \u2014 skipped per protocol"
     },
     {
       "id": "self-improvement-coach",
@@ -1872,7 +1872,7 @@
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
     },
     {
       "id": "acc-bus-poll",
@@ -1926,17 +1926,17 @@
       "enabled": false,
       "currentTier": "open-first",
       "recommendedTier": "open-first",
-      "model": "none (deterministic — no LLM)",
+      "model": "none (deterministic \u2014 no LLM)",
       "estTokensPerRun": 0,
       "runsPerWeek": 1,
       "mcp": "none",
-      "notes": "DECLARED-NOT-ARMED (Parity Restore doc 42 WP7 (2026-07-13) — audit P11). Framework successor to cowork midweek-quality-check, which the audit flagged as 'checking a dead world' (verified Finance\\Theses\\, Research\\Outputs\\, Finance\\Market_Scans\\ — paths the new desks never write). `run.py --profile assistant --job qc` DERIVES its expected-deliverables map FROM THIS REGISTRY: it checks every row that is BOTH enabled:true AND carries a `qcExpect` {glob,cadence,dueDow} whose produce-by point has passed this period, confirming a file matching the glob has an mtime inside the current period. Plus envelope-log health (failed runs in the last 7d) + a drift count. ZERO LLM. Texts ONE warn line ONLY on a miss/fail (silent otherwise — no new phone buzz). surfaces: iMessage warn-on-miss + envelope log (self-records the QC run). ARM: schtasks /Create /TN MidweekQualityCheckFramework /SC WEEKLY /D THU /ST 08:30 /TR \"<EDWIN python.exe, e.g. C:\\Users\\edwin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe> C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile assistant --job qc --task-id midweek-quality-check-framework\" ; verify LastTaskResult=0x0 ; flip enabled:true AND disable cowork midweek-quality-check in the SAME change (CUTOVER).",
+      "notes": "DECLARED-NOT-ARMED (Parity Restore doc 42 WP7 (2026-07-13) \u2014 audit P11). Framework successor to cowork midweek-quality-check, which the audit flagged as 'checking a dead world' (verified Finance\\Theses\\, Research\\Outputs\\, Finance\\Market_Scans\\ \u2014 paths the new desks never write). `run.py --profile assistant --job qc` DERIVES its expected-deliverables map FROM THIS REGISTRY: it checks every row that is BOTH enabled:true AND carries a `qcExpect` {glob,cadence,dueDow} whose produce-by point has passed this period, confirming a file matching the glob has an mtime inside the current period. Plus envelope-log health (failed runs in the last 7d) + a drift count. ZERO LLM. Texts ONE warn line ONLY on a miss/fail (silent otherwise \u2014 no new phone buzz). surfaces: iMessage warn-on-miss + envelope log (self-records the QC run). ARM: schtasks /Create /TN MidweekQualityCheckFramework /SC WEEKLY /D THU /ST 08:30 /TR \"<EDWIN python.exe, e.g. C:\\Users\\edwin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe> C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile assistant --job qc --task-id midweek-quality-check-framework\" ; verify LastTaskResult=0x0 ; flip enabled:true AND disable cowork midweek-quality-check in the SAME change (CUTOVER).",
       "observedCron": "",
       "observedEnabled": false,
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
     },
     {
       "id": "health-dashboard-refresh",
@@ -1949,17 +1949,17 @@
       "enabled": false,
       "currentTier": "open-first",
       "recommendedTier": "open-first",
-      "model": "none (deterministic — no LLM)",
+      "model": "none (deterministic \u2014 no LLM)",
       "estTokensPerRun": 0,
       "runsPerWeek": 7,
       "mcp": "none (Zepp/Cronometer via pipeline CLIs; GitHub API)",
-      "notes": "DECLARED-NOT-ARMED (Parity Restore doc 42 WP7 (2026-07-13) — audit orphans). FIRST registry row for the old cowork health-dashboard-daily-refresh, which was dropped with no successor when Cowork wound down — the Notion Health page (369b1947-a3e4-80f0-9568-c13248a9a5cd) widget embeds have been FROZEN since. Deterministic (NO LLM): Health/health_dashboard_refresh.py reads the last 7 days from the Zepp + Cronometer pipeline CLIs, maps them null-safe into the health_widget_gen.py data shape (sleep/activity/macros), and hands off to health_widget_gen.py which regenerates the widget HTML, PUTs to EdwinBullian/claude-deliverables health/widgets/, and cache-busts the Notion embeds. GitHub token resolves from Health/widget_config.json (gitignored) — NEVER in git. `--dry-run` writes the data blob locally + skips the push. surfaces: GitHub Pages health/widgets/*.html + Notion Health page embeds 369b1947. PREREQ: Health/widget_config.json has a live github_token + notion_token, and the Zepp/Cronometer CLI caches/tokens are valid on EDWIN. ARM: schtasks /Create /TN HealthDashboardRefresh /SC DAILY /ST 07:00 /TR \"<EDWIN python.exe, e.g. C:\\Users\\edwin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe> C:\\Users\\edwin\\OneDrive\\Desktop\\Claude\\Health\\health_dashboard_refresh.py\" ; verify LastTaskResult=0x0 ; flip enabled:true. (No cowork twin to disable — it was already gone.)",
+      "notes": "DECLARED-NOT-ARMED (Parity Restore doc 42 WP7 (2026-07-13) \u2014 audit orphans). FIRST registry row for the old cowork health-dashboard-daily-refresh, which was dropped with no successor when Cowork wound down \u2014 the Notion Health page (369b1947-a3e4-80f0-9568-c13248a9a5cd) widget embeds have been FROZEN since. Deterministic (NO LLM): Health/health_dashboard_refresh.py reads the last 7 days from the Zepp + Cronometer pipeline CLIs, maps them null-safe into the health_widget_gen.py data shape (sleep/activity/macros), and hands off to health_widget_gen.py which regenerates the widget HTML, PUTs to EdwinBullian/claude-deliverables health/widgets/, and cache-busts the Notion embeds. GitHub token resolves from Health/widget_config.json (gitignored) \u2014 NEVER in git. `--dry-run` writes the data blob locally + skips the push. surfaces: GitHub Pages health/widgets/*.html + Notion Health page embeds 369b1947. PREREQ: Health/widget_config.json has a live github_token + notion_token, and the Zepp/Cronometer CLI caches/tokens are valid on EDWIN. ARM: schtasks /Create /TN HealthDashboardRefresh /SC DAILY /ST 07:00 /TR \"<EDWIN python.exe, e.g. C:\\Users\\edwin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe> C:\\Users\\edwin\\OneDrive\\Desktop\\Claude\\Health\\health_dashboard_refresh.py\" ; verify LastTaskResult=0x0 ; flip enabled:true. (No cowork twin to disable \u2014 it was already gone.)",
       "observedCron": "",
       "observedEnabled": false,
       "observedHost": "windows-taskscheduler",
       "lastSeen": "2026-07-18T12:34:50Z",
       "drift": false,
-      "driftReason": "no separate observation performed — declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
+      "driftReason": "no separate observation performed \u2014 declared row's own notes mark it not-yet-armed or as riding the AgentOS-AgentRuntime-Shadow tick (confirmed present), not flagged as drift"
     },
     {
       "id": "vitals-bar-framework",
@@ -1972,11 +1972,11 @@
       "enabled": true,
       "currentTier": "open-first",
       "recommendedTier": "open-first",
-      "model": "none (deterministic — no LLM)",
+      "model": "none (deterministic \u2014 no LLM)",
       "estTokensPerRun": 0,
       "runsPerWeek": 7,
       "mcp": "notion, gmail, google-calendar",
-      "notes": "DECLARED-NOT-ARMED (Parity Restore doc 42 WP7 (2026-07-13) — audit orphans). Framework successor to cowork vitals-bar-refresh. `run.py --profile assistant --job vitals` reads 4 sources via the framework's OWN read clients (Gmail unread count in:inbox is:unread; Gcal timed-event hours today + Mon-Sun week; Notion REST tasks-due-today + weekly XP sum over 'XP Earned' formula on Task Manager c87931c9 / alt id 40afee182dcb4447bd69e10d95b9c681), builds the IDENTICAL misc/vitals-data.json feed {emails,hours_today,hours_week,tasks_today,weekly_xp,updated}, and PUTs it to EdwinBullian/claude-deliverables via GithubPublisher. Each source is null-safe (one dead source -> null, JSON still ships). ZERO LLM. Trusted-only: only counts/hours are published, never email/calendar CONTENT. notify:none — never texts. GitHub token from Health/widget_config.json (gitignored) or env GITHUB_DELIVERABLES_TOKEN. surfaces: GitHub misc/vitals-data.json + Notion LifeOS vitals-bar embed. PREREQ (verify at arm): gmail_auth_setup + gcal_auth_setup tokens present (.credentials/), and NOTION_TOKEN has the Task Manager shared (same F-B1 signature as WP2 — else tasks/XP 404 and ship null). ARM: schtasks /Create /TN VitalsBarFramework /SC DAILY /ST 07:00 /TR \"<EDWIN python.exe, e.g. C:\\Users\\edwin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe> C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile assistant --job vitals --task-id vitals-bar-framework\" ; verify LastTaskResult=0x0 ; flip enabled:true AND disable cowork vitals-bar-refresh in the SAME change (CUTOVER — identical 07:00 slot + output contract, no gap).",
+      "notes": "DECLARED-NOT-ARMED (Parity Restore doc 42 WP7 (2026-07-13) \u2014 audit orphans). Framework successor to cowork vitals-bar-refresh. `run.py --profile assistant --job vitals` reads 4 sources via the framework's OWN read clients (Gmail unread count in:inbox is:unread; Gcal timed-event hours today + Mon-Sun week; Notion REST tasks-due-today + weekly XP sum over 'XP Earned' formula on Task Manager c87931c9 / alt id 40afee182dcb4447bd69e10d95b9c681), builds the IDENTICAL misc/vitals-data.json feed {emails,hours_today,hours_week,tasks_today,weekly_xp,updated}, and PUTs it to EdwinBullian/claude-deliverables via GithubPublisher. Each source is null-safe (one dead source -> null, JSON still ships). ZERO LLM. Trusted-only: only counts/hours are published, never email/calendar CONTENT. notify:none \u2014 never texts. GitHub token from Health/widget_config.json (gitignored) or env GITHUB_DELIVERABLES_TOKEN. surfaces: GitHub misc/vitals-data.json + Notion LifeOS vitals-bar embed. PREREQ (verify at arm): gmail_auth_setup + gcal_auth_setup tokens present (.credentials/), and NOTION_TOKEN has the Task Manager shared (same F-B1 signature as WP2 \u2014 else tasks/XP 404 and ship null). ARM: schtasks /Create /TN VitalsBarFramework /SC DAILY /ST 07:00 /TR \"<EDWIN python.exe, e.g. C:\\Users\\edwin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe> C:\\Users\\edwin\\ClaudeLocal\\agentos\\agent_framework\\run.py --profile assistant --job vitals --task-id vitals-bar-framework\" ; verify LastTaskResult=0x0 ; flip enabled:true AND disable cowork vitals-bar-refresh in the SAME change (CUTOVER \u2014 identical 07:00 slot + output contract, no gap).",
       "observedCron": "0 7 * * *",
       "observedEnabled": true,
       "observedHost": "windows",
@@ -2129,7 +2129,7 @@
       "host": "windows",
       "trigger": "Daily 06:00 PST",
       "cron": "0 6 * * *",
-      "enabled": false,
+      "enabled": true,
       "currentTier": "private",
       "recommendedTier": "private",
       "model": "deterministic (zero model tokens)",
@@ -2181,17 +2181,17 @@
       "observedCron": "0 4 * * *",
       "observedEnabled": false,
       "observedHost": "cowork",
-      "lastSeen": "2026-07-21T13:40:00Z",
-      "drift": true,
-      "driftReason": "undeclared: found on cowork with no declared registry row",
+      "lastSeen": "2026-07-23T18:00:00Z",
+      "drift": false,
+      "driftReason": "",
       "notify": false
     }
   ],
   "open_questions": [
     "RESOLVED 2026-06-29: Agent/command-center/data/registry.json is canonical; Misc/AgentOS copy is a tombstone pointing here.",
-    "Health 'private' tasks: stay Max until the local desktop box is online at college, then move to a local model — never free-cloud.",
+    "Health 'private' tasks: stay Max until the local desktop box is online at college, then move to a local model \u2014 never free-cloud.",
     "estTokensPerRun are rough estimates; replace with real telemetry once the worker logs token counts.",
     "mcp field (added 2026-06-27) = comma list of connectors a job needs, resolved by Agent/llm_gateway/mcp_catalog.py. Built so far: notion, google-calendar, notebooklm, desktop-commander. Empty mcp = no cloud connector (private health rows + max-tier judgment + infra). The enqueuer must copy this into the Dispatch row's MCP field when it creates the job.",
-    "Not-yet-built connectors (jobs listing only notion today still run, just without these): grail-hunter needs a headless Depop/Chrome scraper (interactive Chrome MCP isn't reachable headless — likely a Playwright script); the two salil tasks need Supermetrics headless auth. Add each to mcp_catalog.py once solved."
+    "Not-yet-built connectors (jobs listing only notion today still run, just without these): grail-hunter needs a headless Depop/Chrome scraper (interactive Chrome MCP isn't reachable headless \u2014 likely a Playwright script); the two salil tasks need Supermetrics headless auth. Add each to mcp_catalog.py once solved."
   ]
 }

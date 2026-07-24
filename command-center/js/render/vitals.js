@@ -15,9 +15,17 @@ export function fmtInt(n) {
 
 // Pure formatting: vitals-data.json (or null/malformed) → the two label strings this widget shows.
 // Exported standalone so it can be sanity-checked without touching the DOM.
+// vitals-data.json currently has NO live producer (last written 2026-07-09), so a frozen file
+// would otherwise show stale numbers forever. Treat data older than STALE_MS as "no data" — the
+// widget degrades to "—" instead of lying with a static streak/XP. Remove once a producer writes
+// this file on a cadence again.
+const STALE_MS = 2 * 24 * 60 * 60 * 1000; // 2 days
+
 export function formatVitals(data) {
-  const streak = data && num(data.reply_streak) ? Math.round(data.reply_streak) : null;
-  const xp = data && num(data.weekly_xp) ? data.weekly_xp : null;
+  const genAt = data && data.generated_at ? Date.parse(data.generated_at) : NaN;
+  const fresh = Number.isFinite(genAt) && (Date.now() - genAt) < STALE_MS;
+  const streak = fresh && num(data.reply_streak) ? Math.round(data.reply_streak) : null;
+  const xp = fresh && num(data.weekly_xp) ? data.weekly_xp : null;
   return {
     streakText: streak !== null ? `Reply streak: ${streak} day${streak === 1 ? '' : 's'}` : 'Reply streak: —',
     xpText: xp !== null ? `This week: ${fmtInt(xp)} XP` : 'This week: — XP',

@@ -76,6 +76,10 @@ h1,h2,h3{margin:0;font-family:'Newsreader','Georgia',serif;font-weight:600}
 .iconbtn{background:var(--panel2);border:1px solid var(--line);color:var(--muted);border-radius:var(--radius-sm);
   width:34px;height:34px;cursor:pointer;font-size:15px;display:grid;place-items:center;transition:all .14s}
 .iconbtn:hover{border-color:var(--line2);color:var(--text);background:var(--raise)}
+/* Global kill switch: subtle red at rest, solid red when engaged (pause ON). */
+.iconbtn.kill{color:var(--fail);border-color:rgba(224,122,122,.4)}
+.iconbtn.kill:hover{background:rgba(224,122,122,.1);border-color:var(--fail)}
+.iconbtn.kill.active{background:var(--fail);color:#fff;border-color:var(--fail);box-shadow:0 0 0 3px rgba(224,122,122,.2)}
 .badge-mock{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-accent);background:var(--queued);border-radius:5px;padding:3px 7px;font-weight:700;font-family:'JetBrains Mono',monospace}
 
 /* ── Vertical tabs (ghost buttons; active = accent-soft + 3px clay left bar) ────────── */

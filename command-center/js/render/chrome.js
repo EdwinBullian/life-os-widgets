@@ -10,6 +10,28 @@ import { renderVitals } from './vitals.js';
 import { tick } from '../poll.js';
 import { getMaxPct } from '../proxy.js';
 import { openSettings } from './settings.js';
+import { setGlobalPause } from '../busclient.js';
+import { toast } from './agents.js';
+
+// Global kill switch (Eddie 2026-07-23): halt ALL scheduled desk runs to conserve usage or protect
+// an interactive session. Optimistic localStorage state (mirrors the paused-agents pattern — the
+// UI flips instantly and persists) + a global_pause bus request that the acc_bus.py consumer
+// applies for real once the bus PAT is set in Settings.
+const KILL_KEY = 'agentos_global_pause';
+function getGlobalPaused() {
+  try { return localStorage.getItem(KILL_KEY) === '1'; } catch { return false; }
+}
+function setGlobalPausedLocal(on) {
+  try { localStorage.setItem(KILL_KEY, on ? '1' : '0'); } catch { /* storage denied */ }
+}
+function paintKill(btn, on) {
+  btn.textContent = on ? '⏸' : '⏻';
+  btn.classList.toggle('active', on);
+  btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  btn.title = on
+    ? 'Global pause ON — all scheduled runs halted. Click to resume.'
+    : 'Global pause — stop all scheduled runs';
+}
 
 const TABS = ['overview', 'chat', 'agents', 'schedule', 'queue', 'cost', 'registry', 'phonebridge', 'brain'];
 const TAB_LABELS = {
@@ -81,7 +103,9 @@ export function setActiveTab(tab) {
 export function render(state) {
   renderTopbar(state);
   renderTabs(state);
-  renderVitals(state.vitals); // persistent strip, all tabs — not a tab renderer
+  // Overview-only (Eddie 2026-07-23): the streak/XP boxes clutter every other tab. Passing null
+  // makes renderVitals clear the strip on non-overview tabs.
+  renderVitals(state.activeTab === 'overview' ? state.vitals : null);
   // Invariant (asserted by §07 smoke): exactly one .panel.active.
   document.querySelectorAll('.panel').forEach((p) => {
     p.classList.toggle('active', p.id === state.activeTab);
@@ -116,6 +140,24 @@ export function initChrome() {
   if (settingsBtn) {
     settingsBtn.textContent = '⚙';
     settingsBtn.addEventListener('click', () => openSettings());
+  }
+
+  // Global kill switch: flips global_pause. Optimistic + bus request; degrades to local-only when
+  // the bus PAT isn't set (same contract as the Registry toggles), so it never throws.
+  const killBtn = document.getElementById('btn-kill');
+  if (killBtn) {
+    let killed = getGlobalPaused();
+    paintKill(killBtn, killed);
+    killBtn.addEventListener('click', () => {
+      killed = !killed;
+      setGlobalPausedLocal(killed);
+      paintKill(killBtn, killed);
+      try {
+        setGlobalPause(killed)
+          .then(() => toast(killed ? 'Global pause ON — runs halted' : 'Global pause OFF — runs resumed'))
+          .catch(() => toast(killed ? 'Paused on this device — bus offline' : 'Resumed on this device — bus offline'));
+      } catch { toast('Saved on this device'); }
+    });
   }
 
   // Phone-layout toggle: flips body.phone (CSS owns the responsive collapse) and persists the
