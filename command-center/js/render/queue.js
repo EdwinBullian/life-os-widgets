@@ -6,7 +6,7 @@
 // worker is disabled). Only Manual depends on status for the kanban data.
 
 import { esc, normalizeQueue, safe } from '../util.js';
-import { toast, dispatchAction } from './agents.js';
+import { toast } from './agents.js';
 
 const EMOJI = { finance: '💰', research: '🔬', health: '💪', assistant: '🧠', programming: '💻', career: '🎓', business: '🏢', marketing: '📣' };
 const emojiFor = (key) => EMOJI[key] || '◆';
@@ -249,22 +249,15 @@ function wireQueue(panel) {
     if (!el) return;
     const action = el.dataset.action;
     const id = el.dataset.id;
-    if (action === 'runnow') {
-      dispatchAction('runnow', { id }, 'Marked Run Now');
-      markPending(el);
-    } else if (action === 'cancel' || action === 'reject') {
-      dispatchAction('cancel', { id }, 'Cancelled');
-      markPending(el);
-    } else if (action === 'approve' || action === 'schedule' || action === 'reschedule' || action === 'edit') {
-      toast('Phase 2');
+    // These queue job-control buttons have NO backend action (busclient maps them all to
+    // `unsupported`; acc_bus.py has no handler). Do NOT fake success — the old code toasted
+    // "Marked Run Now" / "Cancelled" and marked the button pending while doing nothing.
+    // Tell the truth instead (Eddie 2026-07-23; full wiring is a proposed backend build).
+    if (['runnow', 'cancel', 'reject', 'approve', 'schedule', 'reschedule', 'edit'].includes(action)) {
+      toast('Not wired yet — manage this job in Notion for now');
     }
   });
   panel.addEventListener('change', (e) => {
-    if (e.target.closest('[data-action="notify"]')) toast('Phase 2');
+    if (e.target.closest('[data-action="notify"]')) toast('Not wired here — set notify on the Registry tab');
   });
-}
-
-function markPending(el) {
-  const card = el.closest('.qcard');
-  if (card) card.classList.add('pending');
 }
