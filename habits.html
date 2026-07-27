@@ -3,178 +3,177 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Habits — 28 Day</title>
+<title>Habits — 7 Day</title>
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html,body{background:#191919;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;height:100%;overflow:hidden}
-  body{display:flex;flex-direction:column;justify-content:center;padding:12px 14px}
+  body{display:flex;flex-direction:column;justify-content:center;padding:11px 13px}
 
-  .wrap{position:relative;display:flex;flex-direction:column;gap:9px;width:100%}
+  .wrap{position:relative;display:flex;flex-direction:column;gap:7px;width:100%}
   .head{display:flex;align-items:center;justify-content:space-between}
   .title{font-size:10.5px;font-weight:600;letter-spacing:1.2px;color:#a8a8a8}
-  .sub{font-size:9.5px;color:rgba(255,255,255,0.32);letter-spacing:.4px}
+  .sort{font-size:9px;color:rgba(255,255,255,0.32);letter-spacing:.4px;cursor:pointer;border:1px solid rgba(255,255,255,0.10);border-radius:4px;padding:1.5px 6px;white-space:nowrap}
+  .sort:hover{color:#d0d0d0;border-color:rgba(255,255,255,0.28)}
 
-  /* 4 x 7 — each row a rolling week, newest bottom-right */
-  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
-  .cell{aspect-ratio:1;border-radius:4px;background:#242424;border:1px solid rgba(255,255,255,0.05);cursor:pointer;transition:transform .12s}
-  .cell:hover{transform:scale(1.12)}
-  .cell.l1{background:#2c5d3a}
-  .cell.l2{background:#357a49}
-  .cell.l3{background:#41a85f}
-  .cell.l4{background:#4ade80;border-color:rgba(74,222,128,0.3)}
-  .cell.nodata{background:transparent;border:1px dashed rgba(255,255,255,0.08)}
-  .cell.today{box-shadow:0 0 0 1.5px rgba(226,201,126,0.75)}
-  .cell.sel{box-shadow:0 0 0 1.5px #fff;transform:scale(1.08)}
+  /* one row per habit: name | 7 day dots | rate */
+  .rows{display:flex;flex-direction:column;gap:3px}
+  .row{display:grid;grid-template-columns:66px 1fr 34px;align-items:center;gap:8px;height:17px}
+  .row.hdr{height:11px;margin-bottom:1px}
 
-  .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:7px;border-top:1px solid rgba(255,255,255,0.07)}
-  .today-count{font-size:10px;color:rgba(255,255,255,0.4)}
-  .today-count b{color:#e0e0e0;font-weight:700}
-  .hint{font-size:9px;color:rgba(255,255,255,0.28);letter-spacing:.3px}
+  .nm{font-size:10px;color:#c9c9c9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.1px}
+  .row.hdr .nm{font-size:8.5px;color:rgba(255,255,255,0.28);letter-spacing:.7px}
+
+  .days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+  .d{aspect-ratio:1;max-height:15px;border-radius:3.5px;background:#242424;border:1px solid rgba(255,255,255,0.05)}
+  .d.on{background:#41a85f;border-color:rgba(74,222,128,0.28)}
+  .d.off{background:#3a2326;border-color:rgba(248,113,113,0.16)}
+  .d.none{background:transparent;border:1px dashed rgba(255,255,255,0.09)}
+  .d.today{box-shadow:0 0 0 1.5px rgba(226,201,126,0.6)}
+  .days.hdr-days{align-items:end}
+  .dl{font-size:8px;text-align:center;color:rgba(255,255,255,0.26);letter-spacing:.2px}
+  .dl.is-today{color:rgba(226,201,126,0.75)}
+
+  .rate{font-size:10.5px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+  .rate.good{color:#4ade80}
+  .rate.mid{color:#e2c97e}
+  .rate.bad{color:#f87171}
+  .rate.na{color:rgba(255,255,255,0.22);font-weight:500}
+  .row.hdr .rate{font-size:8.5px;color:rgba(255,255,255,0.28);font-weight:600;letter-spacing:.5px}
+
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:6px;margin-top:1px;border-top:1px solid rgba(255,255,255,0.07)}
+  .overall{font-size:10px;color:rgba(255,255,255,0.4);white-space:nowrap}
+  .overall b{color:#e0e0e0;font-weight:700}
+  .weak{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .weak b{color:#f87171;font-weight:700}
 
   .tip{position:fixed;background:#1c2128;border:1px solid #444c56;border-radius:6px;padding:6px 10px;font-size:11px;color:#e6edf3;pointer-events:none;z-index:9999;display:none;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,0.6);line-height:1.5}
   .tip b{font-weight:700}
-  .tip .d{color:rgba(255,255,255,0.45);font-size:10px}
-
-  /* per-day breakdown overlay */
-  .panel{position:absolute;inset:-2px;background:#191919;border-radius:6px;display:none;flex-direction:column;gap:8px;z-index:50;padding:1px}
-  .panel.show{display:flex}
-  .panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
-  .panel-date{font-size:11.5px;font-weight:700;color:#e8e8e8;letter-spacing:.3px}
-  .panel-back{font-size:9.5px;color:rgba(255,255,255,0.45);cursor:pointer;border:1px solid rgba(255,255,255,0.14);border-radius:5px;padding:2px 8px;white-space:nowrap}
-  .panel-back:hover{color:#e0e0e0;border-color:rgba(255,255,255,0.32)}
-  .panel-score{font-size:10px;color:rgba(255,255,255,0.5);margin-top:-3px}
-  .panel-score b{color:#4ade80;font-weight:800}
-  .hlist{display:grid;grid-template-columns:1fr 1fr;gap:5px 14px}
-  .hrow{display:flex;align-items:center;gap:7px;font-size:10.5px;line-height:1.1}
-  .hrow .mk{width:15px;height:15px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex:0 0 auto}
-  .hrow.on .mk{background:#234d33;color:#4ade80}
-  .hrow.off .mk{background:#3a2326;color:#f87171}
-  .hrow.on .nm{color:#d2d2d2}
-  .hrow.off .nm{color:rgba(255,255,255,0.42)}
-  .panel-empty{grid-column:1/3;font-size:10px;color:rgba(255,255,255,0.35);text-align:center;padding:16px 0}
+  .tip .s{color:rgba(255,255,255,0.45);font-size:10px}
 
   #liveStatus{position:fixed;bottom:3px;right:8px;font-size:8px;color:rgba(255,255,255,0.18);letter-spacing:.5px}
 </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="head"><span class="title">🔥 HABITS</span><span class="sub">last 28 days</span></div>
-    <div class="grid" id="grid"></div>
-    <div class="foot">
-      <span class="today-count" id="todayCount"></span>
-      <span class="hint">tap a day ›</span>
+    <div class="head">
+      <span class="title">🔥 HABITS · 7D</span>
+      <span class="sort" id="sortBtn">worst first</span>
     </div>
-
-    <div class="panel" id="panel">
-      <div class="panel-head">
-        <span class="panel-date" id="pDate"></span>
-        <span class="panel-back" id="pBack">‹ back</span>
-      </div>
-      <div class="panel-score" id="pScore"></div>
-      <div class="hlist" id="pList"></div>
+    <div class="rows" id="rows"></div>
+    <div class="foot">
+      <span class="overall" id="overall"></span>
+      <span class="weak" id="weak"></span>
     </div>
   </div>
   <div class="tip" id="tip"></div>
   <div id="liveStatus">loading…</div>
 
   <script>
-    // Reads habits.json: { habits:{date:pct, -1=unlogged}, details:{date:{habit:bool}}, totalHabits, updated }
+    // Reads habits.json: { habits:{date:pct}, details:{date:{habit:bool}}, streaks:{habit:days}, totalHabits, updated }
+    // Per-habit success rate over the trailing 7 days is derived from `details` — no schema change needed.
     const REFRESH = 15 * 60 * 1000;
-    const DAYS = 28;
-    // canonical display order for the breakdown panel
+    const DAYS = 7;
     const HABIT_ORDER = ["10k Steps","Lift","Calories","Clean","Meditate","Stretch","Screen Time","Supplements"];
 
-    let HABITS = {}, DETAILS = {}, TOTAL = 8;
+    let DETAILS = {}, STREAKS = {}, SORT = "worst";  // "worst" | "fixed"
 
     function keyOf(dt){const y=dt.getFullYear(),m=String(dt.getMonth()+1).padStart(2,'0'),d=String(dt.getDate()).padStart(2,'0');return `${y}-${m}-${d}`;}
     function today0(){const t=new Date();return new Date(t.getFullYear(),t.getMonth(),t.getDate());}
+    function lastDays(){const b=today0(),out=[];for(let i=DAYS-1;i>=0;i--){const dt=new Date(b);dt.setDate(b.getDate()-i);out.push(dt);}return out;}
 
-    // Seed / fallback demo (only used if fetch fails, e.g. local preview)
     function demo(){
-      const pct=[88,62,100,88,75,88,100, 88,75,50,88,100,88,75, 100,88,100,100,75,88,100, 100,88,75,100,100,88,-1];
-      const base=today0(),h={},d={};
-      for(let i=0;i<DAYS;i++){
-        const dt=new Date(base);dt.setDate(base.getDate()-(DAYS-1-i));const k=keyOf(dt);
-        h[k]=pct[i];
-        if(pct[i]>=0){const det={};HABIT_ORDER.forEach((nm,j)=>det[nm]=((i*3+j*5)%8)>=Math.round((100-pct[i])/12.5));d[k]=det;}
-      }
-      return {habits:h,details:d};
+      const d={};
+      lastDays().forEach((dt,i)=>{
+        const det={}; HABIT_ORDER.forEach((n,j)=>det[n]=((i*3+j*5)%7)>1);
+        if(i<DAYS-1) d[keyOf(dt)]=det;   // today unlogged, mirrors real usage
+      });
+      return d;
     }
 
     const tip=document.getElementById("tip");
-    function showTip(el,html){
+    function bindTip(el,html){
       el.addEventListener("mouseenter",()=>{tip.innerHTML=html;tip.style.display="block";});
       el.addEventListener("mousemove",e=>{tip.style.left=(e.clientX+13)+"px";tip.style.top=(e.clientY-8)+"px";});
       el.addEventListener("mouseleave",()=>tip.style.display="none");
     }
 
-    function bucket(p){ if(p<0||p==null)return"nodata"; if(p>=100)return"l4"; if(p>=85)return"l3"; if(p>=60)return"l2"; if(p>0)return"l1"; return""; }
-
-    // returns {n,t} done/total from details, or null if no detail for that day
-    function countDone(k){
-      const d=DETAILS[k]; if(!d) return null;
-      let n=0,t=0; for(const h in d){t++; if(d[h])n++;} return {n,t};
+    // Habits present in the window (union across logged days), in canonical order.
+    function habitNames(dates){
+      const seen=new Set();
+      dates.forEach(dt=>{const det=DETAILS[keyOf(dt)]; if(det) Object.keys(det).forEach(h=>seen.add(h));});
+      if(!seen.size) return HABIT_ORDER.slice();
+      return HABIT_ORDER.filter(h=>seen.has(h)).concat([...seen].filter(h=>!HABIT_ORDER.includes(h)).sort());
     }
 
-    function openPanel(k,dt){
-      tip.style.display="none";
-      const det=DETAILS[k];
-      document.getElementById("pDate").textContent=dt.toLocaleDateString(undefined,{weekday:'long',month:'short',day:'numeric'});
-      const list=document.getElementById("pList"); list.innerHTML="";
-      const score=document.getElementById("pScore");
-      if(!det){
-        score.textContent="";
-        list.innerHTML='<div class="panel-empty">No habits logged this day.</div>';
-      } else {
-        const order=HABIT_ORDER.filter(h=>h in det).concat(Object.keys(det).filter(h=>!HABIT_ORDER.includes(h)));
-        let n=0;
-        order.forEach(h=>{
-          const on=!!det[h]; if(on)n++;
-          const row=document.createElement("div");
-          row.className="hrow "+(on?"on":"off");
-          row.innerHTML=`<span class="mk">${on?'✓':'✕'}</span><span class="nm">${h}</span>`;
-          list.appendChild(row);
-        });
-        score.innerHTML=`<b>${n}</b> / ${order.length} completed`;
-      }
-      document.getElementById("panel").classList.add("show");
+    // done / logged over the window. `logged` skips days with no entry, so an unlogged
+    // today doesn't get counted as a miss and drag every rate down.
+    function statsFor(name,dates){
+      let done=0,logged=0;const marks=[];
+      dates.forEach(dt=>{
+        const det=DETAILS[keyOf(dt)];
+        if(!det || !(name in det)){marks.push(null);return;}
+        const on=!!det[name]; marks.push(on); logged++; if(on) done++;
+      });
+      return {done,logged,marks,rate:logged?Math.round(done/logged*100):null};
     }
-    function closePanel(){
-      document.getElementById("panel").classList.remove("show");
-      document.querySelectorAll(".cell.sel").forEach(c=>c.classList.remove("sel"));
-    }
-    document.getElementById("pBack").addEventListener("click",closePanel);
+
+    function rateClass(r){ if(r==null) return "na"; if(r>=85) return "good"; if(r>=55) return "mid"; return "bad"; }
 
     function render(){
-      const base=today0(),tkey=keyOf(base);
-      const grid=document.getElementById("grid");grid.innerHTML="";
-      const dates=[];for(let i=0;i<DAYS;i++){const dt=new Date(base);dt.setDate(base.getDate()-(DAYS-1-i));dates.push(dt);}
+      const dates=lastDays(), tkey=keyOf(today0());
+      const rows=document.getElementById("rows"); rows.innerHTML="";
 
-      dates.forEach(dt=>{
-        const k=keyOf(dt);
-        const p=(k in HABITS)?HABITS[k]:null;
-        const cell=document.createElement("div");
-        cell.className="cell "+bucket(p)+(k===tkey?" today":"");
-        const nice=dt.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
-        const c=countDone(k);
-        const val=(p==null||p<0)?"—":p+"%";
-        const sub=c?` · ${c.n}/${c.t}`:"";
-        showTip(cell,`<b>${val}</b>${sub}<br><span class="d">${nice}${k===tkey?" · today":""}</span>`);
-        cell.addEventListener("click",()=>{
-          document.querySelectorAll(".cell.sel").forEach(x=>x.classList.remove("sel"));
-          cell.classList.add("sel");
-          openPanel(k,dt);
-        });
-        grid.appendChild(cell);
+      const hdr=document.createElement("div"); hdr.className="row hdr";
+      const hdrDays=dates.map(dt=>{
+        const isT=keyOf(dt)===tkey;
+        return `<div class="dl${isT?" is-today":""}">${dt.toLocaleDateString(undefined,{weekday:'narrow'})}</div>`;
+      }).join("");
+      hdr.innerHTML=`<span class="nm">HABIT</span><div class="days hdr-days">${hdrDays}</div><span class="rate">RATE</span>`;
+      rows.appendChild(hdr);
+
+      const names=habitNames(dates);
+      const data=names.map(n=>({name:n,...statsFor(n,dates)}));
+
+      const ordered = SORT==="worst"
+        // unlogged habits sink to the bottom; ties keep canonical order (stable sort)
+        ? data.slice().sort((a,b)=>(a.rate==null)-(b.rate==null) || a.rate-b.rate)
+        : data;
+
+      ordered.forEach(h=>{
+        const row=document.createElement("div"); row.className="row";
+        const cells=h.marks.map((m,i)=>{
+          const isT=keyOf(dates[i])===tkey;
+          const cls=m===null?"none":(m?"on":"off");
+          return `<div class="d ${cls}${isT?" today":""}"></div>`;
+        }).join("");
+        const rtxt=h.rate==null?"—":h.rate+"%";
+        row.innerHTML=`<span class="nm">${h.name}</span><div class="days">${cells}</div><span class="rate ${rateClass(h.rate)}">${rtxt}</span>`;
+
+        const st=STREAKS[h.name];
+        const streakTxt=(st!=null && st>0)?` · ${st}d streak`:"";
+        bindTip(row,`<b>${h.name}</b> — ${h.rate==null?"no data":h.rate+"%"}<br><span class="s">${h.done}/${h.logged} logged days${streakTxt}</span>`);
+        rows.appendChild(row);
       });
 
-      // footer: today's count out of total
-      const c=countDone(tkey), tp=(tkey in HABITS)?HABITS[tkey]:null;
-      const cnt=document.getElementById("todayCount");
-      if(c) cnt.innerHTML=`Today <b>${c.n}/${c.t}</b>`;
-      else if(tp!=null && tp>=0) cnt.innerHTML=`Today <b>${Math.round(tp/100*TOTAL)}/${TOTAL}</b>`;
-      else cnt.innerHTML=`Today <b>—</b>`;
+      const totDone=data.reduce((s,h)=>s+h.done,0), totLog=data.reduce((s,h)=>s+h.logged,0);
+      document.getElementById("overall").innerHTML =
+        totLog ? `7d overall <b>${Math.round(totDone/totLog*100)}%</b> · ${totDone}/${totLog}` : `7d overall <b>—</b>`;
+
+      const scored=data.filter(h=>h.rate!=null);
+      const weak=document.getElementById("weak");
+      if(scored.length){
+        const w=scored.reduce((a,b)=>b.rate<a.rate?b:a);
+        weak.innerHTML = w.rate>=85 ? `all habits ≥85%` : `weakest <b>${w.name} ${w.rate}%</b>`;
+      } else {
+        weak.textContent="nothing logged this week";
+      }
     }
+
+    document.getElementById("sortBtn").addEventListener("click",()=>{
+      SORT = SORT==="worst" ? "fixed" : "worst";
+      document.getElementById("sortBtn").textContent = SORT==="worst" ? "worst first" : "fixed order";
+      render();
+    });
 
     function setStatus(txt,col){const el=document.getElementById("liveStatus");el.textContent=txt;if(col)el.style.color=col;}
 
@@ -183,12 +182,12 @@
         const r=await fetch("./habits.json?t="+Date.now());
         if(!r.ok) throw new Error("no json");
         const j=await r.json();
-        HABITS=j.habits||{}; DETAILS=j.details||{}; TOTAL=j.totalHabits||8;
+        DETAILS=j.details||{}; STREAKS=j.streaks||{};
         render();
         const d=j.updated?new Date(j.updated*1000):new Date();
         setStatus("synced "+d.toLocaleDateString(),"rgba(74,222,128,0.35)");
       }catch{
-        const dm=demo(); HABITS=dm.habits; DETAILS=dm.details; TOTAL=8;
+        DETAILS=demo(); STREAKS={};
         render();
         setStatus("offline · seed data","rgba(255,255,255,0.15)");
       }
