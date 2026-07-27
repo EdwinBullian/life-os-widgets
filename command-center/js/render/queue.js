@@ -16,27 +16,25 @@ let queueFilter = 'scheduled'; // default to Scheduled so content is visible imm
 let _lastState = null;
 
 // Column definitions
+// Card action buttons. Approve / Reject / Schedule / Reschedule / Edit were deleted on
+// 2026-07-26 per the button-parity audit's deletion list: acc_bus.py has no handler for any of
+// them, so they could only ever toast and no-op. Run-now and Cancel survive as real concepts
+// with no bus action yet — they say so plainly instead of faking success (see wireQueue).
 const COLS = [
   {
     key: 'waiting', col: 'waiting', cls: 'w', countId: 'nW', bodyId: 'colWaiting',
     head: '⏳ Waiting approval', empty: 'Nothing waiting.',
-    acts: (id) => '<button class="btn sm ghost" data-action="edit" data-id="' + id + '">Edit</button>'
-      + '<button class="btn sm go" data-action="approve" data-id="' + id + '">Approve</button>'
-      + '<button class="btn sm danger" data-action="reject" data-id="' + id + '">Reject</button>',
+    acts: () => '<span class="faint" style="font-size:10.5px">Approve in Notion</span>',
   },
   {
     key: 'approved', col: 'approved', cls: 'a', countId: 'nA', bodyId: 'colApproved',
     head: '✓ Approved', empty: 'Nothing approved yet.',
-    acts: (id) => '<button class="btn sm ghost" data-action="edit" data-id="' + id + '">Edit</button>'
-      + '<button class="btn sm ghost" data-action="schedule" data-id="' + id + '">Schedule →</button>'
-      + '<button class="btn sm go" data-action="runnow" data-id="' + id + '">▶ Now</button>',
+    acts: (id) => '<button class="btn sm go" data-action="runnow" data-id="' + id + '">▶ Now</button>',
   },
   {
     key: 'scheduled', col: 'scheduled', cls: 's', countId: 'nS', bodyId: 'colScheduled',
     head: '◷ Scheduled', empty: 'Nothing scheduled.',
-    acts: (id) => '<button class="btn sm ghost" data-action="edit" data-id="' + id + '">Edit</button>'
-      + '<button class="btn sm ghost" data-action="reschedule" data-id="' + id + '">Reschedule</button>'
-      + '<button class="btn sm danger" data-action="cancel" data-id="' + id + '">Cancel</button>',
+    acts: (id) => '<button class="btn sm danger" data-action="cancel" data-id="' + id + '">Cancel</button>',
   },
 ];
 
@@ -253,7 +251,7 @@ function wireQueue(panel) {
     // `unsupported`; acc_bus.py has no handler). Do NOT fake success — the old code toasted
     // "Marked Run Now" / "Cancelled" and marked the button pending while doing nothing.
     // Tell the truth instead (Eddie 2026-07-23; full wiring is a proposed backend build).
-    if (['runnow', 'cancel', 'reject', 'approve', 'schedule', 'reschedule', 'edit'].includes(action)) {
+    if (action === 'runnow' || action === 'cancel') {
       toast('Not wired yet — manage this job in Notion for now');
     }
   });

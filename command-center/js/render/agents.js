@@ -7,6 +7,7 @@ import { getState, setState } from '../state.js';
 import { esc, safe } from '../util.js';
 import { postAction, getPausedAgents, setAgentPaused } from '../proxy.js';
 import { repollSoon } from '../poll.js';
+import { recordOneOff, markOneOff } from '../oneoffs.js';
 
 // ── Model menus (ported verbatim from the mockup) ─────────────────────────────
 const CLAUDE_MODELS = ['Auto', 'Opus', 'Sonnet', 'Haiku'];
@@ -47,7 +48,7 @@ export const FORMS = {
   'Content Draft': { agent: 'Marketing', icon: '✍️', sub: 'Drafts marketing content for any channel in your brand voice.', titleTpl: (v) => `Content — ${v.type || 'post'}`, fields: [{ k: 'type', label: 'Content type', req: true, ph: 'e.g. Instagram post, blog post, email' }, { k: 'topic', label: 'Topic or brief', req: true, type: 'textarea', ph: '' }, { k: 'tone', label: 'Tone', hint: 'optional', ph: 'e.g. professional, casual, playful' }] },
   'Campaign Plan': { agent: 'Marketing', icon: '📣', sub: 'Full campaign brief with objectives, channel strategy, and week-by-week content calendar.', titleTpl: (v) => `Campaign — ${v.goal || ''}`, fields: [{ k: 'goal', label: 'Campaign goal', req: true, ph: 'e.g. Q3 product launch, brand awareness' }, { k: 'audience', label: 'Target audience', hint: 'optional', ph: '' }, { k: 'channels', label: 'Channels', hint: 'optional', ph: 'e.g. Instagram, email, TikTok' }, { k: 'notes', label: 'Notes', hint: 'optional', type: 'textarea', ph: '' }] },
   'SEO Audit': { agent: 'Marketing', icon: '🔍', sub: 'Comprehensive SEO audit with keyword research, content gaps, and a prioritized action plan.', titleTpl: (v) => `SEO Audit — ${v.site || ''}`, fields: [{ k: 'site', label: 'Site or URL', req: true, ph: 'e.g. salilriverside.com' }, { k: 'focus', label: 'Focus area', hint: 'optional', ph: 'e.g. local SEO, content gaps, competitor keywords' }] },
-  Custom: { agent: '', icon: '✨', sub: 'Free-form one-shot prompt.', titleTpl: (v) => firstWords(v.prompt, 6), fields: [{ k: 'agent', label: 'Agent', type: 'select', opts: ['Finance', 'Health', 'Research', 'Assistant', 'Business', 'Marketing'] }, { k: 'prompt', label: 'Prompt', req: true, type: 'textarea', ph: 'Describe exactly what you want done.' }] },
+  Custom: { agent: '', icon: '✨', sub: 'Free-form one-shot prompt.', titleTpl: (v) => firstWords(v.prompt, 9), fields: [{ k: 'agent', label: 'Agent', type: 'select', opts: ['Finance', 'Health', 'Research', 'Assistant', 'Business', 'Marketing'] }, { k: 'prompt', label: 'Prompt', req: true, type: 'textarea', ph: 'Describe exactly what you want done.' }] },
 };
 
 // ── SKILL_DESC — slash-command → one-line description (skill chip accordion). ──────────────────
@@ -216,16 +217,66 @@ export function toast(msg) {
   if (el) el.textContent = msg;
 }
 
+// Turn a transport error into something Eddie can act on. "Couldn't reach proxy — no proxy
+// url configured" was technically true and practically useless: the actual fix is almost
+// always "the acc-bus token isn't set on this device".
+export function errText(err) {
+  const msg = String((err && err.message) || err || 'unknown error');
+  if (/token not configured|not connected/i.test(msg)) return 'Not connected — add your acc-bus token in Settings (⚙)';
+  if (/no proxy url/i.test(msg)) return 'Not connected — add your acc-bus token in Settings (⚙)';
+  if (/bus write failed: 40[13]/i.test(msg)) return 'Bus rejected the token — check it in Settings (⚙)';
+  if (/bus write failed: 404/i.test(msg)) return "Bus repo not found — check the repo name in Settings (⚙)";
+  if (/failed to fetch|networkerror/i.test(msg)) return 'Network unreachable — the job was NOT sent';
+  return msg;
+}
+
 // Fire a write action, toast, then schedule the fast re-poll. Never throws into the handler.
+// Returns the promise so callers that need the outcome (one-off tracking) can chain it;
+// the returned promise is already .catch()-handled and therefore safe to ignore.
 export function dispatchAction(action, params, label) {
+  let p;
   try {
-    postAction(action, params)
-      .then(() => { toast(label || 'Done'); })
-      .catch((err) => { toast(`Couldn't reach proxy — ${String((err && err.message) || err)}`); });
+    p = postAction(action, params);
   } catch (err) {
-    toast(`Couldn't reach proxy — ${String((err && err.message) || err)}`);
+    p = Promise.reject(err);
   }
+  const done = p
+    .then((res) => { toast(label || 'Done'); return res; })
+    .catch((err) => { toast(errText(err)); throw err; });
   try { repollSoon(); } catch { /* no poller under test — ignore */ }
+  return done;
+}
+
+// The one-off path: same write, but the job is also written into the local ledger so it shows
+// up in the Schedule tray with a REAL status. Resolves to the ledger row either way — a failed
+// send stays visible as `failed` instead of disappearing behind a toast.
+export function dispatchOneOff(params, label) {
+  const row = recordOneOff({
+    title: params.job,
+    agent: params.agent,
+    taskType: params.taskType,
+    goal: [params.job, params.details].filter(Boolean).join(' — '),
+    runMode: params.runMode,
+    model: params.model,
+  });
+  const bump = () => { try { setState({ oneOffsRev: Date.now() }); } catch { /* no store under test */ } };
+  bump(); // paint the row immediately in `submitting`
+  return dispatchAction('dispatch', params, label)
+    .then((reqId) => {
+      // submitLegacyAction resolves with the bus request id — that id is what reconcile
+      // polls for a reply. A non-string means the legacy proxy answered; there is no reply
+      // file to poll in that case, so leave it pending rather than inventing a success.
+      markOneOff(row.lid, typeof reqId === 'string'
+        ? { state: 'pending', reqId }
+        : { state: 'pending', reqId: null, reason: 'sent via the legacy proxy — no bus receipt' });
+      bump();
+      return row;
+    })
+    .catch((err) => {
+      markOneOff(row.lid, { state: 'failed', reason: errText(err) });
+      bump();
+      return row;
+    });
 }
 
 // ── Shared dispatch form (§6.3.1) ─────────────────────────────────────────────────────────────
@@ -414,7 +465,7 @@ function wireOverlay(overlay) {
       const a = agentByKey(el.dataset.id);
       const p = a && a.presets[Number(el.dataset.i)];
       if (p) {
-        dispatchAction('dispatch', { job: p.label, agent: a.type, taskType: p.taskType, details: p.details, runMode: 'Downtime' }, `⚡ ${p.label}`);
+        dispatchOneOff({ job: p.label, agent: a.type, taskType: p.taskType, details: p.details, runMode: 'Downtime' }, `⚡ ${p.label} — sent`);
         close();
       }
       return;
@@ -475,10 +526,22 @@ function submitDispatch(form, close) {
   if (tt === 'Custom' && v.agent) agent = v.agent;
   const whenEl = form.querySelector('.when-opt.sel');
   const runMode = (whenEl && whenEl.dataset.w) || 'Downtime';
+  const runAfterEl = form.querySelector('#fld-runAfter');
+  const runAfter = runMode === 'Run After' && runAfterEl ? String(runAfterEl.value || '') : '';
   const modelEl = form.querySelector('#fld-model');
   const details = f.fields.filter((fl) => v[fl.k] && fl.k !== 'agent').map((fl) => `${fl.label}: ${v[fl.k]}`).join('\n');
-  dispatchAction('dispatch', {
-    job: f.titleTpl(v), agent, taskType: tt, details, runMode, model: (modelEl && modelEl.value) || 'Auto',
-  }, `Dispatched: ${f.titleTpl(v)} →`);
+  // dispatchOneOff (not dispatchAction): every hand-fired job lands in the Schedule tray with a
+  // real status. The toast says "sent", not "dispatched" — the desk hasn't confirmed anything yet.
+  dispatchOneOff({
+    job: f.titleTpl(v), agent, taskType: tt, details, runMode, runAfter, model: (modelEl && modelEl.value) || 'Auto',
+  }, `Sent: ${f.titleTpl(v)} — tracking it in Schedule`);
   close();
+}
+
+// Open the shared dispatch modal from anywhere (the Schedule tab's "+ New one-off" uses this).
+// The overlay is global and wireOverlay() is idempotent, so the form submits through exactly the
+// same path as the Agents tab.
+export function openDispatchModal(taskType = 'Custom', agent = '') {
+  setState({ modal: { kind: 'dispatch', payload: { taskType, agent } } });
+  renderModal(getState());
 }

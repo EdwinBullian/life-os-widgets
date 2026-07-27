@@ -195,9 +195,19 @@ export function postAction(action, params = {}) {
   if (busConfigured()) {
     const mapped = busActionFor(action, params);
     if (!mapped.unsupported) return submitLegacyAction(action, params);
+    // No bus mapping. Falling through to a legacy proxy that is almost never configured
+    // used to surface "no proxy url configured" — which blames the wrong thing and hides
+    // the real answer ("this control has no backend action"). Say the true reason.
+    if (!getProxyUrl()) return Promise.reject(new Error(mapped.unsupported));
   }
   const url = getProxyUrl();
-  if (!url) return Promise.reject(new Error('no proxy url configured'));
+  if (!url) {
+    // The bus is the canonical write path; an unset token is the overwhelmingly common
+    // cause. Name the fix, not the symptom — this string is shown to Eddie verbatim.
+    return Promise.reject(new Error(busConfigured()
+      ? 'no proxy url configured'
+      : 'not connected — add your acc-bus token in Settings (⚙)'));
+  }
   const body = new URLSearchParams();
   body.set('action', action);
   for (const [k, v] of Object.entries(params)) {

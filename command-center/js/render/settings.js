@@ -4,7 +4,7 @@
 // Notion embed blocks storage). Saving triggers an immediate status fetch so the gateway pill flips.
 
 import { getProxyUrl, setProxyUrl, fetchStatus, getMaxPct, setMaxPct } from '../proxy.js';
-import { getBusToken, setBusToken, busConfigured, setGlobalPause } from '../busclient.js';
+import { setBusToken, busConfigured, setGlobalPause, verifyBusToken, busTokenPersisted } from '../busclient.js';
 import { getState, setState } from '../state.js';
 import { esc } from '../util.js';
 import { toast } from './agents.js';
@@ -27,15 +27,19 @@ export function openSettings() {
   modal.className = 'modal';
   modal.innerHTML = '<div class="modal-head"><div class="modal-icon"><span>⚙</span></div>'
     + '<div class="modal-title">Settings</div></div>'
-    + '<div class="modal-sub">Connect the widget to your Apps Script proxy for live agent status and '
-    + 'one-tap dispatch. Same web app and URL as the predecessor <span class="chip code">agents.html</span> '
-    + '— it carries over automatically on the same site, or paste it once below.</div>'
-    + `<div class="field"><label>Apps Script proxy URL <span class="hint">(ends in /exec)</span></label>`
-    + `<input id="set-proxy" type="text" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(cur)}"></div>`
-    + `<div class="field"><label>Claude Max plan % used <span class="hint">(you set this — Anthropic exposes no API for it)</span></label>`
-    + `<input id="set-maxpct" type="number" min="0" max="100" step="1" placeholder="e.g. 24" value="${getMaxPct() != null ? esc(getMaxPct()) : ''}"></div>`
+    // The acc-bus token leads, because it is the ONLY live write path: without it every
+    // button that dispatches, toggles, or pauses fails. The Apps Script proxy below it is
+    // the dead predecessor, kept as a read-only fallback and labelled as legacy — leading
+    // with it (as this modal used to) implies dispatch works once the URL is set. It doesn't.
+    + '<div class="modal-sub">The <b>acc-bus token</b> is what lets this dashboard actually do things — '
+    + 'dispatch one-off jobs, toggle registry rows, hit the kill switch. Without it every write '
+    + 'button fails. It is a fine-grained GitHub PAT scoped to the acc-bus repo only.</div>'
     + `<div class="field"><label>acc-bus token <span class="hint">(fine-grained PAT, acc-bus repo only — the live write path)</span></label>`
     + `<input id="set-bustoken" type="password" placeholder="${busConfigured() ? '•••••••• (set — leave blank to keep)' : 'github_pat_…'}"></div>`
+    + `<div class="field"><label>Claude Max plan % used <span class="hint">(you set this — Anthropic exposes no API for it)</span></label>`
+    + `<input id="set-maxpct" type="number" min="0" max="100" step="1" placeholder="e.g. 24" value="${getMaxPct() != null ? esc(getMaxPct()) : ''}"></div>`
+    + `<div class="field"><label>Apps Script proxy URL <span class="hint">(legacy read path — leave blank unless you still run it)</span></label>`
+    + `<input id="set-proxy" type="text" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(cur)}"></div>`
     + `<div class="note">Status: ${connected ? '<span style="color:var(--success)">● connected</span>' : '<span class="faint">● not connected yet</span>'}. `
     + `Bus write path: ${busConfigured() ? '<span style="color:var(--success)">● armed</span>' : '<span class="faint">● not armed</span>'}. `
     + 'Stored only in this browser — never committed or shared.</div>'
@@ -87,11 +91,30 @@ export function openSettings() {
       setMaxPct(pctEl ? pctEl.value : null); // empty → clears the override
       const tokEl = modal.querySelector('#set-bustoken');
       const tok = tokEl ? String(tokEl.value || '').trim() : '';
-      if (tok) setBusToken(tok); // blank leaves the existing token untouched
+      // blank leaves the existing token untouched; `persisted` is false when the browser only
+      // let it into the in-memory mirror (Notion embeds are cross-site iframes — storage there
+      // is routinely partitioned or denied, which is how a pasted token "disappears").
+      const persisted = tok ? setBusToken(tok) : busTokenPersisted();
       setProxyUrl(v || null);
       setState({ proxyUrl: v || null }); // any setState re-renders topbar + active tab
       close();
-      toast('Settings saved');
+      // Don't claim "saved" and walk away — a stored-but-invalid token looks identical to a
+      // working one until a button fails hours later. Check it now and say which it is.
+      if (busConfigured()) {
+        toast('Saved — checking the bus token…');
+        verifyBusToken()
+          .then((r) => {
+            if (!r.ok) { toast(`Saved, but the bus token failed: ${r.reason}`); return; }
+            // Works, but say so plainly if it won't survive a reload — otherwise it looks
+            // armed today and mysteriously blank tomorrow.
+            toast(persisted
+              ? 'Saved — bus armed ✓ one-off dispatch is live'
+              : 'Bus armed ✓ but THIS SESSION ONLY — the embed is blocking storage. Open the dashboard in its own tab and paste it there to make it stick.');
+          })
+          .catch(() => toast('Saved — could not verify the bus token'));
+      } else {
+        toast('Saved — no bus token, so write buttons stay offline');
+      }
       if (v) refreshStatus();
     }
   }

@@ -1,10 +1,11 @@
 // Overview tab: KPI row, quick-dispatch box, fuel gauges, and the read-only live activity feed.
 // Markup matches the approved mockup verbatim (classes ported into css/styles.css); every value
 // routes through esc()/safe()/parseRunFeed so a null/malformed status or spend renders a graceful
-// placeholder, never throws. Quick dispatch is a real P1 write via the shared dispatchAction.
+// placeholder, never throws. Quick dispatch is a real write via the shared dispatchOneOff, so
+// the job it fires also shows up (with a real status) in the Schedule tab's one-off tray.
 
 import { esc, safe, parseRunFeed, isStale } from '../util.js';
-import { modelSelectHtml, dispatchAction, toast } from './agents.js';
+import { modelSelectHtml, dispatchOneOff, toast } from './agents.js';
 import { getMaxPct } from '../proxy.js';
 
 // spend.json is produced by a slow job, not the 60s poll — flag stale past ~12h (2×6h cadence).
@@ -287,7 +288,7 @@ function wireOverview(panel) {
     // Carry a `job` label like every other dispatch path (preset/routine form) so the
     // queue has a title — first few words of the task, matching the form titleTpl style.
     const job = task.replace(/\s+/g, ' ').trim().split(' ').slice(0, 6).join(' ').slice(0, 48) || 'Quick task';
-    dispatchAction('dispatch', { job, agent, model, taskType: 'Quick Task', details: task, runMode: 'Downtime' }, `Dispatched: ${job} →`);
+    dispatchOneOff({ job, agent, model, taskType: 'Quick Task', details: task, runMode: 'Downtime' }, `Sent: ${job} — tracking it in Schedule`);
     const ta = panel.querySelector('#ov-task');
     if (ta) ta.value = '';
   });

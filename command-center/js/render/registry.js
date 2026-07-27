@@ -96,7 +96,16 @@ function fmtTokens(task) {
 
 let _sortCol = 'agent';
 let _sortDir = 1; // 1 = asc, -1 = desc
-let _filter = 'all';
+// Default view is ACTIVE, not All: the registry carries infra plumbing and
+// not-yet-built rows that Eddie should never have to read past. Those stay one
+// click away under Infra / Planned rather than padding the default list.
+let _filter = 'active';
+
+// A row is "active" if it actually runs AND it is a desk job, not machine
+// plumbing. Infra (gateway, bridge, reindex, mirrors) is real but invisible.
+function isActive(task) {
+  return Boolean(task.enabled) && (task.agent || '') !== 'infra';
+}
 
 function sortVal(task, col) {
   switch (col) {
@@ -165,6 +174,8 @@ function buildTable(tasks) {
 function getFilteredSorted(tasks) {
   let rows = tasks.filter((t) => {
     if (_filter === 'all') return true;
+    if (_filter === 'active') return isActive(t);
+    if (_filter === 'planned') return !t.enabled;
     if (_filter === 'infra') return (t.agent || '') === 'infra';
     return (t.currentTier || '').toLowerCase() === _filter;
   });
@@ -186,8 +197,12 @@ function buildFilterBar(tasks) {
     counts[k] = (counts[k] || 0) + 1;
   }
   counts.infra = tasks.filter((t) => t.agent === 'infra').length;
+  counts.active = tasks.filter(isActive).length;
+  counts.planned = tasks.filter((t) => !t.enabled).length;
 
   const btns = [
+    { key: 'active',     label: 'Active' },
+    { key: 'planned',    label: 'Planned / off' },
     { key: 'all',        label: 'All' },
     { key: 'open',       label: 'Open' },
     { key: 'open-first', label: 'Open-first' },

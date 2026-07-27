@@ -26,13 +26,33 @@ export function getBusToken() {
   try { tokenMem = localStorage.getItem(TOKEN_KEY) || null; } catch { tokenMem = null; }
   return tokenMem;
 }
+// Returns true when the token was actually PERSISTED, false when it only made it into the
+// in-memory mirror (i.e. it dies on the next reload).
+//
+// This return value matters more than it looks. In a Notion embed the dashboard is a
+// cross-site iframe, so the browser may partition or outright deny localStorage — the write
+// throws, this used to swallow it, and the token silently lived for exactly one session. The
+// UI said "Settings saved" either way, so the token appeared to vanish on its own. It didn't:
+// it was never written. Settings now reports which of the two happened.
 export function setBusToken(tok) {
   tokenMem = tok || null;
   try {
-    if (tokenMem == null) localStorage.removeItem(TOKEN_KEY);
-    else localStorage.setItem(TOKEN_KEY, tokenMem);
-  } catch { /* storage denied — in-memory mirror holds for the session */ }
-  return tokenMem;
+    if (tokenMem == null) {
+      localStorage.removeItem(TOKEN_KEY);
+      return true;
+    }
+    localStorage.setItem(TOKEN_KEY, tokenMem);
+    // Read back rather than trusting the write: partitioned/ephemeral storage can accept a
+    // setItem and hand back nothing (or drop it at end of session).
+    return localStorage.getItem(TOKEN_KEY) === tokenMem;
+  } catch {
+    return false; // storage denied — in-memory mirror holds for THIS SESSION ONLY
+  }
+}
+
+// Did the stored token survive to disk? Used by Settings to warn on a session-only save.
+export function busTokenPersisted() {
+  try { return !!localStorage.getItem(TOKEN_KEY); } catch { return false; }
 }
 export function getBusRepo() {
   if (repoMem !== undefined) return repoMem;
@@ -76,11 +96,22 @@ export function busActionFor(legacyAction, params = {}) {
       return { action: 'set_cron', payload: { id: params.id, cron } };
     }
     case 'dispatch': {
-      // Real callers send {job, agent, taskType, details, ...} (agents.js /
+      // Real callers send {job, agent, taskType, details, runMode, model} (agents.js /
       // overview.js) — build the goal from job + details, not a `goal` key.
-      const goal = params.goal
+      //
+      // request_job's payload is only {agent, goal}, so runMode and model have nowhere
+      // structural to go. They used to be dropped on the floor: the form let you pick
+      // "Run now" and a model, and neither ever left the browser. Fold them into the goal
+      // text instead — the desk reads the goal, so the intent at least ARRIVES. Only
+      // non-default values are appended, to keep routine goals clean.
+      const base = params.goal
         || [params.job, params.details].filter(Boolean).join(' — ')
         || params.brief || '';
+      const notes = [];
+      if (params.runMode && params.runMode !== 'Downtime') notes.push(`When: ${params.runMode}`);
+      if (params.runAfter) notes.push(`Not before: ${params.runAfter}`);
+      if (params.model && params.model !== 'Auto') notes.push(`Preferred model: ${params.model}`);
+      const goal = notes.length ? `${base}\n\n[${notes.join(' · ')}]` : base;
       return { action: 'request_job', payload: { agent: params.agent, goal } };
     }
     case 'globalpause':
@@ -159,4 +190,28 @@ export function fetchReply(requestId) {
 
 export function setGlobalPause(paused) {
   return postBusRequest('global_pause', { paused: !!paused });
+}
+
+// Read-only check that the stored token can actually see the bus repo. Resolves to
+// {ok:true} or {ok:false, reason}. Costs one GET and no writes.
+//
+// This exists because "the token was never set / is wrong" is invisible until a button
+// fails, and a failing button is easy to misread as a broken button. Settings calls this
+// on save so the answer arrives when the token is entered, not hours later.
+export function verifyBusToken(tok) {
+  const token = tok || getBusToken();
+  if (!token) return Promise.resolve({ ok: false, reason: 'no token set' });
+  return fetch(`https://api.github.com/repos/${getBusRepo()}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+    },
+  }).then((res) => {
+    if (res.ok) return { ok: true, reason: '' };
+    if (res.status === 401) return { ok: false, reason: 'token rejected (401) — expired or mistyped' };
+    if (res.status === 403) return { ok: false, reason: 'token lacks access (403) — check its repo permissions' };
+    if (res.status === 404) return { ok: false, reason: `can't see ${getBusRepo()} (404) — wrong repo, or the token isn't scoped to it` };
+    return { ok: false, reason: `GitHub returned ${res.status}` };
+  }).catch((err) => ({ ok: false, reason: `network error — ${String((err && err.message) || err)}` }));
 }

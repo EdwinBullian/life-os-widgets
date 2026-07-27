@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T20:33:46.246276+00:00",
+  "generated_at": "2026-07-26T20:30:20.539525+00:00",
   "nodes": [
     {
       "id": "Finance\\commands\\thesis.md",
@@ -3937,16 +3937,6 @@
       "date": "2026-07-10"
     },
     {
-      "id": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "LifeOS Tracking Protocol",
-      "chunks": 29,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-11"
-    },
-    {
       "id": "Agent\\agentos\\RESEARCH-CORE-PROTOCOL.md",
       "subject": "Agent",
       "doc_type": "note",
@@ -4587,16 +4577,6 @@
       "date": "2026-07-16"
     },
     {
-      "id": "Agent\\agentos\\pending_actions.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "AgentOS — Pending Actions",
-      "chunks": 6,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-16"
-    },
-    {
       "id": "Agent\\agentos\\MediaCurator\\output\\2026-07-16_digest.md",
       "subject": "Agent",
       "doc_type": "note",
@@ -4702,16 +4682,6 @@
       "doc_type": "note",
       "title": "Health Weekly Review & Plan — Week of 2026-07-18 (PST)",
       "chunks": 9,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-18"
-    },
-    {
-      "id": "Health\\_logs\\metrics_history.md",
-      "subject": "Health",
-      "doc_type": "note",
-      "title": "Metrics History — Weekly Trend Log",
-      "chunks": 3,
       "tags": [],
       "contested": false,
       "date": "2026-07-18"
@@ -4857,16 +4827,6 @@
       "date": "2026-07-18"
     },
     {
-      "id": "Agent\\agentos\\build-tree\\generator\\out\\agent-framework-questmap.html",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "—",
-      "chunks": 2,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-18"
-    },
-    {
       "id": "Agent\\agentos\\build-tree\\generator\\out\\agent-framework-wrapped.html",
       "subject": "Agent",
       "doc_type": "note",
@@ -4887,31 +4847,11 @@
       "date": "2026-07-18"
     },
     {
-      "id": "Agent\\agentos\\build-tree\\generator\\out\\finance-terminal-questmap.html",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "—",
-      "chunks": 2,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-18"
-    },
-    {
       "id": "Agent\\agentos\\build-tree\\generator\\out\\finance-terminal-wrapped.html",
       "subject": "Agent",
       "doc_type": "note",
       "title": "finance-terminal-wrapped",
       "chunks": 0,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-18"
-    },
-    {
-      "id": "Agent\\agentos\\build-tree\\generator\\out\\sports-prediction-models-questmap.html",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "—",
-      "chunks": 2,
       "tags": [],
       "contested": false,
       "date": "2026-07-18"
@@ -4949,16 +4889,6 @@
       "tags": [],
       "contested": false,
       "date": "2026-07-18"
-    },
-    {
-      "id": "Marketing\\Personal Brand\\faceless-ig\\history.md",
-      "subject": "Marketing",
-      "doc_type": "note",
-      "title": "Faceless IG — drafted concepts (dedup log)",
-      "chunks": 1,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-19"
     },
     {
       "id": "Agent\\agentos\\storage-audit-2026-07-18.md",
@@ -5557,16 +5487,6 @@
       "date": "2026-07-23"
     },
     {
-      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\MEMORY.md",
-      "subject": "Agent",
-      "doc_type": "note",
-      "title": "Memory Index",
-      "chunks": 3,
-      "tags": [],
-      "contested": false,
-      "date": "2026-07-23"
-    },
-    {
       "id": "Agent\\agentos\\MediaCurator\\output\\2026-07-22_digest.md",
       "subject": "Agent",
       "doc_type": "note",
@@ -5585,6 +5505,561 @@
       "tags": [],
       "contested": false,
       "date": "2026-07-23"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-23_watchdesk_googl-amzn-tsla.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Thesis-Update Memo — Watch Desk",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-23"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-24_watchdesk_be-intc-pst.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Thesis-Update Memo — Watch Desk",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-24_watchdesk_xly-etf-xlc.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Thesis-Update Memo — Watch Desk",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Finance\\outputs\\ai-industry-market-analysis-2026-07.html",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "The AI Industry at Mid-2026",
+      "chunks": 23,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-20"
+    },
+    {
+      "id": "Finance\\outputs\\BAC_deep_dive_2026-07-20.html",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Bank of America (NYSE: BAC) — Deep Dive",
+      "chunks": 16,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-20"
+    },
+    {
+      "id": "Finance\\outputs\\BAC_research_inputs_2026-07-20.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "BAC Research Inputs — as of 2026-07-20",
+      "chunks": 9,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-20"
+    },
+    {
+      "id": "Finance\\outputs\\calibration-2026-07-25.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Calibration — 2026-07-25",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Finance\\outputs\\finance-glossary.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Finance Glossary — Working Reference",
+      "chunks": 14,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Finance\\outputs\\BAC-2026-07\\BAC_Investment_Memo_2026-07.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Bank of America (BAC) — Investment Memo",
+      "chunks": 9,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-20"
+    },
+    {
+      "id": "Health\\outputs\\2026-07-25_weekly-health-review.md",
+      "subject": "Health",
+      "doc_type": "note",
+      "title": "Health Weekly Review & Plan — Week of 2026-07-25 (PST)",
+      "chunks": 8,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Health\\_logs\\metrics_history.md",
+      "subject": "Health",
+      "doc_type": "note",
+      "title": "Metrics History — Weekly Trend Log",
+      "chunks": 3,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Research\\outputs\\2026-07-23_research-brief_pst-goal.md",
+      "subject": "Research",
+      "doc_type": "note",
+      "title": "Research Queue — No-Op Run (2026-07-23 14:36 PST)",
+      "chunks": 6,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-23"
+    },
+    {
+      "id": "Research\\outputs\\2026-07-24_research-brief_pst-goal.md",
+      "subject": "Research",
+      "doc_type": "note",
+      "title": "Research Queue — Producer Run · 2026-07-24 14:00 PST",
+      "chunks": 6,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "School\\Calc\\outputs\\nd-math-credit-exam-4-week-plan.md",
+      "subject": "School",
+      "doc_type": "note",
+      "title": "ND Math Credit Exam (MATH 10550 / Calculus I) — 4-Week Prep Plan",
+      "chunks": 12,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-22"
+    },
+    {
+      "id": "Marketing\\Salil Hotels\\Weekly-Reports\\Salil_Brief_2026-07-20.md",
+      "subject": "Marketing",
+      "doc_type": "note",
+      "title": "Salil Hotels — Weekly Social Media Brief",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-20"
+    },
+    {
+      "id": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "LifeOS Tracking Protocol",
+      "chunks": 29,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\DESIGN-V6.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Project Status Map — v6 Design (Fable session output)",
+      "chunks": 11,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-23"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\DESIGN-V7-WORLDS.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Project Status Map — v7 \"Worlds\" Direction",
+      "chunks": 12,
+      "tags": [
+        "state"
+      ],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\REDESIGN-BRIEF.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Project Status Map — v6 Redesign Brief",
+      "chunks": 12,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-23"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\v6-mock.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Agent Framework",
+      "chunks": 6,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-23"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\generator\\out\\agent-framework-questmap.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "—",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-23"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\generator\\out\\finance-terminal-questmap.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "—",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-23"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\generator\\out\\sports-prediction-models-questmap.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "—",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-23"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\agentos\\concept-blockout.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "THE AGENCY Agent Framework — concept blockout, not final art",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-23"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\agentos\\CONCEPT.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "The Agency — AgentOS world concept (v7 pilot)",
+      "chunks": 7,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-23"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\agentos\\the-agency-wrapped.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "the-agency-wrapped",
+      "chunks": 0,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\agentos\\the-agency.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "THE AGENCY Agent Framework · AgentOS kernel",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\finance-terminal\\concept-blockout.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "THE MACHINE · Finance Terminal — personal Bloomberg",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\finance-terminal\\CONCEPT.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "The Machine — Finance Terminal world concept (v7, world #2)",
+      "chunks": 15,
+      "tags": [
+        "c9975c",
+        "d4b85c"
+      ],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\finance-terminal\\the-machine-wrapped.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "the-machine-wrapped",
+      "chunks": 0,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\finance-terminal\\the-machine.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "THE MACHINE Finance Terminal · personal Bloomberg",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\sports-prediction\\CONCEPT.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "The Campus — Sports Prediction Models world concept (v8, world #3)",
+      "chunks": 9,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\sports-prediction\\sports-stadiums-wrapped.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "sports-stadiums-wrapped",
+      "chunks": 0,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\sports-prediction\\sports-stadiums.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "SPORTS PREDICTION MODELS the Campus · 3 sports",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\sports-prediction\\the-campus-wrapped.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "the-campus-wrapped",
+      "chunks": 0,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\sports-prediction\\the-campus.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "SPORTS PREDICTION MODELS the Campus · 3 sports",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\sports-prediction\\the-war-room-wrapped.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "the-war-room-wrapped",
+      "chunks": 0,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\build-tree\\worlds\\sports-prediction\\the-war-room.html",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "THE WAR ROOM Sports Prediction Models · NBA + NFL",
+      "chunks": 2,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\MEMORY.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Memory Index",
+      "chunks": 3,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\session-logging-is-a-hook.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "session-logging-is-a-hook",
+      "chunks": 1,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Agent\\agentos\\MediaCurator\\output\\2026-07-24_digest.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Media to Watch / Listen — Friday, July 24, 2026",
+      "chunks": 8,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-24"
+    },
+    {
+      "id": "Agent\\agentos\\MediaCurator\\output\\2026-07-25_digest.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Media to Watch / Listen — Saturday, July 25, 2026",
+      "chunks": 8,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-25_watchdesk_be-pst.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Thesis-Update Memo — Finance Watch-Desk: BE",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-25_watchdesk_intc-pst.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Thesis-Update Memo — Watch Desk",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-25_watchdesk_msft-nasdaq-pst.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Thesis Update — MSFT (event market_news:MSFT:6cee36316a4d)",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Finance\\outputs\\2026-07-25_watchdesk_msft-pst.md",
+      "subject": "Finance",
+      "doc_type": "note",
+      "title": "Thesis-Update Memo — MSFT earnings-preview headline",
+      "chunks": 5,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Health\\outputs\\2026-07-25_facial-skeletal-protocol.md",
+      "subject": "Health",
+      "doc_type": "note",
+      "title": "Facial / Cervical Skeletal-Adjacent Protocol — Eddie",
+      "chunks": 11,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-25"
+    },
+    {
+      "id": "Marketing\\Personal Brand\\faceless-ig\\history.md",
+      "subject": "Marketing",
+      "doc_type": "note",
+      "title": "Faceless IG — drafted concepts (dedup log)",
+      "chunks": 3,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-26"
+    },
+    {
+      "id": "Agent\\agentos\\pending_actions.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "AgentOS — Pending Actions",
+      "chunks": 7,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-26"
+    },
+    {
+      "id": "Agent\\agentos\\MediaCurator\\output\\2026-07-26_digest.md",
+      "subject": "Agent",
+      "doc_type": "note",
+      "title": "Media to Watch / Listen — Sunday, July 26, 2026",
+      "chunks": 6,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-26"
+    },
+    {
+      "id": "Agent\\agentos\\plans\\agent-jobs-2026-07\\assistant.md",
+      "subject": "Agent",
+      "doc_type": "health_plan",
+      "title": "Assistant desk — job plan (2026-07-25)",
+      "chunks": 26,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-26"
+    },
+    {
+      "id": "Agent\\agentos\\plans\\agent-jobs-2026-07\\finance-new-jobs.md",
+      "subject": "Agent",
+      "doc_type": "health_plan",
+      "title": "Finance desk — new jobs (build plan)",
+      "chunks": 36,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-26"
+    },
+    {
+      "id": "Agent\\agentos\\plans\\agent-jobs-2026-07\\finance.md",
+      "subject": "Agent",
+      "doc_type": "health_plan",
+      "title": "Finance desk — where it is, what a real one looks like, what to do next",
+      "chunks": 29,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-26"
+    },
+    {
+      "id": "Agent\\agentos\\plans\\agent-jobs-2026-07\\health-coach-design.md",
+      "subject": "Agent",
+      "doc_type": "health_plan",
+      "title": "Health Desk → Personal Coach — design spec",
+      "chunks": 21,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-26"
+    },
+    {
+      "id": "Agent\\agentos\\plans\\agent-jobs-2026-07\\health.md",
+      "subject": "Agent",
+      "doc_type": "health_plan",
+      "title": "Health Desk — jobs plan (2026-07-25)",
+      "chunks": 30,
+      "tags": [],
+      "contested": false,
+      "date": "2026-07-26"
     }
   ],
   "edges": [
@@ -5977,70 +6452,8 @@
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
+      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
       "target": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
       "weight": 9,
       "type": "semantic",
       "types": [
@@ -6048,315 +6461,34 @@
         "ticker"
       ],
       "via": [
-        "$B",
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "weight": 9,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.88"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.83"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "weight": 10,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
         "$M",
         "sim=0.97"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
       "target": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
       "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.97"
       ]
@@ -6364,470 +6496,101 @@
     {
       "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.98"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.94"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
       "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.95"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
       "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
       "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
       "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.95"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.81"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
       "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -6835,23 +6598,11 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
+      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
       "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
       "weight": 1,
       "type": "ticker",
@@ -6859,59 +6610,45 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
+      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
+      "target": "Finance\\outputs\\high_finance_careers.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
       "target": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.97"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
       "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
       ]
@@ -6919,256 +6656,139 @@
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.92"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
         "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.95"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.97"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
       "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
       "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.92"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
+      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
+      "target": "Finance\\outputs\\high_finance_careers.html",
+      "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B",
         "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
       "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -7176,11 +6796,11 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -7188,23 +6808,11 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -7212,589 +6820,65 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "weight": 7,
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
+      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 10,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
         "$M",
         "sim=0.96"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
+      "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
         "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.95"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.86"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.83"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
       "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -7802,23 +6886,11 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
       "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -7826,23 +6898,11 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
       "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
       "weight": 1,
       "type": "ticker",
@@ -7850,839 +6910,285 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
+      "target": "Finance\\outputs\\high_finance_careers.html",
+      "weight": 1,
+      "type": "ticker",
+      "types": [
+        "ticker"
+      ],
+      "via": [
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.91"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.94"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.95"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
       "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.95"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
       "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
       "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
+      "target": "Finance\\outputs\\high_finance_careers.html",
+      "weight": 1,
+      "type": "ticker",
+      "types": [
+        "ticker"
+      ],
+      "via": [
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.91"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.93"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
+      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
         "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
       "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.92"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
+      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
+      "target": "Finance\\outputs\\high_finance_careers.html",
+      "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B",
         "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.82"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.94"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 10,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M",
-        "sim=0.96"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 10,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M",
-        "sim=0.96"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
       "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -8690,73 +7196,39 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 7,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
-        "sim=0.86"
+        "$M",
+        "sim=0.96"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 1,
-      "type": "ticker",
+      "weight": 9,
+      "type": "semantic",
       "types": [
+        "semantic",
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M",
+        "sim=0.96"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
       "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -8764,23 +7236,11 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
       "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -8788,23 +7248,11 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
       "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
       "weight": 1,
       "type": "ticker",
@@ -8812,237 +7260,61 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
+      "target": "Finance\\outputs\\high_finance_careers.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
       "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.94"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
       "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -9050,23 +7322,11 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
       "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -9074,23 +7334,11 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
       "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
       "weight": 1,
       "type": "ticker",
@@ -9098,192 +7346,51 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
+      "target": "Finance\\outputs\\high_finance_careers.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
       "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.95"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
       "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.95"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.85"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 7,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\bofa_comps.html",
       "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -9291,23 +7398,11 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\bofa_comps.html",
+      "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
       "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
       "weight": 1,
       "type": "ticker",
@@ -9315,23 +7410,11 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\bofa_comps.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\bofa_comps.html",
+      "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
       "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
       "weight": 1,
       "type": "ticker",
@@ -9339,578 +7422,156 @@
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
+      "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
+      "target": "Finance\\outputs\\high_finance_careers.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
       "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.97"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
       "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 10,
+      "weight": 9,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
       "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.90"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
+      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
         "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "target": "Finance\\Theses\\2026-W25\\meta_dcf.html",
+      "source": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
+      "target": "Finance\\outputs\\high_finance_careers.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic",
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "sim=0.81"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\meta_comps.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\meta_dcf.html",
       "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.96"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\meta_dcf.html",
       "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.90"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
+      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
         "$M"
       ]
     },
     {
-      "source": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
+      "source": "Finance\\Theses\\2026-W25\\meta_dcf.html",
+      "target": "Finance\\outputs\\high_finance_careers.html",
       "weight": 1,
       "type": "ticker",
       "types": [
         "ticker"
       ],
       "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
+        "$M"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
       "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 6,
+      "weight": 5,
       "type": "semantic",
       "types": [
         "semantic",
         "ticker"
       ],
       "via": [
-        "$B",
         "$M",
         "sim=0.89"
       ]
     },
     {
       "source": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
       "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "target": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "target": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 2,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B",
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\_reference\\STANDARDIZE_MODELS.md",
-      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$B"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W22\\databricks_dcf.html",
-      "target": "Finance\\outputs\\high_finance_careers.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-dcf.html",
-      "target": "Finance\\outputs\\high_finance_careers.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-dcf.html",
-      "target": "Finance\\outputs\\high_finance_careers.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-dcf.html",
-      "target": "Finance\\outputs\\high_finance_careers.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-alphabet-dcf.html",
-      "target": "Finance\\outputs\\high_finance_careers.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-dcf.html",
-      "target": "Finance\\outputs\\high_finance_careers.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-dcf.html",
-      "target": "Finance\\outputs\\high_finance_careers.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\apple_dcf.html",
-      "target": "Finance\\outputs\\high_finance_careers.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\bofa_dcf.html",
-      "target": "Finance\\outputs\\high_finance_careers.html",
-      "weight": 1,
-      "type": "ticker",
-      "types": [
-        "ticker"
-      ],
-      "via": [
-        "$M"
-      ]
-    },
-    {
-      "source": "Finance\\Theses\\2026-W25\\meta_dcf.html",
-      "target": "Finance\\outputs\\high_finance_careers.html",
       "weight": 1,
       "type": "ticker",
       "types": [
@@ -9923,6 +7584,18 @@
     {
       "source": "Finance\\Theses\\2026-W26\\2026-W26-ford-dcf.html",
       "target": "Finance\\outputs\\high_finance_careers.html",
+      "weight": 1,
+      "type": "ticker",
+      "types": [
+        "ticker"
+      ],
+      "via": [
+        "$M"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W27\\anthropic_dcf.html",
+      "target": "Finance\\outputs\\2026-07-17-m1-4-googl-10k.html",
       "weight": 1,
       "type": "ticker",
       "types": [
@@ -10527,6 +8200,30 @@
     {
       "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\agentos-phase3-complete.md",
       "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\phone-link-bridge-is-bluebubbles.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\credential-locations.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\session-logging-is-a-hook.md",
+      "weight": 1,
+      "type": "wikilink",
+      "types": [
+        "wikilink"
+      ],
+      "via": [
+        "wikilink"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\claude-embeds-integration-unshared.md",
+      "target": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\session-logging-is-a-hook.md",
       "weight": 1,
       "type": "wikilink",
       "types": [
@@ -16177,7 +13874,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
+      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
       "target": "School\\Tutor\\rebuild-handoff.md",
       "weight": 3,
       "type": "semantic",
@@ -16185,11 +13882,11 @@
         "semantic"
       ],
       "via": [
-        "sim=0.85"
+        "sim=0.84"
       ]
     },
     {
-      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
+      "source": "Agent\\agentos\\SKILLS_PLUGINS_AUDIT_2026-07-07.md",
       "target": "School\\Tutor\\rebuild-handoff.md",
       "weight": 3,
       "type": "semantic",
@@ -17641,18 +15338,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "target": "memory\\coding.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\GLOBAL_CLAUDE_MD.md",
       "target": "memory\\coding.md",
       "weight": 3,
@@ -17686,6 +15371,18 @@
       ],
       "via": [
         "sim=0.85"
+      ]
+    },
+    {
+      "source": "School\\Capstone\\tutor\\knowledge.md",
+      "target": "memory\\coding.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
       ]
     },
     {
@@ -18770,18 +16467,6 @@
     },
     {
       "source": "Agent\\agentos\\EFFORT_CALIBRATION.md",
-      "target": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\EFFORT_CALIBRATION.md",
       "target": "Agent\\agentos\\time_allocation.md",
       "weight": 6,
       "type": "semantic",
@@ -18807,6 +16492,18 @@
     {
       "source": "Agent\\agentos\\EFFORT_CALIBRATION.md",
       "target": "Research\\_reference\\STANDING_ORDERS.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\EFFORT_CALIBRATION.md",
+      "target": "Agent\\agentos\\RESEARCH-CORE-PROTOCOL.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -19045,15 +16742,15 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
+      "source": "Agent\\agentos\\02_agentos_v2_architecture.md",
       "target": "Agent\\agentos\\imessage_architecture.md",
-      "weight": 8,
+      "weight": 4,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.89"
+        "sim=0.88"
       ]
     },
     {
@@ -19525,20 +17222,20 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "target": "Agent\\agentos\\time_allocation.md",
+      "source": "Agent\\agentos\\time_allocation.md",
+      "target": "Agent\\agentos\\weekly_summary.md",
       "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.84"
+        "sim=0.83"
       ]
     },
     {
       "source": "Agent\\agentos\\time_allocation.md",
-      "target": "Agent\\agentos\\weekly_summary.md",
+      "target": "Health\\CLAUDE.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -21925,18 +19622,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\pending_actions.md",
-      "target": "Agent\\agentos\\shadow\\assistant\\outputs\\pending_actions_aging\\2026-06-13.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.88"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\activity_log.md",
       "target": "Agent\\agentos\\shadow\\assistant\\outputs\\pending_actions_aging\\2026-06-13.md",
       "weight": 3,
@@ -22825,6 +20510,126 @@
       ]
     },
     {
+      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
+      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.90"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
+      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
+      "weight": 8,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.88"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
+      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
+      "target": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
+      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
+      "target": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
+      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
       "source": "Finance\\Theses\\2026-W23\\2026-W23-spacex-comps.html",
       "target": "Finance\\Theses\\2026-W29\\spacex_thesis_review.md",
       "weight": 3,
@@ -22834,6 +20639,42 @@
       ],
       "via": [
         "sim=0.81"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
       ]
     },
     {
@@ -22898,6 +20739,30 @@
     },
     {
       "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
       "target": "Finance\\Theses\\2026-W25\\openai_thesis.md",
       "weight": 3,
       "type": "semantic",
@@ -22906,6 +20771,186 @@
       ],
       "via": [
         "sim=0.85"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
+      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\apple_comps.html",
+      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-spacex-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\apple_comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\bofa_comps.html",
+      "target": "Finance\\Theses\\2026-W25\\meta_comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.85"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\bofa_comps.html",
+      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
+      "weight": 6,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
+      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W23\\2026-W23-anthropic-comps.html",
+      "target": "Finance\\Theses\\2026-W25\\bofa_comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.81"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\meta_comps.html",
+      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.84"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W24\\2026-W24-snowflake-comps.html",
+      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W22\\databricks_comps.html",
+      "target": "Finance\\Theses\\2026-W26\\2026-W26-ford-comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\2026-W25-openai-comps.html",
+      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.82"
+      ]
+    },
+    {
+      "source": "Finance\\Theses\\2026-W25\\meta_comps.html",
+      "target": "Finance\\Theses\\2026-W27\\anthropic_comps.html",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.81"
       ]
     },
     {
@@ -25189,18 +23234,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1E_dashboard.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
       "target": "Agent\\agentos\\lifeos-system-audit\\map\\1E_dashboard.md",
       "weight": 4,
@@ -25238,6 +23271,18 @@
     },
     {
       "source": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1E_dashboard.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.87"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\02_NOTION_LIFEOS.md",
       "target": "Agent\\agentos\\lifeos-system-audit\\map\\1E_dashboard.md",
       "weight": 3,
       "type": "semantic",
@@ -25922,18 +23967,6 @@
     },
     {
       "source": "Agent\\agentos\\activity_log.md",
-      "target": "Agent\\agentos\\pending_actions.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\activity_log.md",
       "target": "Agent\\agentos\\signals.md",
       "weight": 8,
       "type": "semantic",
@@ -25957,15 +23990,15 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\pending_actions.md",
-      "target": "Agent\\agentos\\signals.md",
-      "weight": 8,
+      "source": "Agent\\agentos\\activity_log.md",
+      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
+      "weight": 3,
       "type": "semantic",
       "types": [
         "semantic"
       ],
       "via": [
-        "sim=0.90"
+        "sim=0.86"
       ]
     },
     {
@@ -25982,6 +24015,18 @@
     },
     {
       "source": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
+      "target": "Agent\\agentos\\signals.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.83"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
       "target": "Agent\\agentos\\signals.md",
       "weight": 3,
       "type": "semantic",
@@ -26173,30 +24218,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
-      "target": "Agent\\agentos\\pending_actions.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.87"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\lifeos-system-audit\\41_AGENT-VS-COWORK-FIDELITY-AUDIT.md",
-      "target": "Agent\\agentos\\pending_actions.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\CAREER-AGENT-DESIGN.md",
       "target": "Career\\CLAUDE.md",
       "weight": 8,
@@ -26350,42 +24371,6 @@
       ],
       "via": [
         "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\GLOBAL_CLAUDE_MD.md",
-      "target": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "target": "Agent\\agentos\\PROTOCOL.md",
-      "weight": 4,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.89"
       ]
     },
     {
@@ -27925,66 +25910,6 @@
       ]
     },
     {
-      "source": "Health\\_logs\\metrics_history.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W28.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.83"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\metrics_history.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W20.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.82"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\metrics_history.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W19.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.81"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\metrics_history.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W24.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.81"
-      ]
-    },
-    {
-      "source": "Health\\_logs\\metrics_history.md",
-      "target": "Health\\reviews\\weekly_reviews\\2026-W22.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.80"
-      ]
-    },
-    {
       "source": "Research\\outputs\\2026-07-17_research-brief_pst.md",
       "target": "Research\\outputs\\2026-07-22_research-brief_pst.md",
       "weight": 8,
@@ -28250,18 +26175,6 @@
     },
     {
       "source": "Agent\\agentos\\build-tree\\agent-framework-questmap.html",
-      "target": "Agent\\agentos\\build-tree\\generator\\out\\agent-framework-questmap.html",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.97"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\build-tree\\agent-framework-questmap.html",
       "target": "Agent\\agentos\\build-tree\\generator\\template.html",
       "weight": 6,
       "type": "semantic",
@@ -28270,30 +26183,6 @@
       ],
       "via": [
         "sim=0.85"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\build-tree\\agent-framework-questmap.html",
-      "target": "Agent\\agentos\\build-tree\\generator\\out\\finance-terminal-questmap.html",
-      "weight": 6,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.84"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\build-tree\\agent-framework-questmap.html",
-      "target": "Agent\\agentos\\build-tree\\generator\\out\\sports-prediction-models-questmap.html",
-      "weight": 6,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.83"
       ]
     },
     {
@@ -28450,78 +26339,6 @@
       ],
       "via": [
         "sim=0.86"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\build-tree\\generator\\out\\agent-framework-questmap.html",
-      "target": "Agent\\agentos\\build-tree\\generator\\template.html",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\build-tree\\generator\\out\\finance-terminal-questmap.html",
-      "target": "Agent\\agentos\\build-tree\\generator\\template.html",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.92"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\build-tree\\generator\\out\\sports-prediction-models-questmap.html",
-      "target": "Agent\\agentos\\build-tree\\generator\\template.html",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\build-tree\\generator\\out\\agent-framework-questmap.html",
-      "target": "Agent\\agentos\\build-tree\\generator\\out\\finance-terminal-questmap.html",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.91"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\build-tree\\generator\\out\\agent-framework-questmap.html",
-      "target": "Agent\\agentos\\build-tree\\generator\\out\\sports-prediction-models-questmap.html",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\build-tree\\generator\\out\\finance-terminal-questmap.html",
-      "target": "Agent\\agentos\\build-tree\\generator\\out\\sports-prediction-models-questmap.html",
-      "weight": 8,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.90"
       ]
     },
     {
@@ -29245,6 +27062,18 @@
       ]
     },
     {
+      "source": "Agent\\agentos\\GLOBAL_CLAUDE_MD.md",
+      "target": "memory\\system.md",
+      "weight": 4,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.88"
+      ]
+    },
+    {
       "source": "Agent\\agentos\\IMPLEMENTATION_PLAYBOOK_2026-06.md",
       "target": "Agent\\agentos\\lifeos-system-audit\\43_PARITY-RESTORE-PROGRESS.md",
       "weight": 4,
@@ -29653,7 +27482,7 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
+      "source": "Agent\\agentos\\GLOBAL_CLAUDE_MD.md",
       "target": "School\\Tutor\\CLAUDE.md",
       "weight": 3,
       "type": "semantic",
@@ -29661,11 +27490,11 @@
         "semantic"
       ],
       "via": [
-        "sim=0.86"
+        "sim=0.85"
       ]
     },
     {
-      "source": "Agent\\agentos\\GLOBAL_CLAUDE_MD.md",
+      "source": "Research\\CLAUDE.md",
       "target": "School\\Tutor\\CLAUDE.md",
       "weight": 3,
       "type": "semantic",
@@ -29821,66 +27650,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\MEMORY.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\map\\1A_memory.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.83"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\MEMORY.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\35_KICKOFF-6-PROGRESS.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.83"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\MEMORY.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\10_LIFEOS-ATLAS.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.83"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\MEMORY.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\20_ROADMAP.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.82"
-      ]
-    },
-    {
-      "source": "Agent\\agentos\\harness-memory-mirror\\edwin\\C--Users-edwin-OneDrive-Desktop-Claude\\MEMORY.md",
-      "target": "Agent\\agentos\\lifeos-system-audit\\21_ARCHITECT-QA.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.82"
-      ]
-    },
-    {
       "source": "Finance\\Market_Scans\\2026-W19_scan.md",
       "target": "Finance\\outputs\\2026-07-23_watchdesk_nvda-pltr-gev_DRAFT-HELD.md",
       "weight": 3,
@@ -30025,18 +27794,6 @@
       ]
     },
     {
-      "source": "Agent\\agentos\\LIFEOS_TRACKING_PROTOCOL.md",
-      "target": "Business\\CLAUDE.md",
-      "weight": 3,
-      "type": "semantic",
-      "types": [
-        "semantic"
-      ],
-      "via": [
-        "sim=0.86"
-      ]
-    },
-    {
       "source": "Agent\\agentos\\GLOBAL_CLAUDE_MD.md",
       "target": "Business\\CLAUDE.md",
       "weight": 3,
@@ -30051,6 +27808,18 @@
     {
       "source": "Business\\CLAUDE.md",
       "target": "Finance\\_reference\\03_earnings_calls.md",
+      "weight": 3,
+      "type": "semantic",
+      "types": [
+        "semantic"
+      ],
+      "via": [
+        "sim=0.86"
+      ]
+    },
+    {
+      "source": "Agent\\agentos\\SystemMap\\03_PLUGINS_SKILLS.md",
+      "target": "Business\\CLAUDE.md",
       "weight": 3,
       "type": "semantic",
       "types": [
@@ -30194,13 +27963,115 @@
     }
   ],
   "coverage": {
-    "Business": [
+    "Research": [
       {
-        "id": "grail-hunter-weekly",
-        "name": "Grail Hunter",
-        "agent": "business",
-        "trigger": "Mon 08:00"
+        "id": "research-weekly-project",
+        "name": "Research Weekly Project",
+        "agent": "research",
+        "trigger": "Tue 11:12"
       },
+      {
+        "id": "research-weekly-project-2",
+        "name": "Research Project (2nd session)",
+        "agent": "research",
+        "trigger": "TBD (Fri/Sat)"
+      },
+      {
+        "id": "research-monitor-digest",
+        "name": "Research Monitor Digest",
+        "agent": "research",
+        "trigger": "TBD weekly/biwk"
+      },
+      {
+        "id": "research-on-demand",
+        "name": "Research producer, on-demand (agent framework)",
+        "agent": "research",
+        "trigger": "on-demand only (invoke_agent / --goal)"
+      },
+      {
+        "id": "research-queue-drainer",
+        "name": "Research Queue Drainer (agent framework)",
+        "agent": "research",
+        "trigger": "Mon/Wed/Fri 14:00 PST"
+      }
+    ],
+    "Marketing": [
+      {
+        "id": "salil-weekly-social-dashboard",
+        "name": "Salil Social Dashboard",
+        "agent": "marketing",
+        "trigger": "Fri 08:01"
+      },
+      {
+        "id": "salil-weekly-analytics-brief",
+        "name": "Salil Analytics Brief",
+        "agent": "marketing",
+        "trigger": "Fri 09:01"
+      },
+      {
+        "id": "faceless-ig-weekly-drafts",
+        "name": "Faceless IG Weekly Drafts",
+        "agent": "marketing",
+        "trigger": "Weekly Sun 07:10"
+      },
+      {
+        "id": "marketing-content-mwf",
+        "name": "Salil marketing content desk (agent framework)",
+        "agent": "marketing",
+        "trigger": "Mon/Wed/Fri 09:30 PST"
+      }
+    ],
+    "Health": [
+      {
+        "id": "workout-postworkout-analyzer",
+        "name": "Post-Workout Analyzer",
+        "agent": "health",
+        "trigger": "Daily 21:32"
+      },
+      {
+        "id": "health-watchdesk-daily",
+        "name": "Health Watchdesk (agent framework)",
+        "agent": "health",
+        "trigger": "Daily 06:00 PST"
+      },
+      {
+        "id": "health-checkin-weekly",
+        "name": "Health midweek check-in (agent framework)",
+        "agent": "health",
+        "trigger": "Thu 06:30 PST"
+      },
+      {
+        "id": "health-review-weekly",
+        "name": "Health weekly review + plan (agent framework)",
+        "agent": "health",
+        "trigger": "Sat 08:00 PST"
+      },
+      {
+        "id": "health-science-monthly",
+        "name": "Health Science Review (agent framework)",
+        "agent": "health",
+        "trigger": "First Sunday of the month 09:00 PST"
+      },
+      {
+        "id": "health-dashboard-refresh",
+        "name": "Health Dashboard Refresh (deterministic)",
+        "agent": "health",
+        "trigger": "Daily 07:00 PST"
+      },
+      {
+        "id": "watcher-health",
+        "name": "Health signal watcher (proactive spine)",
+        "agent": "health",
+        "trigger": "Daily 07:00, 13:00, 20:00 PST"
+      },
+      {
+        "id": "health-preworkout-daily",
+        "name": "Health pre-workout scheduler (deterministic T-30)",
+        "agent": "health",
+        "trigger": "Daily 06:00 PST"
+      }
+    ],
+    "Business": [
       {
         "id": "GrailHunter3h",
         "name": "Grail Hunter (Windows every-3h)",
@@ -30220,25 +28091,57 @@
         "trigger": "Mon 09:00 PST"
       }
     ],
+    "Trading": [
+      {
+        "id": "pt-bot-v2-routines",
+        "name": "PT-Bot v2 Strategy Tasks (B-F)",
+        "agent": "trading",
+        "trigger": "Per-strategy Task Scheduler tasks (ptbot-B..F)"
+      },
+      {
+        "id": "finterm-api",
+        "name": "Finance Terminal API",
+        "agent": "trading",
+        "trigger": "At logon"
+      },
+      {
+        "id": "finterm-web",
+        "name": "Finance Terminal Web",
+        "agent": "trading",
+        "trigger": "At logon"
+      },
+      {
+        "id": "finterm-prebake",
+        "name": "Finance Terminal Premarket Prebake",
+        "agent": "trading",
+        "trigger": "Mon-Fri 05:30 PT"
+      },
+      {
+        "id": "finterm-quote-refresh",
+        "name": "Finance Terminal Quote Refresh",
+        "agent": "trading",
+        "trigger": "Mon-Fri 06:35-12:35 hourly + 13:05 PT post-close snapshot"
+      },
+      {
+        "id": "finterm-price-refresh",
+        "name": "Finance Terminal Price Refresh",
+        "agent": "trading",
+        "trigger": "Mon-Fri 13:45 PT"
+      },
+      {
+        "id": "finterm-edgar-sync",
+        "name": "Finance Terminal EDGAR Sync",
+        "agent": "trading",
+        "trigger": "Daily 21:00 PT"
+      },
+      {
+        "id": "finterm-universe-sync",
+        "name": "Finance Terminal Universe Sync",
+        "agent": "trading",
+        "trigger": "Sun 18:00 PT"
+      }
+    ],
     "Finance": [
-      {
-        "id": "daily-finance-scan",
-        "name": "Daily Finance Scan",
-        "agent": "finance",
-        "trigger": "Mon-Fri 05:15"
-      },
-      {
-        "id": "finance-market-scan",
-        "name": "Market Scan",
-        "agent": "finance",
-        "trigger": "Wed 11:07"
-      },
-      {
-        "id": "finance-weekly-thesis",
-        "name": "Finance Weekly Thesis",
-        "agent": "finance",
-        "trigger": "Mon 11:07"
-      },
       {
         "id": "finance-watchdesk-daily",
         "name": "Finance Watchdesk (agent framework)",
@@ -30282,242 +28185,6 @@
         "trigger": "Weekdays 06:30, 12:30, 17:30 PST"
       }
     ],
-    "Research": [
-      {
-        "id": "research-weekly-project",
-        "name": "Research Weekly Project",
-        "agent": "research",
-        "trigger": "Tue 11:12"
-      },
-      {
-        "id": "research-weekly-project-2",
-        "name": "Research Project (2nd session)",
-        "agent": "research",
-        "trigger": "TBD (Fri/Sat)"
-      },
-      {
-        "id": "research-monitor-digest",
-        "name": "Research Monitor Digest",
-        "agent": "research",
-        "trigger": "TBD weekly/biwk"
-      },
-      {
-        "id": "media-curator-daily",
-        "name": "Media Curator",
-        "agent": "research",
-        "trigger": "Daily 05:40"
-      },
-      {
-        "id": "research-on-demand",
-        "name": "Research producer, on-demand (agent framework)",
-        "agent": "research",
-        "trigger": "on-demand only (invoke_agent / --goal)"
-      },
-      {
-        "id": "research-queue-drainer",
-        "name": "Research Queue Drainer (agent framework)",
-        "agent": "research",
-        "trigger": "Mon/Wed/Fri 14:00 PST"
-      }
-    ],
-    "Marketing": [
-      {
-        "id": "salil-weekly-social-dashboard",
-        "name": "Salil Social Dashboard",
-        "agent": "marketing",
-        "trigger": "Fri 08:01"
-      },
-      {
-        "id": "salil-weekly-analytics-brief",
-        "name": "Salil Analytics Brief",
-        "agent": "marketing",
-        "trigger": "Fri 09:01"
-      },
-      {
-        "id": "faceless-ig-weekly-drafts",
-        "name": "Faceless IG Weekly Drafts",
-        "agent": "marketing",
-        "trigger": "Weekly Sun 07:10"
-      },
-      {
-        "id": "marketing-content-mwf",
-        "name": "Salil marketing content desk (agent framework)",
-        "agent": "marketing",
-        "trigger": "Mon/Wed/Fri 09:30 PST"
-      }
-    ],
-    "Health": [
-      {
-        "id": "health-weekly-sync",
-        "name": "Health Midweek Sync",
-        "agent": "health",
-        "trigger": "Thu 11:10"
-      },
-      {
-        "id": "health-weekly-review",
-        "name": "Health Weekly Review",
-        "agent": "health",
-        "trigger": "Sat 21:06"
-      },
-      {
-        "id": "health-sunday-plan",
-        "name": "Health Sunday Plan",
-        "agent": "health",
-        "trigger": "Sun 05:38"
-      },
-      {
-        "id": "workout-postworkout-analyzer",
-        "name": "Post-Workout Analyzer",
-        "agent": "health",
-        "trigger": "Daily 21:32"
-      },
-      {
-        "id": "workout-preworkout-checker",
-        "name": "Pre-Workout Alerts",
-        "agent": "health",
-        "trigger": "Every 30m 05-22"
-      },
-      {
-        "id": "health-watchdesk-daily",
-        "name": "Health Watchdesk (agent framework)",
-        "agent": "health",
-        "trigger": "Daily 06:00 PST"
-      },
-      {
-        "id": "health-preworkout-oneshot",
-        "name": "Health pre-workout brief (superseded documentation row)",
-        "agent": "health",
-        "trigger": "Superseded; no task is declared by this row"
-      },
-      {
-        "id": "health-checkin-weekly",
-        "name": "Health midweek check-in (agent framework)",
-        "agent": "health",
-        "trigger": "Thu 06:30 PST"
-      },
-      {
-        "id": "health-review-weekly",
-        "name": "Health weekly review + plan (agent framework)",
-        "agent": "health",
-        "trigger": "Sat 08:00 PST"
-      },
-      {
-        "id": "health-science-monthly",
-        "name": "Health Science Review (agent framework)",
-        "agent": "health",
-        "trigger": "First Sunday of the month 09:00 PST"
-      },
-      {
-        "id": "health-dashboard-refresh",
-        "name": "Health Dashboard Refresh (deterministic)",
-        "agent": "health",
-        "trigger": "schedule"
-      },
-      {
-        "id": "watcher-health",
-        "name": "Health signal watcher (proactive spine)",
-        "agent": "health",
-        "trigger": "Daily 07:00, 13:00, 20:00 PST"
-      },
-      {
-        "id": "health-preworkout-daily",
-        "name": "Health pre-workout scheduler (deterministic T-30)",
-        "agent": "health",
-        "trigger": "Daily 06:00 PST"
-      }
-    ],
-    "Trading": [
-      {
-        "id": "pt-bot-v2-routines",
-        "name": "PT-Bot v2 Strategy Tasks (B-F)",
-        "agent": "trading",
-        "trigger": "Per-strategy Task Scheduler tasks (ptbot-B..F)"
-      },
-      {
-        "id": "finterm-api",
-        "name": "Finance Terminal API",
-        "agent": "trading",
-        "trigger": "At logon"
-      },
-      {
-        "id": "finterm-api-desktop",
-        "name": "Finance Terminal API (desktop)",
-        "agent": "trading",
-        "trigger": "At logon"
-      },
-      {
-        "id": "finterm-web",
-        "name": "Finance Terminal Web",
-        "agent": "trading",
-        "trigger": "At logon"
-      },
-      {
-        "id": "finterm-web-desktop",
-        "name": "Finance Terminal Web (desktop)",
-        "agent": "trading",
-        "trigger": "At logon"
-      },
-      {
-        "id": "finterm-prebake",
-        "name": "Finance Terminal Premarket Prebake",
-        "agent": "trading",
-        "trigger": "Mon-Fri 05:30 PT"
-      },
-      {
-        "id": "finterm-prebake-desktop",
-        "name": "Finance Terminal Premarket Prebake (desktop)",
-        "agent": "trading",
-        "trigger": "Mon-Fri 05:30 PT"
-      },
-      {
-        "id": "finterm-quote-refresh",
-        "name": "Finance Terminal Quote Refresh",
-        "agent": "trading",
-        "trigger": "Mon-Fri 06:35-12:35 hourly + 13:05 PT post-close snapshot"
-      },
-      {
-        "id": "finterm-quote-refresh-desktop",
-        "name": "Finance Terminal Quote Refresh (desktop)",
-        "agent": "trading",
-        "trigger": "Mon-Fri 06:35-12:35 hourly + 13:05 PT post-close snapshot"
-      },
-      {
-        "id": "finterm-price-refresh",
-        "name": "Finance Terminal Price Refresh",
-        "agent": "trading",
-        "trigger": "Mon-Fri 13:45 PT"
-      },
-      {
-        "id": "finterm-price-refresh-desktop",
-        "name": "Finance Terminal Price Refresh (desktop)",
-        "agent": "trading",
-        "trigger": "Mon-Fri 13:45 PT"
-      },
-      {
-        "id": "finterm-edgar-sync",
-        "name": "Finance Terminal EDGAR Sync",
-        "agent": "trading",
-        "trigger": "Daily 21:00 PT"
-      },
-      {
-        "id": "finterm-edgar-sync-desktop",
-        "name": "Finance Terminal EDGAR Sync (desktop)",
-        "agent": "trading",
-        "trigger": "Daily 21:00 PT"
-      },
-      {
-        "id": "finterm-universe-sync",
-        "name": "Finance Terminal Universe Sync",
-        "agent": "trading",
-        "trigger": "Sun 18:00 PT"
-      },
-      {
-        "id": "finterm-universe-sync-desktop",
-        "name": "Finance Terminal Universe Sync (desktop)",
-        "agent": "trading",
-        "trigger": "Sun 18:00 PT"
-      }
-    ],
     "Career": [
       {
         "id": "career-triage-daily",
@@ -30540,9 +28207,9 @@
     ]
   },
   "embed_coverage": {
-    "files_embedded": 552,
-    "files_total": 555,
-    "chunks_embedded": 5401,
-    "chunks_total": 5401
+    "files_embedded": 544,
+    "files_total": 602,
+    "chunks_embedded": 5353,
+    "chunks_total": 5806
   }
 }

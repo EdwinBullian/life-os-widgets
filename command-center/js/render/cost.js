@@ -1,10 +1,9 @@
 // Cost tab: spend KPIs, by-model / by-agent bars, weekly-cap donut. Markup matches the approved
-// mockup verbatim (grid/box/kpi/barrow/donut classes ported into css/styles.css). Read-only except
-// the Edit-cap control, a Phase-2 stub (toast, no postAction). Degrades to a placeholder on
-// null/malformed spend so the Cost tab and topbar never crash.
+// mockup verbatim (grid/box/kpi/barrow/donut classes ported into css/styles.css). Fully read-only
+// as of 2026-07-26 — the "Edit cap" stub was deleted (button-parity audit: no bus action exists
+// for it). Degrades to a placeholder on null/malformed spend so the Cost tab and topbar never crash.
 
 import { esc, safe, isStale } from '../util.js';
-import { toast } from './agents.js';
 import { getMaxPct } from '../proxy.js';
 
 const SPEND_CADENCE_MS = 6 * 60 * 60 * 1000; // slow job, not the 60s poll
@@ -157,7 +156,11 @@ export function renderCost(state, panelArg) {
     + '<div class="box">'
     + `<div class="ptitle">Est. weekly cost by model${stale}${regUpdated}</div>${modelBars}</div>`
     + '<div class="box">'
-    + '<div class="ptitle">Weekly $ cap <button class="btn sm ghost" data-action="editCap">Edit cap</button></div>'
+    // "Edit cap" was a dead end — it toasted "Edit cap" and changed nothing. The cap is a plain
+    // number in data/spend.json with no bus action behind it, so per the button-parity audit the
+    // button is deleted rather than left faking an edit. Say where the number actually lives.
+    + '<div class="ptitle">Weekly $ cap <span class="faint mono" title="Hand-maintained in the dashboard\'s data file">'
+    + 'set in data/spend.json</span></div>'
     + gauge
     + '<div class="ptitle" style="margin-top:6px">Est. weekly cost by agent <span class="faint">blended model rates</span></div>'
     + `${agentBars}</div>`
@@ -167,10 +170,7 @@ export function renderCost(state, panelArg) {
   wireCost(panel);
 }
 
-function wireCost(panel) {
-  if (panel.__costWired) return;
-  panel.__costWired = true;
-  panel.addEventListener('click', (e) => {
-    if (e.target.closest('[data-action="editCap"]')) toast('Edit cap');
-  });
-}
+// The Cost tab is read-only by design: every number on it is derived from spend.json /
+// registry.json, and there is no bus action that writes any of them. It therefore has no
+// click handlers — an empty wire function is kept so the render path stays uniform.
+function wireCost() { /* no interactive controls on this tab */ }

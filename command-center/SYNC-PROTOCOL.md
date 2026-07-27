@@ -45,10 +45,23 @@ For each actual task it finds:
 
 It does **not** edit policy fields, and it never deletes rows — drift is surfaced, you decide.
 
-## Rule 3 — One escalation
-If the nightly reconcile finds drift, it sends **one** iMessage via the Phone Link bridge: e.g.
-`"Registry drift: 2 tasks differ from declared. Open Command Center."` — silent when clean (same escalation
-discipline as the agents).
+## Rule 3 — Surface drift on the dashboard, do NOT text
+Registry drift is **not** an interrupt. Write the drift flags into `registry.json` (Rule 2) and let the Command
+Center render them. Send **no** iMessage.
+
+> **Changed 2026-07-26 (Eddie).** This rule used to read "it sends one iMessage … e.g. *Registry drift: 2 tasks
+> differ from declared. Open Command Center.*" Because that instruction lives in a doc rather than in code, it was
+> being carried out by whichever agent read this file — which is why the exact wording drifted between runs
+> (`"Registry drift - 4 tasks…"`, `"Registry drift: 6 tasks…"`) and why no grep of the codebase ever found a
+> sender. One of those texts landed at 06:42 on 2026-07-26 among the ten that morning, reporting 18 drifted tasks
+> in the same hour the Python reconciler logged `79 rows, 0 drifted` — so the number was not even reconciled
+> against ground truth.
+>
+> Drift is a "look at this when you next open the dashboard" condition, not a wake-Eddie condition. The single
+> daily text is the 09:00 briefing; nothing else may claim an unprompted send.
+
+**The one exception:** if the reconciler itself *fails to run or crashes*, that is a genuine warning and follows
+the normal escalation path — a reconciler that is silently dead is exactly the failure that hides everything else.
 
 ## Why this covers the Cowork + gateway split specifically
 The whole reason the Command Center exists is that you run agents in **two ecosystems** and need one view. Rule 1
@@ -58,7 +71,10 @@ one you happen to be in.
 
 ## Build status
 - Protocol: defined here + referenced in `registry.json._sync_protocol`.
-- `registry-reconcile` task: **not yet built.** It's a natural `infra` agent job (open/local tier, ~cheap). Eddie:
-  say go and it gets specced as a new registry row + a scheduled task that implements the table above.
+- `registry-reconcile` task: **built and armed** (commit `aa876a9`, rebuilt 2026-07-25). Runs as the Windows task
+  `RegistryReconcile` at 06:00 and logs to `agent_framework/state/registry-reconcile.log`
+  (e.g. `2026-07-26T06:00:01  registry-reconcile: 79 rows, 0 drifted, 0 unverifiable`).
+  Corrected 2026-07-26 — this line still read "not yet built" long after it shipped, which is the kind of stale
+  status that invites an agent to helpfully build a second one.
 - CLAUDE.md one-liner for Rule 1: recommended add — "When you change any scheduled task, update
   Agent/command-center/data/registry.json in the same change."
