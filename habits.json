@@ -549,6 +549,76 @@
       "Screen Time": false,
       "Stretch": false,
       "Supplements": false
+    },
+    "2026-07-22": {
+      "10k Steps": true,
+      "Calories": true,
+      "Clean": true,
+      "Lift": false,
+      "Meditate": true,
+      "Screen Time": false,
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-07-23": {
+      "10k Steps": true,
+      "Calories": false,
+      "Clean": true,
+      "Lift": false,
+      "Meditate": true,
+      "Screen Time": true,
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-07-24": {
+      "10k Steps": false,
+      "Calories": true,
+      "Clean": true,
+      "Lift": true,
+      "Meditate": true,
+      "Screen Time": true,
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-07-25": {
+      "10k Steps": true,
+      "Calories": true,
+      "Clean": false,
+      "Lift": false,
+      "Meditate": true,
+      "Screen Time": true,
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-07-26": {
+      "10k Steps": true,
+      "Calories": true,
+      "Clean": true,
+      "Lift": true,
+      "Meditate": true,
+      "Screen Time": false,
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-07-27": {
+      "10k Steps": true,
+      "Calories": true,
+      "Clean": true,
+      "Lift": true,
+      "Meditate": true,
+      "Screen Time": false,
+      "Stretch": true,
+      "Supplements": true
+    },
+    "2026-07-28": {
+      "10k Steps": true,
+      "Calories": true,
+      "Clean": false,
+      "Lift": true,
+      "Meditate": true,
+      "Screen Time": false,
+      "Stretch": true,
+      "Supplements": true
     }
   },
   "habits": {
@@ -727,19 +797,26 @@
     "2026-06-22": 88,
     "2026-06-23": 88,
     "2026-06-24": 75,
-    "2026-06-25": -1
+    "2026-06-25": -1,
+    "2026-07-22": 75,
+    "2026-07-23": 75,
+    "2026-07-24": 88,
+    "2026-07-25": 75,
+    "2026-07-26": 88,
+    "2026-07-27": 88,
+    "2026-07-28": 75
   },
-  "streak": 0,
+  "streak": 7,
   "streaks": {
-    "10k Steps": 0,
-    "Calories": 0,
+    "10k Steps": 4,
+    "Calories": 5,
     "Clean": 0,
-    "Lift": 0,
-    "Meditate": 0,
+    "Lift": 3,
+    "Meditate": 7,
     "Screen Time": 0,
-    "Stretch": 0,
-    "Supplements": 0
+    "Stretch": 7,
+    "Supplements": 7
   },
   "totalHabits": 8,
-  "updated": 1785237488
+  "updated": 1785324371
 }
