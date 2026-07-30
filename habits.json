@@ -806,17 +806,17 @@
     "2026-07-27": 88,
     "2026-07-28": 75
   },
-  "streak": 7,
+  "streak": 0,
   "streaks": {
-    "10k Steps": 4,
-    "Calories": 5,
+    "10k Steps": 0,
+    "Calories": 0,
     "Clean": 0,
-    "Lift": 3,
-    "Meditate": 7,
+    "Lift": 0,
+    "Meditate": 0,
     "Screen Time": 0,
-    "Stretch": 7,
-    "Supplements": 7
+    "Stretch": 0,
+    "Supplements": 0
   },
   "totalHabits": 8,
-  "updated": 1785324371
+  "updated": 1785409699
 }
