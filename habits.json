@@ -828,17 +828,17 @@
     "2026-08-04": 62,
     "2026-08-07": 75
   },
-  "streak": 1,
+  "streak": 0,
   "streaks": {
-    "10k Steps": 1,
-    "Calories": 1,
+    "10k Steps": 0,
+    "Calories": 0,
     "Clean": 0,
     "Lift": 0,
-    "Meditate": 1,
-    "Screen Time": 1,
-    "Stretch": 1,
-    "Supplements": 1
+    "Meditate": 0,
+    "Screen Time": 0,
+    "Stretch": 0,
+    "Supplements": 0
   },
   "totalHabits": 8,
-  "updated": 1786181891
+  "updated": 1786268384
 }
