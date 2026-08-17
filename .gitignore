@@ -1,0 +1,5 @@
+
+# Scratch backups agents leave behind (registry.json.bak-registryreconcile and
+# friends). Leaked into this public repo once on 2026-08-17 via sync-to-deploy.ps1.
+*.bak
+*.bak-*
