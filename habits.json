@@ -850,17 +850,17 @@
     "2026-09-10": -1,
     "2026-09-12": 50
   },
-  "streak": 1,
+  "streak": 0,
   "streaks": {
-    "10k Steps": 1,
+    "10k Steps": 0,
     "Calories": 0,
-    "Clean": 1,
+    "Clean": 0,
     "Lift": 0,
-    "Meditate": 1,
+    "Meditate": 0,
     "Screen Time": 0,
     "Stretch": 0,
-    "Supplements": 1
+    "Supplements": 0
   },
   "totalHabits": 8,
-  "updated": 1789306895
+  "updated": 1789400577
 }
