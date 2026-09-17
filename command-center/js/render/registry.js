@@ -52,23 +52,11 @@ function enabledToggle(task) {
     + `<input type="checkbox" data-action="regToggle" data-id="${id}"${on}><span class="reg-slider"></span></label>`;
 }
 
-// Drift badge: what the reconciler observed disagrees with what the row declares.
-// Until 2026-09-02 the reconciler wrote drift/driftReason/observedCron into
-// registry.json and nothing on the dashboard read them, so a job silently running
-// on the wrong schedule (or not at all) was invisible here.
-function driftBadge(task) {
-  if (!task.drift) return '';
-  const why = esc(task.driftReason || 'declared state disagrees with reality');
-  const seen = task.observedCron ? ` actually ${esc(task.observedCron)}` : '';
-  return `<span class="reg-drift" title="${why}">drift${seen}</span>`;
-}
-
 // Always-editable schedule/frequency input (commits on blur/Enter via the change event).
 function scheduleInput(task) {
   const id = esc(task.id || '');
   return `<input class="reg-sched-input" data-action="regSched" data-id="${id}" `
-    + `value="${esc(task.trigger || '')}" placeholder="e.g. Mon 08:00" title="${esc(task.cron || '')}">`
-    + driftBadge(task);
+    + `value="${esc(task.trigger || '')}" placeholder="e.g. Mon 08:00" title="${esc(task.cron || '')}">`;
 }
 
 // Model dropdown.
@@ -169,7 +157,7 @@ function buildTable(tasks) {
     const migratable = recTier && recTier !== curTier && curTier !== 'n/a';
     const cls = `ag-${agent}${migratable ? ' reg-row-migrate' : ''}${t.enabled ? '' : ' reg-row-off'}`;
     return `<tr class="${cls}">`
-      + `<td><span class="ag-text-${agent} reg-name">${esc(t.display_name || t.name || t.id || '?')}</span></td>`
+      + `<td><span class="ag-text-${agent} reg-name">${esc(t.name || t.id || '?')}</span></td>`
       + `<td><span class="ag-text-${agent}">${esc(t.agent || '—')}</span></td>`
       + `<td>${tierChip(t.currentTier)}</td>`
       + `<td style="text-align:center">${enabledToggle(t)}</td>`
@@ -188,9 +176,6 @@ function getFilteredSorted(tasks) {
     if (_filter === 'all') return true;
     if (_filter === 'active') return isActive(t);
     if (_filter === 'planned') return !t.enabled;
-    // Drift rows are scattered across every other filter — a disabled row that
-    // is actually running is the most alarming kind, and 'Active' hid it.
-    if (_filter === 'drift') return !!t.drift;
     if (_filter === 'infra') return (t.agent || '') === 'infra';
     return (t.currentTier || '').toLowerCase() === _filter;
   });
@@ -214,12 +199,10 @@ function buildFilterBar(tasks) {
   counts.infra = tasks.filter((t) => t.agent === 'infra').length;
   counts.active = tasks.filter(isActive).length;
   counts.planned = tasks.filter((t) => !t.enabled).length;
-  counts.drift = tasks.filter((t) => t.drift).length;
 
   const btns = [
     { key: 'active',     label: 'Active' },
     { key: 'planned',    label: 'Planned / off' },
-    { key: 'drift',      label: 'Drift' },
     { key: 'all',        label: 'All' },
     { key: 'open',       label: 'Open' },
     { key: 'open-first', label: 'Open-first' },
