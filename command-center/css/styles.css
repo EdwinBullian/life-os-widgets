@@ -218,47 +218,35 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 .when-opt.sel{border-color:var(--accent);color:var(--text);background:var(--accent-soft)}
 .modal-actions{display:flex;gap:9px;justify-content:flex-end;margin-top:14px}
 
-/* SCHEDULE calendar */
-.scbox{flex:1;min-height:0}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;flex:1;min-height:0}
-.calcol{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px;display:flex;flex-direction:column;overflow:hidden}
-.calcol.today{border-color:var(--line2);box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
-.calcol.drag{border-color:var(--accent);background:var(--accent-soft)}
-.calhd{font-family:'JetBrains Mono','Courier New',monospace;font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;padding:1px 2px 8px;display:flex;justify-content:space-between;align-items:center}
-.calhd .td{font-size:8.5px;color:var(--on-accent);background:var(--accent);border-radius:4px;padding:1px 5px;font-weight:700;letter-spacing:.04em}
-.calscroll{flex:1;overflow-y:auto;min-height:0}
-.caltotal{margin-top:7px;padding-top:7px;border-top:1px solid var(--line);font-size:9.5px;color:var(--faint);display:flex;justify-content:space-between;align-items:center}
-.caltotal b{font-weight:700;font-size:11px}
-.daily-strip{font-size:9.5px;color:var(--faint);background:var(--panel);border:1px dashed var(--line2);border-radius:6px;padding:5px 7px;margin-bottom:7px;line-height:1.35}
-.evt{border-left:3px solid var(--line2);background:var(--panel);border-radius:7px;padding:7px 8px;margin-bottom:7px;display:flex;flex-direction:column;gap:3px;cursor:pointer}
-.evt .t{font-size:11px;font-weight:600;line-height:1.2}.evt .tm{font-size:9.5px;color:var(--faint)}
-.evt .ft{font-size:9.5px;color:var(--muted);display:flex;justify-content:space-between;gap:6px}
-.evt.ag-finance{border-left-color:var(--tag-finance)}.evt.ag-research{border-left-color:var(--tag-research)}.evt.ag-health{border-left-color:var(--tag-health)}
-.evt.ag-assistant{border-left-color:var(--tag-assistant)}.evt.ag-programming{border-left-color:var(--tag-programming)}.evt.ag-career{border-left-color:var(--tag-career)}
-.evt.ag-business{border-left-color:var(--tag-business)}.evt.ag-marketing{border-left-color:var(--tag-marketing)}
-.evt.oneoff{border-style:dashed;border-left-style:solid;background:var(--accent-soft)}
-.tray{border:1px dashed var(--line2);border-radius:10px;padding:11px 13px;background:var(--panel)}
-.tray-h{font-size:11px;color:var(--muted);margin-bottom:9px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.tray-items{display:flex;gap:8px;flex-wrap:wrap}
-.dragchip{display:flex;align-items:center;gap:7px;background:var(--panel2);border:1px solid var(--line2);border-left:3px solid var(--line2);border-radius:8px;padding:7px 11px;font-size:12px;cursor:grab}
-.dragchip:active{cursor:grabbing}.dragchip .gr{color:var(--faint);font-size:13px}
-.dragchip.ag-finance{border-left-color:var(--tag-finance)}.dragchip.ag-research{border-left-color:var(--tag-research)}.dragchip.ag-health{border-left-color:var(--tag-health)}.dragchip.ag-assistant{border-left-color:var(--tag-assistant)}
-.dragchip.ag-business{border-left-color:var(--tag-business)}.dragchip.ag-marketing{border-left-color:var(--tag-marketing)}
-
-/* ONE-OFF TRAY — real rows (js/oneoffs.js), replacing the old hardcoded "No one-off jobs."
-   .tray-items is a wrap-flex row built for the dragchips; one-offs stack, so .oo-list flips it. */
-.oo-list{flex-direction:column;gap:0;max-height:190px;overflow-y:auto}
-.oo-row{display:flex;align-items:center;gap:8px;font-size:11.5px;padding:6px 2px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-.oo-row:last-child{border-bottom:none}
-.oo-icon{font-weight:700;width:14px;text-align:center;flex-shrink:0;font-size:12px}
-.oo-name{font-weight:600;flex:1;min-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.oo-agent{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em}
-.oo-state{font-size:10.5px;font-weight:600;white-space:nowrap}
-.oo-time{font-size:10.5px;white-space:nowrap}
-.oo-x{background:none;border:none;color:var(--faint);cursor:pointer;font-size:14px;line-height:1;padding:0 2px}
-.oo-x:hover{color:var(--fail)}
-/* the refusal reason is the useful part of a failed row — full width, never clipped */
-.oo-reason{flex-basis:100%;font-size:10.5px;padding:2px 0 0 22px;white-space:normal}
+/* SCHEDULE board — seven day columns, one line per job, Unique jobs tray (js/render/schedule.js) */
+#schedule{gap:14px}
+.sb-legend{display:flex;gap:12px;flex-wrap:wrap;margin-left:14px;text-transform:none;letter-spacing:0;font-family:'Inter',sans-serif;font-size:11px;color:var(--muted)}
+.sb-legend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px}
+.btn.on{background:var(--accent-soft);border-color:var(--accent)}
+.sb-scroll{overflow-x:auto}
+.sb-board{display:grid;grid-template-columns:repeat(7,minmax(140px,1fr));gap:8px;min-width:1000px}
+.sb-col{background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius-sm);min-height:180px;transition:border-color .12s,background .12s}
+.sb-col.today{border-color:var(--accent)}.sb-col.past{opacity:.6}
+.sb-col.over,.sb-tray.over{border-color:var(--line2);background:var(--raise)}
+.sb-hd{display:flex;justify-content:space-between;align-items:baseline;padding:9px 11px;border-bottom:1px solid var(--line)}
+.sb-hd b{font-family:'Newsreader','Georgia',serif;font-size:15px;font-weight:600}
+.sb-hd span{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--faint)}
+.sb-col.today .sb-hd span{color:var(--accent)}
+.sb-list{padding:6px}
+.sb-job{display:flex;align-items:center;gap:8px;padding:5px 7px;border-radius:6px;font-size:12.5px;line-height:1.25}
+.sb-job:hover{background:var(--raise)}
+.sb-bar{width:3px;align-self:stretch;min-height:14px;border-radius:2px;flex:none;background:var(--c)}
+.sb-job.daily{color:var(--muted)}
+.sb-job[draggable="true"]{cursor:grab}
+.sb-job.oneoff .sb-bar{background:transparent;border-left:3px dotted var(--c)}
+.sb-job.sending{opacity:.55}
+.sb-job.err .sb-name{text-decoration:underline dotted var(--fail)}
+.sb-once{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--faint);border:1px solid var(--line2);border-radius:4px;padding:0 4px}
+.sb-tray{transition:border-color .12s,background .12s}
+.sb-tray-items{display:flex;flex-wrap:wrap;gap:8px;min-height:30px}
+.sb-chip-wrap{display:flex;align-items:center;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding-right:4px}
+.sb-x{background:none;border:none;color:var(--faint);cursor:pointer;font-size:14px;line-height:1;padding:0 4px}
+.sb-x:hover{color:var(--fail)}
 
 /* RECENT RUNS */
 .rr-box{border:1px solid var(--line);border-radius:10px;padding:10px 13px;background:var(--panel);flex-shrink:0}
@@ -379,6 +367,7 @@ textarea{resize:vertical;min-height:60px}label.fld{display:block;font-size:11.5p
 /* inline schedule + model editors */
 .reg-sched-input{width:118px;padding:5px 8px;font-size:11px;font-family:'JetBrains Mono','Courier New',monospace;background:var(--sunken);border:1px solid var(--line2);border-radius:6px;color:var(--text)}
 .reg-sched-input:focus{border-color:var(--accent);outline:none}
+.reg-drift{display:inline-block;margin-left:6px;padding:2px 6px;font-size:10px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;border-radius:5px;background:transparent;color:var(--warn);border:1px solid var(--warn);cursor:help;white-space:nowrap}
 .reg-select{width:auto;min-width:118px;padding:5px 8px;font-size:11.5px}
 .reg-select:focus{border-color:var(--accent);outline:none}
 
@@ -482,8 +471,6 @@ body.phone .agrid{grid-template-columns:1fr}
 body.phone .agent-grid,body.phone .kbody{grid-template-columns:1fr;overflow:visible}
 body.phone .kanban{flex-direction:column}
 body.phone .kcol{min-width:0}
-body.phone .cal{grid-template-columns:1fr;gap:10px}
-body.phone .calcol{overflow:visible}
 body.phone .feed,body.phone .reg-scroll,body.phone .sched-list,body.phone .rr-list{overflow:visible;max-height:none}
 body.phone .grow{flex:none;min-height:0}
 body.phone .chatwrap{min-height:60vh}

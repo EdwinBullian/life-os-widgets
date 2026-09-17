@@ -1,254 +1,202 @@
-// Schedule tab: read-only weekly calendar (7 day-columns Sun→Sat) matching the approved mockup.
-// Markup/classes are ported verbatim from the mockup (box scbox / cal / calcol / calscroll /
-// daily-strip / evt ag-<agent> / caltotal / tray). The per-day token total pins to the bottom of
-// each column because .caltotal lives OUTSIDE the scrollable .calscroll. Day totals come from
-// dayTotals() (in K) so the unit tests' unit math holds. Every dynamic value escaped via esc();
-// never throws on null/empty schedule.
+// Schedule tab: a seven-day board (Sun→Sat) plus the Unique jobs tray.
 //
-// The one-off tray is REAL as of 2026-07-26. It used to be a hardcoded "No one-off jobs." string
-// with a "+ New one-off" button that only toasted "Phase 2" — so a job you fired from the Agents
-// tab could never appear here no matter what happened to it. Both are now wired: the button opens
-// the same dispatch form the Agents tab uses, and the tray renders js/oneoffs.js's ledger with the
-// job's true state (submitting / pending / accepted / refused / failed). Nothing is shown as
-// succeeded on optimism.
+// Each job is one line coloured by agent — no times, models or token counts. Recurring jobs come
+// from registry.json through boardweek.js. The daily set is hidden until toggled, and background
+// work never appears. Unique jobs are one-offs: unscheduled ones wait in the tray, and dragging
+// one onto a day schedules it for that day. A placed job can be dragged to another day, or back
+// to the tray to unschedule it (boardjobs.js).
 
-import { esc, hh, estCost, dayTotals, safe, isStale } from '../util.js';
-import { toast, openDispatchModal, dispatchOneOff } from './agents.js';
-import { listOneOffs, reconcileOneOffs, removeOneOff, clearFinishedOneOffs, TERMINAL } from '../oneoffs.js';
-import { busConfigured } from '../busclient.js';
+import { esc, safe } from '../util.js';
+import { toast } from './agents.js';
 import { setState } from '../state.js';
+import { busConfigured } from '../busclient.js';
+import { buildWeek, isoDay, AGENT_ORDER, byAgentThenName } from '../boardweek.js';
+import { ONEOFF_CATALOG } from '../oneoffCatalog.js';
+import {
+  listBoardJobs, createDraft, removeDraft, placeJob, unplaceJob, reconcileBoardJobs,
+} from '../boardjobs.js';
 
-const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-// schedule.json is regenerated ~daily; flag stale past 2×24h (isStale uses 2× cadence).
-const SCHEDULE_CADENCE_MS = 24 * 60 * 60 * 1000;
+const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const LEGEND = [['assistant', 'Assistant'], ['health', 'Health'], ['finance', 'Finance'], ['career', 'Career'],
+  ['programming', 'Programming'], ['research', 'Research'], ['business', 'Business'], ['marketing', 'Marketing']];
 
-const STATUS_ICON = { success: '✓', failed: '✗', partial: '~', skipped: '–', running: '⟳' };
-const STATUS_COLOR = {
-  success: 'var(--success)',
-  failed:  'var(--fail)',
-  partial: 'var(--warn)',
-  skipped: 'var(--faint)',
-  running: 'var(--running)',
-};
+let showDaily = false;
+const rerender = () => setState({ oneOffsRev: Date.now() });
 
-function isSchedule(s) {
-  return s && typeof s === 'object' && Array.isArray(s.week);
+function lineHtml(j) {
+  const cls = ['sb-job'];
+  if (j.daily) cls.push('daily');
+  if (j.oneoff) cls.push('oneoff');
+  if (j.sending) cls.push('sending');
+  if (j.error) cls.push('err');
+  const drag = j.lid ? ` draggable="true" data-lid="${esc(j.lid)}"` : '';
+  const tip = j.error || j.title || '';
+  return `<div class="${cls.join(' ')}" style="--c:var(--tag-${esc(j.tag)})"${drag}${tip ? ` title="${esc(tip)}"` : ''}>`
+    + '<span class="sb-bar"></span>'
+    + `<span class="sb-name">${esc(j.name)}</span>`
+    + (j.oneoff ? '<span class="sb-once">once</span>' : '')
+    + '</div>';
 }
 
-// relative-time helper (no deps)
-function relTime(isoStr) {
-  if (!isoStr) return '—';
-  const ms = Date.now() - new Date(isoStr).getTime();
-  // Under a minute is "just now" — flooring to "0m ago" read as a broken clock on a row the
-  // user had only just created.
-  if (ms < 0 || ms < 60000) return 'just now';
-  const m = Math.floor(ms / 60000);
-  if (m < 60) return `${m}m ago`;
-  const h = Math.floor(m / 60);
-  if (h < 24) return `${h}h ago`;
-  const d = Math.floor(h / 24);
-  return `${d}d ago`;
-}
-
-// One event block. `tok` arrives RAW (e.g. 120000) → convert to K for display + height.
-function eventHtml(e) {
-  const agent = esc(e.agent || '');
-  const tokK = Math.round((Number(e.tok) || 0) / 1000);
-  const H = Math.min(150, Math.round(24 + tokK * 0.5));
-  return `<div class="evt ag-${agent}" style="min-height:${H}px">`
-    + `<div class="tm">${esc(hh(Number(e.hour) || 0))}</div>`
-    + `<div class="t">${esc(e.name || '')}</div>`
-    + `<div style="margin-top:1px"><span class="chip ${esc(e.tier || '')}">${esc(e.model || '')}</span></div>`
-    + `<div class="ft"><span>≈${esc(tokK)}k tok</span>`
-    + `<span>${esc(estCost({ tier: e.tier, tok: Number(e.tok) || 0 }))}</span></div></div>`;
-}
-
-// ── One-off tray ──────────────────────────────────────────────────────────────
-// Each state gets its own label + colour. `submitting` and `pending` are deliberately NOT
-// green: the job has been handed off, not confirmed. Green only appears once the consumer
-// has actually replied ok.
-const OO_STATE = {
-  submitting: { icon: '◌', label: 'Sending…',  color: 'var(--faint)' },
-  pending:    { icon: '⟳', label: 'Queued',    color: 'var(--running, var(--warn))' },
-  accepted:   { icon: '✓', label: 'Accepted',  color: 'var(--success)' },
-  refused:    { icon: '✗', label: 'Refused',   color: 'var(--fail)' },
-  failed:     { icon: '!', label: 'Not sent',  color: 'var(--fail)' },
-};
-
-function oneOffRowHtml(r) {
-  const st = OO_STATE[r.state] || OO_STATE.submitting;
-  const agent = esc(String(r.agent || '').toLowerCase());
-  // A refusal reason is the single most useful thing on this row — never truncate it away.
-  const reason = r.reason
-    ? `<div class="oo-reason faint">${esc(r.reason)}</div>`
-    : '';
-  // Only a job that never left the browser can be retried as-is; a refused one needs editing.
-  const retry = r.state === 'failed'
-    ? `<button class="btn sm ghost" data-action="ooRetry" data-lid="${esc(r.lid)}" title="Send this job again">Retry</button>`
-    : '';
-  const when = r.runMode && r.runMode !== 'Downtime' ? `<span class="chip">${esc(r.runMode)}</span>` : '';
-  return `<div class="oo-row" data-lid="${esc(r.lid)}">`
-    + `<span class="oo-icon" style="color:${st.color}" title="${esc(st.label)}">${st.icon}</span>`
-    + `<span class="oo-name ag-text-${agent}">${esc(r.title || 'One-off job')}</span>`
-    + `<span class="oo-agent faint">${esc(r.agent || '—')}</span>`
-    + when
-    + `<span class="oo-state" style="color:${st.color}">${esc(st.label)}</span>`
-    + `<span class="oo-time faint">${esc(relTime(r.ts))}</span>`
-    + retry
-    + `<button class="oo-x" data-action="ooDismiss" data-lid="${esc(r.lid)}" title="Remove from this list" aria-label="Dismiss">×</button>`
-    + reason
-    + `</div>`;
-}
-
-function trayHtml() {
-  const rows = listOneOffs();
-  if (!rows.length) {
-    // Distinguish "nothing fired yet" from "nothing can be fired" — an unset bus token is the
-    // reason every write button on this dashboard silently did nothing, so name it here.
-    return busConfigured()
-      ? '<span class="faint" style="font-size:12px">No one-off jobs yet — hit <b>+ New one-off</b> to fire one.</span>'
-      : '<span class="faint" style="font-size:12px">Not connected to the bus — open <b>Settings (⚙)</b> and add your acc-bus token, '
-        + 'or one-off jobs can\'t be sent.</span>';
-  }
-  return rows.map(oneOffRowHtml).join('');
-}
-
-function buildRecentRunsHtml(runs) {
-  if (!Array.isArray(runs) || runs.length === 0) {
-    return '<span class="faint" style="font-size:12px">No recent runs yet.</span>';
-  }
-  return runs.slice(0, 10).map((r) => {
-    const status = (r.status || 'success').toLowerCase();
-    const icon  = STATUS_ICON[status]  || '·';
-    const color = STATUS_COLOR[status] || 'var(--text)';
-    const agent = esc(r.agent || '');
-    const model = r.model ? `<span class="chip" style="margin-left:auto">${esc(r.model)}</span>` : '<span class="spacer"></span>';
-    return `<div class="rr-row">`
-      + `<span class="rr-icon" style="color:${color}">${icon}</span>`
-      + `<span class="rr-name ag-text-${agent}">${esc(r.name || r.taskId || '?')}</span>`
-      + `<span class="rr-sep faint">·</span>`
-      + `<span class="rr-agent faint">${agent}</span>`
-      + model
-      + `<span class="rr-time faint">${esc(relTime(r.ranAt))}</span>`
-      + `</div>`;
-  }).join('');
+function oneoffLine(r) {
+  return {
+    name: r.title, tag: r.tag, daily: false, oneoff: true, lid: r.lid,
+    sending: r.state === 'sending', error: r.reason ? `${r.jobLabel} — ${r.reason}` : '',
+    title: `${r.jobLabel}: ${r.brief}`,
+  };
 }
 
 export function renderSchedule(state, panelArg) {
   const panel = panelArg || document.getElementById('schedule');
   if (!panel) return;
-  const sched = safe(state.schedule, null);
-  if (!isSchedule(sched)) {
-    panel.innerHTML = '<div class="empty-state">No schedule data yet.</div>';
-    wireSchedule(panel);
-    return;
-  }
+  const registry = safe(state.registry, null);
+  const now = new Date();
+  const { dates, days } = buildWeek(registry, now);
+  const today = isoDay(now);
+  const jobs = listBoardJobs();
 
-  const week = sched.week;
-  const dailyBaseK = Number(sched.dailyBaseK) || 0;
-  const dailies = Array.isArray(sched.dailies) ? sched.dailies : [];
-  const totals = dayTotals(week, dailyBaseK); // [{day,k,heavy}] in K, incl. daily base
-  const today = new Date().getDay();
-  const stale = isStale(sched.updated, SCHEDULE_CADENCE_MS)
-    ? ' <span class="stale" title="schedule may be stale">stale</span>' : '';
-
-  const dailyStrip = `<div class="daily-strip" title="Daily locked jobs you never touch">`
-    + `⟳ Daily ×${dailies.length} · locked · ~${esc(dailyBaseK)}k<br>`
-    + `<span style="opacity:.8">${dailies.map((d) => esc(d)).join(' · ')}</span></div>`;
-
-  const cols = DAYS.map((name, i) => {
-    const evts = week
-      .filter((e) => Number(e.day) === i)
-      .sort((a, b) => (Number(a.hour) || 0) - (Number(b.hour) || 0))
-      .map(eventHtml).join('');
-    const tot = totals[i];
-    const totColor = tot.heavy ? 'var(--warn)' : 'var(--text)';
-    return `<div class="calcol${i === today ? ' today' : ''}" data-day="${i}">`
-      + `<div class="calhd"><span>${esc(name)}</span>${i === today ? '<span class="td">today</span>' : ''}</div>`
-      + `<div class="calscroll">${dailyStrip}${evts}</div>`
-      + `<div class="caltotal"><span>day total</span>`
-      + `<b style="color:${totColor}">≈${esc(tot.k)}k</b></div></div>`;
+  const cols = dates.map((d, i) => {
+    const iso = isoDay(d);
+    const placed = jobs.filter((r) => r.day === iso).map(oneoffLine);
+    const lines = days[i].filter((j) => showDaily || !j.daily).concat(placed).sort(byAgentThenName);
+    const past = iso < today;
+    return `<div class="sb-col${iso === today ? ' today' : ''}${past ? ' past' : ''}" data-day="${iso}">`
+      + `<div class="sb-hd"><b>${DAY_NAMES[i]}</b><span>${d.getDate()}</span></div>`
+      + `<div class="sb-list">${lines.map(lineHtml).join('')}</div></div>`;
   }).join('');
 
-  const anyFinished = listOneOffs().some((r) => TERMINAL.has(r.state));
-  const clearBtn = anyFinished
-    ? '<button class="btn sm ghost" data-action="ooClear" title="Remove finished rows">Clear finished</button>'
+  const drafts = jobs.filter((r) => !r.day);
+  const tray = drafts.length
+    ? drafts.map((r) => `<div class="sb-chip-wrap">${lineHtml(oneoffLine(r)).replace('<span class="sb-once">once</span>', '')}`
+      + `<button class="sb-x" data-action="sbRemove" data-lid="${esc(r.lid)}" aria-label="Remove">×</button></div>`).join('')
     : '';
 
-  panel.innerHTML = `<div class="box scbox">`
-    + `<div class="ptitle">This week${stale} <span class="faint">colored by agent · `
-    + `block height ≈ size · live token total per day at the bottom</span></div>`
-    + `<div class="cal" id="calRoot">${cols}</div></div>`
-    + `<div class="tray">`
-    + `<div class="tray-h">⚡ One-off jobs <span class="faint">— fired by hand, tracked until the desk answers</span>`
-    + `<span class="spacer"></span>${clearBtn}`
-    + `<button class="btn sm" data-action="newOneOff">+ New one-off</button></div>`
-    + `<div class="tray-items oo-list" id="trayItems">${trayHtml()}</div>`
-    + `</div>`;
-  // Recent-runs block intentionally removed from this tab — that history lives on the Overview tab.
-  // Dropping it lets the calendar + one-off tray fill the embed's max height without scrolling.
+  panel.innerHTML = '<div class="box sb-box">'
+    + '<div class="ptitle"><span>This week</span>'
+    + `<span class="sb-legend">${LEGEND.map(([k, v]) => `<span><i style="background:var(--tag-${k})"></i>${v}</span>`).join('')}</span>`
+    + '<span class="spacer"></span>'
+    + `<button class="btn sm ghost${showDaily ? ' on' : ''}" data-action="sbDaily">${showDaily ? 'Hide daily jobs' : 'Show daily jobs'}</button></div>`
+    + `<div class="sb-scroll"><div class="sb-board">${cols}</div></div></div>`
+    + '<div class="box sb-tray" data-tray="1">'
+    + '<div class="ptitle"><span>Unique jobs</span><span class="spacer"></span>'
+    + '<button class="btn sm ghost" data-action="sbNew">+ New</button></div>'
+    + `<div class="sb-tray-items">${tray}</div></div>`;
+
   wireSchedule(panel);
   pokeReconcile();
 }
 
-// Ask the bus whether any queued one-off has been answered, and re-render only if something
-// actually changed. Guarded against re-entry so the setState it triggers can't loop: render →
-// pokeReconcile → setState → render.
 let reconcileBusy = false;
 function pokeReconcile() {
-  if (reconcileBusy) return;
-  const pending = listOneOffs().some((r) => r.state === 'pending');
-  if (!pending) return;
+  if (reconcileBusy || !listBoardJobs().some((r) => r.state === 'sending')) return;
   reconcileBusy = true;
-  reconcileOneOffs()
-    .then((changed) => { if (changed) setState({ oneOffsRev: Date.now() }); })
-    .catch(() => { /* offline — rows stay queued, which is the honest state */ })
+  reconcileBoardJobs()
+    .then((n) => { if (n) rerender(); })
+    .catch(() => {})
     .finally(() => { reconcileBusy = false; });
 }
 
+// ── New unique job form ───────────────────────────────────────────────────────
+function agentOptions() {
+  return Object.entries(ONEOFF_CATALOG)
+    .sort((a, b) => AGENT_ORDER.indexOf(a[1].tag) - AGENT_ORDER.indexOf(b[1].tag))
+    .map(([k, a]) => `<option value="${esc(k)}"${a.available ? '' : ' disabled'}>${esc(a.label)}${a.available ? '' : ' (off)'}</option>`)
+    .join('');
+}
+
+function typeOptions(agent) {
+  const a = ONEOFF_CATALOG[agent];
+  return a ? Object.entries(a.job_types).map(([k, v]) => `<option value="${esc(k)}">${esc(v)}</option>`).join('') : '';
+}
+
+function openNewJob() {
+  const overlay = document.getElementById('overlay');
+  const modal = document.getElementById('modal');
+  if (!overlay || !modal) return;
+  const first = Object.keys(ONEOFF_CATALOG).find((k) => ONEOFF_CATALOG[k].available) || 'finance';
+  modal.className = 'modal';
+  modal.innerHTML = '<div class="modal-head"><div class="modal-title">New unique job</div></div>'
+    + '<form id="sbNewForm">'
+    + `<div class="field"><label>Agent</label><select id="sb-agent">${agentOptions()}</select></div>`
+    + `<div class="field"><label>Job type</label><select id="sb-type">${typeOptions(first)}</select></div>`
+    + '<div class="field"><label>Brief <span class="req">*</span></label><textarea id="sb-brief" placeholder="What should it do?"></textarea></div>'
+    + '<div class="modal-actions"><button type="button" class="btn ghost" data-action="sbClose">Cancel</button>'
+    + '<button type="submit" class="btn">Add</button></div></form>';
+  modal.querySelector('#sb-agent').value = first;
+  overlay.classList.add('open');
+  wireModal(overlay, modal);
+  modal.querySelector('#sb-brief').focus();
+}
+
+function closeModal(overlay, modal) {
+  overlay.classList.remove('open');
+  modal.innerHTML = '';
+}
+
+function wireModal(overlay, modal) {
+  const form = modal.querySelector('#sbNewForm');
+  modal.querySelector('#sb-agent').addEventListener('change', (e) => {
+    modal.querySelector('#sb-type').innerHTML = typeOptions(e.target.value);
+  });
+  modal.querySelector('[data-action="sbClose"]').addEventListener('click', () => closeModal(overlay, modal));
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const agent = modal.querySelector('#sb-agent').value;
+    const jobType = modal.querySelector('#sb-type').value;
+    const brief = modal.querySelector('#sb-brief').value.trim();
+    const a = ONEOFF_CATALOG[agent];
+    if (!a || !a.available) { toast('That agent isn\'t set up for one-off runs'); return; }
+    if (!brief) { toast('Add a brief'); return; }
+    createDraft({ agent, jobType, jobLabel: a.job_types[jobType] || jobType, tag: a.tag, brief });
+    closeModal(overlay, modal);
+    rerender();
+  });
+}
+
+// ── Board interactions ────────────────────────────────────────────────────────
 function wireSchedule(panel) {
   if (panel.__schedWired) return;
   panel.__schedWired = true;
 
-  // Drag-to-schedule was a stub that toasted "Scheduling is Phase 2" on any drop — it looked
-  // like a feature and moved nothing. There is no bus action for "put this job on Thursday"
-  // (request_job has no time field), so the honest move is to point at what DOES work.
-  panel.addEventListener('dragover', (e) => e.preventDefault());
-  panel.addEventListener('drop', (e) => {
-    e.preventDefault();
-    toast('Dragging onto a day isn\'t wired — set a recurring time on the Registry tab, or fire it now with + New one-off');
+  panel.addEventListener('click', (e) => {
+    if (e.target.closest('[data-action="sbDaily"]')) { showDaily = !showDaily; rerender(); return; }
+    if (e.target.closest('[data-action="sbNew"]')) {
+      if (!busConfigured()) toast('Not connected — add your acc-bus token in Settings (⚙) before placing jobs');
+      openNewJob();
+      return;
+    }
+    const rm = e.target.closest('[data-action="sbRemove"]');
+    if (rm) { removeDraft(rm.dataset.lid); rerender(); }
   });
 
-  panel.addEventListener('click', (e) => {
-    if (e.target.closest('[data-action="newOneOff"]')) {
-      if (!busConfigured()) {
-        // Opening the form here would let Eddie fill it in and watch it fail. Say it first.
-        toast('Not connected — add your acc-bus token in Settings (⚙) first');
-        return;
-      }
-      openDispatchModal('Custom');
-      return;
-    }
-    const dismiss = e.target.closest('[data-action="ooDismiss"]');
-    if (dismiss) {
-      removeOneOff(dismiss.dataset.lid);
-      setState({ oneOffsRev: Date.now() });
-      return;
-    }
-    if (e.target.closest('[data-action="ooClear"]')) {
-      clearFinishedOneOffs();
-      setState({ oneOffsRev: Date.now() });
-      return;
-    }
-    const retry = e.target.closest('[data-action="ooRetry"]');
-    if (retry) {
-      const row = listOneOffs().find((r) => r.lid === retry.dataset.lid);
-      if (!row) return;
-      // Re-send as a fresh row so the failed attempt stays on the record.
-      dispatchOneOff({
-        job: row.title, agent: row.agent, taskType: row.taskType,
-        details: row.goal, runMode: row.runMode, model: row.model,
-      }, `Resent: ${row.title}`);
-    }
+  panel.addEventListener('dragstart', (e) => {
+    const el = e.target.closest('.sb-job[data-lid]');
+    if (!el) return;
+    e.dataTransfer.setData('text/plain', el.dataset.lid);
+    e.dataTransfer.effectAllowed = 'move';
+  });
+
+  const zoneOf = (e) => e.target.closest('.sb-col, [data-tray]');
+  panel.addEventListener('dragover', (e) => {
+    const z = zoneOf(e);
+    if (!z || z.classList.contains('past')) return;
+    e.preventDefault();
+    z.classList.add('over');
+  });
+  panel.addEventListener('dragleave', (e) => {
+    const z = zoneOf(e);
+    if (z && !z.contains(e.relatedTarget)) z.classList.remove('over');
+  });
+  panel.addEventListener('drop', (e) => {
+    const z = zoneOf(e);
+    if (!z) return;
+    e.preventDefault();
+    z.classList.remove('over');
+    if (z.classList.contains('past')) { toast('That day has already passed'); return; }
+    const id = e.dataTransfer.getData('text/plain');
+    if (!id) return;
+    const why = z.dataset.day ? placeJob(id, z.dataset.day) : unplaceJob(id);
+    if (why) toast(why);
+    rerender();
   });
 }

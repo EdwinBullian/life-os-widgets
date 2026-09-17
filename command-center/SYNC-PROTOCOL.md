@@ -12,8 +12,7 @@ all. Discipline alone doesn't hold. The fix is **discipline + an automated recon
 ## Two kinds of fields (this is the key design idea)
 Split every task row into two ownership lanes so humans and machines never fight:
 
-- **Declared / policy fields** (human + agent owned): `name`, `agent`, `recommendedTier`, `model`, intended `cron`,
-  `notes`, `mcp`. These express intent. Only a person or an agent making a real change edits these.
+- **Declared / policy fields** (human + agent owned): `name`, `display_name`, `description`, `agent`, `recommendedTier`, `model`, intended `cron`, `notes`, `mcp`. These express intent. Only a person or an agent making a real change edits these.
 - **Observed / actual fields** (reconciler owned): `observedCron`, `observedEnabled`, `observedHost`, `lastSeen`,
   and a computed `drift` flag. The reconciler writes only these. The Command Center renders `drift: true` in red.
 
