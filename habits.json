@@ -872,17 +872,17 @@
     "2026-10-14": 12,
     "2026-10-21": 75
   },
-  "streak": 1,
+  "streak": 0,
   "streaks": {
-    "10k Steps": 1,
-    "Calories": 1,
+    "10k Steps": 0,
+    "Calories": 0,
     "Clean": 0,
-    "Lift": 1,
-    "Meditate": 1,
+    "Lift": 0,
+    "Meditate": 0,
     "Screen Time": 0,
-    "Stretch": 1,
-    "Supplements": 1
+    "Stretch": 0,
+    "Supplements": 0
   },
   "totalHabits": 8,
-  "updated": 1792678960
+  "updated": 1792764351
 }
