@@ -894,9 +894,9 @@
     "2026-11-06": 75,
     "2026-11-08": 12
   },
-  "streak": 1,
+  "streak": 0,
   "streaks": {
-    "10k Steps": 1,
+    "10k Steps": 0,
     "Calories": 0,
     "Clean": 0,
     "Lift": 0,
@@ -906,5 +906,5 @@
     "Supplements": 0
   },
   "totalHabits": 8,
-  "updated": 1794252779
+  "updated": 1794329379
 }
